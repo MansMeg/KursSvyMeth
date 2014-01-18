@@ -1,0 +1,3450 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames,handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 2
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Introduktion till urval
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Notation
+\end_layout
+
+\begin_layout BeginFrame
+Notation I
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N=\mbox{Antal observationer i populationen}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{U}=\{1,2,3,...,N\}=\mbox{Populationsmängden}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+n=\mbox{Antal observationer i urvalet}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{S}=\{1,2,...,n\}=\mbox{Urvalsmängden}(\mathcal{S}\subseteq\mathcal{U})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+i=\mbox{Observation }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+i\in\mathcal{S}=\mbox{Observation }i\mbox{ ingår i urvalsmängden }\mathcal{S}\mbox{, del av urvalet}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{K}=\{\mathcal{S}_{1},\mathcal{S}_{2},...,\mathcal{S}_{K}\}\mbox{=Mängden av alla möjliga urval}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation II
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=\mbox{Den egenskap/variabel vi vill undersöka}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ofta är det ett flertal olika saker man vill undersöka i en och samma undersökni
+ng.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y_{i}=\mbox{egenskapen hos individ }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=\mbox{total}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p=\mbox{proportion}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{p}=\mbox{skattning av \ensuremath{p}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Populationsparametrar
+\end_layout
+
+\begin_layout BeginFrame
+Populationsparametrar - vårt intresse
+\end_layout
+
+\begin_layout Itemize
+Populationstotal
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t_{\mathcal{U}}=\sum_{i=1}^{N}y_{i}=\sum_{i\in\mathcal{U}}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationsmedel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{i=1}^{N}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationsvarians
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{\mathcal{U}}^{2}=\frac{1}{N-1}\sum_{i=1}^{N}\left(y_{i}-\bar{y}_{\mathcal{U}}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationsandel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{\mathcal{U}}=\frac{\mbox{antal med egenskap av intresse}}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Urvalsteori
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsteori I
+\end_layout
+
+\begin_layout Itemize
+Urvalsteori är en 
+\series bold
+annan
+\series default
+ teori för 
+\series bold
+inferens
+\series default
+ än den 
+\begin_inset Quotes eld
+\end_inset
+
+klassiska
+\begin_inset Quotes erd
+\end_inset
+
+ statistiska teorin
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ är ett 
+\series bold
+fixt
+\series default
+ värde, 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+inte
+\end_layout
+
+\end_inset
+
+ ett utfall av en slumpmässig variabel 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Slumpmässigheten (som vi bygger vår inferens på) 
+\series bold
+skapar vi själva
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Syftar 
+\series bold
+bara
+\series default
+ till inferens om ändliga populationer 
+\begin_inset Newline newline
+\end_inset
+
+(populationsparametrar, inte 
+\begin_inset Formula $\mu$
+\end_inset
+
+ eller 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ i en normalfördelning)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Brukar ofta kallas 
+\series bold
+designbaserad
+\series default
+ inferens
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Det finns två sätt att dra (skapa) ett slumpmässigt urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+med återläggning
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ineffektivt
+\end_layout
+
+\begin_layout Plain Layout
+Används sällan
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Fördel:
+\series default
+ Variansberäkningarna blir enklare
+\end_layout
+
+\begin_layout Plain Layout
+Är som att dra ett urval av storlek 1, n gånger.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+utan återläggning
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Det vanligaste sättet.
+\end_layout
+
+\begin_layout Plain Layout
+Genererar en vector av slumptal och sorterar efter detta slumptal.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+vidare kommer endast 
+\begin_inset Quotes eld
+\end_inset
+
+utan återläggning
+\begin_inset Quotes erd
+\end_inset
+
+ behandlas (om inte annat nämns)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsteori II
+\end_layout
+
+\begin_layout Itemize
+Antalet tänkbara urval av storlek 
+\begin_inset Formula $n$
+\end_inset
+
+ från en population av storlek 
+\begin_inset Formula $N$
+\end_inset
+
+ (utan återläggning):
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+N\\
+n
+\end{array}\right)=\frac{N!}{n!(N-n)!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Urvalsfördelningen
+\series default
+ för 
+\begin_inset Formula $\mathcal{S}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+(vid ett obundet slumpmässigt urval (OSU) har alla urval samma sannolikhet
+ att väljas) 
+\begin_inset Formula 
+\[
+P(\mathcal{S}_{k})=\frac{1}{\left(\begin{array}{c}
+N\\
+n
+\end{array}\right)}=\frac{n!(N-n)!}{N!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsteori III
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inklutionssannolikheten
+\series default
+ för observation 
+\begin_inset Formula $i$
+\end_inset
+
+ 
+\series bold
+vid OSU
+\begin_inset CommandInset label
+LatexCommand label
+name "InklSanno"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula 
+\[
+\pi_{i}=\frac{\#\mbox{ urval som innehåller obs. }i}{\mbox{Totalt antal urval}}=(*)=\frac{n}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Summan (över hela populationen) av inklutionssannolikheterna är: 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{N}\pi_{i}=N\cdot\frac{n}{N}=n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Urvalsvikten/designvikten
+\series default
+ (sampling/design weight) för observation 
+\begin_inset Formula $i$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+w_{i}=\frac{1}{\pi_{i}}=\frac{N}{n}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Summan av vikterna (över urvalet) är
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}w_{i}=n\cdot\frac{N}{n}=N
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tolkning: Antal som representeras av varje respondent som represe
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsteori - Exempel 1
+\end_layout
+
+\begin_layout Itemize
+Vad är sannoliheten för att inkludera den vita bollen i vårt urval om 
+\begin_inset Formula $n=3$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathcal{U}=\{\text{Grön},\text{Blå},\text{Röd},\text{Svart},\text{Vit}\}$
+\end_inset
+
+ (
+\begin_inset Formula $N=5$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Itemize
+Vi drar ett OSU 
+\series bold
+utan
+\series default
+ återläggning.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsteori - Lösning
+\end_layout
+
+\begin_layout Itemize
+Totalt antal urval vi kan dra är:
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+N\\
+n
+\end{array}\right)=\left(\begin{array}{c}
+5\\
+3
+\end{array}\right)=\frac{5!}{(5-3)!3!}=10
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De olika urvalen vi kan dra blir då:
+\begin_inset Formula 
+\[
+\mathcal{S}_{1}=\{\mbox{G},\mbox{B},\mbox{R}\},\mathcal{S}_{2}=\{\mbox{G},\mbox{B},\mbox{S}\},\mathcal{S}_{3}=\{\mbox{G},\mbox{B},\mbox{V}\},\mathcal{S}_{4}=\{\mbox{G},\mbox{R},\mbox{S}\},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{S}_{5}=\{\mbox{G},\mbox{R},\mbox{V}\},\mathcal{S}_{6}=\{\mbox{G},\mbox{S},\mbox{V}\},\mathcal{S}_{7}=\{\mbox{B},\mbox{R},\mbox{S}\},\mathcal{S}_{8}=\{\mbox{B},\mbox{R},\mbox{V}\},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{S}_{9}=\{\mbox{B},\mbox{S},\mbox{V}\},\mathcal{S}_{10}=\{\mbox{R},\mbox{S},\mbox{V}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sannolikheten för respektive urval är 
+\begin_inset Formula $P(\mathcal{S}_{k})=\frac{1}{10}$
+\end_inset
+
+, vilket ger att
+\begin_inset Formula 
+\[
+\pi_{\mbox{Vit}}=P(\mathcal{S}_{3})+P(\mathcal{S}_{5})+P(\mathcal{S}_{6})+P(\mathcal{S}_{8})+P(\mathcal{S}_{9})+P(\mathcal{S}_{10})=\frac{3}{5}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eller vi kan använda formeln på slide 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "InklSanno"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\pi_{\mbox{Vit}}=\frac{n}{N}=\frac{3}{5}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Obundet slumpmässigt urval
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Obundet slumpmässigt urval (OSU)
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av populationsparametrarna 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ och 
+\begin_inset Formula $S_{\mathcal{U}}^{2}$
+\end_inset
+
+.
+ Hur skattar vi dessa vid OSU?
+\end_layout
+
+\begin_layout Pause
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{\mathcal{U}}=\bar{y}_{\mathcal{S}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+\begin_inset Formula 
+\[
+\hat{S_{\mathcal{U}}^{2}}=S_{\mathcal{S}}^{2}=s^{2}=\frac{1}{n-1}\sum_{i\in\mathcal{S}}(y_{i}-\bar{y})^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout NoteItem
+Kanske förtydliga om samplingfördelningen för y? Kort beskrivning av OSU?
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+OSU - Exempel 
+\end_layout
+
+\begin_layout Itemize
+Vi fortsätter på exemplet ovan där 
+\begin_inset Formula $N=5$
+\end_inset
+
+, 
+\begin_inset Formula $n=3$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathcal{U}=\{a,b,c,d,e\}$
+\end_inset
+
+, 
+\begin_inset Formula $P(\mathcal{S})=\frac{1}{10}$
+\end_inset
+
+ samt 
+\begin_inset Formula 
+\[
+y=\{5,10,8,7,12\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Rövarna har stultit guldpengar
+\end_layout
+
+\begin_layout Plain Layout
+Vi vill uppskatta hur mycket de stulit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Populationsparametrar (de sanna värdena) som vi är intresserade av är:
+\end_layout
+
+\begin_layout Itemize
+Populationsmedelvärde
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{i\in\mathcal{U}}y_{i}=\frac{1}{5}\sum_{i\in\{a,b,c,d,e\}}y_{i}=8.4
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationsvarians/standardavvikelse
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{\mathcal{U}}^{2}=\frac{1}{N-1}\sum_{i\in\mathcal{U}}\left(y_{i}-\bar{y}_{\mathcal{U}}\right)^{2}=\frac{1}{4}\sum_{i\in\{a,b,c,d,e\}}\left(y_{i}-8.4\right)^{2}=7.3
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{\mathcal{U}}=\sqrt{7.3}\approx2.3
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim,allowframebreaks]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{OSU - Exempel II}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-c(5,10,8,7,12) # y-värden 
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-3 # antal observationer 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Med R kan vi beräkna samplingfördelningen för $
+\backslash
+bar{y}_
+\backslash
+mathcal{S}$ då $n=3$ och $y=$(
+\backslash
+Sexpr{y}) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Här används funktionen 
+\backslash
+texttt{samplingDist()} som finns 
+\backslash
+textbf{
+\backslash
+textcolor{blue}{
+\backslash
+href{https://raw.github.com/MansMeg/KursSvyMeth/master/Demonstrations/svyMethFunct
+ions.R}{här}}}.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='small', comment='', echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+urvalsdist1<-samplingDist(y,3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+urvalsdist1[,1:6] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{OSU - Exempel III}
+\end_layout
+
+\begin_layout Plain Layout
+
+Samplingfördelningen för $
+\backslash
+bar{y}_{
+\backslash
+mathcal{S}}$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.height=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+g <- qplot(urvalsdist1$y_hat) + geom_vline(xintercept=mean(y), col="red")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+g + xlab( expression(bar(y)[italic(S)])) + ylab("Antal")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{OSU - Exempel IV }
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(20130101)
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-sample(0:30,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-6
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- length(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+urvalsdist2<-samplingDist(y,n) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Samplingfördelningen för $
+\backslash
+bar{y}_{
+\backslash
+mathcal{S}}$ då $n=$
+\backslash
+Sexpr{n}, $N=
+\backslash
+Sexpr{N}$
+\end_layout
+
+\begin_layout Plain Layout
+
+och $
+\backslash
+left(
+\backslash
+begin{array}{c} 
+\backslash
+Sexpr{N} 
+\backslash
+
+\backslash
+ 
+\backslash
+Sexpr{n} 
+\backslash
+end{array}
+\backslash
+right)= 
+\backslash
+Sexpr{ choose(N,n) }$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $y_{
+\backslash
+mathcal{U}}=$ (
+\backslash
+Sexpr{y}).
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',warning=FALSE,message=FALSE,echo=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+urvalsdist2[1:14,1:9]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{OSU - Exempel IV }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4.5,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+g <- qplot(urvalsdist2$y_hat) + geom_vline(xintercept=mean(y), col="red")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+g + xlab( expression(bar(y)[italic(S)])) + ylab("Antal")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{OSU - Exempel V}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Samplingfördelningen för $s^2_{
+\backslash
+mathcal{S}}$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4.5,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+g <- qplot(urvalsdist2$s_hat^2) + geom_vline(xintercept=var(y), col="red")
+\end_layout
+
+\begin_layout Plain Layout
+
+g + xlab( expression(s[italic(S)]^2)) + ylab("Antal")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+OSU II
+\end_layout
+
+\begin_layout Itemize
+Oftast är vi intresserade av 
+\series bold
+osäkerheten
+\series default
+ i de punktskattningar vi producerar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+FRÅGA:
+\series default
+ Varför är vi intresserade av osäkerheten?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om vi känner till 
+\begin_inset Formula $S_{\mathcal{U}}^{2}$
+\end_inset
+
+ (vilket vi aldrig gör) är 
+\begin_inset Formula 
+\[
+Var(\hat{\bar{y}}_{\mathcal{U}})=\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Istället använder vi punktskattningen för 
+\begin_inset Formula $S_{\mathcal{U}}^{2}$
+\end_inset
+
+ , nämligen 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ och 
+\series bold
+uppskattar
+\series default
+ vår osäkerhet
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{\bar{y}}_{\mathcal{U}})=\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\left(1-\frac{n}{N}\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ kallas 
+\series bold
+ändlighetskorrektion
+\series default
+ (finite population corrections)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\frac{n}{N}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ kallas (i dessa sammanhang) 
+\series bold
+urvalsfraktion
+\series default
+ (sampling fraction) 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+OSU III
+\end_layout
+
+\begin_layout Itemize
+Istället för en punktskattnings varians brukar ofta en punktskattnings 
+\series bold
+medelfel
+\series default
+ (standardfel, standard error) användas
+\begin_inset Formula 
+\[
+\hat{SE}(\hat{\bar{y}}_{\mathcal{U}})=\sqrt{\hat{Var}(\hat{\bar{y}}_{\mathcal{U}})}=\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+FRÅGA:
+\series default
+ Varför vill vi presentera medelfel och inte varians?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Konfidensintervall
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Konfidenintervall (OSU) I
+\end_layout
+
+\begin_layout Itemize
+För att 
+\series bold
+beskriva
+\series default
+ vår osäkerhet bildar vi ofta 
+\series bold
+konfidensintervall
+\series default
+ (KI) för 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Inom urvalsteorin antar vi inte någon fördelning/modell för 
+\begin_inset Formula $y$
+\end_inset
+
+ - vi har bara samplingfördelningen 
+\begin_inset Formula $P(\mathcal{S})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Normalapproximation kan göras med 
+\series bold
+centrala gränsvärdessatsen (CGS)
+\series default
+ om:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $N$
+\end_inset
+
+ och 
+\begin_inset Formula $n$
+\end_inset
+
+ är 
+\begin_inset Quotes eld
+\end_inset
+
+stora
+\begin_inset Quotes erd
+\end_inset
+
+ och 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Behöver inte vara fallet - ex med rövarna
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout NoteItem
+Kolla om inte n/N ska vara stor också.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Fördelningen i urvalet, 
+\begin_inset Formula $y_{\mathcal{S}}$
+\end_inset
+
+ inte är 
+\begin_inset Quotes eld
+\end_inset
+
+alltför
+\begin_inset Quotes erd
+\end_inset
+
+ skev 
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Varning
+\end_layout
+
+\end_inset
+
+ för variabler med (vilka ofta kan vara skeva): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+små proportioner
+\end_layout
+
+\begin_layout Itemize
+inkomster
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+För tumregler, se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "formel 2.29, s. 44"
+key "lohr2009sampling"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+OSU - Konfidenintervall II
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\bar{y}_{\mathcal{S}}$
+\end_inset
+
+ är approximativt normalfördelat så
+\begin_inset Formula 
+\[
+\frac{\bar{y}_{\mathcal{S}}-\bar{y}_{\mathcal{U}}}{SE(\bar{y}_{\mathcal{S}})}\sim N(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Så ett 
+\begin_inset Formula $100\cdot(1-\alpha)\%$
+\end_inset
+
+ KI för 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ är 
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{S}}\pm z_{\alpha/2}\cdot SE(\bar{y}_{\mathcal{S}})=\bar{y}_{\mathcal{S}}\pm z_{\alpha/2}\cdot\sqrt{\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $z_{\alpha/2}$
+\end_inset
+
+ är den 
+\begin_inset Formula $\alpha/2$
+\end_inset
+
+ percentilen i normalfördelningen
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t$
+\end_inset
+
+-fördelningen används ofta i statistikprogram som R och SAS.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Jag vet inte vad som används i R.
+ Ni får undersöka detta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+I KI brukar 
+\begin_inset Formula $z_{\alpha/2}\cdot\hat{SE}(\bar{y}_{\mathcal{S}})$
+\end_inset
+
+ kallas för 
+\series bold
+felmarginal
+\series default
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{OSU - Konfidensintervall Exempel}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Konfidensintervall för $
+\backslash
+hat{
+\backslash
+bar{y}}_{
+\backslash
+mathcal{U}}$ då $n=
+\backslash
+Sexpr{n}$, $N=
+\backslash
+Sexpr{N}$ från det föregående exemplet.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Det sanna värdet i populationen: $
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}=$ 
+\backslash
+Sexpr{round(mean(y),2)}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Nedan följer de 10 första möjliga urvalen (kombinationer) av totalt
+ $K=
+\backslash
+Sexpr{dim(urvalsdist2)[1]}$ teoretiskt möjliga urval.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<,size='scriptsize',comment='',warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+head(urvalsdist2[,-(2:5)],n=10)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Täckningsgraden (baserat på $t$-fördelningen) för konfidensintervallen
+ är 
+\backslash
+Sexpr{round(mean(urvalsdist2$in.KI),4)}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Urvalsdimensionering
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsdimensionering
+\end_layout
+
+\begin_layout Itemize
+Hur stort urval ska vi dra?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+FRÅGA!
+\end_layout
+
+\begin_layout Plain Layout
+Beror på hur säkra vi vill vara.
+\end_layout
+
+\begin_layout Plain Layout
+Vanlig fråga för statistiker!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vad kan vi påverka i formeln för KI?
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{S}}\pm z_{\alpha/2}\cdot\hat{SE}(\bar{y}_{\mathcal{S}})=\bar{y}_{\mathcal{S}}\pm z_{\alpha/2}\cdot\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Minska konfidensgraden (
+\begin_inset Formula $\alpha$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ett KI med 
+\begin_inset Formula $\alpha=0.2$
+\end_inset
+
+ är kortare än ett med 
+\begin_inset Formula $\alpha=0.01$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Urvalsstorleken (
+\begin_inset Formula $n$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ett större urval ger ett smalare KI
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsdimensionering (OSU) II
+\end_layout
+
+\begin_layout Itemize
+Hur stort urval ska vi dra för att få en viss bredd på KI?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi behöver veta 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $S_{\mathcal{U}}^{2}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Newline newline
+\end_inset
+
+(tar vi från annan undersökning eller gissar)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $e$
+\end_inset
+
+ vara den felmarginal vi vill ha 
+\begin_inset Formula 
+\[
+e=z_{\alpha/2}\cdot\sqrt{\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Lös ut 
+\begin_inset Formula $n$
+\end_inset
+
+ så fås
+\begin_inset Formula 
+\[
+n=\frac{n_{0}}{1+\frac{n_{0}}{N}},\mbox{ där }n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout NoteItem
+Kolla hela denna slide och gör om!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+HÄRLED: Härled om tid finnes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Då 
+\begin_inset Formula $N\rightarrow\infty$
+\end_inset
+
+ så går 
+\begin_inset Formula $n\rightarrow n_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Skattning av totaler och proportioner
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Totaler och proportioner I
+\end_layout
+
+\begin_layout Itemize
+Vanliga skattningar (specialfall) av intresse är 
+\series bold
+totaler
+\series default
+ och 
+\series bold
+proportioner
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Total (
+\begin_inset Formula $t$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Endast av intresse vid 
+\series bold
+ändliga
+\series default
+ populationer.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+FRÅGA: 
+\series default
+Har ni några exempel?
+\end_layout
+
+\begin_layout Plain Layout
+Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+Antal sjuka i crypto eller influensa
+\end_layout
+
+\begin_layout Plain Layout
+Total mängd sålda varor
+\end_layout
+
+\begin_layout Plain Layout
+Antal utsatta för brott
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationsparameter av intresse:
+\begin_inset Formula 
+\[
+t_{\mathcal{U}}=\sum_{i\in\mathcal{U}}y_{i}=\sum_{i=1}^{N}y_{i}=N\bar{y}_{\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Proportion (
+\begin_inset Formula $p$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Mycket vanligt.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+FRÅGA:
+\series default
+ Har ni egna exempel?
+\end_layout
+
+\begin_layout Plain Layout
+Prevalens av sjukdom (hur många är sjuka idag?)
+\end_layout
+
+\begin_layout Plain Layout
+Andel mycket nöjda elever
+\end_layout
+
+\begin_layout Plain Layout
+Andel arbetslösa av arbetsföra befolkningen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationsparameter av intresse:
+\begin_inset Formula 
+\[
+p_{\mathcal{U}}=\frac{\#\mbox{ med egenskap av intresse}}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $y$
+\end_inset
+
+ antar värden 
+\begin_inset Formula $\{0,1\}$
+\end_inset
+
+ så
+\begin_inset Formula 
+\[
+p_{\mathcal{U}}=\frac{1}{N}\sum_{i=1}^{N}y_{i}=\bar{y}_{\mathcal{U}}
+\]
+
+\end_inset
+
+där 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\sum_{i=1}^{N}y_{i}$
+\end_inset
+
+ är antalet 1:or i populationen.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Skattning av totaler
+\end_layout
+
+\begin_layout Itemize
+På följande sätt skattas totalen
+\begin_inset Formula 
+\[
+\hat{t}_{\mathcal{U}}=N\bar{y}_{\mathcal{S}}=\frac{N}{n}\sum_{i\in\mathcal{S}}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Konfidensintervallet blir enkelt: 
+\begin_inset Newline newline
+\end_inset
+
+Skatta KI för 
+\begin_inset Formula $\bar{y}_{\mathcal{S}}$
+\end_inset
+
+ och multiplicera gränserna med 
+\series bold
+konstanten
+\series default
+ 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Detta ger följande KI för 
+\begin_inset Formula $\hat{t}_{\mathcal{U}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+N\bar{y}_{\mathcal{S}}\pm t_{\alpha/2,n-1}\cdot N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\series bold
+Obs!
+\series default
+ 
+\begin_inset Formula $s_{y}^{2}$
+\end_inset
+
+ är den uppskattade populationsvariansen för 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Skattning av totaler - Exempel
+\end_layout
+
+\begin_layout Itemize
+Vi vill uppskatta de totala sjukvårdsomkostnaderna för magsjuka i befolkningen
+ (15 - 64 år).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+2731 (
+\begin_inset Formula $n$
+\end_inset
+
+) observationer, 
+\begin_inset Formula $N=4942059$
+\end_inset
+
+ milj, 
+\begin_inset Formula $\bar{y}_{\mathcal{S}}=76,559$
+\end_inset
+
+ kr och 
+\begin_inset Formula $s=191,6625$
+\end_inset
+
+ kr
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+FRÅGA:
+\series default
+ Varför tror ni att standardavvikelsen är så pass mycket störe än medelvärdet?
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Svar:
+\series default
+ Skev fördelning, många 0:or.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Detta ger följande 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+totalskattning
+\begin_inset Formula 
+\[
+\hat{t}_{\mathcal{U}}=N\bar{y}_{\mathcal{S}}=4942059\cdot76,559=378\mbox{ }359\mbox{ }095
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+med konfidensintervallet
+\begin_inset Formula 
+\[
+N\bar{y}_{\mathcal{S}}\pm t_{\alpha/2,n-1}\cdot N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}=
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+378359095\pm1,96\cdot4942059\cdot\sqrt{\frac{191,6625^{2}}{2731}\left(1-\frac{2731}{4942059}\right)}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+378359095\pm35515691\Rightarrow[342\mbox{ }843\mbox{ }404\mbox{ };413\mbox{ }874\mbox{ }786]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Skattning av proportioner
+\end_layout
+
+\begin_layout Itemize
+På följande sätt skattas totalen (då 
+\begin_inset Formula $y=\{0,1\}$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\hat{p}_{\mathcal{U}}=p_{\mathcal{S}}=\bar{y}_{\mathcal{S}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Standardfelet 
+\begin_inset Formula 
+\[
+\hat{SE}(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+är ett specialfall då 
+\begin_inset Formula $y=\{0,1\}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+Härledning:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\hat{SE}(\hat{\bar{y}}_{\mathcal{U}})=\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}^{2}-2y_{i}\bar{y}+\bar{y}^{2}\right)=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}^{2}-2y_{i}\bar{y}+\bar{y}^{2}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}y_{i}=np\mbox{ och }\sum_{i=1}^{n}y_{i}^{2}=\sum_{i=1}^{n}y_{i}^{2}=np
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{1}{n-1}\left(\sum_{i=1}^{N}y_{i}^{2}-2\bar{y}^{2}n+\bar{y}^{2}n\right)=\frac{1}{n-1}\left(\sum_{i=1}^{N}y_{i}^{2}-2\bar{y}^{2}n+\bar{y}^{2}n\right)=\frac{1}{n-1}\left(\bar{y}n-\bar{y}^{2}n\right)=\frac{\bar{y}n}{n-1}\left(1-\bar{y}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mbox{då }\hat{p}=\bar{y}\mbox{ så }
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{SE}(\hat{p}_{\mathcal{U}})=\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}=\sqrt{\frac{\frac{\hat{p}n}{n-1}\left(1-\hat{p}\right)}{n}\left(1-\frac{n}{N}\right)}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta ger följande KI för
+\begin_inset Formula $\hat{p}_{\mathcal{U}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{p}_{\mathcal{U}}\pm t_{\alpha/2,n-1}\cdot\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\series bold
+Obs!
+\series default
+ 
+\begin_inset Formula $s_{y}^{2}$
+\end_inset
+
+ är den uppskattade populationsvariansen för 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sum.y<-363
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-13386
+\end_layout
+
+\begin_layout Plain Layout
+
+N<-7297354
+\end_layout
+
+\begin_layout Plain Layout
+
+p<-sum.y/n
+\end_layout
+
+\begin_layout Plain Layout
+
+SE.p<-sqrt((p*(1-p)/13385)*(1-n/N))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Skattning av proportioner - Exempel
+\end_layout
+
+\begin_layout Itemize
+Andel personer utsatta för misshandel 2011 i befolkningen 16-79 år (se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "NTU2011"
+
+\end_inset
+
+,
+\begin_inset Formula $\sum_{i\in\mathcal{S}}y$
+\end_inset
+
+ finns vid Brå)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Svarade ja på frågan: 
+\end_layout
+
+\begin_layout Plain Layout
+Slog, sparkade eller utsatte någon dig med avsikt för något annat fysiskt
+ våld, så att du skadades eller så att det gjorde ont, under
+\end_layout
+
+\begin_layout Plain Layout
+förra året (2011)?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum_{i\in\mathcal{S}}y=$
+\end_inset
+
+ 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+sum.y
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $n=13386$
+\end_inset
+
+ och 
+\begin_inset Formula $N=7297354$
+\end_inset
+
+ ger följande skattning
+\begin_inset Formula 
+\[
+\hat{p}_{\mathcal{U}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}=\frac{\Sexpr{sum.y}}{13386}=\Sexpr{round(p,4)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Med standardfelet
+\begin_inset Formula 
+\[
+\hat{SE}(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}=\sqrt{\frac{\Sexpr{p}\cdot\Sexpr{1-p}}{13385}\Sexpr{1-n/N}}=\Sexpr{SE.p}
+\]
+
+\end_inset
+
+ blir konfidensintervallet [
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+p+1.96*SE.p
+\end_layout
+
+\end_inset
+
+;
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+p-1.96*SE.p
+\end_layout
+
+\end_inset
+
+].
+\end_layout
+
+\begin_layout Itemize
+Brås skattning är 2.5% då de tar hänsyn till bortfallet och undersökningens
+ stratifiering.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/mansmagnusson/Dropbox/Undervisning/Surveymetodik/Lectures/ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
