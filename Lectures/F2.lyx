@@ -3262,11 +3262,11 @@ end{frame}
 \end_layout
 
 \begin_layout BeginFrame
-Skattning av proportioner
+Estimation av proportioner
 \end_layout
 
 \begin_layout Itemize
-På följande sätt skattas totalen (då 
+På följande sätt estimeras proportionen (då 
 \begin_inset Formula $y=\{0,1\}$
 \end_inset
 
@@ -3306,7 +3306,7 @@ Standardfelet
 \end_layout
 
 \begin_layout Itemize
-Detta ger följande KI för
+Vilket ger följande KI för
 \begin_inset Formula $\hat{p}_{\mathcal{U}}$
 \end_inset
 
@@ -3336,27 +3336,45 @@ status open
 
 \begin_layout Plain Layout
 
-sum.y<-363
+N <- 7297354
 \end_layout
 
 \begin_layout Plain Layout
 
-n<-13386
+n <- 13386
 \end_layout
 
 \begin_layout Plain Layout
 
-N<-7297354
+sumy <- 363 
 \end_layout
 
 \begin_layout Plain Layout
 
-p<-sum.y/n
+z <- 1.96
 \end_layout
 
 \begin_layout Plain Layout
 
-SE.p<-sqrt((p*(1-p)/13385)*(1-n/N))
+\end_layout
+
+\begin_layout Plain Layout
+
+est <- pSRS(N=N,n=n,p=sumy/n)
+\end_layout
+
+\begin_layout Plain Layout
+
+phat <- est$est
+\end_layout
+
+\begin_layout Plain Layout
+
+SE <- est$SE
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3370,58 +3388,78 @@ SE.p<-sqrt((p*(1-p)/13385)*(1-n/N))
 \end_layout
 
 \begin_layout BeginFrame
-Skattning av proportioner - Exempel
+Estimering av proportioner - Exempel
 \end_layout
 
 \begin_layout Itemize
-Andel personer utsatta för misshandel 2011 i befolkningen 16-79 år (se 
+Vi vill estimera andelen personer som utsatts för misshandel under 2011.
+ Andel personer utsatta för misshandel 2011 i befolkningen 16-79 år (se
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "NTU2011"
 
 \end_inset
 
-,
-\begin_inset Formula $\sum_{i\in\mathcal{S}}y$
+)
+\end_layout
+
+\begin_layout Quote
+Slog, sparkade eller utsatte någon dig med avsikt för något annat fysiskt
+ våld, så att du skadades eller så att det gjorde ont, under förra året
+ (2011)?
+\end_layout
+
+\begin_layout Itemize
+Följande uppgifter har vi
+\begin_inset Formula 
+\begin{eqnarray*}
+N & = & \Sexpr{N}\\
+n & = & \Sexpr{n}\\
+\sum_{i\in\mathcal{S}}y_{i} & = & \Sexpr{sumy}
+\end{eqnarray*}
+
 \end_inset
 
- finns vid Brå)
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Obs!
+\series default
+ I NTU används stratifierat urval och kalibrerade vikter, så 
+\begin_inset Quotes eld
+\end_inset
+
+på riktigt
+\begin_inset Quotes erd
+\end_inset
+
+ får vi en annan siffra.
+\end_layout
+
+\begin_layout EndFrame
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex ArticleMode
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Svarade ja på frågan: 
+
+
+\backslash
+begin{frame}<beamer:0> 
 \end_layout
 
 \begin_layout Plain Layout
-Slog, sparkade eller utsatte någon dig med avsikt för något annat fysiskt
- våld, så att du skadades eller så att det gjorde ont, under
-\end_layout
-
-\begin_layout Plain Layout
-förra året (2011)?
-\end_layout
-
-\end_inset
 
 
+\backslash
+frametitle{Urvalsdimensionering - Exempel, lösning}
 \end_layout
 
 \end_inset
@@ -3430,76 +3468,50 @@ förra året (2011)?
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\sum_{i\in\mathcal{S}}y=$
-\end_inset
-
- 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-sum.y
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Formula $n=13386$
-\end_inset
-
- och 
-\begin_inset Formula $N=7297354$
-\end_inset
-
- ger följande skattning
+Detta ger följande skattning av populationsandelen:
 \begin_inset Formula 
 \[
-\hat{p}_{\mathcal{U}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}=\frac{\Sexpr{sum.y}}{13386}=\Sexpr{round(p,4)}
+\hat{p}_{\mathcal{U}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}=\frac{\Sexpr{sumy}}{\Sexpr{n}}=\Sexpr{phat}
 \]
 
 \end_inset
 
-
+med konfidensintervallet
 \end_layout
 
-\begin_layout Itemize
-Med standardfelet
+\begin_layout Standard
 \begin_inset Formula 
-\[
-\hat{SE}(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}=\sqrt{\frac{\Sexpr{p}\cdot\Sexpr{1-p}}{13385}\Sexpr{1-n/N}}=\Sexpr{SE.p}
-\]
+\begin{eqnarray*}
+ &  & \hat{p}_{\mathcal{U}}\pm z_{\alpha/2}\cdot\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}\\
+ & = & \Sexpr{phat}\pm\Sexpr{z}\cdot\sqrt{\frac{\Sexpr{phat}(1-\Sexpr{phat})}{\Sexpr{n}-1}\left(1-\frac{\Sexpr{n}}{\Sexpr{N}}\right)}\\
+ & = & \Sexpr{phat}\pm\Sexpr{z}\cdot\sqrt{\frac{\Sexpr{phat*(1-phat)}}{\Sexpr{n-1}}\left(\Sexpr{1-n/N}\right)}\\
+ & = & \Sexpr{phat}\pm\Sexpr{z}\cdot\Sexpr{SE}\\
+ & \Rightarrow & [\Sexpr{phat+z*SE}:\Sexpr{phat-z*SE}]
+\end{eqnarray*}
 
 \end_inset
 
- blir konfidensintervallet [
-\begin_inset Flex S/R expression
-status collapsed
 
-\begin_layout Plain Layout
-
-p+1.96*SE.p
-\end_layout
-
-\end_inset
-
-;
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-p-1.96*SE.p
-\end_layout
-
-\end_inset
-
-].
 \end_layout
 
 \begin_layout Itemize
-Brås skattning är 2.5% då de tar hänsyn till bortfallet och undersökningens
- stratifiering.
+Brås skattning är 0.025.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout EndFrame
