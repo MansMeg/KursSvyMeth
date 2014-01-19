@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames,handout
+\options xcolor=svgnames, handout
 \use_default_options false
 \begin_modules
 knitr
@@ -3392,9 +3392,9 @@ Estimering av proportioner - Exempel
 \end_layout
 
 \begin_layout Itemize
-Vi vill estimera andelen personer som utsatts för misshandel under 2011.
- Andel personer utsatta för misshandel 2011 i befolkningen 16-79 år (se
- 
+Vi vill estimera andelen personer i befolkningen 16-79 år som utsatts för
+ misshandel under 2011.
+ (se 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "NTU2011"
