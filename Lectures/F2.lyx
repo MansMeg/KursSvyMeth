@@ -476,7 +476,7 @@ Urvalsteori
 \end_layout
 
 \begin_layout BeginFrame
-Urvalsteori I
+Urvalsteori
 \end_layout
 
 \begin_layout Itemize
@@ -695,8 +695,42 @@ utan återläggning
 
 \end_layout
 
+\begin_layout Section
+Obundet slumpmässigt urval
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
-Urvalsteori II
+Obundet slumpmässigt urval (OSU)
+\end_layout
+
+\begin_layout Itemize
+Obundet slumpmässigt urval - alla urval har samma sannolikhet
+\end_layout
+
+\begin_layout Itemize
+Mest grundläggande urvalsmetod - grunden för andra mer komplicerade metoder
+\end_layout
+
+\begin_layout Pause
+
 \end_layout
 
 \begin_layout Itemize
@@ -732,15 +766,10 @@ n
 Urvalsfördelningen
 \series default
  för 
-\begin_inset Formula $\mathcal{S}$
+\begin_inset Formula $\mathcal{S}_{k}$
 \end_inset
 
- 
-\begin_inset Newline newline
-\end_inset
-
-(vid ett obundet slumpmässigt urval (OSU) har alla urval samma sannolikhet
- att väljas) 
+ vid OSU 
 \begin_inset Formula 
 \[
 P(\mathcal{S}_{k})=\frac{1}{\left(\begin{array}{c}
@@ -759,7 +788,32 @@ n
 \end_layout
 
 \begin_layout BeginFrame
-Urvalsteori III
+Inklutionssannolikhet
+\end_layout
+
+\begin_layout Itemize
+Sannolikheten att observation 
+\begin_inset Formula $i$
+\end_inset
+
+ inkluderas i urvalet: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\pi_{i}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -794,7 +848,8 @@ name "InklSanno"
 \end_layout
 
 \begin_layout Itemize
-Summan (över hela populationen) av inklutionssannolikheterna är: 
+Summan (över hela populationen) av inklutionssannolikheterna vid OSU är:
+ 
 \begin_inset Formula 
 \[
 \sum_{i=1}^{N}\pi_{i}=N\cdot\frac{n}{N}=n
@@ -805,14 +860,18 @@ Summan (över hela populationen) av inklutionssannolikheterna är:
 
 \end_layout
 
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Designvikt
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Urvalsvikten/designvikten
+Urvals-/designvikten
 \series default
  (sampling/design weight) för observation 
 \begin_inset Formula $i$
@@ -830,7 +889,7 @@ w_{i}=\frac{1}{\pi_{i}}=\frac{N}{n}
 \end_layout
 
 \begin_layout Itemize
-Summan av vikterna (över urvalet) är
+Summan av vikterna (över urvalet) vid OSU är
 \begin_inset Formula 
 \[
 \sum_{i=1}^{n}w_{i}=n\cdot\frac{N}{n}=N
@@ -842,7 +901,11 @@ Summan av vikterna (över urvalet) är
 \end_layout
 
 \begin_layout Itemize
-Tolkning: Antal som representeras av varje respondent som represe
+
+\series bold
+Tolkning: 
+\series default
+Antal personer som representeras av varje respondent i studien
 \end_layout
 
 \begin_layout EndFrame
@@ -850,7 +913,7 @@ Tolkning: Antal som representeras av varje respondent som represe
 \end_layout
 
 \begin_layout BeginFrame
-Urvalsteori - Exempel 1
+OSU - Exempel 1
 \end_layout
 
 \begin_layout Itemize
@@ -867,6 +930,13 @@ Vad är sannoliheten för att inkludera den vita bollen i vårt urval om
 \end_inset
 
 ) 
+\begin_inset CommandInset label
+LatexCommand label
+name "Ex1"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -881,8 +951,27 @@ utan
 
 \end_layout
 
-\begin_layout BeginFrame
-Urvalsteori - Lösning
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<beamer:0> 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Urvalsteori - Exempel 1, lösning}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -966,14 +1055,6 @@ reference "InklSanno"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Section
-Obundet slumpmässigt urval
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -982,9 +1063,7 @@ status open
 
 
 \backslash
-frame{
-\backslash
-sectionpage}
+end{frame}
 \end_layout
 
 \end_inset
@@ -993,11 +1072,11 @@ sectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Obundet slumpmässigt urval (OSU)
+Estimatorer vid OSU
 \end_layout
 
 \begin_layout Itemize
-Vi är intresserade av populationsparametrarna 
+Vi är intresserade av att skatta populationsparametrarna 
 \begin_inset Formula $\bar{y}_{\mathcal{U}}$
 \end_inset
 
@@ -1006,10 +1085,22 @@ Vi är intresserade av populationsparametrarna
 \end_inset
 
 .
- Hur skattar vi dessa vid OSU?
+ 
+\end_layout
+
+\begin_layout Itemize
+För detta använder vi 
+\series bold
+estimatorer
+\series default
+.
 \end_layout
 
 \begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 \hat{\bar{y}}_{\mathcal{U}}=\bar{y}_{\mathcal{S}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}
@@ -1021,6 +1112,10 @@ Vi är intresserade av populationsparametrarna
 \end_layout
 
 \begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 \hat{S_{\mathcal{U}}^{2}}=S_{\mathcal{S}}^{2}=s^{2}=\frac{1}{n-1}\sum_{i\in\mathcal{S}}(y_{i}-\bar{y})^{2}
@@ -1031,20 +1126,23 @@ Vi är intresserade av populationsparametrarna
 
 \end_layout
 
-\begin_layout NoteItem
-Kanske förtydliga om samplingfördelningen för y? Kort beskrivning av OSU?
-\end_layout
-
 \begin_layout EndFrame
 
 \end_layout
 
 \begin_layout BeginFrame
-OSU - Exempel 
+OSU - Exempel 2
 \end_layout
 
 \begin_layout Itemize
-Vi fortsätter på exemplet ovan där 
+Vi fortsätter på exemplet på slide 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Ex1"
+
+\end_inset
+
+ ovan där 
 \begin_inset Formula $N=5$
 \end_inset
 
@@ -1053,14 +1151,18 @@ Vi fortsätter på exemplet ovan där
 \end_inset
 
  och 
-\begin_inset Formula $\mathcal{U}=\{a,b,c,d,e\}$
+\begin_inset Formula $\mathcal{U}=\{\text{Grön},\text{Blå},\text{Röd},\text{Svart},\text{Vit}\}$
 \end_inset
 
-, 
+ och 
 \begin_inset Formula $P(\mathcal{S})=\frac{1}{10}$
 \end_inset
 
- samt 
+
+\end_layout
+
+\begin_layout Itemize
+De olika bollarna väger olika mycket
 \begin_inset Formula 
 \[
 y=\{5,10,8,7,12\}
@@ -1071,44 +1173,8 @@ y=\{5,10,8,7,12\}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Rövarna har stultit guldpengar
-\end_layout
-
-\begin_layout Plain Layout
-Vi vill uppskatta hur mycket de stulit
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
+\begin_layout BeginFrame
+OSU - Exempel 2 (forts.)
 \end_layout
 
 \begin_layout Itemize
@@ -1116,7 +1182,7 @@ Populationsparametrar (de sanna värdena) som vi är intresserade av är:
 \end_layout
 
 \begin_layout Itemize
-Populationsmedelvärde
+Populationsmedelvärdet:
 \begin_inset Formula 
 \[
 \bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{i\in\mathcal{U}}y_{i}=\frac{1}{5}\sum_{i\in\{a,b,c,d,e\}}y_{i}=8.4
@@ -1128,7 +1194,7 @@ Populationsmedelvärde
 \end_layout
 
 \begin_layout Itemize
-Populationsvarians/standardavvikelse
+Populationsvarians/standardavvikelse:
 \end_layout
 
 \begin_layout Standard
@@ -1153,6 +1219,14 @@ S_{\mathcal{U}}=\sqrt{7.3}\approx2.3
 
 \end_layout
 
+\begin_layout Itemize
+Vad är samplingfördelningen för estimatorn 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+?
+\end_layout
+
 \begin_layout EndFrame
 
 \end_layout
@@ -1172,7 +1246,8 @@ begin{frame}[containsverbatim,allowframebreaks]
 
 
 \backslash
-frametitle{OSU - Exempel II}
+frametitle{OSU - Exempel 2 (forts.
+ II)}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1306,7 +1381,8 @@ begin{frame}[containsverbatim]
 
 
 \backslash
-frametitle{OSU - Exempel III}
+frametitle{OSU - Exempel 2 (forts.
+ III)}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1385,7 +1461,7 @@ begin{frame}[containsverbatim]
 
 
 \backslash
-frametitle{OSU - Exempel IV }
+frametitle{OSU - Exempel 3 }
 \end_layout
 
 \begin_layout Plain Layout
@@ -1670,7 +1746,7 @@ end{frame}
 \end_layout
 
 \begin_layout BeginFrame
-OSU II
+Estimatorernas osäkerhet
 \end_layout
 
 \begin_layout Itemize
@@ -1681,37 +1757,13 @@ osäkerheten
  i de punktskattningar vi producerar.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-FRÅGA:
-\series default
- Varför är vi intresserade av osäkerheten?
-\end_layout
-
-\end_inset
-
+\begin_layout Pause
 
 \end_layout
 
+\begin_layout Itemize
+Osäkerheten kommer från urvalsfördelningen 
+\begin_inset Formula $P(\mathcal{S})$
 \end_inset
 
 
@@ -1737,7 +1789,6 @@ Var(\hat{\bar{y}}_{\mathcal{U}})=\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N
 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Istället använder vi punktskattningen för 
 \begin_inset Formula $S_{\mathcal{U}}^{2}$
@@ -1787,6 +1838,7 @@ uppskattar
 
 \end_layout
 
+\begin_deeper
 \begin_layout Pause
 
 \end_layout
@@ -1824,10 +1876,6 @@ uppskattar
 ändlighetskorrektion
 \series default
  (finite population corrections)
-\end_layout
-
-\begin_layout Pause
-
 \end_layout
 
 \begin_layout Itemize
@@ -1871,7 +1919,7 @@ urvalsfraktion
 \end_layout
 
 \begin_layout BeginFrame
-OSU III
+Estimatorernas osäkerhet (forts.)
 \end_layout
 
 \begin_layout Itemize
@@ -1890,40 +1938,16 @@ medelfel
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 
 \series bold
-FRÅGA:
+Medelfel
 \series default
- Varför vill vi presentera medelfel och inte varians?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ och 
+\series bold
+urvalsstandardavvikelsen
+\series default
+ är olika saker
 \end_layout
 
 \begin_layout EndFrame
@@ -1931,7 +1955,7 @@ FRÅGA:
 \end_layout
 
 \begin_layout Subsection
-Konfidensintervall
+Konfidensintervall vid OSU
 \end_layout
 
 \begin_layout Standard
@@ -1953,7 +1977,7 @@ subsectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Konfidenintervall (OSU) I
+Konfidensintervall vid OSU
 \end_layout
 
 \begin_layout Itemize
@@ -1965,7 +1989,7 @@ beskriva
 \series bold
 konfidensintervall
 \series default
- (KI) för 
+ (KI) för våra estimatorer 
 \begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
 \end_inset
 
@@ -1977,7 +2001,11 @@ konfidensintervall
 \end_layout
 
 \begin_layout Itemize
-Inom urvalsteorin antar vi inte någon fördelning/modell för 
+Inom urvalsteorin antar vi 
+\series bold
+inte
+\series default
+ någon fördelning/modell för 
 \begin_inset Formula $y$
 \end_inset
 
@@ -2017,46 +2045,10 @@ stora
 \begin_inset Quotes erd
 \end_inset
 
- och 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Box ovalbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Behöver inte vara fallet - ex med rövarna
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \end_deeper
-\begin_layout NoteItem
-Kolla om inte n/N ska vara stor också.
-\end_layout
-
 \begin_layout Pause
 
 \end_layout
@@ -2078,10 +2070,6 @@ alltför
 \end_layout
 
 \begin_deeper
-\begin_layout Pause
-
-\end_layout
-
 \begin_layout Itemize
 \begin_inset Flex Alert
 status collapsed
@@ -2104,10 +2092,6 @@ små proportioner
 inkomster
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 För tumregler, se 
@@ -2127,7 +2111,7 @@ key "lohr2009sampling"
 \end_layout
 
 \begin_layout BeginFrame
-OSU - Konfidenintervall II
+Konfidensintervall vid OSU (forts.)
 \end_layout
 
 \begin_layout Itemize
@@ -2142,7 +2126,7 @@ Om
  är approximativt normalfördelat så
 \begin_inset Formula 
 \[
-\frac{\bar{y}_{\mathcal{S}}-\bar{y}_{\mathcal{U}}}{SE(\bar{y}_{\mathcal{S}})}\sim N(0,1)
+\frac{\hat{\bar{y}}_{\mathcal{U}}-\bar{y}_{\mathcal{U}}}{SE(\bar{y}_{\mathcal{S}})}\sim N(0,1)
 \]
 
 \end_inset
@@ -2201,39 +2185,6 @@ där
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Jag vet inte vad som används i R.
- Ni får undersöka detta
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 I KI brukar 
 \begin_inset Formula $z_{\alpha/2}\cdot\hat{SE}(\bar{y}_{\mathcal{S}})$
@@ -2265,7 +2216,7 @@ begin{frame}[containsverbatim]
 
 
 \backslash
-frametitle{OSU - Konfidensintervall Exempel}
+frametitle{Konfidensintervall vid OSU - Exempel}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2314,7 +2265,7 @@ Sexpr{round(mean(y),2)}.
 
 
 \backslash
-item Nedan följer de 10 första möjliga urvalen (kombinationer) av totalt
+item Nedan följer de 8 första möjliga urvalen (kombinationer) av totalt
  $K=
 \backslash
 Sexpr{dim(urvalsdist2)[1]}$ teoretiskt möjliga urval.
@@ -2338,7 +2289,7 @@ end{itemize}
 
 \begin_layout Plain Layout
 
-head(urvalsdist2[,-(2:5)],n=10)
+head(urvalsdist2[,-(2:5)],n=8)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2409,53 +2360,16 @@ subsectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Urvalsdimensionering
+Urvalsdimensionering vid OSU
 \end_layout
 
 \begin_layout Itemize
-Hur stort urval ska vi dra?
+Hur stort urval ska vi dra? Vanlig (kostnads-) fråga!
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-FRÅGA!
-\end_layout
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Beror på hur säkra vi vill vara.
-\end_layout
-
-\begin_layout Plain Layout
-Vanlig fråga för statistiker!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ Bredd på KI.
 \end_layout
 
 \begin_layout Pause
@@ -2523,7 +2437,7 @@ ett större urval ger ett smalare KI
 \end_layout
 
 \begin_layout BeginFrame
-Urvalsdimensionering (OSU) II
+Urvalsdimensionering vid OSU (forts.)
 \end_layout
 
 \begin_layout Itemize
@@ -2588,16 +2502,16 @@ e=z_{\alpha/2}\cdot\sqrt{\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N}\right)
 
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
 \begin_layout Itemize
 Lös ut 
 \begin_inset Formula $n$
 \end_inset
 
- så fås
+ så fås 
+\begin_inset Formula $(*)$
+\end_inset
+
+
 \begin_inset Formula 
 \[
 n=\frac{n_{0}}{1+\frac{n_{0}}{N}},\mbox{ där }n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}
@@ -2608,30 +2522,63 @@ n=\frac{n_{0}}{1+\frac{n_{0}}{N}},\mbox{ där }n_{0}=\frac{z_{\alpha/2}^{2}S_{\m
 
 \end_layout
 
-\begin_layout NoteItem
-Kolla hela denna slide och gör om!
+\begin_layout Itemize
+Då 
+\begin_inset Formula $N\rightarrow\infty$
+\end_inset
+
+ så går 
+\begin_inset Formula $n\rightarrow n_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsdimensionering - Exempel
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex ArticleMode
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
+
+<<echo=FALSE>>=
+\end_layout
 
 \begin_layout Plain Layout
-HÄRLED: Härled om tid finnes.
+
+N <- 4328
+\end_layout
+
+\begin_layout Plain Layout
+
+Su <- 938
+\end_layout
+
+\begin_layout Plain Layout
+
+e <- 100
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- 1.96
+\end_layout
+
+\begin_layout Plain Layout
+
+n0 <- ( z^2 * Su^2 ) / e^2
+\end_layout
+
+\begin_layout Plain Layout
+
+@
 \end_layout
 
 \end_inset
@@ -2639,12 +2586,92 @@ HÄRLED: Härled om tid finnes.
 
 \end_layout
 
+\begin_layout Itemize
+Vi vet vill dimensionera en studie för att uppskatta kostnaderna för magsjuka
+ i Katrineholm med 
+\begin_inset Formula $N=\Sexpr{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Baserat på tidigare studier antar vi att 
+\begin_inset Formula $S_{\mathcal{U}}=\Sexpr{Su}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av ett konfidensintervall (95 %) på maximalt 
+\begin_inset Formula $\pm\Sexpr{e}$
+\end_inset
+
+ kr.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsdimensionering - Exempel
+\end_layout
+
+\begin_layout Standard
+Vi använder oss av:
+\begin_inset Formula 
+\[
+n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}=\frac{\Sexpr{z}^{2}\cdot\Sexpr{Su}^{2}}{\Sexpr{e}^{2}}=\Sexpr{floor(n0)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n=\frac{n_{0}}{1+\frac{n_{0}}{N}}
+\]
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Pause
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $e$
+\end_inset
+
+ vara den felmarginal vi vill ha 
+\begin_inset Formula 
+\[
+e=z_{\alpha/2}\cdot\sqrt{\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lös ut 
+\begin_inset Formula $n$
+\end_inset
+
+ så fås 
+\begin_inset Formula $(*)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n=\frac{n_{0}}{1+\frac{n_{0}}{N}},\mbox{ där }n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}
+\]
+
+\end_inset
+
 
 \end_layout
 
@@ -2665,7 +2692,7 @@ Då
 \end_layout
 
 \begin_layout Subsection
-Skattning av totaler och proportioner
+Totaler och proportioner
 \end_layout
 
 \begin_layout Standard
@@ -3434,7 +3461,7 @@ Referenser
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/Users/mansmagnusson/Dropbox/Undervisning/Surveymetodik/Lectures/ReferencesSurvey"
+bibfiles "ReferencesSurvey"
 options "elsarticle-harv"
 
 \end_inset
