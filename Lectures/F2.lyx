@@ -158,7 +158,30 @@ r/Demonstrations/svyMethFunctions.R")
 
 \begin_layout Plain Layout
 
-) 
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMethTeacher/master/Lectures/
+Code/LectureFunctions.R?token=2458198__eyJzY29wZSI6IlJhd0Jsb2I6TWFuc01lZy9LdXJzU3
+Z5TWV0aFRlYWNoZXIvbWFzdGVyL0xlY3R1cmVzL0NvZGUvTGVjdHVyZUZ1bmN0aW9ucy5SIiwiZXhwaX
+JlcyI6MTM5MDczOTkyN30%3D--ad4422f2f58084ae9211c5845d104a4a50750ba3")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -532,7 +555,9 @@ inte
 \begin_layout Itemize
 Slumpmässigheten (som vi bygger vår inferens på) 
 \series bold
-skapar vi själva
+skapar vi själva 
+\series default
+genom att dra ett urval slumpmässigt
 \end_layout
 
 \begin_layout Pause
@@ -785,6 +810,10 @@ n
 
 \begin_layout EndFrame
 
+\end_layout
+
+\begin_layout Subsection
+Inklutionssannolikhet och designvikt
 \end_layout
 
 \begin_layout BeginFrame
@@ -1071,12 +1100,38 @@ end{frame}
 
 \end_layout
 
+\begin_layout Subsection
+Estimation vid OSU
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
-Estimatorer vid OSU
+Estimation vid OSU
 \end_layout
 
 \begin_layout Itemize
-Vi är intresserade av att skatta populationsparametrarna 
+Vi är intresserade av att skatta eller 
+\series bold
+estimera
+\series default
+ populationsparametrarna 
 \begin_inset Formula $\bar{y}_{\mathcal{U}}$
 \end_inset
 
@@ -1124,6 +1179,14 @@ estimatorer
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+På grund av urvalfördelningen 
+\begin_inset Formula $P(\mathcal{S})$
+\end_inset
+
+ får estimatorerna en sannolikhetfördelning.
 \end_layout
 
 \begin_layout EndFrame
@@ -1943,11 +2006,19 @@ medelfel
 \series bold
 Medelfel
 \series default
+ 
+\begin_inset Formula $\hat{SE}(\hat{\bar{y}}_{\mathcal{U}})$
+\end_inset
+
  och 
 \series bold
 urvalsstandardavvikelsen
 \series default
- är olika saker
+ 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ är olika saker.
 \end_layout
 
 \begin_layout EndFrame
@@ -1977,7 +2048,7 @@ subsectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Konfidensintervall vid OSU
+Konfidensintervall
 \end_layout
 
 \begin_layout Itemize
@@ -2045,12 +2116,7 @@ stora
 \begin_inset Quotes erd
 \end_inset
 
- 
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
+ och 
 \end_layout
 
 \begin_layout Itemize
@@ -2066,10 +2132,9 @@ alltför
 \begin_inset Quotes erd
 \end_inset
 
- skev 
+ skev
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 \begin_inset Flex Alert
 status collapsed
@@ -2170,6 +2235,17 @@ där
  percentilen i normalfördelningen
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Formula $z_{\alpha/2}\cdot\hat{SE}(\bar{y}_{\mathcal{S}})$
+\end_inset
+
+ brukar kallas för 
+\series bold
+felmarginal
+\series default
+.
+\end_layout
+
 \begin_layout Pause
 
 \end_layout
@@ -2181,20 +2257,18 @@ där
 -fördelningen används ofta i statistikprogram som R och SAS.
 \end_layout
 
-\begin_layout Pause
+\begin_deeper
+\begin_layout Itemize
+Detta för att ta ta hänsyn till osäkerheten i 
+\begin_inset Formula $s^{2}$
+\end_inset
+
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-I KI brukar 
-\begin_inset Formula $z_{\alpha/2}\cdot\hat{SE}(\bar{y}_{\mathcal{S}})$
-\end_inset
-
- kallas för 
-\series bold
-felmarginal
-\series default
-.
+a
 \end_layout
 
 \begin_layout EndFrame
@@ -2210,6 +2284,10 @@ status open
 
 \backslash
 begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2327,6 +2405,10 @@ end{itemize}
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
 end{frame}
@@ -2334,6 +2416,10 @@ end{frame}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -2578,6 +2664,11 @@ n0 <- ( z^2 * Su^2 ) / e^2
 
 \begin_layout Plain Layout
 
+n <- n0/(1+n0/N)
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
@@ -2615,23 +2706,66 @@ Vi är intresserade av ett konfidensintervall (95 %) på maximalt
 
 \end_layout
 
-\begin_layout BeginFrame
-Urvalsdimensionering - Exempel
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<beamer:0> 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Urvalsdimensionering - Exempel, lösning}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi har att 
+\begin_inset Formula $N=\Sexpr{N}$
+\end_inset
+
+,
+\begin_inset Formula $z_{2.5\%}=\Sexpr{z}$
+\end_inset
+
+, 
+\begin_inset Formula $e=\Sexpr{e}$
+\end_inset
+
+ och 
+\begin_inset Formula $S_{\mathcal{U}}=\Sexpr{Su}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 Vi använder oss av:
 \begin_inset Formula 
 \[
-n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}=\frac{\Sexpr{z}^{2}\cdot\Sexpr{Su}^{2}}{\Sexpr{e}^{2}}=\Sexpr{floor(n0)}
+n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}=\frac{\Sexpr{z}^{2}\cdot\Sexpr{Su}^{2}}{\Sexpr{e}^{2}}=\Sexpr{n0}
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Sedan använder vi 
 \begin_inset Formula 
 \[
-n=\frac{n_{0}}{1+\frac{n_{0}}{N}}
+n=\frac{n_{0}}{1+\frac{n_{0}}{N}}=\frac{\Sexpr{n0}}{1+\frac{\Sexpr{n0}}{\Sexpr{N}}}=\Sexpr{n}\approx\Sexpr{ceiling(n)}
 \]
 
 \end_inset
@@ -2639,60 +2773,32 @@ n=\frac{n_{0}}{1+\frac{n_{0}}{N}}
 
 \end_layout
 
-\begin_layout Itemize
-Låt 
-\begin_inset Formula $e$
+\begin_layout Standard
+Således behöver vi i detta fall ett urval på 
+\begin_inset Formula $\Sexpr{ceiling(n)}$
 \end_inset
 
- vara den felmarginal vi vill ha 
-\begin_inset Formula 
-\[
-e=z_{\alpha/2}\cdot\sqrt{\frac{S_{\mathcal{U}}^{2}}{n}\left(1-\frac{n}{N}\right)}
-\]
-
-\end_inset
-
-
+.
 \end_layout
 
-\begin_layout Itemize
-Lös ut 
-\begin_inset Formula $n$
-\end_inset
+\begin_layout Standard
+\begin_inset ERT
+status open
 
- så fås 
-\begin_inset Formula $(*)$
-\end_inset
+\begin_layout Plain Layout
 
 
-\begin_inset Formula 
-\[
-n=\frac{n_{0}}{1+\frac{n_{0}}{N}},\mbox{ där }n_{0}=\frac{z_{\alpha/2}^{2}S_{\mathcal{U}}^{2}}{e^{2}}
-\]
-
-\end_inset
-
-
+\backslash
+end{frame}
 \end_layout
 
-\begin_layout Itemize
-Då 
-\begin_inset Formula $N\rightarrow\infty$
 \end_inset
 
- så går 
-\begin_inset Formula $n\rightarrow n_{0}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
 \begin_layout Subsection
-Totaler och proportioner
+Totaler och proportioner vid OSU
 \end_layout
 
 \begin_layout Standard
@@ -2714,11 +2820,11 @@ subsectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Totaler och proportioner I
+Totaler och proportioner vid OSU
 \end_layout
 
 \begin_layout Itemize
-Vanliga skattningar (specialfall) av intresse är 
+Vanliga skattningar av intresse är 
 \series bold
 totaler
 \series default
@@ -2727,7 +2833,18 @@ totaler
 proportioner
 \end_layout
 
-\begin_deeper
+\begin_layout Itemize
+Båda är specialfall av 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Total (
 \begin_inset Formula $t$
@@ -2736,6 +2853,7 @@ Total (
 )
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Flex ArticleMode
 status open
@@ -2797,7 +2915,7 @@ Antal utsatta för brott
 \end_layout
 
 \begin_layout Itemize
-Populationsparameter av intresse:
+Populationsparameter:
 \begin_inset Formula 
 \[
 t_{\mathcal{U}}=\sum_{i\in\mathcal{U}}y_{i}=\sum_{i=1}^{N}y_{i}=N\bar{y}_{\mathcal{U}}
@@ -2812,6 +2930,7 @@ t_{\mathcal{U}}=\sum_{i\in\mathcal{U}}y_{i}=\sum_{i=1}^{N}y_{i}=N\bar{y}_{\mathc
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Proportion (
 \begin_inset Formula $p$
@@ -2873,6 +2992,7 @@ Andel arbetslösa av arbetsföra befolkningen.
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Populationsparameter av intresse:
 \begin_inset Formula 
@@ -2882,10 +3002,6 @@ p_{\mathcal{U}}=\frac{\#\mbox{ med egenskap av intresse}}{N}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Pause
 
 \end_layout
 
@@ -2906,23 +3022,7 @@ p_{\mathcal{U}}=\frac{1}{N}\sum_{i=1}^{N}y_{i}=\bar{y}_{\mathcal{U}}
 
 \end_inset
 
-där 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 
-\begin_inset Formula $\sum_{i=1}^{N}y_{i}$
-\end_inset
-
- är antalet 1:or i populationen.
 \end_layout
 
 \end_deeper
@@ -2931,11 +3031,15 @@ där
 \end_layout
 
 \begin_layout BeginFrame
-Skattning av totaler
+Estimation av totaler
 \end_layout
 
 \begin_layout Itemize
-På följande sätt skattas totalen
+På följande sätt estimeras totalen (
+\series bold
+totalestimator
+\series default
+) vid OSU
 \begin_inset Formula 
 \[
 \hat{t}_{\mathcal{U}}=N\bar{y}_{\mathcal{S}}=\frac{N}{n}\sum_{i\in\mathcal{S}}y_{i}
@@ -2947,23 +3051,19 @@ På följande sätt skattas totalen
 \end_layout
 
 \begin_layout Itemize
-Konfidensintervallet blir enkelt: 
-\begin_inset Newline newline
+Med medelfelet 
+\begin_inset Formula $(*)$
 \end_inset
 
-Skatta KI för 
-\begin_inset Formula $\bar{y}_{\mathcal{S}}$
-\end_inset
-
- och multiplicera gränserna med 
-\series bold
-konstanten
-\series default
  
-\begin_inset Formula $N$
+\begin_inset Formula 
+\[
+\hat{SE}(\hat{t}_{\mathcal{U}})=N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}
+\]
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
@@ -2974,7 +3074,7 @@ Detta ger följande KI för
 
 \begin_inset Formula 
 \[
-N\bar{y}_{\mathcal{S}}\pm t_{\alpha/2,n-1}\cdot N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}
+N\bar{y}_{\mathcal{S}}\pm z_{\alpha/2}\cdot N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}
 \]
 
 \end_inset
@@ -2999,7 +3099,74 @@ Obs!
 \end_layout
 
 \begin_layout BeginFrame
-Skattning av totaler - Exempel
+Estimation av totaler - Exempel
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- 4942059
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 2731
+\end_layout
+
+\begin_layout Plain Layout
+
+ybars <- 76.5
+\end_layout
+
+\begin_layout Plain Layout
+
+s <- 191
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- 1.96
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+est <- tSRS(N=N,n=n,ybar=ybars,s2=s^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+that <- est$est
+\end_layout
+
+\begin_layout Plain Layout
+
+SE <- est$SE
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -3007,60 +3174,46 @@ Vi vill uppskatta de totala sjukvårdsomkostnaderna för magsjuka i befolkningen
  (15 - 64 år).
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-2731 (
-\begin_inset Formula $n$
+Vi har gjort en undersökning med 
+\begin_inset Formula 
+\begin{eqnarray*}
+n & = & \Sexpr{n}\\
+N & = & \Sexpr{N}\\
+\bar{y}_{\mathcal{S}} & = & \Sexpr{ybars}\\
+s & = & \Sexpr{s}
+\end{eqnarray*}
+
 \end_inset
 
-) observationer, 
-\begin_inset Formula $N=4942059$
-\end_inset
 
- milj, 
-\begin_inset Formula $\bar{y}_{\mathcal{S}}=76,559$
-\end_inset
+\end_layout
 
- kr och 
-\begin_inset Formula $s=191,6625$
-\end_inset
+\begin_layout Itemize
+Beräkna en skattning av de totala sjukvårdskostnaderna för magsjuka med
+ tillhörande 95%-igt konfidensintervall.
+\end_layout
 
- kr
+\begin_layout EndFrame
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\series bold
-FRÅGA:
-\series default
- Varför tror ni att standardavvikelsen är så pass mycket störe än medelvärdet?
- 
+
+\backslash
+begin{frame}<beamer:0> 
 \end_layout
 
 \begin_layout Plain Layout
 
-\series bold
-Svar:
-\series default
- Skev fördelning, många 0:or.
+
+\backslash
+frametitle{Urvalsdimensionering - Exempel, lösning}
 \end_layout
 
 \end_inset
@@ -3068,71 +3221,43 @@ Svar:
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
-Detta ger följande 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-totalskattning
+Detta ger följande totalskattning:
 \begin_inset Formula 
 \[
-\hat{t}_{\mathcal{U}}=N\bar{y}_{\mathcal{S}}=4942059\cdot76,559=378\mbox{ }359\mbox{ }095
+\hat{t}_{\mathcal{U}}=N\bar{y}_{\mathcal{S}}=\Sexpr{N}\cdot\Sexpr{ybars}=\Sexpr{that}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
 med konfidensintervallet
 \begin_inset Formula 
-\[
-N\bar{y}_{\mathcal{S}}\pm t_{\alpha/2,n-1}\cdot N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}=
-\]
-
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\[
-378359095\pm1,96\cdot4942059\cdot\sqrt{\frac{191,6625^{2}}{2731}\left(1-\frac{2731}{4942059}\right)}=
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-378359095\pm35515691\Rightarrow[342\mbox{ }843\mbox{ }404\mbox{ };413\mbox{ }874\mbox{ }786]
-\]
+\begin{eqnarray*}
+ &  & \hat{t}_{\mathcal{U}}\pm z_{\alpha/2}\cdot N\cdot\sqrt{\frac{s_{y}^{2}}{n}\left(1-\frac{n}{N}\right)}\\
+ & = & \Sexpr{that}\pm\Sexpr{z}\cdot\Sexpr{N}\cdot\sqrt{\frac{\Sexpr{s}^{2}}{\Sexpr{n}}\left(1-\frac{\Sexpr{n}}{\Sexpr{N}}\right)}\\
+ & = & \Sexpr{that}\pm\Sexpr{z}\cdot\Sexpr{N}\cdot\sqrt{\frac{\Sexpr{s}^{2}}{\Sexpr{n}}\left(\Sexpr{1-n/N}\right)}\\
+ & = & \Sexpr{that}\pm\Sexpr{z}\cdot\Sexpr{SE}\\
+ & \Rightarrow & [\Sexpr{that+z*SE}:\Sexpr{that-z*SE}]
+\end{eqnarray*}
 
 \end_inset
 
 
 \end_layout
 
-\end_deeper
-\begin_layout EndFrame
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3158,6 +3283,10 @@ På följande sätt skattas totalen (då
 
 \begin_layout Itemize
 Standardfelet 
+\begin_inset Formula $(*)$
+\end_inset
+
+ 
 \begin_inset Formula 
 \[
 \hat{SE}(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
@@ -3174,67 +3303,6 @@ Standardfelet
 \end_inset
 
 
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-Härledning:
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\[
-\hat{SE}(\hat{\bar{y}}_{\mathcal{U}})=\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}^{2}-2y_{i}\bar{y}+\bar{y}^{2}\right)=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}^{2}-2y_{i}\bar{y}+\bar{y}^{2}\right)
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\sum_{i=1}^{n}y_{i}=np\mbox{ och }\sum_{i=1}^{n}y_{i}^{2}=\sum_{i=1}^{n}y_{i}^{2}=np
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\frac{1}{n-1}\left(\sum_{i=1}^{N}y_{i}^{2}-2\bar{y}^{2}n+\bar{y}^{2}n\right)=\frac{1}{n-1}\left(\sum_{i=1}^{N}y_{i}^{2}-2\bar{y}^{2}n+\bar{y}^{2}n\right)=\frac{1}{n-1}\left(\bar{y}n-\bar{y}^{2}n\right)=\frac{\bar{y}n}{n-1}\left(1-\bar{y}\right)
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mbox{då }\hat{p}=\bar{y}\mbox{ så }
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\hat{SE}(\hat{p}_{\mathcal{U}})=\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}=\sqrt{\frac{\frac{\hat{p}n}{n-1}\left(1-\hat{p}\right)}{n}\left(1-\frac{n}{N}\right)}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -3245,24 +3313,12 @@ Detta ger följande KI för
 
 \begin_inset Formula 
 \[
-\hat{p}_{\mathcal{U}}\pm t_{\alpha/2,n-1}\cdot\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
+\hat{p}_{\mathcal{U}}\pm z_{\alpha/2,n-1}\cdot\sqrt{\frac{\hat{p}(1-\hat{p})}{n-1}\left(1-\frac{n}{N}\right)}
 \]
 
 \end_inset
 
 
-\series bold
-Obs!
-\series default
- 
-\begin_inset Formula $s_{y}^{2}$
-\end_inset
-
- är den uppskattade populationsvariansen för 
-\begin_inset Formula $y$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout EndFrame
