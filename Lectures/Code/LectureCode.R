@@ -21,6 +21,13 @@ pSRS <- function(n, N, p){
 }
 
 
+ySTRSRS <- function(nh, Nh, ybar, s2){
+  results <- list(est = sum(ybar * Nh) / sum(Nh), 
+                  SE = sqrt((1 / sum(Nh)^2) * sum(Nh^2*(s2/nh)*(1-nh/Nh))))
+  return(results)
+}
+
+
 # Data for examples in Lectures
 # Gastroenteritis example F4
 generateGastro <- function(mySeed){
