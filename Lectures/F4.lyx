@@ -1,0 +1,1592 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 4
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
+ctureCode.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Stratifierat urval
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till stratifierat urval
+\end_layout
+
+\begin_layout Itemize
+Ofta har vi tillgång till (kategoriska) hjälpvariabler innan vi drar vårt
+ urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exempel: Kön, Ålder, Region o.s.v.
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Istället för att dra ett OSU kan vi stratifiera vår population i 
+\begin_inset Formula $H$
+\end_inset
+
+ 
+\series bold
+ömsesidigt uteslutande
+\series default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+delpopulationer
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exempel: Kön (2 klasser), Ålder (5 klasser) och Region (21 klasser)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=2\cdot5\cdot21=210\mbox{ strata}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Från 
+\series bold
+varje
+\series default
+ 
+\series bold
+strata
+\series default
+ dras sedan (ofta) ett OSU 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi betraktar de olika strata som 
+\series bold
+olika populationer
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Obs!
+\series default
+ strata 
+\begin_inset Formula $\neq$
+\end_inset
+
+ redovisningsgrupp
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till stratifierat urval II
+\end_layout
+
+\begin_layout Itemize
+Varför vill vi stratifiera? Fler anledningar finns, nämligen...
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Försäkra oss om att 
+\series bold
+inte få ett dåligt urval
+\series default
+ (av en slump)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi vill ha en given precision för en eller flera 
+\series bold
+redovisningsgrupper
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Ibland har olika strata 
+\series bold
+olika kostnad
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Med stratifierade urval kan vi 
+\series bold
+öka den totala precisionen
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Olika grupper kan ha olika 
+\series bold
+bortfall
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Det är inte ovanligt att flera av dessa faktorer spelar in på en och samma
+ gång.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vanliga begrepp vid stratifierade urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Take-all strata
+\end_layout
+
+\begin_layout Itemize
+Cut-off sampling
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Notation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N=\mbox{populationsstorlek}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+N_{h}=\mbox{populationsstorlek i strata }h
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{U}_{h}=\mbox{populationsmängden i strata }h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N=N_{1}+N_{2}+...+N_{h}=\sum_{i=1}^{H}N_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n=\mbox{urvalsstorlek}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n_{h}=\mbox{populationsstorlek i strata }h
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{S}_{h}=\mbox{urvalssmängden i strata }h
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+n=n_{1}+n_{2}+...+n_{h}=\sum_{i=1}^{H}n_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{hj}=\mbox{variabelvärde på enhet }j\mbox{ i stratum }h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Populationsparametrar
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y_{hj}=\mbox{variabelvärde på enhet }j\mbox{ i stratum }h
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+t_{hy}=\sum_{j=1}^{N_{h}}y_{hj}=\mbox{total i stratum }h
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+t_{y}=t_{1y}+t_{2y}+...+t_{Hy}=\sum_{h=1}^{H}t_{hy}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{y}_{h\mathcal{U}}=\frac{1}{N_{h}}\sum_{j=1}^{N_{h}}y_{hj}=\mbox{medelvärde i strata }h
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{h=1}^{H}\sum_{j=1}^{N_{h}}y_{hj}=\frac{1}{N}\sum_{h=1}^{H}N_{h}\bar{y}_{h\mathcal{U}}=\sum_{h=1}^{H}\frac{N_{h}}{N}\bar{y}_{h\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi ser också att 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=N\bar{y}_{\mathcal{U}}=\sum_{h=1}^{H}N_{h}\bar{y}_{h\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Estimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Estimation
+\end_layout
+
+\begin_layout Itemize
+I varje enskilt strata - som vid vanligt OSU
+\end_layout
+
+\begin_layout Itemize
+Sedan kombineras dessa till en 
+\begin_inset Quotes eld
+\end_inset
+
+helhets
+\begin_inset Quotes erd
+\end_inset
+
+-skattning
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan exempelvis använda oss av den 
+\begin_inset Quotes eld
+\end_inset
+
+vanliga
+\begin_inset Quotes erd
+\end_inset
+
+ estimatorn 
+\begin_inset Formula $\bar{y}_{\mathcal{S}}$
+\end_inset
+
+ i varje strata 
+\begin_inset Formula $h$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\bar{y}_{h}=\frac{1}{n_{h}}\sum_{j\in\mathcal{S}_{h}}y_{hj}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Sedan lägger vi ihop (summerar) de enskilda skattningarna för respektive
+ strata till en skattning för hela populationen
+\begin_inset Formula 
+\[
+\bar{y}_{str}=\sum_{h=1}^{H}\frac{N_{h}}{N}\bar{y}_{h}\mbox{ och }\hat{t}_{str}=N\bar{y}_{str}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $\bar{y}_{h}$
+\end_inset
+
+ är väntevärdesriktig är också 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\bar{y}_{str}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{t}_{str}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ väntevärdesriktiga 
+\begin_inset Formula $(*)$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+(för härledning se 
+\begin_inset CommandInset citation
+LatexCommand citealp
+after "s. 79"
+key "lohr2009sampling"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Estimation II
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{Var}(\bar{y}_{str})$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ är i summan av variansen över de olika strata 
+\begin_inset Formula $(*)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\hat{Var}(\bar{y}_{str})=\frac{1}{N^{2}}\sum_{h=1}^{H}N_{h}^{2}\left(1-\frac{n_{h}}{N_{h}}\right)\frac{s_{h}^{2}}{n_{h}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Detta innebär:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Minst två observationer i varje strata
+\end_layout
+
+\begin_layout Itemize
+Vi ökar precisionen vid stratifiering om det är 
+\series bold
+stor variation mellan strata och liten variation inom strata
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Det går att använda andra estimatorer (kvot- regressionsestimation)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Estimation III
+\end_layout
+
+\begin_layout Itemize
+För att beräkna ett konfidensintervall används (som vanligt) följande formel
+\begin_inset Formula 
+\[
+\bar{y}_{str}\pm z_{\alpha/2}\sqrt{\hat{Var}(\bar{y}_{str})}\mbox{ och }\hat{t}_{str}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{t}_{str})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+I ex.
+ SAS eller R används ibland 
+\begin_inset Formula $t_{\alpha/2,n-H}$
+\end_inset
+
+ istället för 
+\begin_inset Formula $z_{\alpha/2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+För proportione 
+\begin_inset Formula $p_{str}$
+\end_inset
+
+ se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 80 f."
+key "lohr2009sampling"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Gastroenterit
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av att undersöka antalet fall av gastroenterit (magsjuka)
+ i Sverige under 2011 i befolkningen 0-64 år.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av det totala fallen av magsjuka, men också antalet fall
+ bland yngre barn.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi vet också sedan tidigare att småbarnsföräldrar är mer magsjuka än övriga
+ åldersgrupper.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi skapar därför fyra strata (0-15 år, 16-25 år, 26-40 år och 41-65 år)
+ 
+\end_layout
+
+\begin_layout Itemize
+Vårt urval är på 
+\begin_inset Formula $n=400$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Urvalet fördelas proportionellt
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Gastroenterit II}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
+''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(gastro[["x"]],gastro[["y"]],xlab="Age",ylab="No.
+ of gastroenteritis episodes") +
+\end_layout
+
+\begin_layout Plain Layout
+
+annotate("segment", x=0, xend=15, y=gastro[["y_bar"]][1], yend=gastro[["y_bar"]]
+[1],color="blue") +
+\end_layout
+
+\begin_layout Plain Layout
+
+annotate("segment", x=15, xend=25, y=gastro[["y_bar"]][2], yend=gastro[["y_bar"]
+][2],color="blue") +
+\end_layout
+
+\begin_layout Plain Layout
+
+annotate("segment", x=25, xend=40, y=gastro[["y_bar"]][3], yend=gastro[["y_bar"]
+][3],color="blue") +
+\end_layout
+
+\begin_layout Plain Layout
+
+annotate("segment", x=40, xend=64, y=gastro[["y_bar"]][4], yend=gastro[["y_bar"]
+][4],color="blue") +
+\end_layout
+
+\begin_layout Plain Layout
+
+annotate("segment", x=0, xend=64, gastro[["y_bar_all"]], yend=gastro[["y_bar_all
+"]],color="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Gastroenterit III
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Strata
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $n_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\bar{y}_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0-15 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["N"]][1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["n"]][1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["y_bar"]][1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["s_y"]][1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16-25 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["N"]][2]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["n"]][2]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["y_bar"]][2]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["s_y"]][2]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+26-40 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["N"]][3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["n"]][3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["y_bar"]][3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["s_y"]][3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+41-64 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["N"]][4]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["n"]][4]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["y_bar"]][4]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["s_y"]][4]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Samtliga
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+sum(gastro[["N"]])
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+sum(gastro[["n"]])
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["y_bar_all"]]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+gastro[["s_y_all"]]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vad är det totala antalet fall av gastroenterit i befolkningen med tillhörande
+ konfidensintervall?
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
