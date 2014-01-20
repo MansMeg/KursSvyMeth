@@ -1,0 +1,1262 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 3
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
+ctureCode.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Teori för urvalsundersökningar
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Statistisk inferens vid urvalsundersökningar
+\end_layout
+
+\begin_layout Itemize
+Olika inferensteorier för statistisk inferens för urvalsundersökningar
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+resizebox{4.5in}{!}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Design based
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Model based
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Bayesian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Randomness
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Home-made
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Given by nature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Subjective/Rationality axioms
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Main focus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Population
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameters
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Population
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Parameters
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Population values
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unknown/unobservable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Do not exist, but useful
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Inference
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Frequency based
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Frequency based
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Probability-based
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Point-estimates/CI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Point-estimates/CI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Posterior distributions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Possible use
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Not my problem!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Not my problem!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interface with decisions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Källa: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ThorburnBayesSampl2009"
+
+\end_inset
+
+ (med vissa förändringar)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Designbaserat är det som används
+\end_layout
+
+\begin_layout Plain Layout
+Modelbaserat används ibland när inte urvalet är OSU, Ex.
+ Vaccinationstäckningsstudien.
+\end_layout
+
+\begin_layout Plain Layout
+Modell och Bayesian används för SAE och Nonresponse
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Teori I
+\end_layout
+
+\begin_layout Itemize
+Vår estimator / skattningsmetod för 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ är:
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{\mathcal{U}}=\bar{y}_{\mathcal{S}}=\frac{1}{n}\sum_{i\in\mathcal{S}}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Designbaserat
+\series default
+ förväntat värde: 
+\begin_inset Formula 
+\[
+E(\hat{\bar{y}}_{\mathcal{U}})=\sum_{i=k}^{K}P(\mathcal{S}_{k})\hat{\bar{y}}_{\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Designbaserad
+\series default
+ varians
+\begin_inset Formula 
+\[
+Var(\hat{\bar{y}}_{\mathcal{U}})=\sum_{i=k}^{K}P(\mathcal{S}_{k})\left[\hat{\bar{y}}_{\mathcal{U}}-E(\hat{\bar{y}}_{\mathcal{U}})\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Teori II
+\end_layout
+
+\begin_layout Itemize
+Vi är ofta intresserade av att minimera det totala felet:
+\begin_inset Formula 
+\[
+MSE(\hat{\bar{y}}_{\mathcal{U}})=E\left[(\hat{\bar{y}}_{\mathcal{U}}-\bar{y}_{\mathcal{U}})^{2}\right]=\sum_{k=1}^{K}P(\mathcal{S}_{k})\cdot(\hat{\bar{y}}_{\mathcal{U}}-\bar{y}_{\mathcal{U}})^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta fel kan delas upp i två delar 
+\begin_inset Formula $(*)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bias: 
+\begin_inset Formula $Bias(\hat{\bar{y}}_{\mathcal{U}})^{2}=\left(E(\hat{\bar{y}}_{\mathcal{U}})-\bar{y}_{\mathcal{U}}\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Varians: 
+\begin_inset Formula $Var(\hat{\bar{y}}_{\mathcal{U}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Härledning finns i 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 31"
+key "lohr2009sampling"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Teori - Exempel 1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(20130101)
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-sample(0:30,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-6
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- length(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+urvalsdist2<-samplingDist(y,n)
+\end_layout
+
+\begin_layout Plain Layout
+
+Ey <- sum(urvalsdist2$P_S*urvalsdist2$y_hat)
+\end_layout
+
+\begin_layout Plain Layout
+
+Vary <- sum(urvalsdist2$P_S*(urvalsdist2$y_hat-Ey)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Samma exempel som tidigare där $
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}=
+\backslash
+Sexpr{mean(y)}$ och $Var(y)=
+\backslash
+Sexpr{var(y)}$ då $n=$
+\backslash
+Sexpr{n}, $N=
+\backslash
+Sexpr{N}$
+\end_layout
+
+\begin_layout Plain Layout
+
+och $K = 
+\backslash
+Sexpr{ choose(N,n) }$.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=4,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+head(urvalsdist2[,-(9:14)],n=7)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ 
+\end_layout
+
+\begin_layout Plain Layout
+
+E(
+\backslash
+hat{
+\backslash
+bar{y}}_{
+\backslash
+mathcal{U}})=
+\backslash
+sum_{i=k}^{K}P(
+\backslash
+mathcal{S}_{k})
+\backslash
+hat{
+\backslash
+bar{y}}_{
+\backslash
+mathcal{U}} = 
+\backslash
+Sexpr{Ey}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[ Var(
+\backslash
+hat{
+\backslash
+bar{y}}_{
+\backslash
+mathcal{U}})=
+\backslash
+sum_{i=k}^{K}P(
+\backslash
+mathcal{S}_{k})
+\backslash
+left[
+\backslash
+hat{
+\backslash
+bar{y}}_{
+\backslash
+mathcal{U}}-E(
+\backslash
+hat{
+\backslash
+bar{y}}_{
+\backslash
+mathcal{U}})
+\backslash
+right]^{2} = 
+\backslash
+Sexpr{Vary} (*)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Teori III
+\end_layout
+
+\begin_layout Itemize
+Vi vill att skattningarna ska vara 
+\series bold
+design-väntevärdesriktiga
+\end_layout
+
+\begin_layout Itemize
+Vi vill visa att:
+\begin_inset Formula 
+\begin{eqnarray*}
+E(\bar{y}_{\mathcal{S}}) & = & \bar{y}_{\mathcal{U}}\\
+Var(\bar{y}_{\mathcal{S}}) & = & \left(1-\frac{n}{N}\right)\frac{S_{\mathcal{U}}^{2}}{n}\\
+E(s^{2}) & = & S_{\mathcal{U}}^{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi gör detta genom att införa en egen slumpvariabel (som vi styr själva)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Indikatorvariabeln 
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Indikatorvariabeln 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi behöver introducera vår egen 
+\begin_inset Quotes eld
+\end_inset
+
+hemmagjorda
+\begin_inset Quotes erd
+\end_inset
+
+ slump: 
+\begin_inset Formula 
+\begin{eqnarray*}
+Z_{i} & = & P(i\in\mathcal{S})\sim Bernoulli(\pi_{i})\\
+Z & = & \{0,1\}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+ brukar kallas 
+\series bold
+indikatorvariabel
+\series default
+ och har följande egenskaper 
+\begin_inset Formula $(*)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+E(Z_{i})=E(Z_{i}^{2})=P(Z_{i}=1)=\frac{n}{N}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var(Z_{i})=\frac{n}{N}\left(1-\frac{n}{N}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E(Z_{i}Z_{j})=\frac{n}{N}\frac{n-1}{N-1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Cov(Z_{i},Z_{j})=-\frac{1}{N-1}\left(1-\frac{n}{N}\right)\frac{n}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Indikatorvariabeln 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+ II
+\end_layout
+
+\begin_layout Itemize
+Med indikatorvariabeln kan vi visa att 
+\begin_inset Formula $(*)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+E(\bar{y}_{\mathcal{S}}) & = & \bar{y}_{\mathcal{U}}\\
+Var(\bar{y}_{\mathcal{S}}) & = & \left(1-\frac{n}{N}\right)\frac{S_{\mathcal{U}}^{2}}{n}\\
+E(s^{2}) & = & S_{\mathcal{U}}^{2}
+\end{eqnarray*}
+
+\end_inset
+
+där
+\begin_inset Formula 
+\[
+S_{\mathcal{U}}^{2}=\frac{1}{N-1}\sum_{i=1}^{N}\left(y_{i}-\bar{y}_{\mathcal{U}}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Härledningar finns också i 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 51-54 "
+key "lohr2009sampling"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
