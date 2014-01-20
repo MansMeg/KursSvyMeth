@@ -27,7 +27,7 @@ generateGastro <- function(mySeed){
   set.seed(mySeed) 
   # Create example
   N <- c(1687283, 1851959, 1812691, 2935231)
-  n <- round(400.1*(gastro$N/sum(gastro$N)))
+  n <- round(400.1*(N/sum(N)))
   
   e.y<-c(3.5,0.7,1.8,0.4) 
   age<-c(0,15,25,40,65) 
@@ -41,6 +41,7 @@ generateGastro <- function(mySeed){
     if(i==1){y<-y.temp;x<-x.temp}   
     if(i>1){y<-c(y,y.temp);x<-c(x,x.temp)} 
   }
+  gastro <- list()
   gastro$N <- N
   gastro$n <- n
   gastro$y <- y
