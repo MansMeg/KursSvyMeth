@@ -47,10 +47,10 @@ generateGastro <- function(mySeed){
   gastro$y <- y
   gastro$x <- x
   gastro$age <- age
-  gastro$y_bar <- y.mean
-  gastro$y_bar_all <- round(mean(y),2) 
-  gastro$s_y <- y.s
-  gastro$s_y_all <- round(sd(y),2) 
+  gastro$ybar <- y.mean
+  gastro$ybarAll <- round(mean(y),2) 
+  gastro$sy <- y.s
+  gastro$syAll <- round(sd(y),2) 
   return(gastro) 
 }
 gastro <- generateGastro(20130206)
