@@ -1283,6 +1283,12 @@ Urvalsenhet (sample unit)
 De som finns i urvalsramen.
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Respondent
+\end_layout
+
 \begin_layout Standard
 \begin_inset Flex ArticleMode
 status open

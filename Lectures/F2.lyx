@@ -2160,7 +2160,7 @@ inkomster
 För tumregler, se 
 \begin_inset CommandInset citation
 LatexCommand citet
-after "formel 2.29, s. 44"
+after "formel 2.23, s. 44"
 key "lohr2009sampling"
 
 \end_inset
@@ -2265,10 +2265,6 @@ Detta för att ta ta hänsyn till osäkerheten i
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-a
-\end_layout
-
 \begin_layout EndFrame
 
 \end_layout
