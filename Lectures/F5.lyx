@@ -1,0 +1,2306 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 5
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
+ctureCode.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Undersökningsplanering
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningsplanering
+\end_layout
+
+\begin_layout Quote
+To call in the statistician after the experiment is done may be no more
+ than asking him to perform a postmortem examination: he may be able to
+ say what the experiment died of.
+\end_layout
+
+\begin_layout Quote
+- 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "fisher1938presidential"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningsplanering II
+\end_layout
+
+\begin_layout Itemize
+Varför bör vi planera en undersökning?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Med god planering av studien kan vi minimera det totala felet (och maximera
+ undersökningens kvalitet).
+\end_layout
+
+\begin_layout Itemize
+Kostnaden att korrigera fel och problem ökar med tiden
+\end_layout
+
+\begin_layout Itemize
+Det går i princip inte att förbereda en studie för mycket - bara för lite.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+De olika stegen i en undersökning
+\end_layout
+
+\begin_layout Enumerate
+Faslå behov och kartlägga forskningsområdet och standarder
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Design och planering
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Förberedelser och tester
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Datainsamling
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Databearbetning
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Analyser
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Rapportering och kommunikation
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+De fem kvalitetsdimensionerna
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+De 5 kvalitetsdimensionerna
+\end_layout
+
+\begin_layout Itemize
+Gäller all statistik - inte bara surveyer
+\end_layout
+
+\begin_layout Enumerate
+Innehåll och relevans
+\end_layout
+
+\begin_layout Enumerate
+Tillförlitlighet
+\end_layout
+
+\begin_layout Enumerate
+Jämförbarhet
+\end_layout
+
+\begin_layout Enumerate
+Aktualitet
+\end_layout
+
+\begin_layout Enumerate
+Tillgänglighet och förståerlighet
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Innehåll och relevans
+\end_layout
+
+\begin_layout Itemize
+Svarar statistiken på frågeställningarna
+\end_layout
+
+\begin_layout Itemize
+Relevans - Måste utgå helt från användarna!
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Tillräcklig
+\begin_inset Quotes erd
+\end_inset
+
+ kvalitet
+\end_layout
+
+\begin_layout Itemize
+Integritet som statistiker
+\end_layout
+
+\begin_layout Itemize
+Användare av officiell statistik?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Svarar statistiken på frågeställningarna?
+\end_layout
+
+\begin_layout Plain Layout
+Är statistiken relevant för användarna?
+\end_layout
+
+\begin_layout Plain Layout
+Vet vi vilka användarna är och känner vi till deras behov?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Är egenskaperna på statistiken definierade av användarna? 
+\end_layout
+
+\begin_layout Plain Layout
+Statistiker har en tendens att vilja ha superstora urval.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Relevans styrs helt av uppdragsgivarna.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+När jag arbetade på Brå fanns det olika uppdragsgivare: 
+\end_layout
+
+\begin_layout Plain Layout
+- Justitiedepartementet hade behovet av att använda statistiken för uppföljning
+ och styrning, 
+\end_layout
+
+\begin_layout Plain Layout
+- Journalister för bevakning och 
+\begin_inset Quotes eld
+\end_inset
+
+skop
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+- Forskare behövde mikrodata
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Ex.
+
+\series default
+ Återfallsstatistiken
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Integritet:
+\end_layout
+
+\begin_layout Plain Layout
+Ibland vill folk ha en siffra för 
+\begin_inset Quotes eld
+\end_inset
+
+PR
+\begin_inset Quotes erd
+\end_inset
+
+-syfte.
+ Då måste vi våga vägra.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Går ofta att lägga fram ett alternativt förslag (med tillräcklig kvalitet)
+\end_layout
+
+\begin_layout Plain Layout
+Ibland kan en 
+\begin_inset Quotes eld
+\end_inset
+
+dålig
+\begin_inset Quotes erd
+\end_inset
+
+ undersökning duga - måste göra en avvägning.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Tillräcklig kvalitet
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Old/Lectures/Pics/duty_calls.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "xkcd.com"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Tillförlitlighet
+\end_layout
+
+\begin_layout Itemize
+Det totala felet i undersökningen, givet:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Budget
+\end_layout
+
+\begin_layout Itemize
+Tillräckliga kvalitetsnivån
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Felkällor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Urvalsfel
+\end_layout
+
+\begin_layout Itemize
+Specifikationsfel
+\end_layout
+
+\begin_layout Itemize
+Bortfallsfel
+\end_layout
+
+\begin_layout Itemize
+Ramfel
+\end_layout
+
+\begin_layout Itemize
+Bortfallsfel
+\end_layout
+
+\begin_layout Itemize
+Mätfel
+\end_layout
+
+\begin_layout Itemize
+Beabetningsfel
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Jämförbarhet och samanvändbarhet
+\end_layout
+
+\begin_layout Itemize
+Måste beaktas innan undersökningar sätter igång.
+\end_layout
+
+\begin_layout Itemize
+Jämförbarhet 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+över tiden
+\end_layout
+
+\begin_layout Itemize
+mellan (redovisnings-)grupper
+\end_layout
+
+\begin_layout Itemize
+Kan stå i motsats
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Står ibland i motsats till varandra (vissa vill ha jämförbarhet över tid
+ andra hög kvalitet)
+\end_layout
+
+\begin_layout Plain Layout
+Går ofta att kombinera med randomisering eller 
+\begin_inset Quotes eld
+\end_inset
+
+dubbel statistik
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Ex.
+ Återfallsstatistiken.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Samanvändbarhet med annan statistik
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Frågor
+\end_layout
+
+\begin_layout Itemize
+Svarskategorier / standarder
+\end_layout
+
+\begin_layout Itemize
+Återanvänd andra undersökningars frågor och kategorier
+\end_layout
+
+\begin_layout Itemize
+Officiell statistik (särskilt befolkningsstatistik)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Aktualitet
+\end_layout
+
+\begin_layout Itemize
+Aktualitet
+\end_layout
+
+\begin_layout Itemize
+Frekvens
+\end_layout
+
+\begin_layout Itemize
+Framställningstid
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Olika användare har ofta olika behov
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Olika användare har olika behov.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Exempel.
+ Journalister, forskar ofta på var sin sida.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Smittskydd
+\series default
+ är detta helt avgörande:
+\end_layout
+
+\begin_layout Plain Layout
+Finns ett helt statistikområde som heter 
+\begin_inset Quotes eld
+\end_inset
+
+Nowcasting
+\begin_inset Quotes erd
+\end_inset
+
+ när det gäller 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Punktlighet
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Användarna anpassar sig till när de tror sig få resultaten.
+\end_layout
+
+\begin_layout Plain Layout
+Extremt viktigt att vara tydlig om förseningar sker.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+Riksbanken planerar sina möten efter när Arbetskraftsstatistiken och KPI
+ kommer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Tillgänglighet och förståerlighet
+\end_layout
+
+\begin_layout Itemize
+Tillgänglighet och förståerlighet
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Pedagogisk och tydlig framställning
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ofta enkelt för att öka kvaliteten dramatiskt.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+Lagföringsstatistiken vid Brå.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Tidigare lagförda personer brutto och lagförda personer netto
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Dokumentation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+För att förstå statistiken - Detta är nog det där folk är allra sämst.
+\end_layout
+
+\begin_layout Plain Layout
+Reproducible research.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Egna analyser (statistikdatabaser)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Riktlinjer och standarder gällande statistikkvalitet
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Riktlinjer och standarder gällande statistikkvalitet
+\end_layout
+
+\begin_layout Itemize
+Kvalitetsstandarder
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ISO-standard för Market, opinion and social research - Vocabulary and service
+ requirements 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ISO20252"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+European Statistics code of practice 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "CodeOfPractice"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tillräcklig kvalitet och kriterier för officiell statistik 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "2006tko"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kvalitetsbegrepp och riktlinjer för kvalitetsdeklaration av officiell statistik
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "2001KvalMIS"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Övriga kvalitetskriterier och riktlinjer 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ekots riktlinjer finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://sverigesradio.se/diverse/appdata/isidor/files/4097/13497.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Att förbättra kvalitet
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Att förbättra kvalitet
+\end_layout
+
+\begin_layout Itemize
+För att förbättra kvaliteten används ofta 
+\begin_inset Quotes eld
+\end_inset
+
+kvalitetscirkeln
+\begin_inset Quotes erd
+\end_inset
+
+ eller 
+\begin_inset Quotes eld
+\end_inset
+
+kvalitetshjulet
+\begin_inset Quotes erd
+\end_inset
+
+ som består av
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Planera
+\end_layout
+
+\begin_layout Itemize
+Genomför
+\end_layout
+
+\begin_layout Itemize
+Utvärdera
+\end_layout
+
+\begin_layout Itemize
+Utveckla / Förbättra
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Datainsamlingsmetoder
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Olika insamlingmetoder
+\end_layout
+
+\begin_layout Itemize
+Många blandar ihop datainsamlingsmetod med urvalsmetod
+\end_layout
+
+\begin_layout Itemize
+Enkäter
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Postenkäter
+\end_layout
+
+\begin_layout Itemize
+Webbenkäter
+\end_layout
+
+\begin_layout Itemize
+Gruppenkäter
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Intervjuer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telefonintervju
+\end_layout
+
+\begin_layout Itemize
+Besöksintervju
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Direkt observation / bokföring
+\end_layout
+
+\begin_layout Itemize
+Administrativa data
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Postenkäter
+\end_layout
+
+\begin_layout Itemize
+Görs ofta tillsammans med tryckerier och scanningföretag
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Obs!
+\series default
+ Dessa måste konsulteras innan enkäten går ut!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(Relativt) billigt
+\end_layout
+
+\begin_layout Itemize
+Kan skickas till många direkt
+\end_layout
+
+\begin_layout Itemize
+Många frågor olika frågor kan ställas
+\end_layout
+
+\begin_layout Itemize
+Kan besvaras när respondenten har tid
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Risk för stort bortfall
+\end_layout
+
+\begin_layout Itemize
+Tar lång tid
+\end_layout
+
+\begin_layout Itemize
+Bör vara begränsade
+\end_layout
+
+\begin_layout Itemize
+Vet ej vem som svarar
+\end_layout
+
+\begin_layout Itemize
+Svårt att få svar på och hantera öppna frågor
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Webbenkäter
+\end_layout
+
+\begin_layout Itemize
+Rekommenderar LimeSurvey som finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.limesurvey.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+open source / säkert
+\end_layout
+
+\begin_layout Itemize
+klarar komplexa webbenkäter 
+\end_layout
+
+\begin_layout Itemize
+webbhosting kan köpas 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.limeservice.com/en/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+integrerat med R
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Snabbt
+\end_layout
+
+\begin_layout Itemize
+Billigt
+\end_layout
+
+\begin_layout Itemize
+Kontroller / hjälp till respondenter
+\end_layout
+
+\begin_layout Itemize
+Kan användas med smartphones
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tekniska problem
+\end_layout
+
+\begin_layout Itemize
+Teknikbias / tillgång till internet i gruppen
+\end_layout
+
+\begin_layout Itemize
+Integritet och känsliga frågor
+\end_layout
+
+\begin_layout Itemize
+Mycket högt bortfall
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Gruppenkäter
+\end_layout
+
+\begin_layout Itemize
+Liksom postenkäter bör detta göras tillsammans med tryckeri och scanningföretag
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Många kan undersökas
+\end_layout
+
+\begin_layout Itemize
+(Relativt) billigt och snabbt
+\end_layout
+
+\begin_layout Itemize
+Lågt bortfall
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Risk för påverkan av undersökningsledaren
+\end_layout
+
+\begin_layout Itemize
+Risk för grupptryck
+\end_layout
+
+\begin_layout Itemize
+Anonymiteten är svår att bevaka, känsliga frågor
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Gruppenkäter
+\end_layout
+
+\begin_layout Itemize
+Liksom postenkäter bör detta göras tillsammans med tryckeri och scanningföretag
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Många kan undersökas
+\end_layout
+
+\begin_layout Itemize
+(Relativt) billigt och snabbt
+\end_layout
+
+\begin_layout Itemize
+Lågt bortfall
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Risk för påverkan av undersökningsledaren
+\end_layout
+
+\begin_layout Itemize
+Risk för grupptryck
+\end_layout
+
+\begin_layout Itemize
+Anonymiteten är svår att bevaka, känsliga frågor
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Telefonintervjuer
+\end_layout
+
+\begin_layout Itemize
+Görs ofta av call centers (eller specialiserade företag)
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Snabb och (relativt) billigt
+\end_layout
+
+\begin_layout Itemize
+Oklareheter i frågor kan redas ut
+\end_layout
+
+\begin_layout Itemize
+Intervjuaren kan använda hjälpa resondenten att ge utförliga svar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Många oanträffbara
+\end_layout
+
+\begin_layout Itemize
+Ej allt för lång intervjuer
+\end_layout
+
+\begin_layout Itemize
+Ej bra för känsliga frågor, anonymitetsproblem
+\end_layout
+
+\begin_layout Itemize
+Ej krångliga frågor eller många svarsalternativ
+\end_layout
+
+\begin_layout Itemize
+Intervjuareffekter
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Besöksintervjuer
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Snabb 
+\end_layout
+
+\begin_layout Itemize
+Hög kvalitet på svar
+\end_layout
+
+\begin_layout Itemize
+Behöver ingen urvalsram (ex.
+ time-location-sampling)
+\end_layout
+
+\begin_layout Itemize
+Klarar komplexa miljöer
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dyrt
+\end_layout
+
+\begin_layout Itemize
+Risk för stort bortfall
+\end_layout
+
+\begin_layout Itemize
+Intervjuareffekter
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Administrativa data
+\end_layout
+
+\begin_layout Itemize
+Kan (med fördel) kombineras med surveydata
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Billigt
+\end_layout
+
+\begin_layout Itemize
+Minskad uppgiftslämnarbörda
+\end_layout
+
+\begin_layout Itemize
+Möjligt att använda longitudinellt
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kan vara inaktuell
+\end_layout
+
+\begin_layout Itemize
+Syftet med datan är inte att producera statistik
+\end_layout
+
+\begin_layout Itemize
+Ändrade definitioner över tid
+\end_layout
+
+\begin_layout Itemize
+Ofta mycket arbete med databearbetning
+\end_layout
+
+\begin_layout Itemize
+Underrapportering och mörkertal
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Undersökningsprocessen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+De olika stegen i en undersökning
+\end_layout
+
+\begin_layout Enumerate
+Faslå behov och kartlägga området 
+\end_layout
+
+\begin_layout Enumerate
+Design och planering
+\end_layout
+
+\begin_layout Enumerate
+Förberedelser och tester
+\end_layout
+
+\begin_layout Enumerate
+Datainsamling
+\end_layout
+
+\begin_layout Enumerate
+Databearbetning
+\end_layout
+
+\begin_layout Enumerate
+Analyser
+\end_layout
+
+\begin_layout Enumerate
+Rapportering och kommunikation
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 1: Fastslå behov och kartlägga området
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 1.
+ Fastslå behov och kartlägga området
+\end_layout
+
+\begin_layout Itemize
+Kartlägga området/forskningsläget 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vad är redan gjort? Vad har tidigare studier gjort för fel/haft problem
+ med?
+\end_layout
+
+\begin_layout Itemize
+Vad för data finns redan i register? 
+\end_layout
+
+\begin_layout Itemize
+Finns det standarder/klassifikationer av intresse?
+\end_layout
+
+\begin_layout Itemize
+Undersökningens relevans
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vad finns det för behov från uppdragsgivarna.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vilka är uppdragsgivarna? 
+\end_layout
+
+\begin_layout Itemize
+Vad har de behov av?
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Etablera kundkontakt.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Definera undersökningens frågeställningar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stäm av dessa med uppdragsgivarna
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Förhandla och avtala.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 2.
+ Design och planering
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 2.
+ Design och planering
+\end_layout
+
+\begin_layout Itemize
+Identifiera / designa ram 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Varning för screeningenkäter
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Designa 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Urval
+\end_layout
+
+\begin_layout Itemize
+Datainsamling
+\end_layout
+
+\begin_layout Itemize
+Bearbetning - identifiera hjälpvariabler
+\end_layout
+
+\begin_layout Itemize
+Analys 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Minimeras det totala felet?
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Stäm av design och plan med uppdragsgivare
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 3.
+ Förberedelser och tester
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 3.
+ Förberedelser och tester
+\end_layout
+
+\begin_layout Itemize
+Skapa enkät / mätverktyg
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kontrollera att samtliga frågeställningar besvaras
+\end_layout
+
+\begin_layout Itemize
+Stäm av med uppdragsgivaren
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Granska och testa enkät / mätverktyg
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Testa verktygen för datainsamlingen
+\end_layout
+
+\begin_layout Itemize
+Förbered/skapa verktyg för datainsamlingen (ex.
+ webenkät + telefon m.m.)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Genomför pilotstudie.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 4.
+ Datainsamling
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 4.
+ Datainsamling
+\end_layout
+
+\begin_layout Itemize
+Dra urval
+\end_layout
+
+\begin_layout Itemize
+Genomför datainsamlingen
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Olika processer för olika datainsamlingsmetoder
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gör bortfallsuppföljning
+\end_layout
+
+\begin_layout Itemize
+Spara ned rådata (för reproducerbarhet)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 5.
+ Databearbetning
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 5.
+ Databearbetning
+\end_layout
+
+\begin_layout Itemize
+Klassificera och koda data
+\end_layout
+
+\begin_layout Itemize
+Granska mikrodata (se exempelvis 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "2002gtg"
+
+\end_inset
+
+för detaljer)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Detta är en stor del av arbetet (tyvärr)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Imputera för (partiellt) bortfall 
+\end_layout
+
+\begin_layout Itemize
+Komplettera mikrodata / Samkör data
+\end_layout
+
+\begin_layout Itemize
+Beräkna vikter / Kalibrera för bortfall
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 6.
+ Analys
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 6.
+ Analys
+\end_layout
+
+\begin_layout Itemize
+Estimera / analysera data
+\end_layout
+
+\begin_layout Itemize
+Granska makrodata (se exempelvis 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "2002gtg"
+
+\end_inset
+
+för detaljer)
+\end_layout
+
+\begin_layout Itemize
+Genomför röjandekontroll (se 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "2001sra"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Tolka och förklara 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection*
+Steg 7.
+ Rapportering och kommunikation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Steg 7.
+ Rapportering och kommunikation
+\end_layout
+
+\begin_layout Itemize
+Sammanställ rapport och presentation
+\end_layout
+
+\begin_layout Itemize
+Redovisa rapport för kund / uppdragsgivare
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
