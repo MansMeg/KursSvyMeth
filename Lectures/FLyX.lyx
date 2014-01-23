@@ -1,0 +1,1298 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Introduktion till LyX, BibTeX och knitR
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Varför denna föreläsning?
+\end_layout
+
+\begin_layout Itemize
+Ge verktyg för att skriva en matematisk/statistisk uppsats
+\end_layout
+
+\begin_layout Itemize
+Underlätta källhänvisningar och referenshantering
+\end_layout
+
+\begin_layout Itemize
+Ge verktyg för vetenskaplighet / reproducerbarhet
+\end_layout
+
+\begin_layout Itemize
+Integrering av R med dokument / HTML m.m.
+ blir allt vanligare.
+\end_layout
+
+\begin_layout Itemize
+Alternativ till Word - LaTeX är stort inom matematiska ämnen
+\end_layout
+
+\begin_layout Itemize
+Ge smakprov, vissa delar passar bättre för vissa behov
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Vad är LyX?
+\end_layout
+
+\begin_layout Itemize
+Grafiskt gränsnitt för LaTeX (som R och R-Studio)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+W
+\series default
+hat
+\series bold
+Y
+\series default
+ou
+\series bold
+W
+\series default
+ant
+\series bold
+I
+\series default
+s
+\series bold
+W
+\series default
+hat
+\series bold
+Y
+\series default
+ou
+\series bold
+G
+\series default
+et istället för 
+\series bold
+W
+\series default
+hat
+\series bold
+Y
+\series default
+ou
+\series bold
+S
+\series default
+ee
+\series bold
+I
+\series default
+s
+\series bold
+W
+\series default
+hat
+\series bold
+Y
+\series default
+ou
+\series bold
+G
+\series default
+et.
+\end_layout
+
+\begin_layout Itemize
+Skapar både dokument (och presentationer med beamer)
+\end_layout
+
+\begin_layout Itemize
+Open Source och finns för alla operativsystem (laddas ned 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.lyx.org/Download"
+
+\end_inset
+
+
+\series default
+\color inherit
+)
+\end_layout
+
+\begin_layout Itemize
+Går att versionshantera (till skillnad mot Word)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Fördelar och nackdelar
+\end_layout
+
+\begin_layout Itemize
+Fördelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mycket bra hantering av matematik
+\end_layout
+
+\begin_layout Itemize
+Passar bra för att skriva uppsatser / akademiska texter
+\end_layout
+
+\begin_layout Itemize
+Open source / gratis
+\end_layout
+
+\begin_layout Itemize
+Smidigt alternativ till LaTeX som är vanligt inom matematikämnen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mindre vanligt utanför akademin / matematiska / teknologiska ämnen
+\end_layout
+
+\begin_layout Itemize
+Sämre språkgranskning än word
+\end_layout
+
+\begin_layout Itemize
+Kan ibland ha buggar
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Demonstration av LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+BiBTeX och referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Vad är BiBTeX?
+\end_layout
+
+\begin_layout Itemize
+Hantera referens och källhänvisningar korrekt
+\end_layout
+
+\begin_layout Itemize
+Samlar referenser i en eller flera filer
+\end_layout
+
+\begin_layout Itemize
+Alla litteratursöksidor kan skapa bibTex-referenser direkt
+\end_layout
+
+\begin_layout Itemize
+Integrerat med LyX och LaTeX (och Word)
+\end_layout
+
+\begin_layout Itemize
+Finns för 
+\begin_inset CommandInset href
+LatexCommand href
+name "Mac (BibDesk)"
+target "http://bibdesk.sourceforge.net/"
+
+\end_inset
+
+, PC (kommer med LyX) och Linux (?).
+ 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Demonstration av BiBTeX, referenser och LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+knitr och reproducible research
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Reproducible research
+\end_layout
+
+\begin_layout Itemize
+Vetenskap måste vara reproducerbar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enkelt att granska varandras arbeten och reproducera analyser
+\end_layout
+
+\begin_layout Itemize
+Enkelt att identifiera felaktigheter
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+I statistiska analyser innebär detta bland annat
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+väl dokumenterad kod
+\end_layout
+
+\begin_layout Itemize
+integrera analyserna i dokumentet
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+För- och nackdelar
+\end_layout
+
+\begin_layout Itemize
+Det bästa verktyget för detta idag är knitR.
+\end_layout
+
+\begin_layout Itemize
+Fördelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reproducerbara analyser (återkommande analyser)
+\end_layout
+
+\begin_layout Itemize
+Korrigerade fel rättas i hela dokumentet automatiskt
+\end_layout
+
+\begin_layout Itemize
+Sparar (ofta) tid
+\end_layout
+
+\begin_layout Itemize
+Kan påbörja rapporten innan datainsamlingen är klar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kräver initialt mer arbete
+\end_layout
+
+\begin_layout Itemize
+Kan vara jobbigt att hitta buggar i R-koden
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+knitR
+\end_layout
+
+\begin_layout Itemize
+Paket till R för att integrera R kod och dokument (HTML/Markdown, LaTeX/LyX)
+\begin_inset Newline newline
+\end_inset
+
+(för Word finns R2DOCX här)
+\end_layout
+
+\begin_layout Itemize
+Kör först R-koden och 
+\begin_inset Quotes eld
+\end_inset
+
+byter ut
+\begin_inset Quotes erd
+\end_inset
+
+ koden mot resultatet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Figurer
+\end_layout
+
+\begin_layout Itemize
+Löpande text
+\end_layout
+
+\begin_layout Itemize
+Tabeller
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finns integrerat i R-Studio
+\end_layout
+
+\begin_layout Itemize
+Går att använda med Python, SAS m.fl.
+ (men mer komplicerat)
+\end_layout
+
+\begin_layout Itemize
+Exempeldokument till uppsatsen finns att tillgå här: 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX"
+target "https://github.com/MansMeg/KursSvyMeth/blob/master/Documents/LyXexempel.lyx"
+
+\end_inset
+
+
+\series default
+\color inherit
+, 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "BiBTeX"
+target "https://github.com/MansMeg/KursSvyMeth/blob/master/Documents/BiBTeXexempel.bib"
+
+\end_inset
+
+
+\series default
+\color inherit
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tips! 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se till att koden ger det ni vill i R-studio först.
+\end_layout
+
+\begin_layout Itemize
+Gör det mesta i R och använd sedan 
+\family typewriter
+source()
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{knitR: Exempel}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item knitr har 'chunks' med R-kod som börjar med 
+\backslash
+texttt{<<>>=} och slutar med 
+\backslash
+texttt{@}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<>>=
+\backslash
+n  # R-kod
+\backslash
+n  x <- 50
+\backslash
+n  print(x)
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Vilket ger:
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 50
+\end_layout
+
+\begin_layout Plain Layout
+
+print(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{knitR: Exempel II}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item För att 'styra' output används 'options' 
+\backslash
+texttt{echo} och 
+\backslash
+texttt{eval}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Samtliga 'options' finns 
+\backslash
+textbf{
+\backslash
+textcolor{blue}{
+\backslash
+href{http://yihui.name/knitr/options}{här}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<echo=FALSE, eval=TRUE>>=
+\backslash
+n  # R-kod
+\backslash
+n  x <- 50
+\backslash
+n  print(x)
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 50
+\end_layout
+
+\begin_layout Plain Layout
+
+print(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+knitR: 
+\backslash
+Sexpr{} och tabeller
+\end_layout
+
+\begin_layout Itemize
+För att sätta in enskilda värden i LyX
+\begin_inset Newline newline
+\end_inset
+
+Infoga 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Anpassade insättningar 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ S / R uttryck
+\end_layout
+
+\begin_layout Itemize
+Kommandot är 
+\family typewriter
+
+\backslash
+Sexpr{# R-variabel här}
+\family default
+)
+\end_layout
+
+\begin_layout Itemize
+För att sätta in tabeller används R-paketet 
+\family typewriter
+xtable
+\family default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skriver om datatypen till LaTeX-kod eller HTML
+\end_layout
+
+\begin_layout Itemize
+Kan styra utseendet med argument i funktionen 
+\family typewriter
+xtable()
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Fungerar på ett flertal objekt i R som 
+\family typewriter
+table
+\family default
+, 
+\family typewriter
+data.frame
+\family default
+ och 
+\family typewriter
+lm
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Paketet måste läsas in i dokumentet
+\end_layout
+
+\begin_layout Itemize
+Kräver option 
+\family typewriter
+results='asis'
+\family default
+ i knitr - chunken
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{knitR: Tabellexempel}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<echo=FALSE, eval=TRUE, results='asis'>>=
+\backslash
+n  # R-kod
+\backslash
+n  library(xtable)
+\backslash
+n  data(iris)
+\backslash
+n  xtable(head(iris,n=7))
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE, results='asis'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(xtable)
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+xtable(head(iris,n=7))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+knitR: figurer
+\end_layout
+
+\begin_layout Itemize
+Figurer skapas i R, sparas som pdf och läggs automatiskt in i dokumentet
+\end_layout
+
+\begin_layout Itemize
+För att styra figurers storlek och placering används 
+\family typewriter
+fig.height
+\family default
+, 
+\family typewriter
+fig.width
+\family default
+ och 
+\family typewriter
+fig.align
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+fig.height
+\family default
+ och 
+\family typewriter
+fig.width
+\family default
+ anger storlek med default = 7.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+fig.align
+\family default
+ kan använda 
+\family typewriter
+'left'
+\family default
+, 
+\family typewriter
+'right'
+\family default
+ och 
+\family typewriter
+'center'
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{knitR - Exempel på figurer}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<echo=FALSE, fig.height=2.5, fig.width=4, fig.align='center'>>=
+\backslash
+n  # R-kod
+\backslash
+n  data(iris)
+\backslash
+n  plot(iris[['Sepal.Length']], iris[['Sepal.Width']])
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE, fig.height=2.5, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(iris[['Sepal.Length']], iris[['Sepal.Width']])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Demonstration av knitR i LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
