@@ -6,4 +6,4 @@
 *.lyx~
 *.lyx#
 *_pres.pdf
-Lectures/figure/*
+*/figure/*
