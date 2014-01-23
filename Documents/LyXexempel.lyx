@@ -100,17 +100,21 @@ Bakgrund
 \end_layout
 
 \begin_layout Standard
+Först kör jag lite R-kod:
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE>>=
+<<echo=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-# Jag har lite kod att köra, exempelvis sourca in alla annan kod
+# Jag har lite kod
 \end_layout
 
 \begin_layout Plain Layout
@@ -121,6 +125,64 @@ library(xtable)
 \begin_layout Plain Layout
 
 data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 10
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Men det blir ganska fult så jag döljer det istället:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Jag har lite kod
+\end_layout
+
+\begin_layout Plain Layout
+
+library(xtable)
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 10
+\end_layout
+
+\begin_layout Plain Layout
+
+x
 \end_layout
 
 \begin_layout Plain Layout
@@ -322,7 +384,7 @@ Det är kul att skriva uppsatser som blir såhär snygga!
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "bibttexexempel"
+bibfiles "BiBTeXexempel"
 options "bibtotoc,plain"
 
 \end_inset
