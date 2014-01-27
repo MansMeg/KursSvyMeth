@@ -1695,6 +1695,134 @@ key "japec1997minska"
 
 \end_layout
 
+\begin_layout Section
+Statistiska analys av enkäter
+\end_layout
+
+\begin_layout BeginFrame
+Statistisk analys av enkäter
+\end_layout
+
+\begin_layout Itemize
+Två typer av felstrukturer gicks igenom på föreläsning 1.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Systematiska fel (bias)
+\end_layout
+
+\begin_layout Itemize
+Slumpmässiga fel (variance)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Närliggande begrepp från psykometrin är:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Validitet
+\end_layout
+
+\begin_layout Itemize
+Relibilitet
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Inom psykometri är reliabilitet viktigt för att:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tester (Test theory)
+\end_layout
+
+\begin_layout Itemize
+Mäta latenta egenskaper (factor analysis, SEM m.m.)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Metoder för att estimera reliabilitet
+\end_layout
+
+\begin_layout Itemize
+Test - retest 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Carryover effects 
+\end_layout
+
+\begin_layout Itemize
+Statistika: korrelationskoefficient 
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Parallella enkäter / Split-half
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fungerar bara då flera frågor mäter samma sak
+\end_layout
+
+\begin_layout Itemize
+Statistika: Spearman - Brown
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Intern konsistens
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fungerar bara då flera frågor mäter samma sak
+\end_layout
+
+\begin_layout Itemize
+Enklare (samma test till alla)
+\end_layout
+
+\begin_layout Itemize
+Statistika: Cronbachs 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
 \begin_layout BeginFrame
 Referenser
 \end_layout
