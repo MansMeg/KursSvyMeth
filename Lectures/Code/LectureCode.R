@@ -31,7 +31,7 @@ ySTRSRS <- function(nh, Nh, ybar, s2){
 # Data for examples in Lectures F3
 generatePopIncome <- function(mySeed=as.numeric(Sys.Date())){
   set.seed(mySeed) 
-  N <- 80000
+  N <- 815598
   y1 <- rexp(round(N*0.25), rate=1/5000)
   y2 <- rnorm(round(N*0.65), mean=29000,sd=7500)
   y3 <- rexp(round(N*0.10), rate=1/30000)
