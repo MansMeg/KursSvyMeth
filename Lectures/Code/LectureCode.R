@@ -55,7 +55,7 @@ plotnsizedata <- function(yPop, n, mySeed){
     sample_s[i] <- sd(SRSsample,na.rm=TRUE)
     sample_se[i] <- ySRS(N=N,n=n[i],ybar=sample_m[i],s2=sample_s[i]^2)$SE
   }
-  samplePlotData <- data.frame(mean=sample_m, s=sample_s ,SE=sample_se)
+  samplePlotData <- data.frame(n = n, mean = sample_m, s = sample_s ,SE = sample_se)
   return(list(popMean = m, popStd = s, samplePlotData = samplePlotData))
 }
 
