@@ -56,10 +56,43 @@ plotnsizedata <- function(yPop, n, mySeed){
     sample_se[i] <- ySRS(N=N,n=n[i],ybar=sample_m[i],s2=sample_s[i]^2)$SE
   }
   samplePlotData <- data.frame(n = n, mean = sample_m, s = sample_s ,SE = sample_se)
+  samplePlotData$kiLow <- samplePlotData$mean - 1.96 * samplePlotData$SE
+  samplePlotData$kiHigh <- samplePlotData$mean + 1.96 * samplePlotData$SE
   return(list(popMean = m, popStd = s, samplePlotData = samplePlotData))
 }
 
-
+# Create ggplots
+createSampleEstPlots<- function(plotData, plotParts){
+  ggplotsList <- list()  
+  for (i in seq_along(plotParts)){
+    sampleData <- plotData$samplePlotData
+    sampleData[round(nrow(sampleData)*plotParts[i]):nrow(sampleData),2:ncol(sampleData)] <- NA
+    ggplotsList[[length(ggplotsList)+1]] <- 
+      ggplot(data=sampleData, aes(x=n, y=mean)) + 
+      geom_line() + 
+      geom_hline(yintercept=plotEx$popMean, col="red") +
+      ylab(expression(bar(y))) +
+      ylim(min(plotData$samplePlotData[,"mean"]), max(plotData$samplePlotData[,"mean"]))
+    ggplotsList[[length(ggplotsList)+1]] <- 
+      ggplot(data=sampleData, aes(x=n, y=s)) + 
+      geom_line() + 
+      geom_hline(yintercept=plotEx$popStd, col="red") +
+      ylab(expression(s)) +
+      ylim(min(plotData$samplePlotData[,"s"]), max(plotData$samplePlotData[,"s"]))
+    ggplotsList[[length(ggplotsList)+1]] <- 
+      ggplot(data=sampleData, aes(x=n, y=SE)) + geom_line() +
+      ylim(min(plotData$samplePlotData[,"SE"]), max(plotData$samplePlotData[,"SE"]))    
+    ggplotsList[[length(ggplotsList)+1]] <- 
+      ggplot(sampleData, aes(x=n)) + 
+      geom_line(aes(y = mean)) +
+      geom_line(aes(y = kiLow), linetype="dashed") + 
+      geom_line(aes(y = kiHigh), linetype="dashed") + 
+      geom_hline(yintercept=plotEx$popMean, col="red") + 
+      ylab(expression(bar(y))) +
+      ylim(min(plotData$samplePlotData[,"SE"]), max(plotData$samplePlotData[,"SE"]))    
+  }
+  return(ggplotsList)
+}
 
 
 # Gastroenteritis example in F4
