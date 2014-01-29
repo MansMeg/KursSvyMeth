@@ -220,17 +220,6 @@ g eller om frågan har syftet att agera hjälpvariabel.
 lanen som bilaga.]
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "BiBTeXexempel"
-options "bibtotoc,plain"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Bilagor
 \end_layout
