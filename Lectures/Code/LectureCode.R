@@ -23,13 +23,45 @@ pSRS <- function(n, N, p){
 
 ySTRSRS <- function(nh, Nh, ybar, s2){
   results <- list(est = sum(ybar * Nh) / sum(Nh), 
-                  SE = sqrt((1 / sum(Nh)^2) * sum(Nh^2*(s2/nh)*(1-nh/Nh))))
+                  SE = sqrt((1 / sum(Nh)^2) * sum(Nh^2 * (s2/nh) * (1-nh/Nh))))
   return(results)
 }
 
 
-# Data for examples in Lectures
-# Gastroenteritis example F4
+# Data for examples in Lectures F3
+generatePopIncome <- function(mySeed=as.numeric(Sys.Date())){
+  set.seed(mySeed) 
+  N <- 80000
+  y1 <- rexp(round(N*0.25), rate=1/5000)
+  y2 <- rnorm(round(N*0.65), mean=29000,sd=7500)
+  y3 <- rexp(round(N*0.10), rate=1/30000)
+  y <- round(c(y1,y2,y3))
+  y <- y[sample(1:length(y),length(y))]
+  return(data.frame(income=y))
+}
+
+# Create data for ploting SE, ME
+plotnsizedata <- function(yPop, n, mySeed){
+  stopifnot(max(n) < length(yPop))
+  s <- sd(yPop)
+  m <- mean(yPop)
+  N <- length(yPop)
+  SRSsample <- as.numeric(rep(NA,max(n)))
+  sample_m <- sample_s <- sample_se <- as.numeric(rep(NA,length(n)))
+  for (i in seq_along(n)){
+    set.seed(mySeed)
+    SRSsample[1:n[i]] <- sample(x=yPop,size=n[i])
+    sample_m[i] <- mean(SRSsample,na.rm=TRUE)
+    sample_s[i] <- sd(SRSsample,na.rm=TRUE)
+    sample_se[i] <- ySRS(N=N,n=n[i],ybar=sample_m[i],s2=sample_s[i]^2)$SE
+  }
+  return(list(popMean=m,popStd=s, sampleMean=sample_m, sampleSE=sample_se, sampleStd=sample_s))
+}
+
+
+
+
+# Gastroenteritis example in F4
 generateGastro <- function(mySeed){
   set.seed(mySeed) 
   # Create example
@@ -61,6 +93,3 @@ generateGastro <- function(mySeed){
   return(gastro) 
 }
 gastro <- generateGastro(20130206)
-
-
-
