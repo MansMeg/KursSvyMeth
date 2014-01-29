@@ -1239,6 +1239,735 @@ key "lohr2009sampling"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Inkomst}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+incdata <- generatePopIncome(2021)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Vi har en befolkning som består av 
+\backslash
+Sexpr{nrow(incdata)} personer.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=3.5,warning=FALSE,message=FALSE,echo=F
+ALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(income, data=incdata, geom="histogram", binwidth=1000) +    
+\end_layout
+
+\begin_layout Plain Layout
+
+  xlab("Inkomst") +
+\end_layout
+
+\begin_layout Plain Layout
+
+  ylab("Antal i populationen") +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(incdata$income), col="red")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Den 'sanna' genomsnittsinkomsten ($
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}$) är 
+\backslash
+Sexpr{mean(incdata[["income"]])} och den 'sanna' standardavvikelsen ($S_{
+\backslash
+mathcal{U}}$) är 
+\backslash
+Sexpr{sd(incdata[["income"]])}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<handout:0>[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Estimation av $
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}$ och $S_{
+\backslash
+mathcal{U}}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- seq(50, 4000, 10) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plotParts <- seq(0.25,1,0.25)
+\end_layout
+
+\begin_layout Plain Layout
+
+plotEx <- plotnsizedata(yPop=incdata$income,n=n,mySeed=2010)  
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList <- createSampleEstPlots(plotData=plotEx, plotParts=plotParts)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[1]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[2]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<handout:0>[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Estimation av $
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}$ och $S_{
+\backslash
+mathcal{U}}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[5]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[6]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<handout:0>[containsverbatim] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Estimation av $
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}$ och $S_{
+\backslash
+mathcal{U}}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[9]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[10]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Estimation av $
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}}$ och $S_{
+\backslash
+mathcal{U}}$}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[13]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[14]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<handout:0> [containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Medelfelet av estimationen av $SE(
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}})$ och KI}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[3]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[4]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<handout:0>[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Medelfelet av estimationen av $SE(
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}})$ och KI}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[7]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[8]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<handout:0>[containsverbatim] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Medelfelet av estimationen av $SE(
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}})$ och KI}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[11]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[12]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Medelfelet av estimationen av $SE(
+\backslash
+bar{y}_{
+\backslash
+mathcal{U}})$ och KI}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', fig.height=2,warning=FALSE,message=FALSE,echo=FA
+LSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[15]]
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplotList[[16]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout BeginFrame
 Referenser
 \end_layout
