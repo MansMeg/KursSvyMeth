@@ -89,7 +89,7 @@ createSampleEstPlots<- function(plotData, plotParts){
       geom_line(aes(y = kiHigh), linetype="dashed") + 
       geom_hline(yintercept=plotEx$popMean, col="red") + 
       ylab(expression(bar(y))) +
-      ylim(min(plotData$samplePlotData[,"SE"]), max(plotData$samplePlotData[,"SE"]))    
+      ylim(min(plotData$samplePlotData[,"kiLow"]), max(plotData$samplePlotData[,"kiHigh"]))    
   }
   return(ggplotsList)
 }
