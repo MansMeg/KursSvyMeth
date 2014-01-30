@@ -903,6 +903,69 @@ key "lohr2009sampling"
 Exempel: Gastroenterit
 \end_layout
 
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Gastroenteritis_viruses.jpg
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Gastroenteritvirus: A = rotavirus, B = adenovirus, C = norovirus och D =
+ astrovirus.
+\end_layout
+
+\begin_layout Plain Layout
+Källa: 
+\begin_inset CommandInset citation
+LatexCommand citeauthor
+key "WikiGastro"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Gastroenterit
+\end_layout
+
 \begin_layout Itemize
 Vi är intresserade av att undersöka antalet fall av gastroenterit (magsjuka)
  i Sverige under 2011 i befolkningen 0-64 år.
@@ -2741,6 +2804,13 @@ key "lehtonen2004practical"
 
 \begin_layout BeginFrame
 Design effect för olika urvalsallokering
+\begin_inset CommandInset label
+LatexCommand label
+name "GastroUrvalsstorlek"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3162,7 +3232,7 @@ För
 
  i respektive strata se sida 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand pageref
 reference "Allokering-av-urval-exempel"
 
 \end_inset
@@ -3228,7 +3298,7 @@ Vikter vid estimation
  
 \begin_inset Formula 
 \[
-\hat{t}_{\mathcal{U}}=\sum_{i\in\mathcal{S}}w_{i}y_{i}=\sum_{i\in\mathcal{S}}\frac{y_{i}}{\pi_{i}}
+\hat{t}_{\mathcal{U}}=\hat{t}_{HT}=\sum_{i\in\mathcal{S}}w_{i}y_{i}=\sum_{i\in\mathcal{S}}\frac{y_{i}}{\pi_{i}}
 \]
 
 \end_inset
@@ -3250,6 +3320,14 @@ då
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Denna estimator kallas 
+\series bold
+Horwitz-Thompson
+\series default
+ estimatorn.
 \end_layout
 
 \begin_layout Pause
@@ -3276,7 +3354,7 @@ För ett stratifierat urval får vi samma formel för totalskattningen
 :
 \begin_inset Formula 
 \[
-\hat{t}_{\mathcal{U},str}=\sum_{j\in\mathcal{S}}w_{j}y_{j}
+\hat{t}_{\mathcal{U},str}=\hat{t}_{HT}=\sum_{j\in\mathcal{S}}w_{j}y_{j}
 \]
 
 \end_inset
@@ -3336,11 +3414,11 @@ vilket innebär att vi får samma vikter i alla strata.
 \end_layout
 
 \begin_layout Itemize
-Att 
+Då 
 \begin_inset Formula $w_{j}$
 \end_inset
 
- inte beror på strata innebär att urvalet är 
+ inte beror på strata kallas urvalet 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3349,6 +3427,37 @@ självvägt
 \end_inset
 
 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsvikter, Exempel
+\end_layout
+
+\begin_layout Itemize
+Utgå från Gatsroenteritexemplet på sida 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "Allokering-av-urval-exempel"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "GastroUrvalsstorlek"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Beräkna med Horwitz-Thompson estimatorn en totalskattning vid proportionellt
+ urval och vid Neymanurval.
 \end_layout
 
 \begin_layout EndFrame
