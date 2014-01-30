@@ -763,7 +763,7 @@ Designbaserat
  förväntat värde: 
 \begin_inset Formula 
 \[
-E(\hat{\bar{y}}_{\mathcal{U}})=\sum_{i=k}^{K}P(\mathcal{S}_{k})\hat{\bar{y}}_{\mathcal{U}}
+E(\hat{\bar{y}}_{\mathcal{U}})=\sum_{i=k}^{K}P(\mathcal{S}_{k})\hat{\bar{y}}_{\mathcal{U},k}
 \]
 
 \end_inset
@@ -779,7 +779,7 @@ Designbaserad
  varians
 \begin_inset Formula 
 \[
-Var(\hat{\bar{y}}_{\mathcal{U}})=\sum_{i=k}^{K}P(\mathcal{S}_{k})\left[\hat{\bar{y}}_{\mathcal{U}}-E(\hat{\bar{y}}_{\mathcal{U}})\right]^{2}
+Var(\hat{\bar{y}}_{\mathcal{U}})=\sum_{i=k}^{K}P(\mathcal{S}_{k})\left[\hat{\bar{y}}_{\mathcal{U},k}-E(\hat{\bar{y}}_{\mathcal{U}})\right]^{2}
 \]
 
 \end_inset
@@ -799,7 +799,7 @@ Teori II
 Vi är ofta intresserade av att minimera det totala felet:
 \begin_inset Formula 
 \[
-MSE(\hat{\bar{y}}_{\mathcal{U}})=E\left[(\hat{\bar{y}}_{\mathcal{U}}-\bar{y}_{\mathcal{U}})^{2}\right]=\sum_{k=1}^{K}P(\mathcal{S}_{k})\cdot(\hat{\bar{y}}_{\mathcal{U}}-\bar{y}_{\mathcal{U}})^{2}
+MSE(\hat{\bar{y}}_{\mathcal{U}})=E\left[(\hat{\bar{y}}_{\mathcal{U},k}-\bar{y}_{\mathcal{U}})^{2}\right]=\sum_{k=1}^{K}P(\mathcal{S}_{k})\cdot(\hat{\bar{y}}_{\mathcal{U},k}-\bar{y}_{\mathcal{U}})^{2}
 \]
 
 \end_inset
