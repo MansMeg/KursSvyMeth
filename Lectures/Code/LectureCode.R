@@ -28,6 +28,14 @@ ySTRSRS <- function(nh, Nh, ybar, s2){
   return(results)
 }
 
+tSTRSRS <- function(nh, Nh, ybar, s2){
+  ybarest <- ySTRSRS(nh = nh, Nh = Nh, ybar = ybar, s2 = s2)
+  results <- list(est = sum(Nh) * ybarest$est,
+                  SE = sum(Nh) * ybarest$SE,
+                  wh = ybarest$wh)
+  return(results)
+}
+
 
 # Data for examples in Lectures F3
 generatePopIncome <- function(mySeed=as.numeric(Sys.Date())){
