@@ -283,7 +283,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, results='asis'>>=
+<<echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
