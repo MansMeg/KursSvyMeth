@@ -1,0 +1,1327 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Surveymetodik}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Surveymetodik}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 4
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Date
+VT 2014
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Intro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5, scipen=5)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Förberedelser
+\end_layout
+
+\begin_layout Subsection
+Läsa in 
+\family typewriter
+survey
+\family default
+ paketet
+\end_layout
+
+\begin_layout Itemize
+Börja med att läsa in 
+\family typewriter
+survey
+\family default
+-paketet
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Lumley2010csa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(survey)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om det inte går att läsa in paketet (ex.
+ du har en egen dator) behöver du installera paketet först.
+ Det kräver internetanslutning och då använder du följande kod.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("survey")
+\end_layout
+
+\begin_layout Plain Layout
+
+https://www.skatteverket.se/download/18.353fa3f313ec5f91b951151/1370005553373/Skv_m
+edborgarunders_2012.sav
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ladda ned och läs in 
+\family typewriter
+agpop.dat
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+Ladda ned filen (se instruktionen).
+ Identifiera den mapp där du har sparat filen 
+\family typewriter
+agpop.dat
+\family default
+.
+ Använd funktionen 
+\family typewriter
+setwd()
+\family default
+ för att ställa in den korrekta sökvägen .
+ 
+\end_layout
+
+\begin_layout Itemize
+Läs in 
+\family typewriter
+agpop.dat
+\family default
+ i R, vilket kan göras med följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-read.table("agpop.dat",header=TRUE,sep=",")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpoptemp <- tempfile(pattern="agpop",fileext=".dat") 
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
+op.dat",                destfile = agpoptemp, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-read.table(agpoptemp,header=TRUE,sep=",") 
+\end_layout
+
+\begin_layout Plain Layout
+
+unlink(agpoptemp) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Glöm inte bort att ta bort bortfallet för variablerna ACRES92 och ACRES87
+ i 
+\family typewriter
+agpop
+\family default
+.
+ För att ta bort saknade värden kan följande kod användas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-agpop[agpop$ACRES92>0 & agpop$ACRES87>0,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Obundet slumpmässigt urval
+\end_layout
+
+\begin_layout Paragraph
+a) 
+\end_layout
+
+\begin_layout Standard
+Vi ska börja med att använda oss av R för att dra ett OSU från populationen
+ 
+\family typewriter
+agpop
+\family default
+ som vi läst in.
+ För detta använder vi funktionen 
+\family typewriter
+sample()
+\family default
+ (det finns mer avancerade metoder för att dra urval i R-paketet 
+\family typewriter
+sampling
+\family default
+).
+ Med hjälp av denna funktion kan vi dra ett slumpmässigt urval, antingen
+ med eller utan återläggning (vi kommer bara dra utan återläggning i denna
+ laboration).
+ Detta görs genom att först dra ett antal index som vi sedan använder för
+ att välja ut våra urvalsenheter från populationen.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+OSUindex<-sample(size=300,1:3042,replace=FALSE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+agOSUdata<-agpop[OSUindex,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En av de stora skillnaderna (och fördelarna) med R jämfört med andra statistikpr
+ogram är att R är objektorienterat.
+ Vi kommer därför att använda vårt urval för att skapa ett surveyobjekt.
+ Detta objekt innehåller sedan all information som R behöver för att genomföra
+ de populationsskattningar vi är intresserade av.
+ 
+\end_layout
+
+\begin_layout Standard
+För att skapa ett surveyobjekt behöver vi dels en 
+\family typewriter
+data.frame
+\family default
+ (vårt urval) och information om populationsstorleken (för att beakta ändlighets
+korrektionen i variansberäkningarna).
+ Det som krävs är en vektor med populationstotalen för respektive urvalsenhet.
+ Det kan tyckas konstigt att ändlighetskorrektionen anges på detta sätt,
+ men när vi sedan studerar stratifierade urval blir det (förhoppningsvis)
+ tydligare.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.srs<-rep(3042,300)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Med denna vektor med 
+\begin_inset Formula $N$
+\end_inset
+
+ kan vi nu skapa vårt första surveyobjekt.
+ För detta använder vi funktionen 
+\family typewriter
+svydesign()
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agOSU<-svydesign(ids=~1, data=agOSUdata, fpc=fpc.srs)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det argument som funktionen behöver är 
+\family typewriter
+ids
+\family default
+ (som indikerar kluster och eftersom vi inte har kluster i denna design
+ anges bara 
+\family typewriter
+~1
+\family default
+), sedan anges vår urvalsfil under 
+\family typewriter
+data
+\family default
+ och sist anges vektorn med populationsstorleken per urvalselement för i
+ argumentet 
+\family typewriter
+fpc
+\family default
+ (finite population correction).
+\end_layout
+
+\begin_layout Standard
+Vi kan nu använda oss av funktionen 
+\family typewriter
+summary()
+\family default
+ för att få mer information om vårt surveyobjekt.
+ Vilken information får du om surveyobjektet 
+\family typewriter
+agOSU
+\family default
+? Är det någon information du saknar?
+\end_layout
+
+\begin_layout Paragraph
+b) 
+\end_layout
+
+\begin_layout Standard
+Med hjälp av surveyobjektet är det (relativt) enkelt att skatta populationsmedel
+värdet och populationstotalen.
+ Detta görs med funktionerna 
+\family typewriter
+svymean()
+\family default
+ och 
+\family typewriter
+svytotal()
+\family default
+.
+ För att välja ut vilka variabler i surveyobjektet som ska användas för
+ skattningar används tecknet 
+\family typewriter
+~
+\family default
+.
+ Utöver vilken variabel som är intressant behöver vi också ange vårt surveyobjek
+t som vi vill använda för skattningen av 
+\family typewriter
+ACRES92
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svymean(~ACRES92, design=agOSU) 
+\end_layout
+
+\begin_layout Plain Layout
+
+svytotal(~ACRES92, design=agOSU)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Som du kanske märkt beräknar inte funktionen automatiskt ett konfidensintervall
+ utan bara estimatet med tillhörande medelfel.
+ För att beräkna konfidensintervall används funktionen 
+\family typewriter
+confint()
+\family default
+ och funktionen ska användas på ett 
+\family typewriter
+svystat
+\family default
+-objekt (som exempelvis skapas av 
+\family typewriter
+svymean()
+\family default
+ och 
+\family typewriter
+svytotal()
+\family default
+.
+ Det gör att vi behöver spara ned vår skattning innan vi beräknar konfidensinter
+vallet.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+medel<-svymean(~ACRES92, design=agOSU) 
+\end_layout
+
+\begin_layout Plain Layout
+
+confint(medel)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad får du för konfidensintervall? Täcker intervallet det sanna värdet i
+ populationen du dragit ditt urval från? 
+\end_layout
+
+\begin_layout Subsection
+Estimation i redovisningsgrupper
+\end_layout
+
+\begin_layout Standard
+Funktionerna 
+\family typewriter
+svymean()
+\family default
+ och 
+\family typewriter
+svytotal()
+\family default
+ skattar två vanliga estimat av intresse.
+ Ofta finns också ett intresse av att skatta dessa storheter i olika 
+\series bold
+redovisningsgrupper
+\series default
+.
+ Detta görs med funktionen 
+\family typewriter
+svyby()
+\family default
+ och för att använda denna funktion behöver du dels ange vilken variabel
+ du är intresserad av att skatta i respektive redovisningsgrupp och sedan
+ vilken variabel som indikerar redovisningsgrupperna (med argumentet 
+\family typewriter
+by
+\family default
+), vi behöver också ange vilken skattning vi vill göra (med argumentet 
+\family typewriter
+FUN
+\family default
+) och vilket surveyobjekt vi vill använda (med argumentet 
+\family typewriter
+design
+\family default
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Vi ska nu skatta medelvärdet (med 
+\family typewriter
+svymean()
+\family default
+) för variabeln 
+\family typewriter
+ACRES92
+\family default
+ i respektive region.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyby(~ACRES92, by=~REGION, design=agOSU, FUN=svymean)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Är det någon skillnad mellan de olika regionerna när det gäller ytan som
+ används för jordbruk? Vilken region har störst yta för jordbruk? Varför?
+\end_layout
+
+\begin_layout Paragraph*
+d) 
+\end_layout
+
+\begin_layout Standard
+Vi kan också vara intresserade av vilken designeffekt vi har för en enskild
+ skattning.
+ För att beräkna designeffekten lägger vi bara till argumentet 
+\family typewriter
+deff
+\family default
+ i den estimator vi vill använda.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svymean(~ACRES92, design=agOSU, deff=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad får du för design effect? Varför får du detta resultat?
+\end_layout
+
+\begin_layout Subsection
+Kvotestimation
+\end_layout
+
+\begin_layout Standard
+Vi vet sedan tidigare att det går att använda hjälpinformation för att öka
+ precisionen i våra skattningar.
+ Med hjälp av kvotestimation kan vi ta hjälp av en hjälpvariabel för att
+ skatta variabeln 
+\family typewriter
+ACRES92
+\family default
+ med bättre precision.
+ Vi gör detta i R i två steg (precis som om vi skulle göra beräkningen för
+ hand).
+ Som ett första steg först skattar vi kvoten med funktionen 
+\family typewriter
+svyratio()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+För att använda kvotskattningen tillsammans med vår kända populationstotal
+ använder vi sedan funktionen 
+\family typewriter
+predict()
+\family default
+.
+ Denna funktion använder vår kvotskattning tillsammans med en total vi känner
+ för hela populationen.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ratio.ACRES92 <- svyratio(numerator=~ACRES92,denominator=~ACRES87,design=agOSU)
+\end_layout
+
+\begin_layout Plain Layout
+
+predict(object=ratio.ACRES92,total=sum(agpop$ACRES87))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad får du för resultat om du använder en kvotskattning och varför får du
+ detta resultat? Hur mycket tjänar vi på att använda en kvotskattning i
+ detta exempel? Hur skulle du göra om du skulle vilja skatta medelvärdet
+ med hjälp av kvotestimatorn?
+\end_layout
+
+\begin_layout Section
+Stratifierat urval
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Att dra ett stratifierat urval i R är inte mycket mer komplicerat än att
+ dra ett urval med OSU.
+ För att dra ett stratifierat urval använder vi funktionen 
+\family typewriter
+stratsample()
+\family default
+ i 
+\family typewriter
+survey
+\family default
+paketet.
+ Denna funktion skapar på liknande sätt som 
+\family typewriter
+sample()
+\family default
+ en vektor av index som sedan kan användas för att välja ut urvalsenheterna
+ från populationen 
+\family typewriter
+agpop
+\family default
+.
+ Dock kräver denna funktion att en stratifieringsvariabel anges och att
+ urvalsstorleken anges för respektive strata.
+ 
+\end_layout
+
+\begin_layout Standard
+Vi utgår från tidigare datorlaborationer och använder oss av Neymanallokering
+ för att allokera urvalet mellan strata.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+STRATAindex <- stratsample(agpop$REGION, c("NC"=69,"NE"=7,"S"=122,"W"=102))
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRATAdata <- agpop[STRATAindex,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Precis som i fallet med OSU behöver vi skapa en vektor med populationsstorleken
+ (
+\family typewriter
+fpc
+\family default
+) för att möjliggöra ändlighetskorrektion av varianserna.
+ Nu avser 
+\family typewriter
+fpc
+\family default
+ istället populationstotalerna för respektive strata.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata<-numeric(300) 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NC"] <- 1049 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NE"] <- 209 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="S"] <- 1370 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="W"] <- 414
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nu har vi den information som behövs för att kunna skapa ett surveyobjekt
+ baserat på ett stratifierat urval.
+ Att skapa ett surveyobjekt för ett stratifierat urval kräver utöver de
+ argument som behövdes i OSU-fallet även att argumentet 
+\family typewriter
+strata
+\family default
+ anges där variabel som använts för stratifiering anges.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRAT<-svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Använd funktionen 
+\family typewriter
+summary()
+\family default
+ för att få information om det stratifierade surveyobjektet.
+ Vilka skillnader finns mot surveyobjektet då designen var OSU? Är det någon
+ information du saknar?
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+I den tidigare uppgiften där vi hade ett fall med vanligt OSU är vikterna
+ av mindre intresse (eftersom alla vikter 
+\begin_inset Formula $w_{i}=\frac{N}{n}$
+\end_inset
+
+).
+ Nu har inte längre samtliga element samma designvikt.
+ I flera fall kan det vara så att vi ska leverera ett dataset med tillhörande
+ vikter.
+ Vi kan då behöva plocka ut vikterna från ett surveyobjekt.
+ Detta gör vi med funktionen 
+\family typewriter
+weights()
+\family default
+.
+ Vi behöver dock ange vilken typ av vikter vi är intresserade av.
+ Just nu är vi bara intresserade av att plocka ut designvikterna och då
+ anger vi argumentet 
+\family typewriter
+type = 
+\begin_inset Quotes eld
+\end_inset
+
+sampling
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ i funktionen 
+\family typewriter
+weights()
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+weights(agSTRAT, "sampling")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hur stor är den största vikten och hur stor är den minsta vikten som du
+ har plockat ut ur det stratifierade surveyobjektet?
+\end_layout
+
+\begin_layout Paragraph*
+c)
+\end_layout
+
+\begin_layout Standard
+Använd funktionerna 
+\family typewriter
+svymean()
+\family default
+, 
+\family typewriter
+svytotal()
+\family default
+ och 
+\family typewriter
+svyby()
+\family default
+ för att besvara följande frågor.
+ Vilka är de stora skillnaderna jämfört med OSU? Vad får du för designeffekt?
+ Pröva att skapa ett surveyobjekt bara för en region (ex.
+ 
+\family typewriter
+NC
+\family default
+) och skatta totalen för detta strata som att det vore en egen undersökning.
+ Jämför med resultatet från 
+\family typewriter
+svyby()
+\family default
+ där du försöker skatta samma region som en redovisningsgrupp, får du samma
+ resultat?
+\end_layout
+
+\begin_layout Paragraph*
+d)
+\end_layout
+
+\begin_layout Standard
+Pröva att kategorisera variabeln 
+\family typewriter
+ACRES87
+\family default
+ i klasserna 0-100 000, 100 000-400 000 och 400 000 +.
+ För detta kan funktionen 
+\family typewriter
+cut()
+\family default
+ användas med fördel.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop$myStrata <- cut(agpop$ACRES87,c(0,100000,400000, Inf), include.lowest=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gör (med R eller för hand) en Neymanallokering av urvalet till de tre strata
+ (se 
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "lohr2009sampling"
+
+\end_inset
+
+).
+ Dra ett stratifierat urval från 
+\family typewriter
+agpop
+\family default
+ men stratifierat efter denna nya kategorivariabel istället och gör en ny
+ totalskattning av 
+\family typewriter
+ACRES92
+\family default
+.
+ Vad får du för resultat, vad får du för design effect? Blir det bättre
+ eller sämre än att använda 
+\family typewriter
+REGION
+\family default
+ som stratifieringsvariabel? Varför? Finns det några sätt som man skulle
+ kunna förbättra stratifieringen i övrigt? 
+\begin_inset Newline newline
+\end_inset
+
+[
+\series bold
+Tips! 
+\series default
+för att beräkna standardavvikelsen i respektive strata kan 
+\family typewriter
+aggregate()
+\family default
+ användas]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurveyLabs"
+options "bibtotoc,elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1325 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Surveymetodik}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Surveymetodik}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 5
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Date
+VT 2014
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Intro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Förberedelser
+\end_layout
+
+\begin_layout Subsection
+Läsa in 
+\family typewriter
+survey
+\family default
+ paketet
+\end_layout
+
+\begin_layout Itemize
+Börja med att läsa in 
+\family typewriter
+survey
+\family default
+-paketet
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Lumley2010csa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(survey)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om det inte går att läsa in paketet (ex.
+ du har en egen dator) behöver du installera paketet först.
+ Det kräver internetanslutning och då använder du följande kod.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("survey")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ladda ned och läs in Survey 2010
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ladda-ned-och"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+I denna laboration ska vi börja analysera riktiga surveydata (med alla problem
+ det innebär).
+ Vi har fått tillgång till det datamaterial som ligger till grund för boken
+ 
+\shape italic
+Den svenska väljaren
+\shape default
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "2011dsv"
+
+\end_inset
+
+.
+ Ett mindre urval av variablerna i studien har sparats som en R-fil.
+ Ladda ned filen från kurshemsidan och läs in den i R med följande funktion
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+load("svy2010.Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010temp <- tempfile(pattern="svy2010",fileext=".Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
+2010.Rdata", destfile = svy2010temp, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+load(file=svy2010temp) 
+\end_layout
+
+\begin_layout Plain Layout
+
+unlink(svy2010temp)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Du ska nu ha läst in en fil med 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+nrow(svy2010)
+\end_layout
+
+\end_inset
+
+ observationer och 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+ncol(svy2010)
+\end_layout
+
+\end_inset
+
+ variabler.
+ Infomation om respektive variabler finns i dokumentet KodbokSurvey2010.pdf
+ som finns på samma ställe som datamaterialet, dock finns inte alla variabler
+ med i datasetet.
+\end_layout
+
+\begin_layout Section
+Bortfallsstudie med simulerade data
+\end_layout
+
+\begin_layout Subsection
+Simulera population
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Standard
+Vi ska nu visa hur det är möjligt att använda R för att bortfallskompensera
+ för flera kategoriska variabler.
+ Vi kommer inledningsvis att simulera en population (som bygger på befolkningsda
+ta från Linköping).
+ Kör följande kod för att generera en population som liknar Linköping.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sex <- sample(c("Man","Kvinna"), size=98462, replace=TRUE, prob=c(51144,47318)/9
+8462)
+\end_layout
+
+\begin_layout Plain Layout
+
+age <- sample(c("15-24", "25-34", "35-44", "45-54", "55-64"), size=98462,
+ replace=TRUE,  prob = c(23728, 21706, 19051, 18213, 15764)/98462)
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop<-data.frame(sex = sex, age = age) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi har nu får population och baserat på denna skapar vi variabeln 
+\family typewriter
+assault
+\family default
+ genom simulering för att efterlikna den utsatthet för brott som beskrivs
+ i Nationella trygghetsundersökningen (
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "NTU2011"
+
+\end_inset
+
+).
+ Från denna undersökning vet vi att sannolikheten för att utsättas för misshande
+l är störst i de yngre åldrarna.
+ Vi simulerar utsatthet för misshandel på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$pAssault<-0.001 
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$pAssault[simPop$age == "15-24"] <- 0.05 
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$pAssault[simPop$age == "25-34"] <- 0.02
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$pAssault[simPop$age == "35-44"] <- 0.005
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$pAssault<-simPop$pAssault + 1.5 * simPop$pAssault * as.numeric(simPop$sex==
+"Man")
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$assault <- rbinom(n = length(sex), size = 1, prob = simPop$pAssault)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi ska också simulera en variabel som inte alls har med utsatthet för brott
+ (eller bortfall) att göra.
+ Skapa variabeln stjärntecken i populationen på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$astroSign <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+sample(c("Skorpion", "Skytt", "Tvilling", "Stenbock", "Jungfru", "Lejon",
+ "Oxe"), size = length(sex), replace=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi har nu en simulerad population som vi kan pröva att dra urval från.
+\end_layout
+
+\begin_layout Standard
+Hur många har vart utsatt för brott i din population (vad är det sanna värdet
+ vi försöker uppskatta), totalt och i de olika åldersgrupperna? Hur stor
+ är andelen som varit utsatta för misshandel?
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Standard
+Vi ska nu introducera en bortfallsmodell för vår population, d.v.s.
+ sannolikheten för att en person skulle delta i studien eller inte.
+ Vi gör detta genom att introducera denna som en sannolikhet som vi sedan
+ kan använda för att simulera bortfall i studien.
+ Vi vet sedan tidigare att kön och åldersgrupp spelar roll så vi skapar
+ en bortfallsmodell baserat på dessa variabler.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$response <- 0.95
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$response[simPop$age.class == "15-24"] <- 0.35
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$response[simPop$age.class == "25-34"] <- 0.5
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$response[simPop$age.class == "35-44"] <- 0.65
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$response[simPop$age.class == "45-54"] <- 0.85
+\end_layout
+
+\begin_layout Plain Layout
+
+simPop$response <- (simPop$response - 0.15) * as.numeric(simPop$sex == "Man")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad har vi för antagande i vår bortfallsmodell, MCAR, MAR eller NMAR? Beskriv
+ respektive antagande och varför/varför inte det är tillämpligt.
+\end_layout
+
+\begin_layout Subsection
+Urval och bortfallsanalys
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Urval-och-bortfallsanalys"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+a) 
+\end_layout
+
+\begin_layout Standard
+Dra ett OSU av storlek 
+\begin_inset Formula $n=4000$
+\end_inset
+
+ från din population, skapa ett surveyobjekt och skatta totalen och proportionen
+ i befolkningen med tillhörande konfidensintervall.
+ Estimera även i de olika åldersgrupperna.
+ Se föregående laboration för detaljer.
+ Ignorera svarssannolikheten just nu (d.v.s.
+ utgå från att alla svarar).
+ Vad får du för resultat, täcker konfidensintervallen de sanna värdena?
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Standard
+Vi ska nu simulera bortfall i din studie.
+ Skapa en variabel du kallar 
+\family typewriter
+respInd
+\family default
+ som antar värdet 
+\family typewriter
+1
+\family default
+ om personen svarar/deltar och 
+\family typewriter
+0
+\family default
+ om personen inte deltar i studien.
+ Det kan exempelvis göras på följande sätt (där 
+\family typewriter
+mittUrval
+\family default
+ är det dataset jag skapat genom att dra ett urval från 
+\family typewriter
+simPop
+\family default
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mittUrval$respInd <- rbinom(length(mittUrval$response), 1, simPop$response)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi har nu skapat en variabel (
+\family typewriter
+respInd
+\family default
+) som indikerar om personen deltar eller inte.
+ Använd nu bara de svarande för att skapa ett surveyobjekt och skatta totalen
+ och proportionen utsata för misshandel i populationen.
+ För att välja ut de svarande kan du göra på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mittUrvalSvarande <- mittUrval[mittUrval$respInd == 1, ]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad händer? Vilken effekt har bortfallet på dina skattningar? Täcker konfidensin
+tervallet det sanna värdet? Hur är det om du skattar befolkningstotalen
+ i respektive åldersgrupp? 
+\end_layout
+
+\begin_layout Paragraph*
+c) 
+\end_layout
+
+\begin_layout Standard
+Vi ska nu göra en bortfallsanalys.
+ Det finns två situationer antingen får vi bara datat för de som deltagit
+ i undersökningen, eller så har vi data för de som ingått i urvalet.
+ Detta ger två olika situationer för hur bortfallsanalysen kan genomföras.
+ I detta exempel utgår vi från att vi känner till alla som deltog i studien
+ (i del 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sec:Riktig studie"
+
+\end_inset
+
+ kommer vi pröva att göra en bortfallsanalys i den andra situationen).
+\end_layout
+
+\begin_layout Standard
+Utgå från att du känner till variablerna 
+\family typewriter
+sex
+\family default
+ och 
+\family typewriter
+age
+\family default
+ för både de som svarat och de som inte svarat (vi kan bara analysera bortfallet
+ efter de variabler vi har data både i undersökningen och på målpopulatiosnnivå).
+ Anpassa en logistisk regressionsmodell med respInd som beroende variabel
+ och sex och age som förklarande variabler.
+ Detta kan göras på följande sätt i R:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+bortfallsAnalys <- glm(respInd ~ age + sex + astroSign, family = binomial(logit)
+, data = mittUrval)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(bortfallsanalys)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad drar du för slutsatser från denna bortfallsanalys.
+ Vilka variabler kan förklara bortfallet / svarande? Stämmer det med den
+ bortfallsmodell vi konstruerat ovan?
+\end_layout
+
+\begin_layout Subsection
+Kalibrera för bortfallet
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Kalibrera-för-bortfallet"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Standard
+Vi ska nu kalibrera det surveyobjekt du skapade i uppgift 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Urval-och-bortfallsanalys"
+
+\end_inset
+
+.
+ Detta är lite klurigt att få till första gången och det kan framstå som
+ lite underligt hur det görs.
+ Dra dig till minnes att kalibrering egentligen är en form av regressionsskattni
+ng där vi känner till totalerna i befolkningen och kalibrerar efter dessa.
+ Ett första steg vi behöver ta är därför att räkna ut totaler på ett sätt
+ som R 
+\begin_inset Quotes eld
+\end_inset
+
+förstår
+\begin_inset Quotes erd
+\end_inset
+
+ ur ett 
+\begin_inset Quotes eld
+\end_inset
+
+regressionsperspektiv
+\begin_inset Quotes erd
+\end_inset
+
+.
+ R behöver göra om kategorivariablerna till dummyvariabler (precis som vid
+ vanlig regression) och sedan få information om totalerna för dessa dummyvariabl
+er.
+ 
+\end_layout
+
+\begin_layout Standard
+Pröva dig igenom koden nedan och försök förstå exakt vad för totaler som
+ skapas i vektorn 
+\family typewriter
+popVector
+\family default
+.
+ Observera att för att kalibrera är det viktigt att elementnamnen på 
+\family typewriter
+popVector
+\family default
+ är samma namn som namnet för 
+\family typewriter
+modMat
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Om exempelvis bara en eller två kategorier av 
+\family typewriter
+age
+\family default
+ var signifikanta ovan.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+modMat <- model.matrix(~ as.factor(age) + as.factor(sex), mySim) 
+\end_layout
+
+\begin_layout Plain Layout
+
+popVector<-colSums(modMat) 
+\end_layout
+
+\begin_layout Plain Layout
+
+popVector 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad får du för resultat i 
+\family typewriter
+popVector
+\family default
+? Vad innebär detta resultat?
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Nu är vi klara för att kalibrera det surveyobjekt vi skapade i uppgift 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Urval-och-bortfallsanalys"
+
+\end_inset
+
+.
+ För att kalibera använder vi funktionen 
+\family typewriter
+calibrate()
+\family default
+ och de argument som krävs är det surveydesignobjekt som ska kalibreras,
+ den regressionformel som ska användas (men utan beroende variabel) och
+ vektorn med populationsvärden, 
+\family typewriter
+population
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Observera att du måste använda exakt samma formel i 
+\family typewriter
+calibrate()
+\family default
+ som användes i 
+\family typewriter
+model.matrix()
+\family default
+ ovan.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+calMittUrvalSvarande <- calibrate(mittUrvalSvarande,  formula = ~as.factor(age)
+ + as.factor(sex), population = popVector)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nu är surveyobjektet kalibrerat (och sparat som 
+\family typewriter
+calMittUrvalSvarande
+\family default
+) och vi kan producera skattningar av baserat på detta objekt med samma
+ funktioner som tifigare (ex.
+ 
+\family typewriter
+svymean()
+\family default
+ och 
+\family typewriter
+svytotal()
+\family default
+).
+ Skatta antalet och andelen utsatta för misshandel med tillhörande konfidensinte
+rvall med det kalibrerade surveyobjektet.
+ 
+\end_layout
+
+\begin_layout Standard
+Vad får du för resultat? Pröva att skatta andelen i de olika åldersgrupperna
+ 
+\end_layout
+
+\begin_layout Paragraph*
+c)
+\end_layout
+
+\begin_layout Standard
+Pröva nu att inkludera även 
+\family typewriter
+astroSign
+\family default
+ i din kalibreringsmodell variabel (som uppenbart är fel).
+ Pröva att estimera det totala antalet och andelen utsatta för misshandel.
+ Vad får det för effekt att inkludera en felaktig variabel?
+\end_layout
+
+\begin_layout Paragraph
+d)
+\end_layout
+
+\begin_layout Standard
+Pröva att inte inkludera någon variabel i din modell (d.v.s.
+ bara intercepten) och estimera sedan totalen i för den simulerade population.
+ Vad innebär detta? Vilket antagande om bortfallet innebär detta, MCAR,
+ MAR eller NMAR?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Riktig studie"
+
+\end_inset
+
+Bortfall i undersökningen 
+\shape italic
+Den svenska väljaren 2010
+\end_layout
+
+\begin_layout Standard
+Vi ska nu pröva att göra en bortfallsanalys på ett riktigt dataset.
+ Vi ska nu undersöka det material som ligger till grund för analyserna i
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "2011dsv"
+
+\end_inset
+
+.
+ Vi har redan laddat ned och läst in datamaterialet i R i del 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Ladda-ned-och"
+
+\end_inset
+
+.
+ Vi ska nu göra en bortfallsanalys på detta material, kalibrera och gör
+ en enkel analys.
+ Undersökningen har gjorts genom ett obundet slumpmässigt urval (OSU) från
+ befolkningen i Sverige ??-?? år.
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Börja med att undersök vilka variabler du tycker verkar intressanta och
+ du vill analysera i materialet.
+ Exempelvis en eller flera delar av Fråga 28 som handlar om befolkningens
+ attityder i olika politiska frågor kan du analysera.
+\end_layout
+
+\begin_layout Subsection
+Bortfallsanalys
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Som ett första steg ska vi genomföra en bortfallsanalys på det insamlade
+ datamaterialet.
+ Inte allt för sällan finns bara data för de individer vi samlat in att
+ tillgå, utan data från alla som ingick i urvalet (till skillnad mot uppgift
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Urval-och-bortfallsanalys"
+
+\end_inset
+
+ ovan).
+ Då är det inte möjligt att analysera bortfallet med en logistisk regression.
+\end_layout
+
+\begin_layout Standard
+Som ett alternativ till logisktisk regression kan vi genomföra skattningar
+ och jämföra vilka variabler som avviker från de 
+\begin_inset Quotes eld
+\end_inset
+
+sanna
+\begin_inset Quotes erd
+\end_inset
+
+ värdena i populationen.
+ 
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+För att ta reda på de sanna värdena i populationen använder vi data från
+ Statistiska centralbyrån.
+ Det finns ett paket för att få tillgång till data från Statistiska centralbyrån
+ direkt från R i paketet 
+\family typewriter
+sweSCB
+\family default
+.
+ På följande sätt gör du för att komma åt data från SCB (precis som innan
+ behöver du installera 
+\family typewriter
+sweSCB
+\family default
+ om det inte är installerat):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(sweSCB)
+\end_layout
+
+\begin_layout Plain Layout
+
+findData()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+c)
+\end_layout
+
+\begin_layout Standard
+Ta reda på hur stor den aktuella populationen var år 2010 och skapa ett
+ surveyobjekt med denna data.
+\end_layout
+
+\begin_layout Paragraph
+d)
+\begin_inset CommandInset label
+LatexCommand label
+name "par:d)"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Använd surveyobjektet för att skatta värdena på följande variabler.
+ Samtliga dessa variabler finns sanna variabler vid SCB som du kan hämta
+ med paketet 
+\family typewriter
+sweSCB
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Partival
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Kön
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Ålder9
+\family default
+ : Åldersklasser
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+romr
+\family default
+: Riksområde, se kodbeskrivningen för detaljer
+\end_layout
+
+\begin_layout Standard
+Det finns fler variabler du kan använda i din bortfallsanalys om du har
+ lust.
+ 
+\end_layout
+
+\begin_layout Standard
+Vad får du för resultat? Innebär bortfallet någon effekt på någon av dessa
+ variabler? Vad kan bortfallet bero på? Vilka variabler bör du inkludera,
+ vilka variabler tror du inte är aktuella? Sammanställ dina resultat till
+ en bortfallsanalys.
+\end_layout
+
+\begin_layout Subsection
+Kalibrera materialet
+\end_layout
+
+\begin_layout Standard
+Du har nu gjort din bortfallsanalys och nästa steg är att kalibrera ditt
+ material efter de sanna värdena i populationen efter de variabler du har
+ identifierat i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:d)"
+
+\end_inset
+
+ ovan.
+\end_layout
+
+\begin_layout Standard
+Skapa ett kalibrera ditt surveyobjekt på samma sätt som i avsnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Kalibrera-för-bortfallet"
+
+\end_inset
+
+.
+ Använd sedan detta kalibrerade surveyobjekt för att skatta de variabler
+ du identifierat som intressanta i början av uppgiften.
+ 
+\end_layout
+
+\begin_layout Standard
+Har skattningarna påverkats av att du kalibrerat ditt data? Varför / varför
+ inte? Gör en mindre analys av de utvalda variablerna och resonera kring
+ resultatet och hur bortfallet kan ha påverkat analysen du gör.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Nu är du klar! 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurveyLabs"
+options "bibtotoc,elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

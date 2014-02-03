@@ -1,0 +1,249 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Instruktioner
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Allmänt
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Vid tidigare laborationer har vi använt SAS för att dra urval, studier av
+ teoretiska egenskaper hos estimatorer och allokera urval.
+ Nu ska vi fokusera på att med R göra analyser, bortfallhantering och estimation
+ då vi fått in data från en surveyundersökning.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Datamaterial
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Vilket datamaterial som ska användas framgår av respektive uppgift.
+ Allt datamaterial finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/MansMeg/KursSvyMeth/tree/master/Labs/DataFiles"
+
+\end_inset
+
+
+\series default
+\color inherit
+ om inte annat anges.
+ För att ladda ned datan, klicka på den datafil du vill ladda ned och klicka
+ sedan på 
+\begin_inset Quotes eld
+\end_inset
+
+Raw
+\begin_inset Quotes erd
+\end_inset
+
+ med högra musknappen och klicka 
+\begin_inset Quotes eld
+\end_inset
+
+Spara länk som...
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hjälpmaterial
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Behöver ni hjälp med att använda R-paketet survey finns, utöver dokumentationen,
+ extra material här.
+ Det finns också en bok 
+\shape italic
+Complex surveys : a guide to analysis using R 
+\shape default
+som behandlar analyser med surveypaketet i R.
+ 
+\end_layout
+
+\begin_layout Itemize
+Det är tillåtet att diskutera med andra men att plagiera andra grupper är
+ 
+\series bold
+inte tillåtet
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Utgå från mallen för laborationsrapporter som går att ladda ned som 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX"
+target "https://github.com/MansMeg/KursSvyMeth/raw/master/Documents/LyXexempel.lyx"
+
+\end_inset
+
+ 
+\series default
+\color inherit
+eller
+\series bold
+\color blue
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "PDF"
+target "https://github.com/MansMeg/KursSvyMeth/raw/master/Documents/LyXexempel.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Samtliga labbrapporter ska lämnas in 
+\series bold
+i PDF-format via LISAM
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Godkänd laboration ger 
+\series bold
+0.5 p
+\series default
+ på tentamen.
+ Extrapoängen är endast giltiga vid denna kursomgång.
+\end_layout
+
+\begin_layout Itemize
+Deadline för labben framgår på 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "kurshemsidan"
+target "http://www.ida.liu.se/~732G26/timetable/index.sv.shtml"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
