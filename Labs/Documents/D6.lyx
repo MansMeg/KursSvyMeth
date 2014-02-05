@@ -1,0 +1,1268 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Surveymetodik}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Surveymetodik}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 6
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Date
+VT 2014
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Intro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Förberedelser
+\end_layout
+
+\begin_layout Subsection
+Läsa in paket som ska användas
+\end_layout
+
+\begin_layout Itemize
+Läsa in följande paket i R:
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Lumley2010csa"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(survey)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(maptools)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(rmeta)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(hexbin)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om det inte går att läsa in paketet (ex.
+ du har en egen dator) behöver du installera paketet först.
+ Det kräver internetanslutning och då använder du exempelvis följande kod.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("survey")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ladda ned och läs in Survey 2010
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ladda-ned-och"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+I denna laboration ska vi börja analysera riktiga surveydata (med alla problem
+ det innebär).
+ Vi har fått tillgång till det datamaterial som ligger till grund för boken
+ 
+\shape italic
+Den svenska väljaren
+\shape default
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "2011dsv"
+
+\end_inset
+
+.
+ Ett mindre urval av variablerna i studien har sparats som en R-fil.
+ Ladda ned filen från kurshemsidan och läs in den i R med följande funktion
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+load("svy2010.Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010temp <- tempfile(pattern="svy2010",fileext=".Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
+2010.Rdata", destfile = svy2010temp, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+load(file=svy2010temp) 
+\end_layout
+
+\begin_layout Plain Layout
+
+unlink(svy2010temp)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Du ska nu ha läst in en fil med 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+nrow(svy2010)
+\end_layout
+
+\end_inset
+
+ observationer och 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+ncol(svy2010)
+\end_layout
+
+\end_inset
+
+ variabler.
+ Infomation om respektive variabler finns i dokumentet KodbokSurvey2010.pdf
+ som finns på samma ställe som datamaterialet, dock finns inte alla variabler
+ med i datasetet.
+\end_layout
+
+\begin_layout Itemize
+Vi ska nu skapa två kontinuerliga variabler i datasetet 
+\family typewriter
+fathAge
+\family default
+ och 
+\family typewriter
+mothAge
+\family default
+ på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$fathAge <- svy2010$FR37 - svy2010$FR40_1 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$fathAge[abs(svy2010$fathAge) > 100 | svy2010$fathAge < 0 ] <- NA
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$mothAge <- svy2010$FR37 - svy2010$FR40_2 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$mothAge[abs(svy2010$mothAge) > 100 | svy2010$mothAge < 0] <- NA
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ladda ned och läs in 
+\family typewriter
+agpop.dat
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+Ladda ned filen (se instruktionen).
+ Identifiera den mapp där du har sparat filen 
+\family typewriter
+agpop.dat
+\family default
+.
+ Använd funktionen 
+\family typewriter
+setwd()
+\family default
+ för att ställa in den korrekta sökvägen .
+ 
+\end_layout
+
+\begin_layout Itemize
+Läs in 
+\family typewriter
+agpop.dat
+\family default
+ i R, vilket kan göras med följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-read.table("agpop.dat",header=TRUE,sep=",")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpoptemp <- tempfile(pattern="agpop",fileext=".dat") 
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
+op.dat",                destfile = agpoptemp, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-read.table(agpoptemp,header=TRUE,sep=",") 
+\end_layout
+
+\begin_layout Plain Layout
+
+unlink(agpoptemp) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Glöm inte bort att ta bort bortfallet för variablerna ACRES92 och ACRES87
+ i 
+\family typewriter
+agpop
+\family default
+.
+ För att ta bort saknade värden kan följande kod användas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-agpop[agpop$ACRES92>0 & agpop$ACRES87>0,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Grafik
+\end_layout
+
+\begin_layout Standard
+Vi ska nu skapa grafik baserat på surveydata.
+ Eftersom vikter är något som påverkar våra variabler och vår grafik väljer
+ vi därför att dels använda en stratifierad urvalsdesign som exempel och
+ dels data från Survey 2010.
+ Visualisering är en konstform så försök göra din grafik så snygg och tilltalade
+ som möjligt.
+ Använd gärna färger.
+\end_layout
+
+\begin_layout Standard
+Börja med att skapa de två surveyobjekten vi ska använda, dels baserat på
+ agpop och dels baserat på Survey 2010.
+ 
+\end_layout
+
+\begin_layout Standard
+Dra ett (Neymanallokerat) stratifierat urval från 
+\family typewriter
+agpop
+\family default
+ och skapa ett surveyobjekt på samma sätt som gjordes i laboration D4.
+ Jag döper mitt objekt till 
+\family typewriter
+agSTRAT
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+STRATAindex <- stratsample(agpop$REGION, c("NC"=69,"NE"=7,"S"=122,"W"=102))
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRATAdata <- agpop[STRATAindex,]
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata<-numeric(300) 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NC"] <- 1049 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NE"] <- 209 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="S"] <- 1370 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="W"] <- 414
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRAT<-svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Skapa sedan ett surveyobjekt baserat på datamaterialet i Survey 2010, jag
+ kommer kalla detta objekt 
+\family typewriter
+svy2010design
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.srs<-rep(7529673, nrow(svy2010))
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010design<-svydesign(ids=~1, data=svy2010, fpc=fpc.srs)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Kategoriska variabler
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Vi börjar med att producera enklare grafik baserat på surveyresultaten.
+ Denna grafik är inte specifik för surveyundersökningar, men nu skapar vi
+ grafer baserat på våra skattningar av populationen istället på hur data
+ ser ut i vårt urval.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+bys <- svyby(formula=~FARMS92, by=~REGION, design=agSTRAT, FUN=svytotal)
+\end_layout
+
+\begin_layout Plain Layout
+
+barplot(bys)
+\end_layout
+
+\begin_layout Plain Layout
+
+dotchart(bys)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi kan också inkludera både antalet observationer och vår osäkerhet med
+ en så kallad 
+\family typewriter
+forestplot()
+\family default
+ från 
+\family typewriter
+rmeta
+\family default
+-paketet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+labelMatrix <- matrix(rownames(bys), nrow=4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+forestplot(labeltext=labelMatrix, 
+\end_layout
+
+\begin_layout Plain Layout
+
+		   mean = coef(bys), 
+\end_layout
+
+\begin_layout Plain Layout
+
+		   lower= coef(bys) - 1.96 * SE(bys),
+\end_layout
+
+\begin_layout Plain Layout
+
+           upper = coef(bys) + 1.96 * SE(bys))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Vi ska nu gå in på de mer specifika funktioner som finns för surveydata.
+ Exempelvis kan vi använda 
+\family typewriter
+svyboxplot()
+\family default
+ för att skapa boxplots för populationen vi vill estimera.
+ Funktionen estimerar kvantilerna i populationen och skapar en boxplot baserat
+ på dessa estimat.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyboxplot(ACRES92 ~ REGION, design=agSTRAT)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+På ett liknande sätt fungerar funktionen 
+\family typewriter
+svyhist()
+\family default
+ som skapar ett histogram baserat på de viktade observationerna.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyboxplot(ACRES92 ~ REGION, design=agSTRAT)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scatterplots i surveyer
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Som nämnts tidigare är ett (delikat) problem i surveyer ofta att antalet
+ observationer är mycket stort.
+ Det gör att scatterplots ofta kan bli helt övertäckta med datapunkter vilket
+ gör det svårt att se resultaten.
+ Nedan är ett exempel på scatterplot där det är mycket svårt att se fördelningen
+ då punkterna ligger 
+\begin_inset Quotes eld
+\end_inset
+
+ovanpå
+\begin_inset Quotes erd
+\end_inset
+
+ varandra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.width=4, fig.height=4.5, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(svy2010$fathAge, svy2010$mothAge)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi ska nu pröva olika former av alternativ för surveydata.
+\end_layout
+
+\begin_layout Standard
+Dessa plottar kan visas på olika sätt.
+ Dels kan vikterna tas med i beaktande och explicit användas i en scatterplot.
+ Detta görs med funktionen 
+\family typewriter
+svyplot()
+\family default
+ på följande sätt.
+ Nedan skappas en 
+\begin_inset Quotes eld
+\end_inset
+
+bubbleplot
+\begin_inset Quotes erd
+\end_inset
+
+ men där storleken på bublorna är baserade på vikterna i datamaterialet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.width=4.5, fig.height=4.7, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(LARGEF92~SMALLF92,design=agSTRAT, style="bubble",xlab="Small farms",
+ ylab="Large farms") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nedan är exempel på andra metoder för att producera plottar för surveydata
+ (eller generellt stora data).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.width=4, fig.height=4, fig.align='center', eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(fathAge~mothAge, design = svy2010design, style="transparent", pch=19,
+ alpha=c(0,.1)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(fathAge~mothAge, design = svy2010design, style="hex") 
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(fathAge~mothAge, design = svy2010design, style="grayhex") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Skapa plottarna ovan och inkludera dem i din rapport.
+ Gör dem så snygga du kan (se hjälpen) med labels på x- och y-axeln.
+ Vilka plottar föredrar du och varför?
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Till sist ska vi pröva att skapa så kallade 
+\begin_inset Quotes eld
+\end_inset
+
+conditioning plots
+\begin_inset Quotes erd
+\end_inset
+
+ d.v.s.
+ scatterplots för olika grupper.
+ Dessa plots påminner om funktionerna ovan, dock med tillägget 
+\family typewriter
+|
+\family default
+ som indikerar för vilken kategorisk variabel ska plottarna delas upp.
+ Nedan är ett exempel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.width=4.2, fig.height=3, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svycoplot(fathAge~mothAge | Valdeltagande, design = svy2010design, style="hex")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Välj ut en variabel och skapa en så snygg conditioning plot du kan.
+ Använd hjälpen för att se hur kan styra olika delar.
+\end_layout
+
+\begin_layout Subsection
+Kartor
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+I surveyer och liknande undersökningar är det inte sällsynt att det finns
+ ett intresse av producera kartor av det material som samlas in.
+ Vi kommer därför gå igenom den mest grundläggande funktionalitet i R-paktetet
+ 
+\family typewriter
+maptools
+\family default
+ för att skapa kartor i R.
+ 
+\end_layout
+
+\begin_layout Standard
+För att skapa kartor behöver vi en så kallad shapefil.
+ Dessa innehåller geografisk data i vektoriserat format vilket vi kan läsa
+ in och modifiera i R.
+ Mer information om shapefiler finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "http://en.wikipedia.org/wiki/Shapefile"
+
+\end_inset
+
+
+\series default
+\color inherit
+ och om vektoriserad GIS-information finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "http://sv.wikipedia.org/wiki/Geografiskt_informationssystem#RasterGIS_och_vektorGIS"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+Shapefiler som är aktuella för just era problem beror på detaljeringsgrad,
+ men församlingsgränser eller kommunindelningsgränser av intresse finns
+ på de flesta kommuner och länsstyrelser.
+ Ofta finns informationen att tillgå gratis som shapefiler.
+ På kurshemsidan ligger shapefiler som innehåller kommun och länsgränser
+ för Sverige.
+ Ladda ned dem och läs in dem i R på följade sätt (
+\series bold
+Obs!
+\series default
+ paketet maptools måste vara inläst i R):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(maptools)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Download and read data 
+\end_layout
+
+\begin_layout Plain Layout
+
+GIStemp <- tempfile(pattern="gis",fileext=".zip") 
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/Lan
+_SCB.zip", destfile = GIStemp, method = "curl")  
+\end_layout
+
+\begin_layout Plain Layout
+
+unzip(GIStemp,exdir=tempdir()) 
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap <- readShapePoly(paste(tempdir(),"/Lan_SCB/Lan_SCB_07.shp",sep=""))
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap <- readShapePoly("Lan_SCB_07.shp") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+För att skapa en karta över den fil du precis läst in används 
+\family typewriter
+plot()
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(sweMap)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Plotta surveydata på karta.
+ Plocka ut vissa delar av en karta och plott Östregötland.
+ Hur ser man vilken data som finns (och ska välja ut)?
+\end_layout
+
+\begin_layout Paragraph
+c)
+\end_layout
+
+\begin_layout Standard
+Ladda ned kommundata och välj ut bara Östergötland.
+ Plotta de olika kommunerna efter en godtycklig variabel du vill plotta
+ för Östergötland.
+ Det finns en hel del data på SCB.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurveyLabs"
+options "bibtotoc,elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
