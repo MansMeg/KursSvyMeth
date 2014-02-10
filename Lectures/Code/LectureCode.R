@@ -105,7 +105,7 @@ createSampleEstPlots<- function(plotData, plotParts){
 
 
 # Gastroenteritis example in F4
-generateGastro <- function(mySeed){
+generateGastro <- function(mySeed=20130206){
   set.seed(mySeed)
   # Create example
   N <- c(1687283, 1851959, 1812691, 2935231)
@@ -135,7 +135,7 @@ generateGastro <- function(mySeed){
   gastro$syAll <- round(sd(y),2) 
   return(gastro) 
 }
-gastro <- generateGastro(20130206)
+gastro <- generateGastro()
 
 # Burglary example in F7
 generateBurglary <- function(mySeed = 20140201, Bsd = 1.3){
