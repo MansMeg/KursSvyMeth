@@ -21,4 +21,36 @@ samplingDist<-function(y, n, alpha=0.05){
   return(dist)
 }
 
+samplingDistRatio<-function(y,x,n,alpha=0.05){
+  # y: vektor av värden (ex. c(5,10,8,7,12))
+  # x: vektor med hjälpvariabelvärden 
+  # n: urvalsstorlek
+  # Funktionen kräver följande paket
+  
+  # Assert
+  stopifnot(length(y) == length(x))
+  
+  N<-length(y)
+  dist <- as.data.frame(t(combn(y, n)))
+  distX <- as.data.frame(t(combn(x, n)))
+  names(dist)[1:n]<-paste("obs.",1:n,sep="")
+  
+  # Beräknar urvalssannolikheten
+  dist$P_S<-1/choose(length(y),n)
+  
+  # Beräknar y_hat och y_hat_r
+  dist$n<-n
+  dist$t_x<-sum(x)
+  dist$x_bar<-mean(x)
+  dist$t_hat_x<-apply(distX[,1:n],MARGIN=1,FUN=mean)*N
+  dist$t_hat_y<-apply(dist[,1:n],MARGIN=1,FUN=mean)*N
+  dist$B_hat<-dist$t_hat_y/dist$t_hat_x
+  dist$t_hat_yr<-dist$B_hat*dist$t_x
+  dist$yr_hat <- dist$B_hat * dist$x_bar  
+
+  distE<-dist[,1:n]-dist$B_hat*distX[,1:n]
+  dist$s2_e<-apply(distE[,1:n],MARGIN=1,FUN=sd)
+  
+  return(dist)
+}
 
