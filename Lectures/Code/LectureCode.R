@@ -147,3 +147,13 @@ generateBurglary <- function(mySeed = 20140201, prop=c(0.3,0.8)){
   burgl$x <- round(burgl$y * runif(burgl$N, prop[1], prop[2]))
   return(burgl)
 }
+
+# Apelsinexempel
+generateOrgange <-function(n=15, mySeed = 20130104){
+  set.seed(mySeed)  
+  x<-rgamma(n,shape=0.25*40,scale=0.025) 
+  y<-rgamma(length(x),shape=0.1*x*1000,scale=0.002)
+  return(data.frame(vikt=x, socker=y ))
+}
+
+
