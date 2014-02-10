@@ -152,8 +152,13 @@ generateBurglary <- function(mySeed = 20140201, prop=c(0.3,0.8)){
 generateOrgange <-function(n=15, mySeed = 20130104){
   set.seed(mySeed)  
   xPop <- rgamma(3400,shape=0.25*40,scale=0.025) 
-  x<- sample(xPop,n)
-  y<-rgamma(length(x),shape=0.1*x*1000,scale=0.002)
-  return(list(data = data.frame(vikt=x, socker=y), xTot = round(sum(xPop))))
+  x <- sample(xPop,n)
+  y <- rgamma(length(x),shape=0.1*x*1000,scale=0.002)
+  
+  B <- mean(y) / mean(x)
+  e <- y - B*x
+  
+  return(list(data = data.frame(socker=y, vikt=x, e=e), 
+              xTot = round(sum(xPop))))
 }
 
