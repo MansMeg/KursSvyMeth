@@ -106,7 +106,7 @@ createSampleEstPlots<- function(plotData, plotParts){
 
 # Gastroenteritis example in F4
 generateGastro <- function(mySeed){
-  set.seed(mySeed) 
+  set.seed(mySeed)
   # Create example
   N <- c(1687283, 1851959, 1812691, 2935231)
   n <- round(400.1*(N/sum(N)))
@@ -136,3 +136,18 @@ generateGastro <- function(mySeed){
   return(gastro) 
 }
 gastro <- generateGastro(20130206)
+
+# Burglary example in F7
+generateBurglary <- function(mySeed){
+  set.seed(mySeed)
+  burgl <- list()
+  burgl$n <- 4
+  burgl$N <- 24
+  burgl$y <- round(rgamma(24,shape=5,scale=10))
+  burgl$x <- round(rgamma(length(y),shape=0.33*y*(1/1),scale=(1/1)))
+  
+  return(burgl)
+}
+burglary <- generateBurglary(20130101)
+
+
