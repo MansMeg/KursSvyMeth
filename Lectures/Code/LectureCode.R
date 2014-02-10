@@ -138,12 +138,12 @@ generateGastro <- function(mySeed=20130206){
 gastro <- generateGastro()
 
 # Burglary example in F7
-generateBurglary <- function(mySeed = 20140201, Bsd = 1){
+generateBurglary <- function(mySeed = 20140201, prop=c(0.3,0.8)){
   set.seed(mySeed)
   burgl <- list()
   burgl$n <- 4
   burgl$N <- 24
-  burgl$y <- round(rgamma(burgl$N,shape=0.33*y*(1/1),scale=(1/1)))
-  burgl$x <- round(burgl$y * runif(burgl$N, 0.2, 0.9))
+  burgl$y <- round(rgamma(burgl$N, shape=0.33*(10/1),scale=(10/1)))
+  burgl$x <- round(burgl$y * runif(burgl$N, prop[1], prop[2]))
   return(burgl)
 }
