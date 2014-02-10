@@ -1,0 +1,2725 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames,handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 7
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
+ctureCode.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Kvotestimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till kvotestimation
+\end_layout
+
+\begin_layout Itemize
+Vi ksa nu fokusera på estimation - d.v.s.
+ efter att undersökningen är gjord
+\end_layout
+
+\begin_layout Itemize
+Tidigare estimerat populationsparametrar 
+\begin_inset Formula $p_{\mathcal{U}}$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ och 
+\begin_inset Formula $t_{\mathcal{U}}$
+\end_inset
+
+ med 
+\begin_inset Formula $p_{\mathcal{S}},\bar{y}_{\mathcal{S}}$
+\end_inset
+
+ och 
+\begin_inset Formula $N\bar{y}_{\mathcal{S}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Ett alternativ är 
+\series bold
+kvotestimation 
+\series default
+då vi 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+observerat 
+\begin_inset Formula $y$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+observerat 
+\series bold
+hjälpvariabeln
+\series default
+ (auxiliary variable) 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Två situationer
+\series default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi känner till populationstotalen för 
+\begin_inset Formula $x$
+\end_inset
+
+ (
+\begin_inset Formula $t_{x}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Vi saknar kunskap om populationstotalen för 
+\begin_inset Formula $x$
+\end_inset
+
+ (via ex.
+ register)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till kvotestimation II
+\end_layout
+
+\begin_layout Itemize
+Exempel på användning om vi 
+\series bold
+inte känner
+\series default
+ till 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan vara intresserad av 
+\series bold
+populationskvoten
+\series default
+ 
+\begin_inset Formula 
+\[
+\frac{\bar{y}_{\mathcal{U}}}{\bar{x}_{\mathcal{U}}}=\frac{t_{y}}{t_{x}}=B
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan vara intresserade av att skatta i 
+\series bold
+redovisningsgrupper
+\series default
+ (domänestimation).
+ (
+\begin_inset Formula $*$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Exempel på användning om vi 
+\series bold
+känner
+\series default
+ till 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan använda 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+ för att 
+\series bold
+förbättra precisionen
+\series default
+ i 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+ eller 
+\begin_inset Formula $\hat{t}_{y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $ $
+\end_inset
+
+Vi kan använda 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+ för att skapa 
+\series bold
+totalskattningen 
+\begin_inset Formula $t_{y}$
+\end_inset
+
+ när 
+\begin_inset Formula $N$
+\end_inset
+
+ är okänd
+\series default
+.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan använda 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+ för att 
+\series bold
+kalibrera
+\series default
+ 
+\series bold
+
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+
+\series default
+ eller 
+\series bold
+
+\begin_inset Formula $\hat{t}_{y}$
+\end_inset
+
+
+\series default
+ .
+\begin_inset Newline newline
+\end_inset
+
+Används för att hantera bortfallsfel och ramfel.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Populationsparametrar av intresse
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t_{y}=t_{\mathcal{U},y}=\sum_{i\in\mathcal{U}}y_{i}=\sum_{i=1}^{N}y_{i}=\mbox{Populationstotalen för variabel \ensuremath{y}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{i\in\mathcal{U}}y_{i}=\mbox{Populationsmedelvärde för variabel \ensuremath{y}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{y}=\sqrt{\frac{1}{N-1}\sum_{i=1}^{N}\left(y_{i}-\bar{y}_{\mathcal{U}}\right)^{2}}=\mbox{Populationsstandardavvikelse}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B=\frac{\bar{y}_{\mathcal{U}}}{\bar{x}_{\mathcal{U}}}=\frac{t_{y}}{t_{x}}=\mbox{Populationskvoten}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R=\frac{\sum_{i\in\mathcal{U}}(x_{i}-\bar{x}_{\mathcal{U}})(y_{i}-\bar{y}_{\mathcal{U}})}{(N-1)S_{y}S_{x}}=\mbox{Populationskorrelationskoefficienten}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Estimatorer
+\end_layout
+
+\begin_layout Itemize
+Skattningen av kvoten görs på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{B}=\frac{\bar{y}_{\mathcal{S}}}{\bar{x}_{\mathcal{S}}}=\frac{\sum_{i\in\mathcal{S}}y_{i}}{\sum_{i\in\mathcal{S}}x_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om vi känner till 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+ kan vi använda 
+\begin_inset Formula $x$
+\end_inset
+
+ som 
+\series bold
+hjälpvariabel
+\series default
+ för att skatta 
+\begin_inset Formula $t_{y}$
+\end_inset
+
+ med 
+\series bold
+bättre precision
+\series default
+ på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{r}=\hat{B}\bar{x}_{\mathcal{U}}=\mbox{kvotskattning av }\bar{y}_{\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{t}_{r,y}=\hat{B}t_{x}=\mbox{kvotskattning av \ensuremath{t_{y}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Estimatorer II
+\end_layout
+
+\begin_layout Itemize
+En kvotskattning bygger på modellen
+\begin_inset Formula 
+\[
+y_{i}=Bx_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Detta innebär att kvotestimation ökar precisionen när:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(a) Korrelationen i populationen är tillräckligt stor (
+\series bold
+och
+\series default
+ positiv)
+\end_layout
+
+\begin_layout Itemize
+(b) När den sanna 
+\begin_inset Quotes eld
+\end_inset
+
+regressionslinjen
+\begin_inset Quotes erd
+\end_inset
+
+ i populationen, 
+\begin_inset Formula $B$
+\end_inset
+
+, går genom 0 
+\begin_inset Newline newline
+\end_inset
+
+(annars använder vi regressionsestimaton)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Kallas ofta för 
+\series bold
+modell-assisterad
+\series default
+ estimation.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Brott i bostadsområden}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,3))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- rgamma(n=n, shape=10,rate=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- rnorm(n=n, mean=3, sd=0.2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2)))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- rnorm(n=n, mean=0, sd=0.2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x + 10 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2)))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- rnorm(n=n, mean=-4, sd=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x + 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Bias
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{\bar{y}}_{r}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ är dock inte en (design) väntevärdesriktig skattning av 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ utan det finns en 
+\series bold
+bias
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+(se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 125 "
+key "lohr2009sampling"
+
+\end_inset
+
+för detaljer)
+\begin_inset Formula 
+\[
+Bias(\hat{\bar{y}}_{r})\approx\left(1-\frac{n}{N}\right)\frac{\left(BS_{x}^{2}-RS_{x}S_{y}\right)}{n\bar{x}_{\mathcal{U}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Bias minskas således av
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ är stort
+\end_layout
+
+\begin_layout Itemize
+urvalsfraktionen 
+\begin_inset Formula $\frac{n}{N}$
+\end_inset
+
+ är stor
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{x}_{\mathcal{U}}$
+\end_inset
+
+ är stor och 
+\begin_inset Formula $S_{x}$
+\end_inset
+
+ är litet
+\end_layout
+
+\begin_layout Itemize
+Populationskorrelationen 
+\begin_inset Formula $R$
+\end_inset
+
+ är hög
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Varians
+\end_layout
+
+\begin_layout Itemize
+Variansen för 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+ skattas (se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 125 f."
+key "lohr2009sampling"
+
+\end_inset
+
+ för detaljer)
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{s_{e}^{2}}{n\bar{x}_{\mathcal{S}}^{2}}
+\]
+
+\end_inset
+
+ där 
+\begin_inset Formula 
+\[
+s_{e}^{2}=\frac{1}{n-1}\sum_{i\in\mathcal{S}}e_{i}^{2}\mbox{ och }e_{i}=y_{i}-\hat{B}x_{i}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ är residualerna kring linjen.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Variansen minskas av
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Små 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ (bra modell)
+\end_layout
+
+\begin_layout Itemize
+Liten urvalsfraktion 
+\begin_inset Formula $\frac{n}{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stort 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Stort 
+\begin_inset Formula $\bar{x}_{\mathcal{S}}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Varians II
+\end_layout
+
+\begin_layout Itemize
+Om vi 
+\series bold
+känner till
+\series default
+ 
+\begin_inset Formula $\bar{x}_{\mathcal{U}}$
+\end_inset
+
+ och 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+ så kan vi använda detta för att få mindre varians när vi skattar 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\bar{y}}_{r}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{t}_{r,y}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{\bar{y}}_{r})=\hat{Var}(\hat{B}\bar{x}_{\mathcal{U}})=\bar{x}_{\mathcal{U}}^{2}\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Var(\hat{t}_{r,y})=Var(\hat{B}t_{x})=t_{x}^{2}Var(\hat{B})=\left(1-\frac{n}{N}\right)\left(\frac{t_{x}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $n$
+\end_inset
+
+ är stort blir 
+\begin_inset Formula $\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\approx1$
+\end_inset
+
+ och 
+\begin_inset Formula $\left(\frac{t_{x}}{\bar{x}_{\mathcal{S}}}\right)^{2}\approx N^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vinsten uppstår om modelen är bra 
+\begin_inset Formula $y_{i}-\hat{B}x_{i}<y_{i}-\bar{y}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(Återkommer vid regressionsestimation)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om urvalen är tillräckligt stora kan vi använda 
+\series bold
+centrala gränsvärdessatsen
+\series default
+ och beräknar konfidensintervall på följande sätt:
+\begin_inset Formula 
+\[
+\hat{B}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{B})},\hat{\bar{y}}_{r}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{\bar{y}}_{r})}\mbox{ och }\hat{t}_{r,y}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{t}_{r,y})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Lägg in en graf liknande den på tidigare F gällande n och bias.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Mean squared error (MSE)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Bias(\hat{\bar{y}}_{r})^{2}$
+\end_inset
+
+ minskar snabbare med urvalsstorleken (
+\begin_inset Formula $n$
+\end_inset
+
+) än 
+\begin_inset Formula $Var(\hat{\bar{y}}_{r})$
+\end_inset
+
+ så (lite slarvigt):
+\begin_inset Formula 
+\[
+n\rightarrow\infty\mbox{ så }MSE(\hat{\bar{y}}_{r})\rightarrow Var(\hat{\bar{y}}_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om korrelationen mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och 
+\begin_inset Formula $y$
+\end_inset
+
+ är tillräckligt stor blir 
+\begin_inset Formula $MSE(\hat{\bar{y}}_{r})<MSE(\hat{\bar{y}}_{\mathcal{U}})$
+\end_inset
+
+ och 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+För större urval så är 
+\begin_inset Formula $Var(\hat{\bar{y}}_{r})<Var(\hat{\bar{y}}_{\mathcal{U}})$
+\end_inset
+
+ (se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 133"
+key "lohr2009sampling"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Brott i bostadsområden}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<fig.height=3.4, echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+burglary <- generateBurglary()
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- burglary[['x']]
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- burglary[['y']]
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- burglary[['n']]
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- burglary[['N']]
+\end_layout
+
+\begin_layout Plain Layout
+
+ratioSample <- samplingDistRatio(y, x, n, alpha=0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Vi vill uppskatta det totala antalet utsatta för inbrott i 
+\backslash
+Sexpr{burglary[['N']]} bostadsområden ($y$).
+ Vi vet antalet polisanmälningar ($x$) för alla områden och drar ett urval
+ på $n=$
+\backslash
+Sexpr{burglary[['n']]}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<fig.height=3.4, echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(x, y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Korrelationen i populationen är 
+\backslash
+Sexpr{round(cor(x, y),3)}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Brott i bostadsområden II}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Teoretiska fördelningen med $K=$
+\backslash
+Sexpr{nrow(ratioSample)} stycken teoretiska urval.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ratioSample[sample(1:nrow(ratioSample), 20), c(1:4, 7, 9:12)]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Brott i bostadsområden II}
+\end_layout
+
+\begin_layout Plain Layout
+
+Samlingfördelningen för $
+\backslash
+hat{t}_{y,r}$ och $
+\backslash
+hat{t}_{y}$  då $t_y=$
+\backslash
+Sexpr{sum(y)}, $n=$
+\backslash
+Sexpr{n} och $N=$
+\backslash
+Sexpr{length(y)}.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+xlimPlot<-c(min(ratioSample$t_hat_y),max(ratioSample$t_hat_y))
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(ratioSample$t_hat_yr, xlim=xlimPlot) +
+\end_layout
+
+\begin_layout Plain Layout
+
+	geom_vline(xintercept=sum(y),col="red") +
+\end_layout
+
+\begin_layout Plain Layout
+
+	geom_vline(xintercept=mean(ratioSample$t_hat_yr),col="blue") +
+\end_layout
+
+\begin_layout Plain Layout
+
+	xlab(expression(hat(t)[yr]))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(ratioSample$t_hat_y,xlim=xlimPlot) +
+\end_layout
+
+\begin_layout Plain Layout
+
+	geom_vline(xintercept=sum(y),col="red") +
+\end_layout
+
+\begin_layout Plain Layout
+
+	xlab(expression(hat(t)[yr]))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Effekten av kvotestimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Expectations
+\end_layout
+
+\begin_layout Plain Layout
+
+Ethatyr <- sum(ratioSample$P_S * ratioSample$t_hat_yr)
+\end_layout
+
+\begin_layout Plain Layout
+
+Ethaty <- sum(ratioSample$P_S * ratioSample$t_hat_y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Varians
+\end_layout
+
+\begin_layout Plain Layout
+
+Varthatyr<-sum(ratioSample$P_S * (ratioSample$t_hat_yr - Ethatyr)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+Varthaty<-sum(ratioSample$P_S * (ratioSample$t_hat_y - Ethaty)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Bias
+\end_layout
+
+\begin_layout Plain Layout
+
+Biasthatyr <- Ethatyr - sum(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+Biasthaty <- Ethaty - sum(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# MSE
+\end_layout
+
+\begin_layout Plain Layout
+
+MSEthatyr<-sum(ratioSample$P_S * (ratioSample$t_hat_yr - sum(y))^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+MSEthaty<-sum(ratioSample$P_S * (ratioSample$t_hat_y - sum(y))^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skillnaden mellan kvotestimatorn och den 
+\begin_inset Quotes eld
+\end_inset
+
+vanliga
+\begin_inset Quotes erd
+\end_inset
+
+ estimatorn
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+E(\hat{t}_{yr}) & = & \Sexpr{Ethatyr} &  & E(\hat{t}_{y}) & = & \Sexpr{Ethaty}\\
+Var(\hat{t}_{yr}) & = & \Sexpr{Varthatyr} &  & Var(\hat{t}_{y}) & = & \Sexpr{Varthaty}\\
+Bias(\hat{t}_{yr}) & = & \Sexpr{Biasthatyr} &  & Bias(\hat{t}_{y}) & = & \Sexpr{Biasthaty}\\
+MSE(\hat{t}_{yr}) & = & \Sexpr{MSEthatyr} &  & MSE(\hat{t}_{y}) & = & \Sexpr{MSEthaty}\\
+\\
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Sockermängd i apelsiner
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 15
+\end_layout
+
+\begin_layout Plain Layout
+
+orange <- generateOrgange(n=n)
+\end_layout
+
+\begin_layout Plain Layout
+
+data <- orange[["data"]]
+\end_layout
+
+\begin_layout Plain Layout
+
+tot <- orange[["xTot"]]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Intresserade av att uppskatta den 
+\series bold
+totala
+\series default
+ sockermängden i en lastbil apelsiner.
+\end_layout
+
+\begin_layout Itemize
+Vi undersöker ett OSU av 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+n
+\end_layout
+
+\end_inset
+
+ apelsiner och för respektive apelsin mäts vikt och sockermängd.
+\end_layout
+
+\begin_layout Itemize
+Den totala vikten för hela lasten är 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+tot
+\end_layout
+
+\end_inset
+
+ kg.
+\end_layout
+
+\begin_layout Itemize
+Skatta den totala mängden socker i hela lasten med tillhörande konfidensinterval
+l.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Sockermängd, data}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE,
+ comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Sockermängd, data}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,
+ comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(data$vikt, data$socker) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+xlab("Vikt i kg") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+ylab("Socker i kg") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Sockermängd i apelsiner V
+\end_layout
+
+\begin_layout Itemize
+Det hade i detta fall inte varit möjligt att räkna ut totala sockermängden
+ utan hjälpinformationen vikt.
+\end_layout
+
+\begin_layout Itemize
+Det är tydligt att i detta fall fungerar kvotestimatorn då 
+\begin_inset Formula $y$
+\end_inset
+
+ måste vara 0 då 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Kvotestimatorn som kalibrering
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Kvotestimation som kalibrering
+\end_layout
+
+\begin_layout Itemize
+En kvotestimator kan även uttryckas i form av vikter
+\begin_inset Formula 
+\[
+\hat{t}_{y}=\sum_{i\in\mathcal{S}}w_{i}y_{i}\mbox{ och }\hat{t}_{yr}=\frac{t_{x}}{\hat{t}_{x}}\sum_{i\in\mathcal{S}}w_{i}y_{i}=\sum_{i\in\mathcal{S}}w_{i}g_{i}y_{i}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula 
+\[
+g_{i}=\frac{t_{x}}{\hat{t}_{x}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+På detta sätt 
+\series bold
+kalibreras
+\series default
+ vikterna 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ till de
+\series bold
+ kända populationstotalerna
+\series default
+
+\begin_inset Formula 
+\[
+\sum_{i\in\mathcal{S}}w_{i}g_{i}x_{i}=\frac{t_{x}}{\hat{t}_{x}}\sum_{i\in\mathcal{S}}w_{i}x_{i}=\frac{t_{x}}{\hat{t}_{x}}\hat{t}_{x}=t_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta är principen när vi bortfallskalibrerar (fast då använder vi ofta
+ regressionsestimatorn istället).
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Kalibrering 
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av 
+\series bold
+antalet
+\series default
+ personer som känner sig otrygga under helgkvällar år 2013 och i Norrköpings
+ kommun (
+\begin_inset Formula $N$
+\end_inset
+
+=130 623 ) varav 64 851 män och 65 772 kvinnor.
+\end_layout
+
+\begin_layout Itemize
+Vi undersöker 1140 personer och av dessa svarar 789 personer.
+\end_layout
+
+\begin_layout Itemize
+Av de svarande är 424 kvinnor och 365 män och av männen svarar 45 att de
+ har kännt sig otrygga och bland kvinnorna 192.
+\end_layout
+
+\begin_layout Itemize
+Vid en bortfallsanalys visar det sig att bortfallet är större bland män
+ än bland kvinnor.
+\end_layout
+
+\begin_layout Itemize
+Beräkna 
+\begin_inset Formula $g$
+\end_inset
+
+-vikten för män och kvinnor och gör en totalskattning av antalet otrygga.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Redovisningsgrupper
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout NoteItem
+Läs på detta lite mer och gör ett eget exempel
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper
+\end_layout
+
+\begin_layout Itemize
+Ofta finns ett intresse att producera skattningar i mindre delar av populationen
+, dessa kallas 
+\series bold
+domäner
+\series default
+ eller 
+\series bold
+redovisningsgrupper
+\end_layout
+
+\begin_layout Itemize
+Vanliga redovisningsgrupper/domäner är kön, ålder och geografi
+\end_layout
+
+\begin_layout Itemize
+Ibland 
+\series bold
+väldigt många
+\series default
+ domäner
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+ i varje domän blir mycket litet (ibland 
+\begin_inset Formula $n=0$
+\end_inset
+
+), kallas 
+\series bold
+Small area estimation
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper II
+\end_layout
+
+\begin_layout Itemize
+Det finns två typer av domänestimation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+När urvalet i domänen är 
+\series bold
+fast
+\series default
+ (ex.
+ vid stratifiering)
+\begin_inset Newline newline
+\end_inset
+
+Precis som vanligt (fast med mindre urval)
+\end_layout
+
+\begin_layout Itemize
+När urvalet i domänen är 
+\series bold
+slumpmässigt
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Specialfall av kvotskattning där 
+\begin_inset Formula $n_{d}$
+\end_inset
+
+ behöver skattas
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper - Notation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N_{d}=\mbox{Antal observationer i domän }d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{U}_{d}=\{1,2,3,...,N_{d}\}=\mbox{Populationsmängden i domän }d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+n_{d}=\mbox{Antal observationer i urvalet i domän }d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{S}_{d}=\{1,2,...,n_{d}\}=\mbox{Urvalsmängden i domän }d\mbox{ }(\mathcal{S}_{d}\subseteq\mathcal{U}_{d})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}_{d}}=\frac{1}{N_{d}}\sum_{i\in\mathcal{U}_{d}}y_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{S}_{d}}=\frac{1}{n_{d}}\sum_{i\in\mathcal{S}_{d}}y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper - Estimation II
+\end_layout
+
+\begin_layout Itemize
+Först skapar vi nya variabler för vår domän
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{i}=\begin{cases}
+1 & \mbox{om }i\in\mathcal{U}_{d}\\
+0 & \mbox{om }i\notin\mathcal{U}_{d}
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{i}=y_{i}x_{i}=\begin{cases}
+y_{i} & \mbox{om }i\in\mathcal{U}_{d}\\
+0 & \mbox{om }i\notin\mathcal{U}_{d}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper - Estimation III
+\end_layout
+
+\begin_layout Itemize
+Med hjälp av dessa variabler kan vi skatta 
+\begin_inset Formula $\bar{y}_{\mathcal{U}_{d}}$
+\end_inset
+
+ med en kvotestimator 
+\begin_inset Formula 
+\[
+t_{x}=\sum_{i\in\mathcal{U}}x_{i}=N_{d}\mbox{ och }\bar{x}_{\mathcal{U}}=\frac{N_{d}}{N}
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+t_{u}=\sum_{i\in\mathcal{U}}u_{i}=\sum_{i\in\mathcal{U}_{d}}y_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}_{d}}=\frac{t_{u}}{t_{x}}=B
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{S}_{d}}=\bar{y}_{d}=\hat{B}=\frac{\bar{u}}{\bar{x}}=\frac{\hat{t}_{u}}{\hat{t}_{x}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper - Estimation IV
+\end_layout
+
+\begin_layout Itemize
+För att beräkna medelfelet använder vi medelfelet från kvotestimatorn
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{1}{n\bar{x}_{\mathcal{S}}^{2}}\frac{\sum_{i\in\mathcal{S}}(y_{i}-\hat{B}x_{i})^{2}}{n-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Men byter ut 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ mot 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ och eftersom 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\bar{y}_{\mathcal{S}_{d}}=\bar{y}_{d}=\hat{B}$
+\end_inset
+
+ så
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\hat{Var}(\bar{y}_{d})=\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{1}{n\bar{x}_{\mathcal{S}}^{2}}\frac{\sum_{i\in\mathcal{S}}(u_{i}-\hat{B}x_{i})^{2}}{n-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Som efter lite algebra blir
+\begin_inset Formula 
+\[
+\hat{Var}(\bar{y}_{d})=\left(1-\frac{n}{N}\right)\frac{n}{n_{d}^{2}}\frac{(n_{d}-1)s_{yd}^{2}}{n-1}
+\]
+
+\end_inset
+
+ där 
+\begin_inset Formula 
+\[
+s_{yd}^{2}=\frac{\sum_{i\in\mathcal{S}_{d}}(y_{i}-\bar{y}_{d})^{2}}{n_{d}-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Redovisningsgrupper - Estimation V
+\end_layout
+
+\begin_layout Itemize
+Om 
+\begin_inset Formula $E(n_{d})$
+\end_inset
+
+ är stort så är 
+\begin_inset Formula $(n_{d}-1)/n_{d}\approx1$
+\end_inset
+
+ och 
+\begin_inset Formula $n/(n-1)\approx1$
+\end_inset
+
+ vilket gör att 
+\begin_inset Formula 
+\[
+SE(\bar{y}_{d})\approx\sqrt{\left(1-\frac{n}{N}\right)\frac{s_{yd}^{2}}{n_{d}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Bygga ett resecentrum
+\end_layout
+
+\begin_layout Itemize
+Opinionsundersökning gällande inställning till att bygga ett resecentrum
+ i Vaxholm
+\end_layout
+
+\begin_layout Itemize
+Vi drar ett OSU och frågar 
+\begin_inset Formula $n$
+\end_inset
+
+ = 500 personer av 
+\begin_inset Formula $N$
+\end_inset
+
+ = 11 141 (och har inget bortfall)
+\end_layout
+
+\begin_layout Itemize
+Av 500 svarande anger 277 att de är positiva.
+\end_layout
+
+\begin_layout Itemize
+Vi har även data redovisat i olika åldersgrupper.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Åldersgrupp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Antal i urvalet (
+\begin_inset Formula $n$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Antal positiva
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18-30 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+139
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+103
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+31-65 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+281
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+142
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+66-80 år
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+32
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av 
+\series bold
+andelen
+\series default
+ och 
+\series bold
+totalen
+\series default
+ som är positiva i åldersgruppen 18-30 år samt populationen som helhet.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
