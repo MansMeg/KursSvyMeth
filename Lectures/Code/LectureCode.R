@@ -138,7 +138,7 @@ generateGastro <- function(mySeed){
 gastro <- generateGastro(20130206)
 
 # Burglary example in F7
-generateBurglary <- function(mySeed, Bsd = 1.3){
+generateBurglary <- function(mySeed = 20140201, Bsd = 1.3){
   set.seed(mySeed)
   burgl <- list()
   burgl$n <- 4
