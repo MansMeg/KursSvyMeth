@@ -147,10 +147,3 @@ generateBurglary <- function(mySeed, Bsd = 1.3){
   burgl$x <- round(burgl$y * runif(burgl$N, 0.2, 0.9))
   return(burgl)
 }
-
-burglary <- generateBurglary(20140201)
-
-# burg <- generateBurglary(20130101)
-# plot(burg$x, burg$y)
-# cor(burg$x, burg$y)
-
