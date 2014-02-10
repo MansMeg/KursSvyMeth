@@ -143,10 +143,12 @@ generateBurglary <- function(mySeed, Bsd = 1.3){
   burgl <- list()
   burgl$n <- 4
   burgl$N <- 24
-  burgl$x <- round(rgamma(burgl$N,shape=0.33*y*(1/1),scale=(1/1)))
-  burgl$y <- round(burgl$x * rnorm(burgl$N, 2.4, Bsd))
+  burgl$y <- round(rgamma(burgl$N,shape=0.33*y*(1/1),scale=(1/1)))
+  burgl$x <- round(burgl$y * runif(burgl$N, 0.2, 0.9))
   return(burgl)
 }
 
-
+# burg <- generateBurglary(20130101)
+# plot(burg$x, burg$y)
+# cor(burg$x, burg$y)
 
