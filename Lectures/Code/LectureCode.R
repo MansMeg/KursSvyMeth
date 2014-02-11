@@ -162,7 +162,7 @@ generateOrgange <-function(n=15, mySeed = 20130104){
               xTot = round(sum(xPop))))
 }
 
-# Example: lecture 8
+# Example: Welfare
 generateWelfare <-function(mySeed = 20130206){
   set.seed(mySeed)  
   N <- 16
@@ -173,4 +173,18 @@ generateWelfare <-function(mySeed = 20130206){
   return(list(welfare = x, income = y))
 }
 
+
+# Example: Forest volume
+generateForest <- function(mySeed = 20130201){
+  set.seed(mySeed) 
+  N <- 17010
+  tot_x <- 1807641
+  n <- 18
+  y <- rgamma(n = n, shape = 2.65, scale = 40)  
+  x <- rnorm(n = length(y), mean = y, sd = 18)
+  x[x < 0] <- 0
+  data <- data.frame(y=y,x=x) 
+  data$e <- resid(lm(y ~ x, data = data))
+  return(list(data = data, n = n, N = N, tot_x = tot_x))
+}
 
