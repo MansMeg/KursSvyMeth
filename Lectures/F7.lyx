@@ -493,6 +493,14 @@ Används för att hantera bortfallsfel och ramfel.
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+Kvotestimator ska användas om 
+\series bold
+nämnaren
+\series default
+ ändras vid ett annat urval.
+\end_layout
+
 \begin_layout EndFrame
 
 \end_layout
@@ -1267,7 +1275,11 @@ Om korrelationen mellan
 \begin_inset Formula $y$
 \end_inset
 
- är tillräckligt stor blir 
+ är tillräckligt stor(
+\begin_inset Formula $R>\frac{1}{2}$
+\end_inset
+
+) blir 
 \begin_inset Formula $MSE(\hat{\bar{y}}_{r})<MSE(\hat{\bar{y}}_{\mathcal{U}})$
 \end_inset
 
@@ -2395,75 +2407,24 @@ Redovisningsgrupper - Estimation IV
 \end_layout
 
 \begin_layout Itemize
-För att beräkna medelfelet använder vi medelfelet från kvotestimatorn
-\begin_inset Formula 
-\[
-\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{1}{n\bar{x}_{\mathcal{S}}^{2}}\frac{\sum_{i\in\mathcal{S}}(y_{i}-\hat{B}x_{i})^{2}}{n-1}
-\]
-
+För att beräkna medelfelet använder vi medelfelet från kvotestimatorn vilket
+ ger 
+\begin_inset Formula $(*)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Men byter ut 
-\begin_inset Formula $y_{i}$
-\end_inset
-
- mot 
-\begin_inset Formula $u_{i}$
-\end_inset
-
- och eftersom 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $\bar{y}_{\mathcal{S}_{d}}=\bar{y}_{d}=\hat{B}$
-\end_inset
-
- så
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
  
-\begin_inset Formula 
-\[
-\hat{Var}(\bar{y}_{d})=\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{1}{n\bar{x}_{\mathcal{S}}^{2}}\frac{\sum_{i\in\mathcal{S}}(u_{i}-\hat{B}x_{i})^{2}}{n-1}
-\]
+\begin_inset Newline newline
+\end_inset
+
+(se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 135"
+key "lohr2009sampling"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Som efter lite algebra blir
+)
 \begin_inset Formula 
 \[
 \hat{Var}(\bar{y}_{d})=\left(1-\frac{n}{N}\right)\frac{n}{n_{d}^{2}}\frac{(n_{d}-1)s_{yd}^{2}}{n-1}
@@ -2480,14 +2441,6 @@ s_{yd}^{2}=\frac{\sum_{i\in\mathcal{S}_{d}}(y_{i}-\bar{y}_{d})^{2}}{n_{d}-1}
 \end_inset
 
 
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Redovisningsgrupper - Estimation V
 \end_layout
 
 \begin_layout Itemize
