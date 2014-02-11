@@ -1,0 +1,2053 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames,handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 8
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
+ctureCode.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Regressionsestimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till regressionsestimation
+\end_layout
+
+\begin_layout Itemize
+Vi har tidigare talat om kvotestimation med modellen
+\begin_inset Formula 
+\[
+y_{i}=\hat{B}x_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om vi inte kan anta att 
+\begin_inset Formula $y=0$
+\end_inset
+
+ då 
+\begin_inset Formula $x=0$
+\end_inset
+
+ så kan inte kvotestimation användas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+RITA:
+\series default
+ Exempel med negativt beta och positiv intercept (i R) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel:
+\series default
+ Mottagna socialbidrag och inkomst 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Då kan vi istället använda 
+\series bold
+regressionsestimation
+\series default
+ med modellen
+\begin_inset Formula 
+\[
+y=\mathbf{x}^{T}\mathbf{B}=B_{0}+B_{1}x_{1}+...+B_{p}x_{p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Vi kan i princip använda vilken modell vi vill, men linjär regression är
+ standard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precis som tidigare, två situationer
+\series default
+: Antingen känner vi till populationstotalernan för 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ (
+\series bold
+
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+
+\series default
+), eller inte.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till regressionsestimation II
+\end_layout
+
+\begin_layout Itemize
+Exempel på användning om vi 
+\series bold
+inte känner
+\series default
+ till 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan vara intresserad av 
+\series bold
+populationsregressionskoefficienterna
+\series default
+ 
+\begin_inset Formula 
+\[
+\mathbf{B}=B_{0},B_{1},...,B_{p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Exempel på användning om vi 
+\series bold
+känner
+\series default
+ till 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan använda 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+ för att 
+\series bold
+förbättra precisionen
+\series default
+ i 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+ eller 
+\begin_inset Formula $\hat{t}_{y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Exempel: Lön förklaras på geografi, om man är registrerad vid arbetsförmedlingen
+ och antalet utbildningsår.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan använda 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+ för att 
+\series bold
+kalibrera
+\series default
+ 
+\series bold
+
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+
+\series default
+ eller 
+\series bold
+
+\begin_inset Formula $\hat{t}_{y}$
+\end_inset
+
+
+\series default
+ till kända 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Detta är den vanligaste metoden för att hantera bortfallsfel och ramfel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Detta är den vanligaste principen för att hantera täckningsfel och bortfallsfel.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel:
+\series default
+ Bortfall som beror på flera variabler.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Regressionsestimation: Estimatorer
+\end_layout
+
+\begin_layout Itemize
+Skattningen av regressionskoefficienterna 
+\series bold
+vid OSU
+\series default
+ görs på exakt samma sätt som vid vanlig regression:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{B}_{1}=\frac{\sum_{i\in\mathcal{S}}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i\in\mathcal{S}}\left(x_{i}-\bar{x}\right)^{2}}\mbox{ och }B_{0}=\bar{y}_{\mathcal{S}}-\hat{B}_{1}\bar{x}_{\mathcal{S}}
+\]
+
+\end_inset
+
+eller 
+\begin_inset Formula $(*)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\hat{\mathbf{B}}=(\mathbf{X}^{T}\mathbf{X})^{-1}\mathbf{X}^{T}\mathbf{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Exempel på olika modeller}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,3))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- rgamma(n=n, shape=10,rate=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- rnorm(n=n, mean=3, sd=0.2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x), col="blue") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~1), col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2)))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- rnorm(n=n, mean=0, sd=0.2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x + 10 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x), col="blue") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~1), col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2)))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- rnorm(n=n, mean=-4, sd=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x + 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x), col="blue") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~1), col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Regressionsestimation: Estimatorer II
+\end_layout
+
+\begin_layout Itemize
+Om vi känner till 
+\begin_inset Formula $\bar{\mathbf{x}}$
+\end_inset
+
+ kan vi använda 
+\series bold
+
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+
+\series default
+ som 
+\series bold
+hjälpvariabel(er)
+\series default
+ för att skatta 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ med 
+\series bold
+bättre precision
+\series default
+ på följande sätt 
+\begin_inset Formula $(*)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{reg}=\hat{B_{0}}+\hat{B}_{1}\bar{x}_{1,\mathcal{U}}=\mbox{regressionsskattning av }\bar{y}_{\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+eller 
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}-(\bar{x}_{U}-\bar{x}_{\mathcal{S}})\hat{B}_{1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{yreg}=\hat{t}_{y}-(t_{x}-\hat{t}_{x})\hat{B}_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+eller mer generellt
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}-(\bar{\mathbf{x}}_{\mathcal{S}}-\bar{\mathbf{x}}_{U})^{T}\hat{\mathbf{B}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{yreg}=\hat{t}_{y}-(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})^{T}\hat{\mathbf{B}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Precis som kvotskattningen är regressionsskattningar 
+\series bold
+inte
+\series default
+ väntevärdesriktiga.
+ Varför?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Men vad händer om vi använder en modell som inte fungerar?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ingenting.
+\end_layout
+
+\begin_layout Plain Layout
+Antag att vi har en modell där vi vill använda oss av skostorlek för att
+ skatta inkomst.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Vi känner den genomsnittliga skostorleken.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Vad blir 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ i så fall? 
+\end_layout
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\begin_layout Plain Layout
+Vad blir då t_reg? samma som vanliga skattningen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomster}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-5
+\end_layout
+
+\begin_layout Plain Layout
+
+N<-16
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Vi vill uppskatta genomsnittsinkomsten i 
+\backslash
+Sexpr{N} bostadsområden ($y$).
+ Vi vet det genomsnittliga utgifter för försörjningsstöd ($x$) för alla
+ områden och drar ett urval på $n=$
+\backslash
+Sexpr{n}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+welf <- generateWelfare(20140215)
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- welf[[1]]
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- welf[[2]]
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(x, y)
+\end_layout
+
+\begin_layout Plain Layout
+
+regSample <- samplingDistReg(y, x, n, alpha=0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+I populationen (alla områden) är $R=$
+\backslash
+Sexpr{round(cor(x,y),3)} och $B_1=$
+\backslash
+Sexpr{round(lm(y~x)$coefficients[2],3)}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomster II}
+\end_layout
+
+\begin_layout Plain Layout
+
+Skillnaden mellan modellen för kvotestimatorn (röd), regressionsestimatorn
+ (blå) och den 'vanliga' skattningen $
+\backslash
+bar{y}_{
+\backslash
+mathcal{S}}$ (svart).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(x,y) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_abline(intercept=lm(y~x)$coefficients[1],slope=lm(y~x)$coefficients[2],col=
+"blue") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_abline(intercept=0, slope=mean(y)/mean(x),col="red") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_hline(yintercept=mean(y))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomster III}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Teoretiska fördelningen med $K=$
+\backslash
+Sexpr{nrow(regSample)} stycken teoretiska urval.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+regSample[sample(1:nrow(regSample), 15), c(1,5:6, 9:13)]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomst IV}
+\end_layout
+
+\begin_layout Plain Layout
+
+Samlingfördelningen för $
+\backslash
+hat{
+\backslash
+bar{y}}_{reg}$ och $
+\backslash
+hat{
+\backslash
+bar{y}}_
+\backslash
+mathcal{U}$ då $
+\backslash
+bar{y}_
+\backslash
+mathcal{U}=$
+\backslash
+Sexpr{mean(y)}.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+xlimPlot<-c(min(regSample$mean_hat_y), max(regSample$mean_hat_y)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(regSample$mean_hat_yreg, xlim=xlimPlot) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(y), col="red") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(regSample$mean_hat_yreg), col="blue") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  xlab(expression(hat(bar(y))[U,reg]))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(regSample$mean_hat_y,xlim=xlimPlot)+
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(regSample$mean_hat_y),col="blue")+
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(y),col="red")+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  xlab(expression(hat(bar(y))[U]))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Effekten av kvotestimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Expectations
+\end_layout
+
+\begin_layout Plain Layout
+
+Ethatyreg <- sum(regSample$P_S * regSample$mean_hat_yreg)
+\end_layout
+
+\begin_layout Plain Layout
+
+Ethaty <- sum(regSample$P_S * regSample$mean_hat_y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Varians
+\end_layout
+
+\begin_layout Plain Layout
+
+Varthatyreg <- sum(regSample$P_S * (regSample$mean_hat_yreg - Ethatyreg)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+Varthaty <- sum(regSample$P_S * (regSample$mean_hat_y - Ethaty)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Bias
+\end_layout
+
+\begin_layout Plain Layout
+
+Biasthatyreg <- Ethatyreg - mean(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+Biasthaty <- Ethaty - mean(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# MSE
+\end_layout
+
+\begin_layout Plain Layout
+
+MSEthatyreg <- sum(regSample$P_S * (regSample$mean_hat_yreg - mean(y))^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+MSEthaty <- sum(regSample$P_S * (regSample$mean_hat_y - mean(y))^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skillnaden mellan kvotestimatorn och den 
+\begin_inset Quotes eld
+\end_inset
+
+vanliga
+\begin_inset Quotes erd
+\end_inset
+
+ estimatorn
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+E(\hat{\bar{y}}_{reg}) & = & \Sexpr{Ethatyreg} &  & E(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{Ethaty}\\
+Var(\hat{\bar{y}}_{reg}) & = & \Sexpr{Varthatyreg} &  & Var(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{Varthaty}\\
+Bias(\hat{\bar{y}}_{reg}) & = & \Sexpr{Biasthatyreg} &  & Bias(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{Biasthaty}\\
+MSE(\hat{\bar{y}}_{reg}) & = & \Sexpr{MSEthatyreg} &  & MSE(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{MSEthaty}\\
+\\
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Regressionsestimation: Variansberäkningar
+\end_layout
+
+\begin_layout Itemize
+Vi är (som vanligt) intresserade av 
+\begin_inset Formula $Var(\hat{\bar{y}}_{reg})$
+\end_inset
+
+ för att kunna skapa ett konfidensintervall för 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta görs (precis som för kvotestimatorn) genom att beräkna residualerna
+\begin_inset Formula 
+\[
+e_{i}=y_{i}-\hat{B}_{0}-\hat{B}_{1}x_{i}
+\]
+
+\end_inset
+
+eller mer generellt
+\begin_inset Formula 
+\[
+\mathbf{e}=\mathbf{y}-\mathbf{X}\hat{\mathbf{B}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Det är sedan residualerna som används för att beräkna 
+\begin_inset Formula $Var(\hat{\bar{y}}_{reg})$
+\end_inset
+
+ på följande sätt
+\begin_inset Formula 
+\[
+SE(\hat{\bar{y}}_{reg})=\sqrt{\left(1-\frac{n}{N}\right)\frac{s_{e}^{2}}{n}}
+\]
+
+\end_inset
+
+där
+\begin_inset Formula 
+\[
+s_{e}^{2}=\frac{\sum_{i\in\mathcal{S}}e_{i}^{2}}{n-1}\mbox{ eller }s_{e}^{2}=\frac{\sum_{i\in\mathcal{S}}e_{i}^{2}}{n-p}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $p$
+\end_inset
+
+ är antalet parametrar i modellen.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Skogsvolym
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+forest <- generateForest()
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- forest[['n']]
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- forest[['N']]
+\end_layout
+
+\begin_layout Plain Layout
+
+tot_x <- forest[['tot_x']]
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- forest[['B']]
+\end_layout
+
+\begin_layout Plain Layout
+
+data <- forest[['data']]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inom skogsindustrin är det av intresse att uppskatta trävolym per hektar
+\end_layout
+
+\begin_layout Itemize
+Skogsföretag A vill uppskatta den totala volymen träd för ett område på
+ 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+N
+\end_layout
+
+\end_inset
+
+ ha.
+ 
+\end_layout
+
+\begin_layout Itemize
+Som hjälpinformation finns laserscanning av hela området.
+\end_layout
+
+\begin_layout Itemize
+Skogsföretag samlar slumpmässigt in volymen från 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+n
+\end_layout
+
+\end_inset
+
+ slumpmässiga ytor (1 ha).
+ 
+\end_layout
+
+\begin_layout Itemize
+Laserscanning har gjorts för hela området med en uppskattning av volymen
+ till 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+tot_x
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mbox{m}^{3}$
+\end_inset
+
+ träd
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Skogsvolym II}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
+''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+B
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Skogsvolym III}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(data[['x']], data[['y']]) + xlab('Volym (manuellt)') + ylab('Volym
+ (laser)') + geom_abline(intercept=B[1], slope=B[2], col="blue")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Regressionsestimation som kalibrering
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Regressionsestimation som kalibrering
+\end_layout
+
+\begin_layout Itemize
+Regressionsestimatorn kan användas för kalibrering (precis som kvotestimatorn).
+\end_layout
+
+\begin_layout Itemize
+Denna estimator kallas ibland 
+\series bold
+generalized regression
+\series default
+ estimatior (GREG) och utrycks som 
+\begin_inset Newline newline
+\end_inset
+
+(se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 458 f."
+key "lohr2009sampling"
+
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\hat{t}_{yGREG}=\hat{t}_{y}-(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})\mathbf{\hat{B}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{t}_{yGREG}=\sum_{i\in\mathcal{S}}w_{i}g_{i}y_{i}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula 
+\[
+g_{i}=1+(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})^{T}\left(\sum_{j\in\mathcal{S}}w_{j}\frac{1}{\sigma_{j}^{2}}\mathbf{x}_{j}\mathbf{x}_{j}^{T}\right)^{-1}\frac{1}{\sigma_{i}^{2}}\mathbf{x}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ser komplicerad ut.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Ignorera 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ och tänker att ni stoppar in g-vikten ovan vilket skapar en viktad version
+ av y + den vanliga metoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+På detta sätt kalibreras skattningarna till de kända totalerna 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{xGREG}=\sum_{i\in\mathcal{S}}w_{i}g_{i}x_{i}=t_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Itemize
+Rita upp hur totalerna ser ut i form av en designmatris.
+\end_layout
+
+\begin_layout Itemize
+Precis som en regression kan vi ha interaktionsvariabler.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout NoteItem
+Härled detta för OSU-situationen.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
