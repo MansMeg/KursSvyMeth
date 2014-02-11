@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames,handout
+\options xcolor=svgnames
 \use_default_options false
 \begin_modules
 knitr
@@ -1529,7 +1529,7 @@ begin{frame}[containsverbatim]
 
 
 \backslash
-frametitle{Exempel: Brott i bostadsområden II}
+frametitle{Exempel: Brott i bostadsområden III}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2108,7 +2108,7 @@ Vi undersöker 1140 personer och av dessa svarar 789 personer.
 \end_layout
 
 \begin_layout Itemize
-Av de svarande är 424 kvinnor och 365 män och av männen svarar 45 att de
+Av de svarande är 424 kvinnor och 315 män och av männen svarar 45 att de
  har kännt sig otrygga och bland kvinnorna 192.
 \end_layout
 
