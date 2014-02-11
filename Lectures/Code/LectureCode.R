@@ -184,7 +184,9 @@ generateForest <- function(mySeed = 20130201){
   x <- rnorm(n = length(y), mean = y, sd = 18)
   x[x < 0] <- 0
   data <- data.frame(y=y,x=x) 
-  data$e <- resid(lm(y ~ x, data = data))
-  return(list(data = data, n = n, N = N, tot_x = tot_x))
+  mod <- lm(y ~ x, data = data)
+  data$y_hat <- predict(mod)
+  data$e <- resid(mod)
+  return(list(data = data, n = n, N = N, tot_x = tot_x, B = mod$coefficients))
 }
 
