@@ -162,3 +162,15 @@ generateOrgange <-function(n=15, mySeed = 20130104){
               xTot = round(sum(xPop))))
 }
 
+# Example: lecture 8
+generateWelfare <-function(mySeed = 20130206){
+  set.seed(mySeed)  
+  N <- 16
+
+  x <- rgamma(n = N, shape = 970^2 / 485, scale = 485 / 970) 
+  y <- rnorm(n = N, mean = 33851.18 - 5 * x, sd=50)
+    
+  return(list(welfare = x, income = y))
+}
+
+
