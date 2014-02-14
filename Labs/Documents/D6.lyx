@@ -1115,7 +1115,11 @@ Shapefiler som är aktuella för just era problem beror på detaljeringsgrad,
 \series bold
 Obs!
 \series default
- paketet maptools måste vara inläst i R):
+ paketet 
+\family typewriter
+maptools
+\family default
+ måste vara inläst i R):
 \end_layout
 
 \begin_layout Standard
@@ -1230,9 +1234,170 @@ b)
 \end_layout
 
 \begin_layout Standard
-Plotta surveydata på karta.
- Plocka ut vissa delar av en karta och plott Östregötland.
- Hur ser man vilken data som finns (och ska välja ut)?
+Vi ska nu skapa statistik på karta baserat på surveyestimat.
+ Det första steget är att skapa den variabel vi vill beskriva med kartan.
+ Jag vill analysera andelen som vill skära ned på den offentliga sektorn
+ i olika områden.
+ Först skapar jag variabeln nedan, observera att vårt dataset ligger i designobj
+ektet och har namnet 
+\family typewriter
+variables
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010design$variables$minskaOff <- as.numeric(svy2010$FR28_1 %in% c("Ganska
+ bra", "Mycket bra"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nästa steg är att skapa skattningar för respektive län, detta görs med 
+\family typewriter
+svyby()
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minskaOffEst <- svyby(~minskaOff, by=~LKF, design=svy2010design,  svymean)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Precis som surveyobjektet har ett eget element där datasetet är lagrat har
+ data baserat på shapefiler ochså ett ingbyggt dataset.
+ Det är till detta vi ska lägga på våra estimat, vi lägger till / sammanfogar
+ våra data till denna fil.
+ För att titta på det data som finns den geografiska filen:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+För att lägga till våra estimat används följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data <- merge(sweMap@data, minskaOffEst, by.x="LNKOD", by.y="LKF")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nu har vi lagt till våra estimat och kan använda spplot() för att skapa
+ en karta baserad på vår statistik.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+spplot(sweMap, "minskaOff")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi har nu gjort en karta över andelen som vill minska den offentliga sektorn
+ i olika landsting.
+ Välj nu en annan fråga och gör en så snygg karta som möjligt.
+ Gör också en mindre analys kring de geografiska skillnaderna ni ser.
+ 
 \end_layout
 
 \begin_layout Paragraph
@@ -1240,10 +1405,422 @@ c)
 \end_layout
 
 \begin_layout Standard
-Ladda ned kommundata och välj ut bara Östergötland.
- Plotta de olika kommunerna efter en godtycklig variabel du vill plotta
+Som ni kanske upptäckt är ett problem med estimaten att de är olika säkra
+ för olika län.
+ Exempelvis i Stockholms län finns många observationer medan på Gotland
+ är antalet observationer mycke mindre Det som då kan vara av intresse är
+ att kombinera län till större områden.
+ Det finns i Survey 2000 så kallade riksområden som vi kan använda.
+\end_layout
+
+\begin_layout Standard
+Lägg till variabeln 
+\family typewriter
+romr
+\family default
+ i det spatiala objektets dataset på liknande sätt som ovan.
+ Efter att det är gjort kan vi använda funktionen unionSpatialPolygons för
+ att lägga samman länsområdena (polygoner) till större områden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr <- 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("01")] <- 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("05","04","18","19","03")] <-
+ 2
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("06","07","08","09")] <- 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("12","10")] <- 4
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("13","14")] <- 5
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("17","20","21")] <- 6
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("23","22")] <- 7
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMap@data$romr[sweMap@data$LNKOD %in% c("24","25")] <- 8
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE, comment=''>>
+=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMapLarge <- unionSpatialPolygons(SpP = sweMap,IDs = sweMap@data$romr)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+På detta sätt får vi ett nytt spatialt objekt med de nya geografiska områdena:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(sweMapLarge)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Använd dessa nya större områden för att igen skapa en karta baserad på dessa
+ områden med statistik för den variabel du använt.
+ Gör en så snygg karta du kan.
+ Skiljer sig resultaten från varandra? 
+\end_layout
+
+\begin_layout Paragraph
+d)
+\end_layout
+
+\begin_layout Standard
+Som ett sista steg ska vi plocka ut endast delar av en karta för att skapa
+ kartor över mindre delområden.
+ Börja med att läsa in shapefilen som innehåller kommungränser.
+ Pröva att skapa en karta med samtliga kommungränser.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(maptools)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Download and read data 
+\end_layout
+
+\begin_layout Plain Layout
+
+GIStemp <- tempfile(pattern="gis",fileext=".zip") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/Kom
+mun_SCB.zip", destfile = GIStemp, method = "curl")  
+\end_layout
+
+\begin_layout Plain Layout
+
+unzip(GIStemp,exdir=tempdir()) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMunipMap <- readShapePoly(paste(tempdir(),"/Kommun_SCB/Kommun_SCB_07.shp",sep=
+"")) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMunipMap <- readShapePoly("Kommun_SCB_07.shp") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Titta på kartan med följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(sweMunipMap)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Som ett nästa steg ska vi välja ut ett enskild län och plotta de olika kommunern
+a i detta län.
+ Detta gör på ett liknande sätt som för dataset i R.
+ För att välja ut länet 
+\begin_inset Quotes eld
+\end_inset
+
+01
+\begin_inset Quotes erd
+\end_inset
+
+ (Stockholms län) används följande kod.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMunipMap01 <- sweMunipMap[substr(sweMunipMap$KNKOD,1,2)=="01",]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Detta ger följande karta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(sweMunipMap01)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+e)
+\end_layout
+
+\begin_layout Standard
+Vi ska nu skapa en karta över Östergötland för en godtycklig statistisk
+ storhet.
+ Ta reda på vilken länskod Östergötland har.
+ Gå in på SCB och hämta ned data på kommunnivå för Östergötlands län.
+ Du kan välja vilken statistik du vill (ex.
+ valresultat finns på kommunal nivå) och skapa en karta över denna variabel
  för Östergötland.
- Det finns en hel del data på SCB.
+ 
+\end_layout
+
+\begin_layout Standard
+För att snabbt ladda ned data till R kan du använda paketet 
+\family typewriter
+sweSCB
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(sweSCB)
+\end_layout
+
+\begin_layout Plain Layout
+
+myData <- findData()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analys
+\end_layout
+
+\begin_layout Standard
+Precis som när det gäller att skatta medelvärden, proportioner eller andra
+ populationsparametrar innebär designperspektivet att vi betraktar populationspa
+rametrarna som fixa 
+\begin_inset Quotes eld
+\end_inset
+
+sanna
+\begin_inset Quotes erd
+\end_inset
+
+ värden i den ändliga populationen.
+ Vi drar sedan ett urval för 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ - test
+\end_layout
+
+\begin_layout Subsection
+Linjär regression
 \end_layout
 
 \begin_layout Standard
