@@ -699,6 +699,113 @@ Vad får du för konfidensintervall? Täcker intervallet det sanna värdet i
 \end_layout
 
 \begin_layout Subsection
+Skapa nya variabler i ett surveyobjekt
+\end_layout
+
+\begin_layout Standard
+Hur fungerar då R när det arbetar med surveydata? R sparar all information
+ om urvalsdesignen i surveyobjektet.
+ Exakt all information går att se med 
+\family typewriter
+str()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+str(agOSU) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pröva koden ovan.
+ Ni kommer då kunna se att datasetet ni använde för att skapa surveyobjektet
+ finns lagrat i 
+\family typewriter
+agSTRAT$variables
+\family default
+.
+ Detta är precis som ett vanligt dataset i R.
+ Vi kan exemeplvis lägga till och ta bort variabler i detta dataset på följande
+ sätt.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRAT$variables$nonLargeFarms <- agSTRAT$variables$FARMS92 - agSTRAT$variables
+$LARGEF92
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRAT$variables$nonLargeFarms <- NULL
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pröva att skapa variabeln 
+\family typewriter
+nonLargeFarms
+\family default
+ ovan och skatta medelvärdet för 
+\family typewriter
+nonLargeFarms 
+\family default
+i populationen.
+ Vad får du för resultat?
+\end_layout
+
+\begin_layout Subsection
 Estimation i redovisningsgrupper
 \end_layout
 
