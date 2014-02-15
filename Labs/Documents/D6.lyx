@@ -120,6 +120,7 @@ status open
 
 \begin_layout Plain Layout
 
+.Options$width <- 60
 \end_layout
 
 \begin_layout Plain Layout
@@ -131,6 +132,13 @@ status open
 @
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -547,6 +555,13 @@ agpop<-agpop[agpop$ACRES92>0 & agpop$ACRES87>0,]
 
 \begin_layout Section
 Grafik
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Grafik"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -625,7 +640,7 @@ fpc.strata[agSTRATAdata$REGION=="W"] <- 414
 
 \begin_layout Plain Layout
 
-agSTRAT<-svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
+agSTRAT <- svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1809,18 +1824,430 @@ sanna
 \end_inset
 
  värden i den ändliga populationen.
- Vi drar sedan ett urval för 
+ Vi drar sedan ett urval för att kunna dra statistiska slutsatser om denna
+ ändliga population.
+ Dessutom kan vi på grund av att urvalet är ett stratifierat urval eller
+ ett klusterurval få en designeffect i våra studier som behöver hanteras
+ när vi gör våra tester.
+ 
+\end_layout
+
+\begin_layout Standard
+Denna laboration kommer endast att beröra det specifika med just surveysituation
+en, inte kring dessa tester och modeller i sin helhet.
+\end_layout
+
+\begin_layout Subsection
+t-test 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:t-test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Många gånger finns det ett intressa av att jämföra olika redovisningegrupper
+ efter en variabel som kan vara av intresse.
+ Finns det skillnader i vår 
+\series bold
+ändliga population
+\series default
+ avseende redovisningsgrupper som inte beror på slumpen vi skapat i vårt
+ urval.
+ Vill vi jämföra två grupper med varandra (eller med ett fast värde) avseende
+ en kontinuerlig variabel använder vi funktionen 
+\family typewriter
+svyttest()
+\family default
+.
+ För att göra testet behövs dels ange en formula, vilket består av den kontinuer
+liga variabeln vi vill testa skillnader avseende (ex.
+ 
+\begin_inset Formula $y$
+\end_inset
+
+) och en kategorisk variabel med två klasser (ex.
+ 
+\family typewriter
+grupp
+\family default
+).
+ Sedan krävs designobjektet vi vill testa.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comments='',fig.height=4, fig.width=4, fig.align='center', eval=FALSE>
+>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyttest(formula = y ~ grupp, design = mittDesignObjekt)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nedan har jag gjort ett t-test.
+ Vad har jag testat? Vad är slutsatsen från testet?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='',fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyttest(formula=mothAge~Valdeltagande, design=svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Använd surveyobjektet du skapat för Survey 2010 och testa om det finns skillnade
+r mellan moderata och socialdemokratiska väljare när det gäller moderns
+ ålder.
+ Vad får du för resultat? Vad är din slutsats?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs!
+\series default
+ Först behöver du plocka ut de personer i undersökningen som röstade på
+ moderaterna eller socialdemokraterna.
+ Det enklaste är att göra detta med 
+\family typewriter
+subset()
+\family default
+.
+ Är du osäker på hur du använder 
+\family typewriter
+subset()
+\family default
+ - se laboration D4 och avsnittet om redovisningsgrupper.
+\end_layout
+
+\begin_layout Subsection
+Ändlighetskorrektionens betydelse för designbaserade test
+\end_layout
+
+\begin_layout Standard
+Pröva nu att göra om surveyobjektet 
+\family typewriter
+svy2010design
+\family default
+ så att de svarande utgör hela populationen.
+ D.v.s.
+ ändra i argumentet 
+\family typewriter
+fpc
+\family default
+ som du använde för att skapa surveyobjektet så att storleken på populationen
+ blir densamma som urvalsstorleken.
+ Gör nu om testet i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:t-test"
+
+\end_inset
+
+.
+ Får du ett annat resultat? Vad beror detta på? Förklara.
 \end_layout
 
 \begin_layout Subsection
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
- - test
+ - test 
+\end_layout
+
+\begin_layout Standard
+Ett annat vanligt test för kategoriska variabler är det klassiska 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-testet.
+ Precis som för t-testet behöver vi korrigera våra tester för att ta hänsyn
+ till dels vår ändlighetskorrektionsfaktor och dels för att beakta potentiella
+ designeffekter.
+\end_layout
+
+\begin_layout Standard
+För att genomföra ett test om valdeltagande är oberoende av vilket parti
+ en person föredrar kan ett 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test användas på följande sätt.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svytable(formula = ~FR15 + Valdeltagande, design = svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+svychisq(formula = ~FR15 + Valdeltagande, design = svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad är din slutsats av testet ovan? 
+\end_layout
+
+\begin_layout Standard
+Som standard används Rao-Scott-korrektion av testet.
+ Vi kan välja andra korrektioner som exempelvis Wald-korrektion genom att
+ sätta argumentet 
+\family typewriter
+statistic
+\family default
+ till 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Wald
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svychisq(formula = ~FR15 + Valdeltagande, design = svy2010design, statistic="Wal
+d")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Välj nu två kategoriska variabler du vill testa om de är oberoende av varandra
+ och testa dem med ett designbaserat 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test.
+ Vad är dina slutsatser?
 \end_layout
 
 \begin_layout Subsection
 Linjär regression
+\end_layout
+
+\begin_layout Standard
+Till sist ska vi pröva att använda linjär regression i surveysammanhang,
+ d.v.s.
+ att i en regression ta hänsyn till urvalsdesign och ändlighetskorrketion.
+ Precis som vid testerna ovan innebär att detta att vi skattar dessa värden
+ i den ändliga populationen.
+\end_layout
+
+\begin_layout Standard
+Vi ska nu pröva att anpassa en regressionsmodell på materialet avseende
+ åkerytor i USA.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=TRUE, comment = ''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myModel <- svyglm(formula = ACRES92 ~ FARMS92 + REGION, design=agSTRAT)
+\end_layout
+
+\begin_layout Plain Layout
+
+myModel
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad har jag gjort för analys ovan? Vad är dina slutsatser baserat på denna
+ analys?
+\end_layout
+
+\begin_layout Paragraph
+Obs! 
+\end_layout
+
+\begin_layout Standard
+Precis som vid vanlig regression kan vi använda 
+\family typewriter
+summary()
+\family default
+ för att få ytterligare information från vår modell (hypotestester m.m.).
+\end_layout
+
+\begin_layout Standard
+Pröva sedan att anpassa en vanlig linjär regression på samma data (men utan
+ att ta hänsyn till designen).
+ 
+\end_layout
+
+\begin_layout Standard
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE, comment = ''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myLmModel <- lm(ACRES92 ~ FARMS92 + REGION, agSTRATAdata)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad är skillnaden i resultat mellan de två metoderna? Vad beror denna skillnad
+ på?
+\end_layout
+
+\begin_layout Standard
+Skapa nu ett nytt designobjekt för hela populationen 
+\family typewriter
+agpop
+\family default
+.
+ Se till att ange en korrekt ändlighetskorrektion för denna population (d.v.s
+ ange att det är hela populationen vi analyserar).
+ Gör om samma linjära regressionsanalys som vi gjorde på urvalet 
+\family typewriter
+agSTRAT
+\family default
+ tidigare.
+ 
+\end_layout
+
+\begin_layout Standard
+Vad får du medelfel på koefficienterna? Täcker konfidensintervallen du fick
+ baserat på urvalet 
+\family typewriter
+agSTRAT
+\family default
+ de sanna värdena i populationen? 
 \end_layout
 
 \begin_layout Standard
