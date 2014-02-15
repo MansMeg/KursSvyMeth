@@ -233,6 +233,19 @@ target "http://www.ida.liu.se/~732G26/timetable/index.sv.shtml"
 .
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Laborationsrapport
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Rapporten ska innehålla den kod ni kört, eventuella resultat samt svara
+ på de frågor som finns i laborationen.
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset line
 LatexCommand rule
