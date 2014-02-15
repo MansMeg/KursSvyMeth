@@ -702,6 +702,10 @@ Vad får du för konfidensintervall? Täcker intervallet det sanna värdet i
 Estimation i redovisningsgrupper
 \end_layout
 
+\begin_layout Paragraph
+a)
+\end_layout
+
 \begin_layout Standard
 Funktionerna 
 \family typewriter
@@ -787,8 +791,59 @@ svyby(~ACRES92, by=~REGION, design=agOSU, FUN=svymean)
  används för jordbruk? Vilken region har störst yta för jordbruk? Varför?
 \end_layout
 
-\begin_layout Paragraph*
-d) 
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Ett alterntativ för att producera estimat i enskilda grupper är att använda
+ funktionen 
+\family typewriter
+subset()
+\family default
+.
+ Den kan användas för att plocka ut enskilda observationer från ett surveyobjekt
+ och skapa ett nytt surveyobjekt.
+ Detta kan sedan användas precis som vanligt för estimation.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agOSUne <- subset(agOSU, REGION == "NE")
+\end_layout
+
+\begin_layout Plain Layout
+
+svymean(~ACRES92, design=agOSUne)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimation av design effect
 \end_layout
 
 \begin_layout Standard
