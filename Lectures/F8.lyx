@@ -868,7 +868,7 @@ bättre precision
 eller 
 \begin_inset Formula 
 \[
-\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}-(\bar{x}_{U}-\bar{x}_{\mathcal{S}})\hat{B}_{1}
+\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}+(\bar{x}_{U}-\bar{x}_{\mathcal{S}})\hat{B}_{1}
 \]
 
 \end_inset
@@ -876,7 +876,7 @@ eller
 
 \begin_inset Formula 
 \[
-\hat{t}_{yreg}=\hat{t}_{y}-(t_{x}-\hat{t}_{x})\hat{B}_{1}
+\hat{t}_{yreg}=\hat{t}_{y}+(t_{x}-\hat{t}_{x})\hat{B}_{1}
 \]
 
 \end_inset
@@ -888,7 +888,7 @@ eller
 eller mer generellt
 \begin_inset Formula 
 \[
-\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}-(\bar{\mathbf{x}}_{\mathcal{S}}-\bar{\mathbf{x}}_{U})^{T}\hat{\mathbf{B}}
+\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}+(\bar{\mathbf{x}}_{\mathcal{S}}-\bar{\mathbf{x}}_{U})^{T}\hat{\mathbf{B}}
 \]
 
 \end_inset
@@ -896,7 +896,7 @@ eller mer generellt
 
 \begin_inset Formula 
 \[
-\hat{t}_{yreg}=\hat{t}_{y}-(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})^{T}\hat{\mathbf{B}}
+\hat{t}_{yreg}=\hat{t}_{y}+(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})^{T}\hat{\mathbf{B}}
 \]
 
 \end_inset
@@ -1488,7 +1488,7 @@ MSEthaty <- sum(regSample$P_S * (regSample$mean_hat_y - mean(y))^2)
 \end_layout
 
 \begin_layout Itemize
-Skillnaden mellan kvotestimatorn och den 
+Skillnaden mellan regressionsestimatorn och den 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1893,7 +1893,7 @@ key "lohr2009sampling"
 )
 \begin_inset Formula 
 \[
-\hat{t}_{yGREG}=\hat{t}_{y}-(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})\mathbf{\hat{B}}
+\hat{t}_{yGREG}=\hat{t}_{y}+(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})\mathbf{\hat{B}}
 \]
 
 \end_inset
