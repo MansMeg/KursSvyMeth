@@ -190,3 +190,23 @@ generateForest <- function(mySeed = 20130201){
   return(list(data = data, n = n, N = N, tot_x = tot_x, B = mod$coefficients))
 }
 
+
+# Create forestplots
+credplot.gg <- function(d){
+  require(ggplot2)
+  p <- ggplot(d, aes(x=as.character(text), 
+                     y=as.numeric(OR), 
+                     ymin=as.numeric(ORlow), 
+                     ymax=as.numeric(ORhigh)))+
+    geom_pointrange()+
+    geom_point(aes(size=log(as.numeric(sampleSize)), shape="4"), fill="white") +
+    scale_size_continuous(limits=log(c(1000,100000))) + 
+    coord_flip() + 
+    geom_hline(yintercept=1, linetype="dashed")+ 
+    #ggtitle(d$area[1]) + 
+    ylab('Odds ratio') + 
+    xlab('') +
+    theme(legend.position="none", plot.title = element_text(lineheight=.8, face="bold"))
+  
+  return(p)
+}
