@@ -201,12 +201,13 @@ credplot.gg <- function(d){
     geom_pointrange()+
     geom_point(aes(size=log(as.numeric(sampleSize)), shape="4"), fill="white") +
     scale_size_continuous(limits=log(c(1000,100000))) + 
+    scale_y_log10() +
     coord_flip() + 
     geom_hline(yintercept=1, linetype="dashed")+ 
-    #ggtitle(d$area[1]) + 
-    ylab('Odds ratio') + 
+    ggtitle(d$area[1]) + 
+    ylab('Odds ratio (log scale)') + 
     xlab('') +
-    theme(legend.position="none", plot.title = element_text(lineheight=.8, face="bold"))
+    theme(legend.position="none")#, plot.title = element_text(lineheight=.8, face="bold"))
   
   return(p)
 }
