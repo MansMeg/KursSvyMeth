@@ -201,8 +201,8 @@ credplot.gg <- function(d){
   len<-nchar(d$text)
   spaces <- str_locate_all(d$text, " ")
   for (i in seq_along(d$text)){
-    d$text[i] <- str_replace_all(d$text[i],pattern="’", "\"")
-    d$text[i] <- str_replace_all(d$text[i],pattern="'", "\"")
+#    d$text[i] <- str_replace_all(d$text[i],pattern="\’", "\"")
+#    d$text[i] <- str_replace_all(d$text[i],pattern="'", "\"")
     if(len[i]>40){
       split<-spaces[[i]][which.min(abs(spaces[[i]][,'start']-len[i]/2)),'start']
       d$text[i] <- str_c(str_sub(d$text[i],1,split-1),"\n",str_sub(d$text[i],split+1,len[i]),collapse="")
