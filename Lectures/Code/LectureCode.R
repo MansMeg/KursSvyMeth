@@ -217,7 +217,7 @@ credplot.gg <- function(d){
     geom_pointrange()+
     geom_point(aes(size=log(as.numeric(sampleSize)), shape="4"), fill="white") +
     scale_size_continuous(limits=log(c(1000,100000))) + 
-    scale_y_log10(breaks=c(0.5,1:5)) +
+    scale_y_log10(breaks=c(0.5,1,1.5,2:5)) +
     coord_flip() + 
     scale_shape_manual(values=c(22,21)) +
     scale_linetype_manual(values=c(1,2)) +
