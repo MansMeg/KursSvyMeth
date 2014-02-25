@@ -234,6 +234,96 @@ install.packages("survey")
 \end_layout
 
 \begin_layout Subsection
+Läsa in 
+\family typewriter
+sweSCB
+\family default
+ paketet
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(sweSCB)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om det inte går att läsa in paketet (ex.
+ du har en egen dator) behöver du installera paketet först.
+ Det kräver internetanslutning och paketet 
+\family typewriter
+devtools
+\family default
+ och då använder du följande kod.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("devtools") devtools::install_github("sweSCB","LCHansson")
+\end_layout
+
+\begin_layout Plain Layout
+
+library(sweSCB)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Detta paket finns i dagsläget inte på CRAN utan bara på GitHub.
+ Mer information finns här: 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "sweSCB"
+target "https://github.com/LCHansson/sweSCB"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Subsection
 Ladda ned och läs in Survey 2010
 \begin_inset CommandInset label
 LatexCommand label
@@ -252,7 +342,7 @@ I denna laboration ska vi börja analysera riktiga surveydata (med alla problem
 \shape italic
 Den svenska väljaren
 \shape default
-
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "2011dsv"
@@ -616,12 +706,14 @@ Dra ett OSU av storlek
 \end_inset
 
  från din population, skapa ett surveyobjekt och skatta totalen och proportionen
- i befolkningen med tillhörande konfidensintervall.
- Estimera även i de olika åldersgrupperna.
+ i befolkningen avseende utsatthet för misshandel med tillhörande konfidensinter
+vall.
+ Skatta även utsatthet i de olika åldersgrupperna.
  Se föregående laboration för detaljer.
  Ignorera svarssannolikheten just nu (d.v.s.
  utgå från att alla svarar).
- Vad får du för resultat, täcker konfidensintervallen de sanna värdena?
+ Vad får du för resultat, täcker konfidensintervallen de sanna värdena i
+ populationen?
 \end_layout
 
 \begin_layout Paragraph*
@@ -750,8 +842,19 @@ age
 \family default
  för både de som svarat och de som inte svarat (vi kan bara analysera bortfallet
  efter de variabler vi har data både i undersökningen och på målpopulatiosnnivå).
- Anpassa en logistisk regressionsmodell med respInd som beroende variabel
- och sex och age som förklarande variabler.
+ Anpassa en logistisk regressionsmodell med 
+\family typewriter
+respInd
+\family default
+ som beroende variabel och 
+\family typewriter
+sex
+\family default
+ och 
+\family typewriter
+age
+\family default
+ som förklarande variabler.
  Detta kan göras på följande sätt i R:
 \end_layout
 
@@ -788,7 +891,7 @@ summary(bortfallsanalys)
 \begin_layout Standard
 Vad drar du för slutsatser från denna bortfallsanalys.
  Vilka variabler kan förklara bortfallet / svarande? Stämmer det med den
- bortfallsmodell vi konstruerat ovan?
+ bortfallsmodell vi använde ovan?
 \end_layout
 
 \begin_layout Subsection
@@ -863,14 +966,6 @@ modMat
 \end_layout
 
 \begin_layout Standard
-Om exempelvis bara en eller två kategorier av 
-\family typewriter
-age
-\family default
- var signifikanta ovan.
-\end_layout
-
-\begin_layout Standard
 
 \series bold
 Exempel:
@@ -887,7 +982,7 @@ status open
 
 \begin_layout Plain Layout
 
-modMat <- model.matrix(~ as.factor(age) + as.factor(sex), mySim) 
+modMat <- model.matrix(~ as.factor(age) + as.factor(sex), simPop) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -918,6 +1013,15 @@ popVector
 ? Vad innebär detta resultat?
 \end_layout
 
+\begin_layout Standard
+Skapa nu en egen 
+\family typewriter
+popVector
+\family default
+ beroende på vilka variabler som kan förklara bortfallet i enlighet med
+ din bortfallsanalys.
+\end_layout
+
 \begin_layout Paragraph
 b)
 \end_layout
@@ -935,9 +1039,9 @@ reference "sub:Urval-och-bortfallsanalys"
 \family typewriter
 calibrate()
 \family default
- och de argument som krävs är det surveydesignobjekt som ska kalibreras,
- den regressionformel som ska användas (men utan beroende variabel) och
- vektorn med populationsvärden, 
+ i surveypaketet och de argument som krävs är det surveydesignobjekt som
+ ska kalibreras, den regressionformel som ska användas (men utan beroende
+ variabel) och vektorn med populationsvärden, 
 \family typewriter
 population
 \family default
@@ -954,7 +1058,7 @@ calibrate()
 \family typewriter
 model.matrix()
 \family default
- ovan.
+ ovan för att det ska fungera.
 \end_layout
 
 \begin_layout Standard
@@ -994,7 +1098,7 @@ Nu är surveyobjektet kalibrerat (och sparat som
 calMittUrvalSvarande
 \family default
 ) och vi kan producera skattningar av baserat på detta objekt med samma
- funktioner som tifigare (ex.
+ funktioner som tidigare (ex.
  
 \family typewriter
 svymean()
@@ -1010,8 +1114,8 @@ rvall med det kalibrerade surveyobjektet.
 \end_layout
 
 \begin_layout Standard
-Vad får du för resultat? Pröva att skatta andelen i de olika åldersgrupperna
- 
+Vad får du för resultat? Täcker konfidensintervallet de sanna värdena i
+ populationen? 
 \end_layout
 
 \begin_layout Paragraph*
@@ -1077,7 +1181,7 @@ reference "sub:Ladda-ned-och"
 \end_inset
 
 .
- Vi ska nu göra en bortfallsanalys på detta material, kalibrera och gör
+ Vi ska nu göra en bortfallsanalys på detta material, kalibrera och göra
  en enkel analys.
  Undersökningen har gjorts genom ett obundet slumpmässigt urval (OSU) från
  befolkningen i Sverige 16 - 85 år.
@@ -1089,9 +1193,8 @@ a)
 
 \begin_layout Standard
 Börja med att undersök vilka variabler du tycker verkar intressanta och
- du vill analysera i materialet.
- Exempelvis en eller flera delar av Fråga 28 som handlar om befolkningens
- attityder i olika politiska frågor kan du analysera.
+ du vill analysera i materialet, exempelvis en eller flera delar av Fråga
+ 28 som handlar om befolkningens attityder i olika politiska frågor.
 \end_layout
 
 \begin_layout Subsection
@@ -1169,7 +1272,7 @@ library(sweSCB)
 
 \begin_layout Plain Layout
 
-findData()
+mittData <- findData()
 \end_layout
 
 \begin_layout Plain Layout
@@ -1180,6 +1283,11 @@ findData()
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Om detta paket inte fungerar för dig kan du hämta samma data från SCB:s
+ webbplats.
 \end_layout
 
 \begin_layout Paragraph
@@ -1209,7 +1317,7 @@ Använd surveyobjektet för att skatta värdena på följande variabler.
 \family typewriter
 sweSCB
 \family default
-.
+ eller på SCB:s hemsida.
 \end_layout
 
 \begin_layout Itemize

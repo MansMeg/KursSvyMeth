@@ -227,12 +227,6 @@ install.packages("survey")
 
 \begin_layout Plain Layout
 
-https://www.skatteverket.se/download/18.353fa3f313ec5f91b951151/1370005553373/Skv_m
-edborgarunders_2012.sav
-\end_layout
-
-\begin_layout Plain Layout
-
 @
 \end_layout
 
@@ -752,8 +746,7 @@ agSTRAT$variables
 \family default
 .
  Detta är precis som ett vanligt dataset i R.
- Vi kan exemeplvis lägga till och ta bort variabler i detta dataset på följande
- sätt.
+ Vi kan exemeplvis lägga till en variabel på följande sätt:
 \end_layout
 
 \begin_layout Standard
@@ -768,18 +761,18 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE,eval=FALSE>>=
+<<echo=TRUE,eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-agSTRAT$variables$nonLargeFarms <- agSTRAT$variables$FARMS92 - agSTRAT$variables
-$LARGEF92
+agOSU$variables$nonLargeFarms <- agOSU$variables$FARMS92 - agOSU$variables$LARGE
+F92
 \end_layout
 
 \begin_layout Plain Layout
 
-agSTRAT$variables$nonLargeFarms <- NULL
+svymean(~nonLargeFarms, design=agOSU) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -801,8 +794,37 @@ nonLargeFarms
 \family typewriter
 nonLargeFarms 
 \family default
-i populationen.
+i populationen med tillhörande konfidensintervall.
  Vad får du för resultat?
+\end_layout
+
+\begin_layout Standard
+Vill vi ta bort variabler gör vi även det på samma sätt som om vi har ett
+ vanligt dataset.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agOSU$variables$nonLargeFarms <- NULL
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -895,7 +917,7 @@ svyby(~ACRES92, by=~REGION, design=agOSU, FUN=svymean)
 
 \begin_layout Standard
 Är det någon skillnad mellan de olika regionerna när det gäller ytan som
- används för jordbruk? Vilken region har störst yta för jordbruk? Varför?
+ används för jordbruk? Vilken region har störst yta för jordbruk?
 \end_layout
 
 \begin_layout Paragraph
