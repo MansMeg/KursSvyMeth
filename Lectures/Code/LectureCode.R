@@ -194,6 +194,21 @@ generateForest <- function(mySeed = 20130201){
 # Create forestplots
 credplot.gg <- function(d){
   require(ggplot2)
+  require(stringr)
+
+  # Correct data
+  d$text <- as.character(d$text)
+  len<-nchar(d$text)
+  spaces <- str_locate_all(d$text, " ")
+  for (i in seq_along(d$text)){
+    if(len[i]>40){
+      split<-spaces[[i]][which.min(abs(spaces[[i]][,'start']-len[i]/2)),'start']
+      d$text[i] <- str_c(str_sub(d$text[i],1,split-1),"\n",str_sub(d$text[i],split+1,len[i]),collapse="")
+      d$text[i] <- str_replace_all(d$text[i],pattern="’", "")
+    }
+  }
+  
+  # Plot
   p <- ggplot(d, aes(x=as.character(text), 
                      y=as.numeric(OR), 
                      ymin=as.numeric(ORlow), 
@@ -201,8 +216,10 @@ credplot.gg <- function(d){
     geom_pointrange()+
     geom_point(aes(size=log(as.numeric(sampleSize)), shape="4"), fill="white") +
     scale_size_continuous(limits=log(c(1000,100000))) + 
-    scale_y_log10() +
+    scale_y_log10(breaks=c(0.5,1:5)) +
     coord_flip() + 
+    scale_shape_manual(values=c(22,21)) +
+    scale_linetype_manual(values=c(1,2)) +
     geom_hline(yintercept=1, linetype="dashed")+ 
     ggtitle(d$area[1]) + 
     ylab('Odds ratio (log scale)') + 
