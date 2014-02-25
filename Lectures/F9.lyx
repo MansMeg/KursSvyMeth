@@ -1043,8 +1043,8 @@ begin{centering}
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
+<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,comment='
+'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1151,8 +1151,8 @@ begin{centering}
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
+<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,comment='
+'>>=
 \end_layout
 
 \begin_layout Plain Layout
