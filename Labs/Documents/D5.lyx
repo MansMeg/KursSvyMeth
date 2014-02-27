@@ -473,7 +473,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE,eval=FALSE>>=
+<<echo=TRUE,eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -528,7 +528,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE,eval=FALSE>>=
+<<echo=TRUE,eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -584,7 +584,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE,eval=FALSE>>=
+<<echo=TRUE,eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -637,7 +637,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, eval=FALSE>>=
+<<echo=TRUE, eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -647,27 +647,27 @@ simPop$response <- 0.95
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age.class == "15-24"] <- 0.35
+simPop$response[simPop$age == "15-24"] <- 0.35
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age.class == "25-34"] <- 0.5
+simPop$response[simPop$age == "25-34"] <- 0.5
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age.class == "35-44"] <- 0.65
+simPop$response[simPop$age == "35-44"] <- 0.65
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age.class == "45-54"] <- 0.85
+simPop$response[simPop$age == "45-54"] <- 0.85
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response <- (simPop$response - 0.15) * as.numeric(simPop$sex == "Man")
+simPop$response <- simPop$response - 0.15 * as.numeric(simPop$sex == "Man")
 \end_layout
 
 \begin_layout Plain Layout
