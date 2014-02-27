@@ -230,6 +230,23 @@ unlink(RdataFile)
 
 \end_layout
 
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
 \begin_layout Section
 Bortfall
 \end_layout
