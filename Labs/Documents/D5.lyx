@@ -1200,6 +1200,21 @@ reference "sub:Ladda-ned-och"
  en enkel analys.
  Undersökningen har gjorts genom ett obundet slumpmässigt urval (OSU) från
  befolkningen i Sverige 16 - 85 år.
+ 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://github.com/MansMeg/KursSvyMeth/raw/master/Labs/DataFiles/KodbokSurvey2010.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ finns en kodbok som beskriver variablerna i datasetet.
 \end_layout
 
 \begin_layout Paragraph
