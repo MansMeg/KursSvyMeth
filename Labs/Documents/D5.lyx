@@ -614,8 +614,15 @@ Vi har nu en simulerad population som vi kan pröva att dra urval från.
 
 \begin_layout Standard
 Hur många har vart utsatt för brott i din population (vad är det sanna värdet
- vi försöker uppskatta), totalt och i de olika åldersgrupperna? Hur stor
- är andelen som varit utsatta för misshandel?
+ vi försöker uppskatta), totalt och i de olika åldersgrupperna? [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+aggregate()
+\family default
+] Hur stor är andelen som varit utsatta för misshandel?
 \end_layout
 
 \begin_layout Paragraph*
