@@ -747,6 +747,14 @@ simPop
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Obs!
+\series default
+ Detta är ett vanligt dataset och inte ett surveyobjekt
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -757,7 +765,7 @@ status open
 
 \begin_layout Plain Layout
 
-mittUrval$respInd <- rbinom(length(mittUrval$response), 1, simPop$response)
+mittUrval$respInd <- rbinom(length(mittUrval$response), 1, mittUrval$response)
 \end_layout
 
 \begin_layout Plain Layout
