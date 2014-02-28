@@ -855,7 +855,7 @@ status open
 
 \begin_layout Plain Layout
 
-svyboxplot(ACRES92 ~ REGION, design=agSTRAT)
+svyhist(~ ACRES92, design=agSTRAT)
 \end_layout
 
 \begin_layout Plain Layout
