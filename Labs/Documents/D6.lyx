@@ -210,6 +210,11 @@ library(hexbin)
 
 \begin_layout Plain Layout
 
+library(sweSCB)
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
@@ -246,6 +251,73 @@ install.packages("survey")
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Om det inte går att läsa in paketet 
+\family typewriter
+sweSCB
+\family default
+ (ex.
+ du har en egen dator) behöver du installera paketet först.
+ Dock ligger (ännu) inte 
+\family typewriter
+sweSCB
+\family default
+ på CRAN utan måste installeras från GitHub.
+ Det kräver internetanslutning och paketet 
+\family typewriter
+devtools
+\family default
+.
+ För att installera använder du följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("devtools") devtools::install_github("sweSCB","LCHansson")
+\end_layout
+
+\begin_layout Plain Layout
+
+library(sweSCB)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mer information finns här: 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "sweSCB"
+target "https://github.com/LCHansson/sweSCB"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
 \end_layout
 
 \begin_layout Subsection
