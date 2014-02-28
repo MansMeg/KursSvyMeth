@@ -772,7 +772,7 @@ M_{0}=\mbox{antal ssus (elever) i populationen}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-y_{ij}=\mbox{observation i skola \ensuremath{j}avseende elev \ensuremath{i}}
+y_{ij}=\mbox{observation i skola \ensuremath{i}avseende elev \ensuremath{j}}
 \]
 
 \end_inset
@@ -829,7 +829,7 @@ Notation och begrepp III
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\bar{y}_{\mathcal{U}}=\frac{1}{M_{0}}\sum_{i,j}y_{ij}=\mbox{populationsmedelvärde avseende \ensuremath{y} i populationen}
+\bar{y}_{\mathcal{U}}=\frac{1}{M_{0}}\sum_{i,j}y_{ij}=\mbox{populationsmedelvärde avseende \ensuremath{y}i populationen}
 \]
 
 \end_inset
@@ -840,7 +840,7 @@ Notation och begrepp III
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\bar{y}_{i\mathcal{U}}=\frac{1}{M_{i}}\sum_{i,j}y_{ij}=\frac{t_{i}}{M_{i}}=\mbox{populationsmedelvärde avseende \ensuremath{y} i psu (skola) }i
+\bar{y}_{i\mathcal{U}}=\frac{1}{M_{i}}\sum_{i,j}y_{ij}=\frac{t_{i}}{M_{i}}=\mbox{populationsmedelvärde avseende \ensuremath{y}i psu (skola) }i
 \]
 
 \end_inset
@@ -862,7 +862,7 @@ S^{2}=\sum_{i=1}^{N}\sum_{j=1}^{M_{i}}\frac{\left(y_{ij}-\bar{y}_{\mathcal{U}}\r
 \begin_layout Standard
 \begin_inset Formula 
 \[
-S_{i}^{2}=\sum_{j=1}^{M_{i}}\frac{\left(y_{ij}-\bar{y}_{i\mathcal{U}}\right)^{2}}{M_{i}-1}=\mbox{populationsvarians avseende \ensuremath{y} i psu (skola) }i
+S_{i}^{2}=\sum_{j=1}^{M_{i}}\frac{\left(y_{ij}-\bar{y}_{i\mathcal{U}}\right)^{2}}{M_{i}-1}=\mbox{populationsvarians avseende \ensuremath{y}i psu (skola) }i
 \]
 
 \end_inset
@@ -927,7 +927,7 @@ er.
 \end_layout
 
 \begin_layout Itemize
-Mejeriet är intresserade av hur många mjölkpaket som skadas under transporten.
+Mejeriet är intresserade av hur många mjölkpaket som skadas vid transporten.
 \end_layout
 
 \begin_layout Itemize
@@ -964,7 +964,7 @@ Vi observerar alla ssu (elever) i de psu (skolor) som dras i urvalet
 
 \end_deeper
 \begin_layout Itemize
-Flerstegs (vanligtvis två) klusterurval
+Flerstegs (exempelvis två) klusterurval
 \end_layout
 
 \begin_deeper
@@ -980,6 +980,10 @@ Vi ett urval av ssu (elever) i de psu (skolor) som dras i urvalet
 \end_layout
 
 \end_deeper
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Som vid stratifiering så kan kluster ses som 
 \begin_inset Quotes eld
@@ -992,9 +996,8 @@ egna
  subpopulationer
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-Sedan kombineras subpopulationerna till en 
+SSubpopulationerna kombineras till en 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1005,7 +1008,6 @@ gemensam
  skattning
 \end_layout
 
-\end_deeper
 \begin_layout EndFrame
 
 \end_layout
@@ -1396,7 +1398,7 @@ frametitle{Exempel: Barns sjukdagar}
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+<<size='scriptsize',fig.height=2,warning=FALSE,message=FALSE,echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1421,7 +1423,17 @@ N<-10033
 
 \begin_layout Plain Layout
 
-Vi vill uppskatta det genomsnittliga antalet sjukdagar per barn och vecka.
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Vi vill uppskatta det genomsnittliga antalet sjukdagar per barn och
+ vecka.
  Vi drar ett klusterurval av 
 \backslash
 Sexpr{n} förskolor i Sverige år 2011.
@@ -1430,7 +1442,9 @@ Sexpr{n} förskolor i Sverige år 2011.
 
 \begin_layout Plain Layout
 
-Det finns totalt $N=$
+
+\backslash
+item Det finns totalt $N=$
 \backslash
 Sexpr{N} förskolor och $M_0=$
 \backslash
@@ -1439,11 +1453,14 @@ Sexpr{M0} barn.
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{itemize} 
 \end_layout
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+<<size='scriptsize',fig.height=1.8,warning=FALSE,message=FALSE,echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1497,16 +1514,18 @@ ki.high<-round(res1+qnorm(1-0.05/2)*sqrt(res2),3)
 
 \begin_layout Plain Layout
 
-där $t_i=(
+
 \backslash
-Sexpr{paste(ti,collapse=", ")})$ 
+begin{itemize} 
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-begin{itemize} 
+item $t_i=(
+\backslash
+Sexpr{paste(ti,collapse=", ")})$ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1557,7 +1576,7 @@ Denna skattning har två problem
 \end_layout
 
 \begin_layout Itemize
-Vi kanske inte känner 
+vi kanske inte känner 
 \begin_inset Formula $M_{0}$
 \end_inset
 
@@ -1586,13 +1605,19 @@ som är en kvotskattning (av
 \end_layout
 
 \begin_layout Itemize
-Precis som vid vanlig kvotskattning - antingen känner vi till 
+Precis som vid vanlig kvotskattning: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+antingen känner vi till 
 \begin_inset Formula $M_{0}$
 \end_inset
 
  eller inte.
 \end_layout
 
+\end_deeper
 \begin_layout EndFrame
 
 \end_layout
@@ -1608,7 +1633,7 @@ Skattning av kvoten är
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\hat{B}=\frac{\bar{y}_{\mathcal{S}}}{\bar{x}_{\mathcal{S}}}=\frac{\sum_{i\in\mathcal{S}}y_{i}}{\sum_{i\in\mathcal{S}}x_{i}}\left[=\frac{\hat{t}_{unb}}{M_{0}}\right]
+\hat{B}=\frac{\bar{y}_{\mathcal{S}}}{\bar{x}_{\mathcal{S}}}=\frac{\sum_{i\in\mathcal{S}}y_{i}}{\sum_{i\in\mathcal{S}}x_{i}}
 \]
 
 \end_inset
@@ -1673,13 +1698,17 @@ känner till
 \begin_inset Formula $\hat{t}_{r,y}$
 \end_inset
 
-:
+ 
+\begin_inset Formula $(*)$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\hat{Var}(\hat{\bar{y}}_{r})=\hat{Var}(\hat{B}\bar{x}_{\mathcal{U}})=\bar{x}_{\mathcal{U}}^{2}\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
+\hat{Var}(\hat{\bar{y}}_{r})=\left(1-\frac{n}{N}\right)\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
 \]
 
 \end_inset
@@ -1822,23 +1851,11 @@ N<-10033
 
 \begin_layout Plain Layout
 
-Samma exempel som ovan.
- Ett klusterurval av 
-\backslash
-Sexpr{n} förskolor i Sverige år 2011 där $N=$
-\backslash
-Sexpr{N} förskolor och $M_0=$
-\backslash
-Sexpr{M0} barn.
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.1,warning=FALSE,message=FALSE,echo=FALSE>>=
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1872,33 +1889,42 @@ qplot(ti,M) + geom_abline(intercept=0, slope=mean(ti)/mean(M),col="red")
 
 \begin_layout Plain Layout
 
+
+\backslash
+begin{itemize} 
 \end_layout
 
 \begin_layout Plain Layout
 
-Korrelationen är 
+
+\backslash
+item Korrelationen är 
 \backslash
 Sexpr{round(cor(M,ti),2)} och det är rimligt att om $M=0$ så är $t_i=0$.
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-I urvalet har förskolorna följande storlek: $M_i=(
+\backslash
+item I urvalet har förskolorna följande storlek: $M_i=(
 \backslash
 Sexpr{paste(M,collapse=", ")})$ 
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+item Beräkna en skattning av det totala antalet sjukdagar med kvotestimatorn.
+ $(*)$
 \end_layout
 
 \begin_layout Plain Layout
 
-Beräkna en skattning av det totala antalet sjukdagar med kvotestimatorn.
+
+\backslash
+end{itemize} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2220,7 +2246,7 @@ De uppskattar att de har cirka
 \end_layout
 
 \begin_layout Itemize
-De är osäkra på o det finns periodicitet och väljer därför två kluster.
+De är osäkra på om det finns periodicitet och väljer därför två kluster.
 \end_layout
 
 \begin_layout Itemize
