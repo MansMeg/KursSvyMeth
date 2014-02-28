@@ -431,6 +431,10 @@ Grafik i surveyer
 Varför tala om grafik i surveyer? Är det inte samma sak?
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Finns två huvudorsaker:
 \end_layout
@@ -723,7 +727,7 @@ RUE>>=
 \begin_layout Plain Layout
 
 svyplot(mothAge~fathAge, design = svy2010design, style="transparent", pch=19,
- alpha=c(0,.1)) 
+ alpha=c(0,.02)) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -957,14 +961,14 @@ Våra analyser påverkas på samma sätt som konfidensintervallen
 \begin_inset Formula $deff<1$
 \end_inset
 
- vi blir säkrare OSU
+ vi blir säkrare än vid OSU
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $deff>1$
 \end_inset
 
- vi blir osäkrare än OSU
+ vi blir osäkrare än vid OSU
 \end_layout
 
 \end_deeper
@@ -1379,8 +1383,12 @@ Periodicitet i ramen
 
 \end_deeper
 \end_deeper
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder II 
 \end_layout
 
 \begin_layout Itemize
@@ -1436,8 +1444,12 @@ Något mer komplicerat än OSU
 
 \end_deeper
 \end_deeper
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder III
 \end_layout
 
 \begin_layout Itemize
@@ -1489,8 +1501,12 @@ Mer komplicerade beräkningar
 
 \end_deeper
 \end_deeper
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder IV
 \end_layout
 
 \begin_layout Itemize
@@ -1554,7 +1570,7 @@ Mer komplicerade beräkningar
 \end_layout
 
 \begin_layout BeginFrame
-Estimation/skattningsförfarande
+Estimation
 \end_layout
 
 \begin_layout Itemize
@@ -1691,8 +1707,12 @@ Bearbetningsfel
 \end_layout
 
 \end_deeper
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningmetodik II
 \end_layout
 
 \begin_layout Itemize
@@ -1729,8 +1749,12 @@ Rapportering och kommunikation
 \end_layout
 
 \end_deeper
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningmetodik III
 \end_layout
 
 \begin_layout Itemize
@@ -1814,7 +1838,11 @@ Genomföra en bortfallsanalys
 \end_layout
 
 \begin_layout Itemize
-Kompensera för uppkommet bortfall
+Kompensera för uppkommet bortfall 
+\begin_inset Newline newline
+\end_inset
+
+(vanligtvis med regressionsestimation / GREG)
 \end_layout
 
 \end_deeper
