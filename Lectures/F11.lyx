@@ -277,6 +277,14 @@ Det går att ha ytterligare steg om det finns behov
 \begin_layout Itemize
 Det kan vara olika urvalsförfarande i de olika stegen (ex.
  stratifierat urval och/eller OSU)
+\begin_inset Newline newline
+\end_inset
+
+(brukar kallas 
+\series bold
+komplexa surveyer
+\series default
+)
 \end_layout
 
 \begin_layout EndFrame
@@ -553,7 +561,7 @@ Vi skattar med den vanliga väntevärdesriktiga estimatorn
 
 \end_inset
 
-vilket ger att 
+vilket ger 
 \begin_inset Formula $(*)$
 \end_inset
 
@@ -641,6 +649,27 @@ Variansskattning vid tvåstegs klusterurval II
 \end_layout
 
 \begin_layout Itemize
+Precis som innan fungerar denna variansskattning bra om psu (ex.
+ skolor) är ungefär lika stora
+\end_layout
+
+\begin_layout Itemize
+Annars använder vi kvotskattning (se 
+\begin_inset CommandInset citation
+LatexCommand citealp
+after "s. 186"
+key "lohr2009sampling"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
 Den andra delen av variansskattningen (inom psu) är ofta betydligt mindre
  än den första delen (mellan psu) 
 \end_layout
@@ -671,23 +700,6 @@ Konfidensintervallen beräknar vi (som vanligt)
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-Precis som innan fungerar denna variansskattning bra om psu (ex.
- skolor) är ungefär lika stora
-\end_layout
-
-\begin_layout Itemize
-Annars använder vi kvotskattning (se 
-\begin_inset CommandInset citation
-LatexCommand citealp
-after "s. 186"
-key "lohr2009sampling"
-
-\end_inset
-
-)
 \end_layout
 
 \begin_layout EndFrame
@@ -1823,7 +1835,11 @@ key "lohr2009sampling"
 \begin_inset Newline newline
 \end_inset
 
-(det är enkelt att göra i R).
+(det är enkelt att göra i R med paketet 
+\family typewriter
+sampling
+\family default
+).
 \end_layout
 
 \begin_layout EndFrame
@@ -2091,6 +2107,14 @@ Det finns flera olika metoder för att dra urval på ett sådant sätt att
 \end_inset
 
  är proportionellt efter en given variabel
+\begin_inset Newline newline
+\end_inset
+
+(de flesta finns implementerade i R-paketet 
+\family typewriter
+sampling
+\family default
+)
 \end_layout
 
 \begin_layout Pause
@@ -2207,7 +2231,7 @@ Då kan variansestimatorn för pps-urval (med återläggning) användas iställe
  
 \begin_inset Formula 
 \[
-V_{WR}(\hat{t}_{HT})=\frac{1}{n(n-1)}\sum_{i\in\mathcal{S}}\left(\frac{t_{i}}{\psi_{i}}-\hat{t}_{\psi}\right)^{2}=\frac{1}{n(n-1)}\sum_{i\in\mathcal{S}}\left(\frac{t_{i}}{\pi_{i}}-\frac{\hat{t}_{HT}}{n}\right)^{2}
+V_{WR}(\hat{t}_{HT})=\frac{1}{n(n-1)}\sum_{i\in\mathcal{S}}\left(\frac{t_{i}}{\pi_{i}}-\frac{\hat{t}_{HT}}{n}\right)^{2}
 \]
 
 \end_inset
