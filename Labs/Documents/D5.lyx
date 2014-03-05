@@ -1262,6 +1262,9 @@ sanna
 \end_inset
 
  värdena i populationen.
+ Ett exempel är skillnaden mellan hur många vi uppskattar (baserat på vårt
+ urval) röstade på ett visst parti i vårt urval och hur många som faktiskt
+ röstade på detta parti (baserat på data från SCB).
  
 \end_layout
 
@@ -1272,12 +1275,12 @@ b)
 \begin_layout Standard
 För att ta reda på de sanna värdena i populationen använder vi data från
  Statistiska centralbyrån.
- Det finns ett paket för att få tillgång till data från Statistiska centralbyrån
- direkt från R i paketet 
+ Det finns ett R-paket (
 \family typewriter
 sweSCB
 \family default
-.
+) för att få tillgång till data från Statistiska centralbyrån direkt från
+ R.
  På följande sätt gör du för att komma åt data från SCB (precis som innan
  behöver du installera 
 \family typewriter
@@ -1341,25 +1344,31 @@ name "par:d)"
 \end_layout
 
 \begin_layout Standard
-Använd surveyobjektet för att skatta värdena på följande variabler.
- Samtliga dessa variabler finns sanna variabler vid SCB som du kan hämta
- med paketet 
+Använd surveyobjektet för att skatta totalvärdena på följande variabler.
+ Jämför dina totalskattningar med data från SCB.
+ Detta kan du hämta med paketet 
 \family typewriter
 sweSCB
 \family default
- eller på SCB:s hemsida.
+ eller från SCB:s hemsida.
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-Partival
+Partival 
+\family default
+(jmf.
+ antal röstande i demokratistatistiken från SCB)
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-Kön
+Kön 
+\family default
+(jmf.
+ antal kvinnor/män i befolkningsstatistiken från SCB)
 \end_layout
 
 \begin_layout Itemize
@@ -1367,7 +1376,8 @@ Kön
 \family typewriter
 Ålder9
 \family default
- : Åldersklasser
+ : Åldersklasser (jmf.
+ antal i olika åldersgrupper i befolkningsstatistiken)
 \end_layout
 
 \begin_layout Itemize
@@ -1375,13 +1385,15 @@ Kön
 \family typewriter
 romr
 \family default
-: Riksområde, se kodbeskrivningen för detaljer
+: Riksområde, se kodbeskrivningen för detaljer.
+ (jmf.
+ antal personer i respektive område i befolkningsstatistiken)
 \end_layout
 
 \begin_layout Standard
 Det finns fler variabler du kan använda i din bortfallsanalys om du har
  lust.
- 
+ Vilka kommer du på?
 \end_layout
 
 \begin_layout Standard
