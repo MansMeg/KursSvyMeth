@@ -1222,9 +1222,34 @@ a)
 \end_layout
 
 \begin_layout Standard
-Börja med att undersök vilka variabler du tycker verkar intressanta och
+Börja med att undersöka vilka variabler du tycker verkar intressanta och
  du vill analysera i materialet, exempelvis en eller flera delar av Fråga
  28 som handlar om befolkningens attityder i olika politiska frågor.
+\end_layout
+
+\begin_layout Paragraph
+
+\series bold
+Obs!
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Tänk på att den variabel du vill analysera ska vara en sådan variabel vi
+ inte känner från andra källor (som ex.
+ partival) utan en sådan vi måste estimera baserat på surveymaterialet.
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Ta reda på hur stor den aktuella målpopulationen var år 2010 och skapa ett
+ surveyobjekt med denna data.
+ Skatta den eller de variabler du vill undersöka baserat på detta surveyobjekt.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1262,10 +1287,13 @@ sanna
 \end_inset
 
  värdena i populationen.
- Ett exempel är skillnaden mellan hur många vi uppskattar (baserat på vårt
- urval) röstade på ett visst parti i vårt urval och hur många som faktiskt
- röstade på detta parti (baserat på data från SCB).
  
+\end_layout
+
+\begin_layout Standard
+Ett exempel är skillnaden mellan hur många vi uppskattar (baserat på vårt
+ urval) röstade på ett visst parti och hur många som faktiskt röstade på
+ detta parti (baserat på data från SCB).
 \end_layout
 
 \begin_layout Paragraph
@@ -1325,15 +1353,6 @@ Om detta paket inte fungerar för dig kan du hämta samma data från SCB:s
 
 \begin_layout Paragraph
 c)
-\end_layout
-
-\begin_layout Standard
-Ta reda på hur stor den aktuella populationen var år 2010 och skapa ett
- surveyobjekt med denna data.
-\end_layout
-
-\begin_layout Paragraph
-d)
 \begin_inset CommandInset label
 LatexCommand label
 name "par:d)"
@@ -1403,6 +1422,21 @@ Vad får du för resultat? Innebär bortfallet någon effekt på någon av dessa
  en bortfallsanalys.
 \end_layout
 
+\begin_layout Paragraph
+
+\series bold
+Obs!
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Tänk på att det kan finnas partiellt bortfall som skapar problem vid skattningar.
+ Det enklaste (i detta exempel) är att plocka bort de observationer med
+ partiellt bortfall på antingen era hjälpvariabler eller på den variabel
+ ni vill estimera.
+\end_layout
+
 \begin_layout Subsection
 Kalibrera materialet
 \end_layout
@@ -1418,10 +1452,11 @@ reference "par:d)"
 \end_inset
 
  ovan.
+ 
 \end_layout
 
 \begin_layout Standard
-Skapa ett kalibrera ditt surveyobjekt på samma sätt som i avsnitt 
+Kalibrera ditt surveyobjekt på samma sätt som i avsnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:Kalibrera-för-bortfallet"
