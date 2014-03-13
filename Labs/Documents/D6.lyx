@@ -1506,8 +1506,11 @@ Lägg till variabeln
 romr
 \family default
  i det spatiala objektets dataset på liknande sätt som ovan.
- Efter att det är gjort kan vi använda funktionen unionSpatialPolygons för
- att lägga samman länsområdena (polygoner) till större områden.
+ Efter att det är gjort kan vi använda funktionen 
+\family typewriter
+unionSpatialPolygons
+\family default
+ för att lägga samman länsområdena (polygoner) till större områden.
 \end_layout
 
 \begin_layout Standard
@@ -1616,6 +1619,89 @@ status open
 \begin_layout Plain Layout
 
 plot(sweMapLarge)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+När vi lägger ihop olika polygoner i en karta kommer objektet att reduceras
+ till ett 
+\family typewriter
+SpatialPolygons
+\family default
+-objekt istället för ett objekt av klassen 
+\family typewriter
+SpatialPolygonsDataFrame
+\family default
+ (som krävs för att visualisera data).
+ Vi behöver därför aggregera upp data på den nya indelningsnivån och skapa
+ ett objekt av klassen 
+\family typewriter
+SpatialPolygonsDataFrame
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+aggData <- aggregate(x=sweMap@data$BEF05,by=list(sweMap@data$romr),FUN=sum)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+names(aggData) <- c("romr", "BEF05") 
+\end_layout
+
+\begin_layout Plain Layout
+
+sweMapLargeWithData <- SpatialPolygonsDataFrame(Sr=sweMapLarge, data=aggData)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Med detta objekt kan vi sedan visualisera data med de nya områderna med
+ hjälp av följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+spplot(sweMapLargeWithData, "BEF05")
 \end_layout
 
 \begin_layout Plain Layout
