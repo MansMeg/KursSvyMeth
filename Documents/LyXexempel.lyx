@@ -95,6 +95,36 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Bakgrund
 \end_layout
@@ -177,6 +207,11 @@ data(iris)
 
 \begin_layout Plain Layout
 
+head(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
 x <- 10
 \end_layout
 
@@ -249,7 +284,7 @@ status open
 
 \begin_layout Plain Layout
 
-xtable(head(iris,n=20))
+xtable(head(iris,n=20), caption="En tabell med data.")
 \end_layout
 
 \begin_layout Plain Layout
@@ -262,22 +297,67 @@ xtable(head(iris,n=20))
 
 \end_layout
 
+\begin_layout Standard
+Om jag använder 
+\family typewriter
+caption=
+\begin_inset Quotes srd
+\end_inset
+
+Rubrik
+\begin_inset Quotes srd
+\end_inset
+
+
+\family default
+ i funktionen 
+\family typewriter
+xtable()
+\family default
+ så genereras en tabellrubrik som används för att skapa en tabellförteckning.
+ Detta kallas floating i LaTeX och görs automatiskt av 
+\family typewriter
+xtable()
+\family default
+.
+\end_layout
+
 \begin_layout Chapter
 Resultat
 \end_layout
 
 \begin_layout Standard
-Mitt data som ni kan se 
+Mitt data som ni kan se på sida 
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "min_data"
 
 \end_inset
 
-, har jag använd för att göra denna snygga figur med knitR:
+, har jag använd för att göra den snygga figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:En-figur"
+
+\end_inset
+
+ som finns på sida 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "fig:En-figur"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -299,6 +379,35 @@ with(data=iris,plot(Sepal.Length,Sepal.Width,main="Min figur",col="Red"))
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+En figur
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:En-figur"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plottar skapas inte automatiskt i floating enviroment, så det får man göra
+ manuellt i LyX.
 \end_layout
 
 \begin_layout Standard
@@ -332,7 +441,7 @@ analys <- lm(Sepal.Length ~ Sepal.Width, data = iris)
 
 \begin_layout Plain Layout
 
-xtable(analys)
+xtable(analys, caption="Lite regressioner.")
 \end_layout
 
 \begin_layout Plain Layout
@@ -346,10 +455,22 @@ xtable(analys)
 \end_layout
 
 \begin_layout Standard
-Och en anova-analys:
-\end_layout
+Och en ANOVA-analys.
+ Vill vi göra floatingen manuellt (exempelvis om vi vill använda åäö) går
+ det också bra.
+ Vill vi då centrera tabellen får vi göra det genom att markera kodblocket
+ och centrera med Redigera 
+\begin_inset Formula $\text{\rightarrow}$
+\end_inset
 
-\begin_layout Standard
+ Styckeinställningar...
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset ERT
 status open
 
@@ -360,7 +481,7 @@ status open
 
 \begin_layout Plain Layout
 
-xtable(anova(analys))
+print.xtable(xtable(anova(analys)), floating=FALSE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -371,6 +492,27 @@ xtable(anova(analys))
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+En tabell till, denna gång är det en ANOVA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Oavsett dyker alla tabeller upp i tabellförteckningen utan problem.
 \end_layout
 
 \begin_layout Chapter
