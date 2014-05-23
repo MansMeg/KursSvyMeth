@@ -205,7 +205,9 @@ Den skriftliga oppositionen ska utgöras av två delar, dels en opposition
  dels en del där mindre fel som stavfel, layoutmässiga konstigheter och
  problem i notsystemet anges.
  Fokus bör läggas på den generella kritiken.
- Den skriftliga oppositionen ska vara 1-2 sidor.
+ 
+\series bold
+Den skriftliga oppositionen ska vara 1-2 sidor.
 \end_layout
 
 \begin_layout Section*
@@ -283,7 +285,7 @@ Respondenter och opponenter
 \end_layout
 
 \begin_layout Standard
-[Opponenter och redovisningrgupper kommer läggas upp här]
+Vem som opponerar på vem grupp framgår i dokumentet Opposition.pdf på hemsidan.
 \end_layout
 
 \end_body
