@@ -523,6 +523,70 @@ Slutsats
 Det är kul att skriva uppsatser som blir såhär snygga!
 \end_layout
 
+\begin_layout Chapter*
+Bilagor
+\end_layout
+
+\begin_layout Standard
+Här finns massa kommentarer som ligger i R.
+ De går att skriva ut till LyX på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, results='asis'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+kommentar <- c("Jag tycker allt e kasst!", "Heja produkten.", "Jag vill skriva
+ mer.
+ Massa mycket mer.
+ Jag skriver mest av alla.
+ Ingen skriver så mycket som jag.
+ Det ni!") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cat(kommentar, sep="
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+") # sep="
+\backslash
+
+\backslash
+
+\backslash
+
+\backslash
+" betyder att varje kommentar ska komma på en egen rad.
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
