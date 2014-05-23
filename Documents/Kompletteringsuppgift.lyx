@@ -130,7 +130,7 @@ ete.
 LatexCommand bibtex
 btprint "btPrintAll"
 bibfiles "KomplRefs"
-options "elsarticle-harv"
+options "plain"
 
 \end_inset
 
