@@ -195,8 +195,12 @@ Finns det stöd (antingen i materialet eller med referenser) för de påstående
 konstruktiv kritik
 \series default
  med förslag hur det skulle kunna gjorts bättre eller annorlunda.
- Formulera gärna diskussionfrågor att diskutera under seminariet, är något
- oklart kan ni ställa frågor om detta under seminariet.
+ Formulera gärna 
+\series bold
+diskussionfrågor
+\series default
+ att diskutera under seminariet, är något oklart kan ni ställa frågor om
+ detta under seminariet.
 \end_layout
 
 \begin_layout Standard
@@ -208,6 +212,17 @@ Den skriftliga oppositionen ska utgöras av två delar, dels en opposition
  
 \series bold
 Den skriftliga oppositionen ska vara 1-2 sidor.
+\end_layout
+
+\begin_layout Standard
+Den skriftliga oppositionen ska skickas till författarna, Måns och Tommy
+ 
+\series bold
+senast samma dag som seminariet kl.
+ 18.00
+\series default
+.
+ 
 \end_layout
 
 \begin_layout Section*
@@ -285,7 +300,11 @@ Respondenter och opponenter
 \end_layout
 
 \begin_layout Standard
-Vem som opponerar på vem grupp framgår i dokumentet Opposition.pdf på hemsidan.
+Vem som opponerar på vem grupp framgår i dokumentet 
+\series bold
+Opposition.pdf
+\series default
+ på hemsidan.
 \end_layout
 
 \end_body

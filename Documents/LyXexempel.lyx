@@ -207,11 +207,6 @@ data(iris)
 
 \begin_layout Plain Layout
 
-head(iris)
-\end_layout
-
-\begin_layout Plain Layout
-
 x <- 10
 \end_layout
 
@@ -243,6 +238,17 @@ key "anderson1935irises"
 \end_inset
 
  Självklart använder jag referenser korrekt.
+ Vill jag referera till en viss sidan gör jag det i noten 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "s. 2-4"
+key "anderson1935irises"
+
+\end_inset
+
+.
+ Då kommer fortfarande bara en referens att läggas till i litteraturförteckninge
+n.
 \end_layout
 
 \begin_layout Standard
@@ -266,6 +272,47 @@ name "min_data"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Att visa data direkt från R är ganska fult i dokuement.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Skriv ut data
+\end_layout
+
+\begin_layout Plain Layout
+
+head(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det är mycket snyggare att använda exempelvis 
+\family typewriter
+xtable
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -523,6 +570,17 @@ Slutsats
 Det är kul att skriva uppsatser som blir såhär snygga!
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "BiBTeXexempel"
+options "bibtotoc,plain"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter*
 Bilagor
 \end_layout
@@ -548,7 +606,6 @@ kommentar <- c("Jag tycker allt e kasst!", "Heja produkten.", "Jag vill skriva
  mer.
  Massa mycket mer.
  Jag skriver mest av alla.
- Ingen skriver så mycket som jag.
  Det ni!") 
 \end_layout
 
@@ -581,17 +638,6 @@ cat(kommentar, sep="
 
 @
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "BiBTeXexempel"
-options "bibtotoc,plain"
 
 \end_inset
 
