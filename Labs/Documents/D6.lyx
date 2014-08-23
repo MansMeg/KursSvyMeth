@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -35,13 +35,13 @@ knitr
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,15 +52,24 @@ knitr
 \use_hyperref false
 \papersize a4paper
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 0
-\use_mathdots 0
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -260,17 +269,9 @@ sweSCB
 \family default
  (ex.
  du har en egen dator) behöver du installera paketet först.
- Dock ligger (ännu) inte 
-\family typewriter
-sweSCB
-\family default
- på CRAN utan måste installeras från GitHub.
- Det kräver internetanslutning och paketet 
-\family typewriter
-devtools
-\family default
-.
- För att installera använder du följande kod:
+ Om det inte går att läsa in paketet (ex.
+ du har en egen dator) behöver du installera paketet först.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -284,7 +285,7 @@ status open
 
 \begin_layout Plain Layout
 
-install.packages("devtools") devtools::install_github("sweSCB","LCHansson")
+install.packages("sweSCB")
 \end_layout
 
 \begin_layout Plain Layout
@@ -310,7 +311,7 @@ Mer information finns här:
 \begin_inset CommandInset href
 LatexCommand href
 name "sweSCB"
-target "https://github.com/LCHansson/sweSCB"
+target "https://github.com/rOpenGov/sweSCB"
 
 \end_inset
 
@@ -339,7 +340,7 @@ I denna laboration ska vi börja analysera riktiga surveydata (med alla problem
 \shape italic
 Den svenska väljaren
 \shape default
-
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "2011dsv"
@@ -375,34 +376,32 @@ load("svy2010.Rdata")
 
 \end_layout
 
+\begin_layout Itemize
+Det går också att ladda in filen direkt från webben med 
+\family typewriter
+repmis
+\family default
+-paketet:
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, eval=TRUE>>=
+<<echo=TRUE, eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-svy2010temp <- tempfile(pattern="svy2010",fileext=".Rdata")
+library(repmis)
 \end_layout
 
 \begin_layout Plain Layout
 
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
-2010.Rdata", destfile = svy2010temp, method = "curl") 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(file=svy2010temp) 
-\end_layout
-
-\begin_layout Plain Layout
-
-unlink(svy2010temp)
+source_RData(url = "https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFil
+es/svy2010.Rdata")
 \end_layout
 
 \begin_layout Plain Layout
@@ -551,34 +550,27 @@ agpop<-read.table("agpop.dat",header=TRUE,sep=",")
 
 \end_layout
 
+\begin_layout Itemize
+Även i detta fall kan vi självklart använda 
+\family typewriter
+repmis
+\family default
+-paketet.
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE,eval=TRUE>>=
+<<echo=TRUE,eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-agpoptemp <- tempfile(pattern="agpop",fileext=".dat") 
-\end_layout
-
-\begin_layout Plain Layout
-
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
-op.dat",                destfile = agpoptemp, method = "curl") 
-\end_layout
-
-\begin_layout Plain Layout
-
-agpop<-read.table(agpoptemp,header=TRUE,sep=",") 
-\end_layout
-
-\begin_layout Plain Layout
-
-unlink(agpoptemp) 
+agpop <- source_data(url = "https://raw.github.com/MansMeg/KursSvyMeth/master/Labs
+/DataFiles/agpop.dat", sep = ",")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1230,18 +1222,26 @@ library(maptools)
 
 \begin_layout Plain Layout
 
-GIStemp <- tempfile(pattern="gis",fileext=".zip") 
+GIStemp <- tempfile(pattern="gis",fileext=".zip")
 \end_layout
 
 \begin_layout Plain Layout
 
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/Lan
-_SCB.zip", destfile = GIStemp, method = "curl")  
+ downloader::download("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/Data
+Files/Lan_SCB.zip", destfile = GIStemp)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
 
 unzip(GIStemp,exdir=tempdir()) 
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1451,8 +1451,11 @@ sweMap@data <- merge(sweMap@data, minskaOffEst, by.x="LNKOD", by.y="LKF")
 \end_layout
 
 \begin_layout Standard
-Nu har vi lagt till våra estimat och kan använda spplot() för att skapa
- en karta baserad på vår statistik.
+Nu har vi lagt till våra estimat och kan använda 
+\family typewriter
+spplot()
+\family default
+ för att skapa en karta baserad på vår statistik.
 \end_layout
 
 \begin_layout Standard
@@ -1584,8 +1587,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE, comment=''>>
-=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE, comment=''>
+>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1613,7 +1616,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+<<echo=FALSE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1656,7 +1659,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1696,7 +1699,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1730,69 +1733,6 @@ Som ett sista steg ska vi plocka ut endast delar av en karta för att skapa
  kartor över mindre delområden.
  Börja med att läsa in shapefilen som innehåller kommungränser.
  Pröva att skapa en karta med samtliga kommungränser.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<echo=FALSE, eval=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-library(maptools)
-\end_layout
-
-\begin_layout Plain Layout
-
-# Download and read data 
-\end_layout
-
-\begin_layout Plain Layout
-
-GIStemp <- tempfile(pattern="gis",fileext=".zip") 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/Kom
-mun_SCB.zip", destfile = GIStemp, method = "curl")  
-\end_layout
-
-\begin_layout Plain Layout
-
-unzip(GIStemp,exdir=tempdir()) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-sweMunipMap <- readShapePoly(paste(tempdir(),"/Kommun_SCB/Kommun_SCB_07.shp",sep=
-"")) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1868,7 +1808,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, eval=TRUE>>=
+<<echo=TRUE, eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1887,7 +1827,7 @@ sweMunipMap01 <- sweMunipMap[substr(sweMunipMap$KNKOD,1,2)=="01",]
 \end_layout
 
 \begin_layout Standard
-Detta ger följande karta.
+Studera kartan med följande kod:
 \end_layout
 
 \begin_layout Standard
@@ -1896,7 +1836,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
