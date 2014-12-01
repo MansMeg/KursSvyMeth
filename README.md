@@ -5,7 +5,7 @@
 
 Målet med kursen är att de studerande skall förvärva grundläggande kunskaper om, och förståelse för, de statistiska metoder som vanligen används vid urval ur ändliga populationer. De studerande skall genom en statistisk undersökning få tillfälle att fördjupa sina kunskaper och sin mognad i statistisk metodik, såväl vad gäller praktiska som teoretiska moment. Vidare skall de studerande förvärva förmåga att skriftligen och muntligen redogöra för en undersökning och argumentera för den använda metodiken. 
 
-Efter avslutad kurs ska den studerande kunna:
+Efter avslutad kurs ska.
 
 - redogöra för de vanligaste metoderna för att dra urval ur ändliga populationer, och förstå vilka olika situationer de lämpar sig för.
 - göra uppskattningar av parametrar i en ändlig population, med och utan användande av hjälpinformation, på basis av urvalsdata
