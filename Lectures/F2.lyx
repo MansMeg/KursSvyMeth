@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -192,14 +201,20 @@ options(scipen = 10, digits = 3)
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -209,10 +224,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Introduktion till urval
 \end_layout
@@ -239,10 +251,20 @@ sectionpage}
 Notation
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation I
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -320,14 +342,25 @@ i\in\mathcal{S}=\mbox{Observation }i\mbox{ ingår i urvalsmängden }\mathcal{S}\
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -416,18 +449,25 @@ p=\mbox{proportion}
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Populationsparametrar
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Populationsparametrar - vårt intresse
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Populationstotal
 \end_layout
@@ -488,18 +528,25 @@ p_{\mathcal{U}}=\frac{\mbox{antal med egenskap av intresse}}{N}
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Urvalsteori
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsteori
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Urvalsteori är en 
 \series bold
@@ -539,7 +586,7 @@ inte
 
 \end_inset
 
- ett utfall av en slumpmässig variabel 
+ utfall en variabel 
 \begin_inset Formula $Y$
 \end_inset
 
@@ -551,9 +598,9 @@ inte
 \end_layout
 
 \begin_layout Itemize
-Slumpmässigheten (som vi bygger vår inferens på) 
+
 \series bold
-skapar vi själva 
+Skapar slumpmässigheten själva 
 \series default
 genom att dra ett urval slumpmässigt
 \end_layout
@@ -587,7 +634,7 @@ bara
 \end_layout
 
 \begin_layout Itemize
-Brukar ofta kallas 
+Kallas ofta 
 \series bold
 designbaserad
 \series default
@@ -714,10 +761,7 @@ utan återläggning
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Obundet slumpmässigt urval
 \end_layout
@@ -740,10 +784,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Obundet slumpmässigt urval (OSU)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Obundet slumpmässigt urval - alla urval har samma sannolikhet
 \end_layout
@@ -806,18 +860,25 @@ n
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Inklutionssannolikhet och designvikt
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Inklutionssannolikhet
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Sannolikheten att observation 
 \begin_inset Formula $i$
@@ -887,14 +948,25 @@ Summan (över hela populationen) av inklutionssannolikheterna vid OSU är:
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Designvikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -935,14 +1007,25 @@ Tolkning:
 Antal personer som representeras av varje respondent i studien
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 OSU - Exempel 1
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vad är sannoliheten för att inkludera den vita bollen i vårt urval om 
 \begin_inset Formula $n=3$
@@ -974,10 +1057,7 @@ utan
  återläggning.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1120,10 +1200,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimation vid OSU
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi är intresserade av att skatta eller 
 \series bold
@@ -1187,14 +1277,25 @@ På grund av urvalfördelningen
  får estimatorerna en sannolikhetfördelning.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 OSU - Exempel 2
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi fortsätter på exemplet på slide 
 \begin_inset CommandInset ref
@@ -1234,10 +1335,25 @@ y=\{5,10,8,7,12\}
 
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 OSU - Exempel 2 (forts.)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Populationsparametrar (de sanna värdena) som vi är intresserade av är:
 \end_layout
@@ -1288,10 +1404,7 @@ Vad är samplingfördelningen för estimatorn
 ?
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1806,10 +1919,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimatorernas osäkerhet
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Oftast är vi intresserade av 
 \series bold
@@ -1975,14 +2098,25 @@ urvalsfraktion
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimatorernas osäkerhet (forts.)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Istället för en punktskattnings varians brukar ofta en punktskattnings 
 \series bold
@@ -2019,10 +2153,7 @@ urvalsstandardavvikelsen
  är olika saker.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Konfidensintervall vid OSU
 \end_layout
@@ -2045,10 +2176,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Konfidensintervall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att 
 \series bold
@@ -2169,14 +2310,25 @@ key "lohr2009sampling"
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Konfidensintervall vid OSU (forts.)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Om 
 \begin_inset Formula $ $
@@ -2265,10 +2417,7 @@ Detta för att ta ta hänsyn till osäkerheten i
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2439,10 +2588,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsdimensionering vid OSU
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Hur stort urval ska vi dra? Vanlig (kostnads-) fråga!
 \end_layout
@@ -2512,14 +2671,25 @@ ett större urval ger ett smalare KI
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsdimensionering vid OSU (forts.)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Hur stort urval ska vi dra för att få en viss bredd på KI?
 \end_layout
@@ -2614,14 +2784,25 @@ Då
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsdimensionering - Exempel
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2696,10 +2877,7 @@ Vi är intresserade av ett konfidensintervall (95 %) på maximalt
  kr.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2813,10 +2991,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Totaler och proportioner vid OSU
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vanliga skattningar av intresse är 
 \series bold
@@ -3020,14 +3208,25 @@ p_{\mathcal{U}}=\frac{1}{N}\sum_{i=1}^{N}y_{i}=\bar{y}_{\mathcal{U}}
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimation av totaler
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 På följande sätt estimeras totalen (
 \series bold
@@ -3088,14 +3287,25 @@ Obs!
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimation av totaler - Exempel
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -3188,10 +3398,7 @@ Beräkna en skattning av de totala sjukvårdskostnaderna för magsjuka med
  tillhörande 95%-igt konfidensintervall.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -3255,10 +3462,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimation av proportioner
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 På följande sätt estimeras proportionen (då 
 \begin_inset Formula $y=\{0,1\}$
@@ -3315,10 +3532,7 @@ Vilket ger följande KI för
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -3381,10 +3595,20 @@ SE <- est$SE
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimering av proportioner - Exempel
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi vill estimera andelen personer i befolkningen 16-79 år som utsatts för
  misshandel under 2011.
@@ -3434,10 +3658,7 @@ på riktigt
  får vi en annan siffra.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -3508,18 +3729,24 @@ end{frame}
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
 \begin_layout Standard
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -3531,9 +3758,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

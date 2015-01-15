@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -122,14 +131,20 @@ Avd.
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -139,10 +154,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Praktisk information
 \end_layout
@@ -165,17 +177,26 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
-Kursens övergripande mål
-\end_layout
-
-\begin_layout Block
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
+Kursens övergripande mål
+\end_layout
 
-{Kursens övergripande mål}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Kursens övergripande mål
 \end_layout
 
 \end_inset
@@ -199,14 +220,25 @@ Att lära sig grunderna i en statistisk undersökning:
 - Avrapportera 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Kursens mål - Kursplan
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 redogöra för 
 \series bold
@@ -258,14 +290,25 @@ och multiplicitet i ramen i skattningsfasen av en urvalsundersökning, och
  
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Kursens mål - Kursplan (forts.)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 redogöra för olika typer av 
 \series bold
@@ -376,14 +419,25 @@ target "http://kdb-5.liu.se/liu/fil/kp_detail_print_sv.lasso?&ID=2010729"
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Kursens upplägg
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Två delar:
 \end_layout
@@ -412,7 +466,7 @@ Föreläsningar, laborationer och lektioner/övningar
 \end_layout
 
 \begin_layout Itemize
-Datorlaborationer (6 st) sker i 
+Datorlaborationer (7 st) sker i 
 \series bold
 SAS
 \series default
@@ -420,20 +474,13 @@ SAS
 \series bold
 R
 \series default
- och består av de olika delarna i uppsatsen
+ och består av de olika delarna i uppsatsen - nu 
+\series bold
+obligatoriska
 \end_layout
 
 \begin_layout Itemize
 Samma grupper (2 personer) i uppsats och laborationer
-\end_layout
-
-\begin_layout Itemize
-Examineras med salstentamen - inlämnad och godkänd datorlaboration 
-\series bold
-ger 0.5 p extra
-\series default
- på tentamen.
- 
 \end_layout
 
 \begin_layout Standard
@@ -488,14 +535,14 @@ Presentation av olika uppsatsämnen kommer ske idag.
 \end_layout
 
 \begin_layout Itemize
-Skapa gruppe och välj ämne.
+Skapa gruppe och välj (3) ämne(n).
  
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
 Deadline fredag kl.
- 18.00.
+ 12.00
 \end_layout
 
 \end_inset
@@ -504,14 +551,25 @@ Deadline fredag kl.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Praktisk information I
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -534,7 +592,7 @@ target "http://www.ida.liu.se/~732G26/index.sv.shtml"
 \series bold
 Lärare:
 \series default
- Måns Magnusson, Tommy Schyman
+ Måns Magnusson, David Blomquist
 \end_layout
 
 \begin_layout Itemize
@@ -554,25 +612,9 @@ type "mailto:"
 ,
 \begin_inset CommandInset href
 LatexCommand href
-name "tommy.schyman@liu.se"
-target "tommy.schyman@liu.se"
+name "david.blomquist@liu.se"
+target "david.blomquist@liu.se"
 type "mailto:"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Kalender:
-\series default
- Måns 
-\begin_inset CommandInset href
-LatexCommand href
-name "kalender"
-target "https://www.google.com/calendar/embed?src=phfv2lg4526m00gd9i9jf0b9pc%40group.calendar.google.com&ctz=Europe/Stockholm"
 
 \end_inset
 
@@ -587,14 +629,25 @@ LISAM
 används för inlämning av datorlaborationer.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Kurslitteratur
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -654,46 +707,69 @@ Methods to increase response to postal and electronic questionnaires.
  The Cochrane library, läs endast Summary
 \end_layout
 
+\begin_layout Itemize
+* Surveysektionen (2014) 
+\shape italic
+Kvalitet i webbpanelundersökningar
+\end_layout
+
+\begin_layout Itemize
+* Jebari, K, Magnusson (2014) 
+\shape italic
+En färgblind stat missar rasismens nyanser
+\end_layout
+
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Uppsats / projekt I
 \end_layout
 
-\begin_layout Itemize
-Välj ämne (deadline 2014-01-24)
-\end_layout
+\end_inset
 
-\begin_layout Pause
 
-\end_layout
-
-\begin_layout Itemize
-Skapa undersökningsplan med urvalsplan (deadline 2014-02-14)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Skapa enkät (deadline 2014-02-21)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Granska enkät och undersökningsplan (deadline 2014-02-26)
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Granskningsseminarie 2014-02-26 
+Välj ämne
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Skapa undersökningsplan med urvalsplan 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Skapa enkät 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Granska enkät och undersökningsplan
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Granskningsseminarie 
 \begin_inset Flex Alert
 status collapsed
 
@@ -728,7 +804,7 @@ Testa enkät genom kognitiva intervjuer
 \end_layout
 
 \begin_layout Itemize
-Slutlig undersökningsplan och enkät klar (deadline 2014-03-14)
+Slutlig undersökningsplan och enkät klar
 \end_layout
 
 \begin_layout Pause
@@ -736,19 +812,30 @@ Slutlig undersökningsplan och enkät klar (deadline 2014-03-14)
 \end_layout
 
 \begin_layout Itemize
-Tentamen på teoridelen 2014-02-21
+Tentamen på teoridelen
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Uppsats / projekt II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Datainsamling och bortfallsuppföljning (deadline 2014-04-30)
+Datainsamling och bortfallsuppföljning
 \end_layout
 
 \begin_deeper
@@ -770,7 +857,7 @@ Bortfallsanalys och kompensering för bortfall
 \end_layout
 
 \begin_layout Itemize
-Analys och rapportskrivande (deadline 2014-05-23)
+Analys och rapportskrivande
 \end_layout
 
 \begin_layout Pause
@@ -783,7 +870,7 @@ Presentation och opposition
 
 \begin_deeper
 \begin_layout Itemize
-Uppsatsseminarie 2014-06-02 
+Uppsatsseminarie 
 \begin_inset Flex Alert
 status collapsed
 
@@ -797,10 +884,7 @@ Obligatoriskt!
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Introduktion till surveymetodik
 \end_layout
@@ -823,10 +907,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vad är surveymetodik?
 \end_layout
@@ -1066,14 +1160,25 @@ Varning:
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Viktiga begrepp I
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1397,14 +1502,25 @@ Avlidna, nyinflyttade, MÖRKERTAL
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Viktiga begrepp II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1648,10 +1764,7 @@ Påverkar bortfall
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Felkällor i undersökningar
 \end_layout
@@ -1674,10 +1787,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Fel i undersökningar I
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Urvalsfel
 \end_layout
@@ -1757,7 +1880,7 @@ Icke-urvalsfel
 
 \begin_deeper
 \begin_layout Itemize
-Specifikationsfel
+Specifikationsfel / operationaliseringsfel
 \end_layout
 
 \begin_layout Standard
@@ -2004,14 +2127,25 @@ De problem vi statistiker ställer till med.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Felkällor i undersökningar II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Flex Alert
 status collapsed
@@ -2138,10 +2272,10 @@ resizebox{4.5in}{!}{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -2466,10 +2600,7 @@ status open
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Översikt över olika urvalförfaranden
 \end_layout
@@ -2492,10 +2623,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Olika former av (slumpmässiga) urval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Obundet slumpmässigt urval (OSU)
 \end_layout
@@ -2565,10 +2706,7 @@ time-location-sampling
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Exempel på svenska surveyundersökningar
 \end_layout
@@ -2591,10 +2729,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Arbetskraftsundersökningen
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -2677,14 +2825,25 @@ Periodicitet:
  Varje månad.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Attityder till skolan
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -2776,14 +2935,25 @@ Periodicitet
 : Varje 3:e år.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Cryptosporidium
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -2852,14 +3022,25 @@ Periodicitet
 : Initialt sommaren 2011 samt ett antal uppföljningsenkäter.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Nationella trygghetsundersökningen
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -2934,14 +3115,25 @@ Periodicitet
 : Årligen
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -2953,9 +3145,6 @@ options "plainnat"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
