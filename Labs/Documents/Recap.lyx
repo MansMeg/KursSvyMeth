@@ -1,0 +1,5064 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language swedish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+En kort (R)ecap
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduktion till R och R-Studio
+\end_layout
+
+\begin_layout Section
+R som miniräknare, matematiska funktioner, konstanter och 
+\begin_inset Quotes eld
+\end_inset
+
+missing values
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Till skillnad från de flesta andra statistikprogram fungerar R utan att
+ ha ett dataset vi arbetar med.
+ Vi kan således använda R som en miniräknare och beräkna enskilda värden.
+ För att göra beräkningar skriver vi våra beräkningar direkt i 
+\begin_inset Quotes eld
+\end_inset
+
+Console
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Gör följande beräkningar i 
+\begin_inset Quotes eld
+\end_inset
+
+Console
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+3 + 4 
+\end_layout
+
+\begin_layout Plain Layout
+
+(5 * 6) / 2 
+\end_layout
+
+\begin_layout Plain Layout
+
+45 - 2 * 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+(45-2)*3
+\end_layout
+
+\begin_layout Plain Layout
+
+3^3
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+13 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+13 %/% 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+13 %% 3
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Utöver numeriska värden finns också en del konstanter av intresse som 
+\begin_inset Formula $\pi$
+\end_inset
+
+ och 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Även 
+\begin_inset Formula $\infty$
+\end_inset
+
+ och 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ finns definierad.
+ Funktionen 
+\family typewriter
+exp(x)
+\family default
+ är 
+\begin_inset Formula $e^{x}$
+\end_inset
+
+, därav kan vi få 
+\begin_inset Formula $e$
+\end_inset
+
+ genom 
+\family typewriter
+exp(1)
+\family default
+.
+ Pröva följande: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+exp(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+pi
+\end_layout
+
+\begin_layout Plain Layout
+
+1/0
+\end_layout
+
+\begin_layout Plain Layout
+
+-1/0
+\end_layout
+
+\begin_layout Plain Layout
+
+Inf
+\end_layout
+
+\begin_layout Plain Layout
+
+-Inf
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Självklart finns alla tänkbara matematiska funktioner som kvadratroten,
+ absolutbelopp, logaritmer (i olika baser), 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "modulus"
+target "http://en.wikipedia.org/wiki/Modulo_operation"
+
+\end_inset
+
+
+\series default
+\color inherit
+ och trigonometriska funktioner.
+ 
+\series bold
+Det som definierar funktioner i R är att de följs direkt av en parantes.
+
+\series default
+ Pröva följande kod:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sqrt(4)
+\end_layout
+
+\begin_layout Plain Layout
+
+abs(-3)
+\end_layout
+
+\begin_layout Plain Layout
+
+log(10)
+\end_layout
+
+\begin_layout Plain Layout
+
+log(exp(1))
+\end_layout
+
+\begin_layout Plain Layout
+
+log(4, base = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+sign(-3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+factorial(3)
+\end_layout
+
+\begin_layout Plain Layout
+
+7 %% 3
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+I R finns två ytterligare värden för att definiera olika typer av saknade
+ värden.
+ 
+\family typewriter
+NA
+\family default
+ (Not appliciable) används för saknade värden.
+ 
+\family typewriter
+NaN
+\family default
+ (Not a Number) används för matematiskt ej definierade tal.
+ Ofta får vi en varning när vi gör matematiskt ej definierade operationer.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+NA
+\end_layout
+
+\begin_layout Plain Layout
+
+NaN
+\end_layout
+
+\begin_layout Plain Layout
+
+log(-10)
+\end_layout
+
+\begin_layout Plain Layout
+
+0/0
+\end_layout
+
+\begin_layout Plain Layout
+
+Inf - Inf
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att kommentera sin kod används 
+\family typewriter
+#
+\family default
+ som kan användas för att kommentera en hel rad (eller resten av en rad).
+ Allt efter symbolen (till nästa rad) körs inte av R.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# My first comment
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Objekt och variabler
+\end_layout
+
+\begin_layout Standard
+Nästa steg är att spara ned våra beräkningar som objekt.
+ 
+\series bold
+Kortfattat kan man säga att allt som sparas i minnet i R är objekt och allt
+ som görs/beräknas i R är funktioner.
+
+\series default
+ Objekt som innehåller enstaka värden brukar kallas för 
+\series bold
+variabler
+\series default
+.
+ Olika variabler kan innehåller olika typer av värden som textsträngar och
+ numeriska värden.
+\end_layout
+
+\begin_layout Standard
+I R är variabelnamn känsligt för gemener och versaler.
+ Detta innebär att 
+\family typewriter
+a
+\family default
+ och 
+\family typewriter
+A
+\family default
+ är olika objekt.
+\end_layout
+
+\begin_layout Enumerate
+För att tillskriva ett värde till en variabel används 
+\family typewriter
+<-
+\family default
+.
+ Även 
+\family typewriter
+=
+\family default
+ fungerar, men avråds generellt ifrån.
+ Pröva att skapa följande variabler.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minNum <- 2013
+\end_layout
+
+\begin_layout Plain Layout
+
+minText <- "Mer R till alla"
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Logiska värden är element som kan ta värden 
+\family typewriter
+TRUE
+\family default
+, 
+\family typewriter
+FALSE
+\family default
+ eller 
+\family typewriter
+NA
+\family default
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- FALSE
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det går (nästan) alltid att spara ned resultatet från en funktion som ett
+ nytt objekt som vi kan återanvända senare.
+ Vi kan också räkna med objekt rakt upp och ned.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+res <- sqrt(abs(-3)^2-3)
+\end_layout
+
+\begin_layout Plain Layout
+
+res^2
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Variabeltyper
+\end_layout
+
+\begin_layout Standard
+Det finns flera olika variabeltyper i R.
+ I tabellen nedan finns de vanligaste variabeltyperna sammanställda.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Beskrivning
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Synonymer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\series bold
+typeof()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heltal (
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+int
+\family default
+, 
+\family typewriter
+numeric
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+integer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-2, 0, 1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reella tal (
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+real
+\family default
+, 
+\family typewriter
+double
+\family default
+, 
+\family typewriter
+float
+\family default
+, 
+\family typewriter
+numeric
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+double
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+1.03, -0.22
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Komplexa tal (
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+cplx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+complex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+1+2i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Logiska värden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+boolean
+\family default
+, 
+\family typewriter
+bool
+\family default
+, 
+\family typewriter
+logi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+logical
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+TRUE, FALSE
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Text
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+string
+\family default
+, 
+\family typewriter
+char
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+character
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+Go R!
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att undersöka vilken variabeltyp en given variabel har används funktionen
+ 
+\family typewriter
+typeof()
+\family default
+.
+ Funktionen 
+\family typewriter
+typeof()
+\family default
+ returner själv ett textelement.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- "Text"
+\end_layout
+
+\begin_layout Plain Layout
+
+c <- TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+typeof(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+typeof(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+typeof(c)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Inte sällan vill man konvertera mellan olika variabeltyper.
+ I R finns för för alla variabeltyper konverteringsfunktioner.
+ Dessa börjar alltid med 
+\family typewriter
+as.
+
+\family default
+ .
+ 
+\begin_inset Newline newline
+\end_inset
+
+Nedan används 
+\family typewriter
+as.numeric()
+\family default
+, 
+\family typewriter
+as.character()
+\family default
+, 
+\family typewriter
+as.logical()
+\family default
+ och 
+\family typewriter
+as.complex()
+\family default
+ för att konvertera variablerna ovan.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+as.character(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+as.numeric(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+as.logical(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+as.complex(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Den globala miljön
+\end_layout
+
+\begin_layout Standard
+Alla objekt som skapas sparas i den så kallade globala miljön i R (
+\begin_inset Quotes eld
+\end_inset
+
+Global enviroment
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Den globala miljön använder datorns arbetsminne (
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "RAM"
+target "http://sv.wikipedia.org/wiki/Random_Access_Memory"
+
+\end_inset
+
+
+\series default
+\color inherit
+) vilket innebär att stänger vi av R/R-Studio försvinner allt arbete vi
+ gjort om vi inte sparat det.
+\end_layout
+
+\begin_layout Standard
+Att R arbetar helt i arbetsminne innebär att beräkningar sker snabbare,
+ men det innebär också att det data vi kan arbeta med med R inte kan vara
+ större än arbetsminnet.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Detta var tidigare ett problem, men idag finns lösningar för stora data
+ i R.
+ Exempel på paket för att hantera stora data är 
+\family typewriter
+ff
+\family default
+, 
+\family typewriter
+ffbase
+\family default
+ och 
+\family typewriter
+scaleR
+\family default
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+För att undersöka vilka variabler du har i Global enviroment går det också
+ att använda funktionen 
+\family typewriter
+ls()
+\family default
+.
+ För att ta bort objekt används funktionen 
+\family typewriter
+rm()
+\family default
+.
+ Jämför vad du får ut med 
+\family typewriter
+ls()
+\family default
+ och vad du ser i Global enviroment i R-Studio.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- c(1, 5, 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+ls()
+\end_layout
+
+\begin_layout Plain Layout
+
+rm(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+ls()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det går att ta bort allt i den globala på följande sätt.
+ Pröva att köra följande kod:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+rm(list=ls())
+\end_layout
+
+\begin_layout Plain Layout
+
+ls()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hjälp och dokumentation
+\end_layout
+
+\begin_layout Standard
+Precis som R:s enviroment kan hjälpen både användas från R-Studio eller
+ genom att köra kod i 
+\begin_inset Quotes eld
+\end_inset
+
+Console
+\begin_inset Quotes erd
+\end_inset
+
+.
+ R:s hjälp handlar framförallt om att komma åt den dokumentation som finns
+ för (nästan alla) funktioner.
+\end_layout
+
+\begin_layout Standard
+Dokumentationen av en funktion är uppdelad i olika avsnitt.
+ I början är det bästa att titta under 
+\begin_inset Quotes eld
+\end_inset
+
+Description
+\begin_inset Quotes erd
+\end_inset
+
+ (kort beskrivning av funktionen), 
+\begin_inset Quotes eld
+\end_inset
+
+Arguments
+\begin_inset Quotes erd
+\end_inset
+
+ (vilka argument funktionen kan ta) och 
+\begin_inset Quotes eld
+\end_inset
+
+Examples
+\begin_inset Quotes erd
+\end_inset
+
+ (exempel på hur funktionen kan användas).
+\end_layout
+
+\begin_layout Section
+
+\color black
+Textvariabler, 
+\family typewriter
+print()
+\family default
+\color inherit
+ och 
+\family typewriter
+\color black
+cat()
+\end_layout
+
+\begin_layout Standard
+Utöver numeriska variabler är textvariabler ofta av intresse.
+ Särskilt vid mer komplicerade program eller för att identifiera felaktigheter
+ i kod.
+ Det finns framförallt två sätt att skriva ut textvärden, 
+\family typewriter
+print()
+\family default
+ och 
+\family typewriter
+cat()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+print()
+\family default
+ används framförallt för att visa enskilda variabler.
+ Det är den funktionen som används (internt) av R när vi bara skriver ett
+ variabelnamn direkt i konsollen.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+cat()
+\family default
+ används om vi vill ha mer kontroll på utskrifterna till konsollen.
+\end_layout
+
+\begin_layout Enumerate
+Pröva att skriva ut värden till konsollen med 
+\family typewriter
+print()
+\family default
+ på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- "The value of pi is" 
+\end_layout
+
+\begin_layout Plain Layout
+
+print(x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+print(pi)
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+pi
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Upprepa koden ovan, men byt ut 
+\family typewriter
+print()
+\family default
+ mot 
+\family typewriter
+cat
+\family default
+().
+ 
+\end_layout
+
+\begin_layout Chapter
+Vektorer och statistiska funktioner
+\end_layout
+
+\begin_layout Section
+Vektorer
+\end_layout
+
+\begin_layout Standard
+Vektoren är grunden för analyser i R.
+ Vektorer påminner om vektorer inom matematiken men med vissa mindre skillnader.
+ Kortfattat kan en vektor beskrivas som ett antal element med olika värden.
+ Ett exempel på vektor är 
+\begin_inset Formula $v=(1,4,2,1)$
+\end_inset
+
+ som i R ser ut på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+v <- c(1, 4, 2, 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+v
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anledningen till att vektorer är så viktigt i R beror på att dataset i R
+ består av en samling (ordnade) vektorer.
+ Således är hur vi arbetar med vektorer centralt för hur vi sedan arbetar
+ med de flesta andra datastrukturer.
+\end_layout
+
+\begin_layout Subsection
+Skapa vektorer
+\end_layout
+
+\begin_layout Standard
+Det finns flera sätt att skapa nya vektorer.
+ Vill vi skapa nya vektorer kan vi använda 
+\family typewriter
+c()
+\family default
+, 
+\family typewriter
+rep()
+\family default
+, 
+\family typewriter
+seq()
+\family default
+ eller en kombination av dessa tre funktioner.
+ Samtliga dessa funktioner fungerar för de vanligaste variabeltyperna som
+ textvektorer, logiska vektorer och numeriska vektorer.
+ I tabellen nedan framgår deras funktion.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="5cm">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Funktion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Beskrivning
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+c()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kombinera värden/vektorer till en ny vektor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+c(1, 3, 4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+rep()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Repetera värde/vektor ett antal gånger
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+rep(x=
+\begin_inset Quotes eld
+\end_inset
+
+R
+\begin_inset Quotes erd
+\end_inset
+
+,times=6)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+seq()
+\family default
+, 
+\family typewriter
+:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Skapa en sekvens av värden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+1:10
+\family default
+, 
+\family typewriter
+seq(from=1,to=10,by=0.5)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Med dessa funktioner går det att skapa en stor uppsättning av vektorer.
+\end_layout
+
+\begin_layout Enumerate
+Initialt skapar vi en vektor med 
+\family typewriter
+c()
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+aVec <- c(-3, 4, 1, 1, 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+aVec
+\end_layout
+
+\begin_layout Plain Layout
+
+bVec <- c(2, 4, 4, 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Andra vanliga sätt att skapa vektorer är 
+\family typewriter
+seq()
+\family default
+, 
+\family typewriter
+rep()
+\family default
+ och 
+\family typewriter
+:
+\family default
+.
+ Studera resultatet du får.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- seq(from=1, to=7, by=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- rep(x="foo bar", times=5)
+\end_layout
+
+\begin_layout Plain Layout
+
+c <- 3:7
+\end_layout
+
+\begin_layout Plain Layout
+
+d <- 10:1
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Vektoraritmetik
+\end_layout
+
+\begin_layout Standard
+Vi vet nu hur vi kan skapa nya vektorer.
+ Nästa steg är att börja 
+\begin_inset Quotes eld
+\end_inset
+
+räkna
+\begin_inset Quotes erd
+\end_inset
+
+ med vektorer (eller ex.
+ skapa nya variabler i dataset längre fram).
+ 
+\end_layout
+
+\begin_layout Standard
+Vektorberäkningar sker elementvis.
+ Är det så att vektorerna är olika långa så kopieras den kortare vektorn
+ för att 
+\begin_inset Quotes eld
+\end_inset
+
+täcka
+\begin_inset Quotes erd
+\end_inset
+
+ den längre vektorn.
+ Är den långa vektorn inte en multipel av den kortare vektorn får vi en
+ varning.
+\end_layout
+
+\begin_layout Enumerate
+Skapa följande vektorer:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec1 <- 1:5
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec2 <- rep(x=10, times=8)
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec3 <- seq(from=0, to=1, by=1/8)
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec4 <- c(-2, 1, 22, 0, 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec5 <- 10:1
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gör följande beräkningar där vektorerna är lika långa.
+ Titta på vektorerna och fundera på vad resultatet borde bli innan du gör
+ beräkningarna.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec2 + myVec3 
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec1 - myVec4 
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec2 * myVec3
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec1 / myVec4 
+\end_layout
+
+\begin_layout Plain Layout
+
+myVec2 ^ myVec3
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Statistiska funktioner och funktioner för vektorer
+\end_layout
+
+\begin_layout Standard
+Vi har tidigare arbetat med matematiska funktioner för enstaka värden (eller
+ element för element).
+ Nu ska vi arbeta med statistiska funktioner eller funktioner för vektorer.
+\end_layout
+
+\begin_layout Enumerate
+De första funktionerna handlar om att få ut information om en vektor.
+ Vad innebär funktionerna?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myx <- rep(x = 7:12, times = 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+myy <- c(rep(x=2,times=3), rep(x=5,times=3))
+\end_layout
+
+\begin_layout Plain Layout
+
+myz <- c(5, -1, 2, 10, 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+myw <- rep(x=1/6, times=6)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+length(myx) 
+\end_layout
+
+\begin_layout Plain Layout
+
+unique(myy) 
+\end_layout
+
+\begin_layout Plain Layout
+
+typeof(myw) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det finns finns ett stort antal statistiska funktioner för vektorer.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(myx)
+\end_layout
+
+\begin_layout Plain Layout
+
+weighted.mean(x=myx, w=myw)
+\end_layout
+
+\begin_layout Plain Layout
+
+median(myy)
+\end_layout
+
+\begin_layout Plain Layout
+
+sum(myx)
+\end_layout
+
+\begin_layout Plain Layout
+
+sd(myy)
+\end_layout
+
+\begin_layout Plain Layout
+
+var(myx)
+\end_layout
+
+\begin_layout Plain Layout
+
+max(myz)
+\end_layout
+
+\begin_layout Plain Layout
+
+min(myz)
+\end_layout
+
+\begin_layout Plain Layout
+
+which.max(myz) # Arg max
+\end_layout
+
+\begin_layout Plain Layout
+
+which.min(myz) # Arg min
+\end_layout
+
+\begin_layout Plain Layout
+
+range(myx)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Indexering och att ändra enskilda element i en vektor
+\end_layout
+
+\begin_layout Standard
+Den sista centrala delen för att arbeta med vektorer är indexering eller
+ 
+\begin_inset Quotes eld
+\end_inset
+
+slicing
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Det handlar om att plocka ut ett eller flera värden från en vektor.
+ För att välja ut ett eller flera värden av en vektor används 
+\begin_inset Quotes eld
+\end_inset
+
+hakparanteser
+\begin_inset Quotes erd
+\end_inset
+
+ och ett index för att välja ut värden.
+ 
+\end_layout
+
+\begin_layout Standard
+I R är index heltal som går fr.o.m 1 t.o.m vektorns längd.
+ Vill vi välja ut flera värden använder vi en vektor med heltal.
+\end_layout
+
+\begin_layout Enumerate
+Pröva att plocka ut följande element med 
+\family typewriter
+[ ]
+\family default
+ ur 
+\family typewriter
+minVec
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minVec <- c(0.5,3,6,12,21,45,10)
+\end_layout
+
+\begin_layout Plain Layout
+
+minVec[2]
+\end_layout
+
+\begin_layout Plain Layout
+
+minVec[5:7]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Logik
+\end_layout
+
+\begin_layout Section
+Logiska vektorer och indexering
+\end_layout
+
+\begin_layout Standard
+Logiska vektorer påminner mycket om övriga vektorer.
+ Dock finns en skillnad och det är att logiska vektorer kan användas för
+ att indexera andra vektorer (och dataset).
+ Precis som tidigare använder vi hakparanteser för indexering.
+ 
+\end_layout
+
+\begin_layout Standard
+Genom att i hakparanterna stoppa in en logisk vektor av samma längd som
+ vektorn vi vill indexera, väljer vi ut de värden där den logiska vektorn
+ är 
+\family typewriter
+TRUE
+\family default
+.
+ Detta är centralt när vi arbetar med databearbetning av dataset och matriser.
+ Nedan är ett exempel på detta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+logi <- c(TRUE, FALSE, TRUE, FALSE, FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+num <- 1:5
+\end_layout
+
+\begin_layout Plain Layout
+
+num[logi]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Logiska operatorer
+\end_layout
+
+\begin_layout Standard
+Med logiska operatorer avses operatorer som kan användas med logiska värden.
+ Detta kallas ibland boolsk algebra och används för att 
+\begin_inset Quotes eld
+\end_inset
+
+räkna
+\begin_inset Quotes erd
+\end_inset
+
+ med logiska värden.
+ Precis som i vanlig matematik kan vi också använda paranteser och som för
+ andra vektorer sker operatorerna elementvis.
+ De viktigaste operatorerna är:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol i R
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+och
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+&
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eller
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+|
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+icke
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+!
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mer information finns i referenskortet (under 
+\begin_inset Quotes eld
+\end_inset
+
+Operators
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Nedan är ett exempel på hur de logiska operatorerna fungerar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- FALSE
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a & b # a and b (are TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+a | b # a or b (are TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+!a
+\end_layout
+
+\begin_layout Plain Layout
+
+!b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Relationsoperatorer
+\end_layout
+
+\begin_layout Standard
+Relationsoperatorer är det sätt vi kan jämföra olika numeriska vektorer
+ (och i vissa fall även textvektorer).
+ Relationsoperatorerna returnerar alltid en logisk vektor vilket gör det
+ mycket bra för att plocka ut delar ur vektorer och dataset.
+ 
+\end_layout
+
+\begin_layout Standard
+Ofta vill vi jämföra olika vektorer och baserat på detta indexera ett dataset.
+ I R görs detta i tre steg:
+\end_layout
+
+\begin_layout Enumerate
+Använd relationsoperatorer för att göra en jämförelse (ex.
+ variabeln ålder är större än 18)
+\end_layout
+
+\begin_layout Enumerate
+Relationsoperatorerna skapar då en logisk vektor
+\end_layout
+
+\begin_layout Enumerate
+Den logiska vektorn används för att indexera datasetet
+\end_layout
+
+\begin_layout Standard
+De relationsoperatorer som finns är bland annat:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol i R
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lika
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+==
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inte lika
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+!=
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+större än el.
+ lika
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mindre än el.
+ lika
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+större än
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mindre än
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+finns i
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+%in%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nedan är ett exempel på hur dessa används i R:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+num <- 1:15
+\end_layout
+
+\begin_layout Plain Layout
+
+num < 10
+\end_layout
+
+\begin_layout Plain Layout
+
+num != 5
+\end_layout
+
+\begin_layout Plain Layout
+
+num %in% c(1,2,7)
+\end_layout
+
+\begin_layout Plain Layout
+
+!(num == 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduktion till funktioner
+\end_layout
+
+\begin_layout Standard
+Funktioner är centralt i R.
+ I princip all kod vi vill använda upprepade gånger bör implementeras som
+ funktioner.
+ Paket i R är i princip bara en samling funktioner.
+\end_layout
+
+\begin_layout Standard
+En funktion består av:
+\end_layout
+
+\begin_layout Itemize
+Ett funktionsnamn (ex.
+ 
+\family typewriter
+minFunktion
+\family default
+) som 
+\begin_inset Quotes eld
+\end_inset
+
+tillskrivs
+\begin_inset Quotes erd
+\end_inset
+
+ en funktion
+\end_layout
+
+\begin_layout Itemize
+En funktionsdefinition - 
+\family typewriter
+function()
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+Noll eller flera argument (ex.
+ 
+\family typewriter
+x
+\family default
+, 
+\family typewriter
+y)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Curly Bracers
+\begin_inset Quotes erd
+\end_inset
+
+ som 
+\begin_inset Quotes eld
+\end_inset
+
+innehåller
+\begin_inset Quotes erd
+\end_inset
+
+ funktionen 
+\family typewriter
+{}
+\end_layout
+
+\begin_layout Itemize
+Beräkningar / programkod (ex.
+ 
+\family typewriter
+x+y)
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+Returnera resultat med 
+\family typewriter
+return()
+\family default
+ 
+\end_layout
+
+\begin_layout Standard
+Nedan är ett exempel på en funktion i R:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minFunktion <- function(x,y){
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- x+y
+\end_layout
+
+\begin_layout Plain Layout
+
+return(z)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Datastruktur: 
+\family typewriter
+data.frame
+\family default
+ 
+\end_layout
+
+\begin_layout Standard
+En 
+\family typewriter
+data.frame
+\family default
+ är det vanligaste sättet att arbeta med statistiska data i R.
+ Det är en stor tabell som innehåller ett antal variabler.
+ I R är egentligen en 
+\family typewriter
+data.frame
+\family default
+ bara en samling av lika långa vektorer (variabler) som är sammansatta som
+ en lista (mer om detta senare).
+ Det gör att en 
+\family typewriter
+data.frame
+\family default
+ kan ha vektorer av olika typ (ex.
+ text, numeriska, logiska m.m.).
+ 
+\end_layout
+
+\begin_layout Section
+Skapa och undersöka en data.frame
+\end_layout
+
+\begin_layout Standard
+För att skapa en 
+\family typewriter
+data.frame
+\family default
+ används funktionen 
+\family typewriter
+data.frame()
+\family default
+ och i denna funktion lägger man till de variabler vi vill ha i vårt datset
+ som vektorer.
+ Som vanligt måste man tillskriva datasetet till ett objektnamn med 
+\family typewriter
+<-
+\family default
+.
+ Vill man namnge variablerna anger man variablerna som argument.
+ För att titta på en hel 
+\family typewriter
+data.frame
+\family default
+ skriver man bara namnet för det aktuella objektet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minDF <- data.frame(num = 1:3, text = rep("Text", 3), logi=c(TRUE, TRUE,
+ FALSE))  
+\end_layout
+
+\begin_layout Plain Layout
+
+minDF
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skapa en 
+\family typewriter
+data.frame
+\family default
+ som du kallar 
+\family typewriter
+minVecka
+\family default
+ med vektorerna 
+\family typewriter
+myWeekdays
+\family default
+, 
+\family typewriter
+hours
+\family default
+ och 
+\family typewriter
+tasks
+\family default
+ på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+days<-c("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
+\end_layout
+
+\begin_layout Plain Layout
+
+hour <- c(rep(8, 4), 6, 0, 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+task <- c(rep("job", 4), "study", rep("fun", 2))
+\end_layout
+
+\begin_layout Plain Layout
+
+minVecka <- data.frame(myWeekdays = days, hours = hour, tasks = task)  
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+I R finns det ett antal datamaterial förinstallerade med R.
+ För att läsa in dem används funktionen 
+\family typewriter
+data()
+\family default
+.
+ Läs på detta in datasetet 
+\family typewriter
+iris
+\family default
+ och studera vad materialet innehåller.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+iris
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Utöver detta finns ett antal funktioner som är relevanta att använda.
+ Pröva följande funktioner på 
+\family typewriter
+iris
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Funktionerna 
+\family typewriter
+head()
+\family default
+ och 
+\family typewriter
+tail()
+\family default
+.
+ Pröva att använda argumentet 
+\family typewriter
+n
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Funktionerna 
+\family typewriter
+summary()
+\family default
+ och 
+\family typewriter
+str()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Funktionerna 
+\family typewriter
+names()
+\family default
+,
+\family typewriter
+ colnames()
+\family default
+ och 
+\family typewriter
+rownames()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Funktionerna 
+\family typewriter
+ncol()
+\family default
+ och 
+\family typewriter
+nrow()
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Variabler i en 
+\family typewriter
+data.frame
+\end_layout
+
+\begin_layout Standard
+Det är sällan så att vi är intresserade av en hel data.frame.
+ Istället är det enskilda variabler vi är intresserade av att analysera
+ och använda i olika analyssammanhang.
+ I R görs detta genom att vi väljer ut en enskild variabel (som då blir
+ en vektor).
+ Sedan kan vi använda vilka statistiska funktioner vi vill för deskriptiv
+ statistik.
+\end_layout
+
+\begin_layout Standard
+För att 
+\begin_inset Quotes eld
+\end_inset
+
+plocka ut
+\begin_inset Quotes erd
+\end_inset
+
+ en variabel från en data.frame kan vi göra på flera sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+iris$Sepal.Width
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[["Sepal.Width"]]
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[, "Sepal.Width"]
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[, 2]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I R kan vi jobba med flera 
+\family typewriter
+data.frame
+\family default
+s samtidigt.
+ Därför måste vi i varje steg ange vilken 
+\family typewriter
+data.frame
+\family default
+ vi arbetar med.
+ I de första tre fallen använder vi variabelnamnet och den sista metoden
+ använder vi vilken kolumn som är variabeln av intresse.
+ Hakparanteser används här för att 
+\begin_inset Quotes eld
+\end_inset
+
+indexera
+\begin_inset Quotes erd
+\end_inset
+
+ variabler, mer om detta senare.
+ 
+\end_layout
+
+\begin_layout Standard
+Det går självklart också att spara en enskild variabel och då sparas den
+ som en vektor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mySepalWidth <- iris$Sepal.Width
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Skapa och ta bort variabler
+\end_layout
+
+\begin_layout Standard
+För att skapa en ny variabel tillskriver vi den nya variabeln (d.v.s.
+ variabelnamnet) en ny vektor av samma längd som den aktuella data.frame.
+ Vill vi skapa en ny variabel som är kvoten mellan 
+\family typewriter
+Petal.Width
+\family default
+ och 
+\family typewriter
+Petal.Length
+\family default
+ i  
+\family typewriter
+iris
+\family default
+ gör vi på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+iris$newVariable <- iris$Petal.Width / iris$Petal.Length
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Variabelnamn
+\end_layout
+
+\begin_layout Standard
+Ibland vill vi ändra ett variabelnamn vi skapat.
+ Variabelnamn i 
+\family typewriter
+data.frame
+\family default
+s kan i princip se ut hur som helst, dock får de inte börja med en siffra.
+ För att det ska vara enkelt att arbeta med dem är det bra om de följer
+ samma regler som variabelnamn för objekt (d.v.s.
+ inte innehålla mellanslag).
+\end_layout
+
+\begin_layout Enumerate
+För att ta reda på variabelnamnen i en 
+\family typewriter
+data.frame
+\family default
+ används funktionen 
+\family typewriter
+names()
+\family default
+.
+ Det som returneras är en textvektor.
+ Pröva att använda funktionen på 
+\family typewriter
+iris
+\family default
+.
+ Spara ned variabelnamnen som textvektorn 
+\family typewriter
+namn
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Faktorvariabler
+\end_layout
+
+\begin_layout Standard
+En speciell typ av variabler är så kallade faktorvariabler, 
+\family typewriter
+factor
+\family default
+.
+ I R ser dessa variabler nästan ut som textvektorer.
+ Skillnaden syns om vi använder 
+\family typewriter
+typeof()
+\family default
+.
+ Då framgår att en faktorvariabel är av typen 
+\family typewriter
+integer
+\family default
+, inte 
+\family typewriter
+character
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Faktorvariabler har två syften, dels att spara minne (heltal tar betydligt
+ mycket mindre utrymme i minnet än textvektorer) och dels kan dessa variabler
+ användas direkt i analysfunktioner som ex.
+ linjär regression och då hanteras de korrekt (med dummyvariabler).
+ Det gör att det ofta kan vara värdefullt att konvertera klassvariabler
+ till faktorvariabler.
+\end_layout
+
+\begin_layout Enumerate
+För att skapa en faktorvariabel använder vi 
+\family typewriter
+factor()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myText <- paste("Text",1:5)
+\end_layout
+
+\begin_layout Plain Layout
+
+myFactor <- factor(myText)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Indexera en 
+\family typewriter
+data.frame
+\end_layout
+
+\begin_layout Standard
+För att indexera en data.frame (eller välja ut subset) behöver både radindex
+ 
+\series bold
+OCH
+\series default
+ kolumnindex anges.
+ Precis som vid vektorer används 
+\begin_inset Quotes eld
+\end_inset
+
+hakparantes
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Radindex anges först och sedan kolumnindex.
+ Tänk matriser.
+ De olika index separeras med ett komma.
+ Lämnas ett index tomt innebär det att alla rader/kolumner väljs ut.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Pröva följande kod med vårt dataset 
+\family typewriter
+iris
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[1,]
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[,2]
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[1:2,2]
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[3,1]
+\end_layout
+
+\begin_layout Plain Layout
+
+iris[c(2,1),1]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+E
+\end_layout
+
+\begin_layout Chapter
+Grundläggande databearbetning
+\end_layout
+
+\begin_layout Standard
+Inte sällan behöver vi kombinera data från flera olika 
+\family typewriter
+data.frame
+\family default
+s, matriser, vektorer på olika sätt.
+ Många gånger är själva databearbetningarna som tar tid att göra innan vi
+ kan påbörja de analyser vi är intresserade av.
+ Följande manipulationer hör till de vi vanligen kan tänkas vilja göra.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Funktion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Beskrivning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+rbind()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kombinerar 
+\family typewriter
+data.frame
+\family default
+s radvis.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+cbind()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kombinerar 
+\family typewriter
+data.frame
+\family default
+s kolumnvis.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+merge()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kombinerar två 
+\family typewriter
+data.frame
+\family default
+s med en ID-variabel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+aggregate()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aggregerar uppgifter efter ID-variabel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att återigen läsa in våra dataset 
+\family typewriter
+iris
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sammanfoga data med 
+\family typewriter
+merge()
+\end_layout
+
+\begin_layout Standard
+En av de viktigaste funktionerna för datamanipulation i R är 
+\family typewriter
+merge()
+\family default
+.
+ Med denna funktion kan vi kombinera två 
+\family typewriter
+data.frame
+\family default
+s baserat på en eller flera ID-variabler.
+ Detta är centralt när vi samkör olika 
+\family typewriter
+data.frame
+\family default
+s.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att skapa två 
+\family typewriter
+data.frame
+\family default
+s som exempel.
+ Skapa dessa med följande kod (det vi gör är att vi kör exemplen till funktionen
+ 
+\family typewriter
+merge()
+\family default
+ utan att skriva ut all kod):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+example("merge", echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Kontrollera att du nu har två dataset i din globala miljö.
+ Ett som heter 
+\family typewriter
+authors
+\family default
+ och ett som heter 
+\family typewriter
+books
+\family default
+.
+ Titta på dessa dataset så du vet vad de innehåller.
+\end_layout
+
+\begin_layout Enumerate
+Vi har nu två 
+\family typewriter
+data.frame
+\family default
+s att arbeta med, en med böcker och en med författare.
+ Vill vi nu kombinera dessa använder vi oss av 
+\family typewriter
+merge()
+\family default
+.
+ Funktionen har argumenten 
+\family typewriter
+x
+\family default
+ och 
+\family typewriter
+y
+\family default
+ som är de två dataset vi vill kombinera.
+ Vi behöver också ange vilka variabler vi ska använda som ID-variabler argumente
+t.
+ Vill vi slå ihop 
+\family typewriter
+authors
+\family default
+ med 
+\family typewriter
+books
+\family default
+ gör vi på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+res1 <- merge(x=authors, y=books, by.x = "surname", by.y = "name")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Titta på 
+\family typewriter
+res1
+\family default
+ och se hur sammanslagningen har gjorts.
+\end_layout
+
+\begin_layout Section
+Aggregera datamaterial med 
+\family typewriter
+aggregate()
+\end_layout
+
+\begin_layout Standard
+Vill vi aggregera delar av ett material använder vi funktionen 
+\family typewriter
+aggregate()
+\family default
+.
+ Vi behöver ange vilket material vi vill aggregera, efter vilken eller vilka
+ ID-variabler (inlagda som en lista) samt vilken funktion vi vill använda
+ för att aggregera.
+ Vill vi 
+\begin_inset Quotes eld
+\end_inset
+
+skicka med
+\begin_inset Quotes erd
+\end_inset
+
+ ytterligare argument till aggregeringsfunktionen lägger vi bara till dessa
+ efter de övriga argumenten.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+myAggr1 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=median)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+myAggr2 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=length)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+myAggr3 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=mean,
+ rm.na=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Filhantering och grundläggande input och output (I/O)
+\end_layout
+
+\begin_layout Standard
+Det är mycket sällan vi har nytta av de inbyggda datamaterialen i R, utan
+ i de flesta fall behöver vi läsa in data från olika filformat.
+ Detta brukar kallas I/O eller input och output.
+\end_layout
+
+\begin_layout Standard
+För att läsa och skriva till filer utanför R behöver vi börja med att lära
+ oss hur R kommunicerar med operativsystemets filsystem.
+ Detta kan skilja sig mellan olika operativsystem hur det ser ut.
+ 
+\end_layout
+
+\begin_layout Section
+Filhantering
+\end_layout
+
+\begin_layout Enumerate
+Använd funktionen 
+\family typewriter
+getwd()
+\family default
+ för att se vilket som är ditt nuvarande 
+\begin_inset Quotes eld
+\end_inset
+
+working directory
+\begin_inset Quotes erd
+\end_inset
+
+ på datorn.
+ Nedan är mitt working directory.
+ Tänk på att en sökväg bara är ett textelement.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+getwd()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Med funktionen 
+\family typewriter
+dir()
+\family default
+ kan vi se vilka filer som finns i den aktuella katalogen.
+ Stämmer det med vad du väntar dig?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dir()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det är möjligt i vissa operativsystem att manuellt söka sig fram till den
+ sökväg vi vill använda oss av.
+ Detta görs då med funktionen 
+\family typewriter
+file.choose()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+setwd()
+\family default
+ och ändra ditt working directory i R.
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+getwd()
+\family default
+ för att se att sökvägen har ändrats.
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+.csv
+\family default
+-filer
+\end_layout
+
+\begin_layout Standard
+Som en första steg ska vi pröva att importera csv-filer och txt-filer.
+ Vi ska pröva att läsa in 
+\family typewriter
+google.csv
+\family default
+, denna fil kan du ladda ned 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://raw.githubusercontent.com/MansMeg/KursRprgm/master/Labs/DataFiles/google.csv"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+Läs in 
+\family typewriter
+google.csv
+\family default
+ och spara datat som 
+\family typewriter
+google
+\family default
+ med 
+\family typewriter
+read.csv()
+\family default
+ eller 
+\family typewriter
+read.csv2()
+\family default
+ (det finns olika funktioner för europeisk standard och amerikans standard
+ för csv-filer).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Read data
+\end_layout
+
+\begin_layout Plain Layout
+
+apple <- read.csv(file="google.csv",sep=";", header=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att exportera dataset gör man på ett liknande sätt med funktionerna
+ 
+\family typewriter
+write.csv()
+\family default
+, 
+\family typewriter
+write.csv2()
+\family default
+ och 
+\family typewriter
+write.table()
+\family default
+.
+ Pröva att spara ned datasetet 
+\family typewriter
+google
+\family default
+ som en 
+\family typewriter
+.csv
+\family default
+-fil på detta sätt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+write.csv(apple,file="mitt_test.csv")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+.Rdata
+\family default
+-filer
+\end_layout
+
+\begin_layout Standard
+Rdata-filer är troligtvis det mest effektiva sättet av alla att spara data
+ som filer (jmf med SAS, SPSS, Excel och csv).
+ Det är R:s dataformat och bygger på en komprimering av materialet.
+ Fördelen är att vi också kan spara flera R-objekt i en och samma Rdata-fil.
+ För att arbeta med .Rdata-filer använder vi oss av 
+\family typewriter
+save()
+\family default
+ och 
+\family typewriter
+load()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Pröva att spara datasetet 
+\family typewriter
+google
+\family default
+ i 
+\series bold
+R
+\series default
+-format som 
+\family typewriter
+google.RData
+\family default
+ i din working directory.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+save(google,file="google.Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+save.image()
+\family default
+ för att spara ned allt det du har i ditt 
+\begin_inset Quotes eld
+\end_inset
+
+Global enviroment
+\begin_inset Quotes erd
+\end_inset
+
+ som 
+\family typewriter
+alltJagHar.RData
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+save.image(file="alltJagHarData.Rdata") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+dir()
+\family default
+ för att se att filerna har sparats korrekt i ditt workspace.
+\end_layout
+
+\begin_layout Chapter
+Programkontroll
+\end_layout
+
+\begin_layout Standard
+En av de centrala delarna för att skriva effektiva och väl fungerande funktioner
+ och kod i R är att kunna styra programmen på ett bra sätt.
+ För detta används så kallad programkontroll.
+ Generellt sett kan man säga att programkontrollen består av två huvudsakliga
+ delar, villkorssatser och loopar.
+\end_layout
+
+\begin_layout Section
+Villkorssatser
+\end_layout
+
+\begin_layout Standard
+Villkorssatser används för att kontrollera flödet i programmeringen på ett
+ smidigt sätt och beroende på huruvida ett villkor är uppfyllt eller inte
+ ska programmet göra olika saker.
+ Grunden för villkorststyrning är 
+\family typewriter
+if
+\family default
+.
+ Vill vi styra ett program behöver vi med logiska värdet ange vilka delar
+ som ska utföras.
+ Med if utförs dessa OM 
+\family typewriter
+if
+\family default
+-satsen är sann (
+\family typewriter
+TRUE
+\family default
+), annars utförs den inte.
+ Vi kan sedan använda 
+\family typewriter
+else
+\family default
+ för de fall då uttrycket i if är falskt (
+\family typewriter
+FALSE
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Villkorssatser bygger helt på logiska värden i R som behandlades tidigare
+ under laborationen om Logik i R.
+\end_layout
+
+\begin_layout Enumerate
+Skapa 
+\family typewriter
+if
+\family default
+-satsen nedan.
+ Pröva att ändra värdet på 
+\family typewriter
+x
+\family default
+ på lämpligt sätt och se hur resultatet av 
+\family typewriter
+if
+\family default
+-satsen ändras.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- -100
+\end_layout
+
+\begin_layout Plain Layout
+
+if (x < 0) print("Hej!")
+\end_layout
+
+\begin_layout Plain Layout
+
+if (x > 0) print("Hej hej!")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nästa steg är att lägga till en 
+\family typewriter
+else
+\family default
+-sats.
+ Testa nu att köra följande 
+\family typewriter
+if
+\family default
+ 
+\family typewriter
+else
+\family default
+-sats (testa med olika värden för 
+\family typewriter
+x
+\family default
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 100
+\end_layout
+
+\begin_layout Plain Layout
+
+if(x < 0){
+\end_layout
+
+\begin_layout Plain Layout
+
+	a <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+	print("Negativt x")
+\end_layout
+
+\begin_layout Plain Layout
+
+} else {
+\end_layout
+
+\begin_layout Plain Layout
+
+	a <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+	print("Positivt eller noll")
+\end_layout
+
+\begin_layout Plain Layout
+
+}	
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Loopar
+\end_layout
+
+\begin_layout Standard
+En av de mest centrala verktygen för all programmering är användandet av
+ loopar.
+ Dessa används för att utföra upprepande uppgifter och är en central del
+ i att skriva välfungerande program.
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+for
+\family default
+ - loop
+\end_layout
+
+\begin_layout Standard
+En 
+\family typewriter
+for
+\family default
+-loop har ett loop-element (
+\family typewriter
+i
+\family default
+) och en loop-vektor (
+\family typewriter
+1:10
+\family default
+).
+ I koden nedan är 
+\family typewriter
+i
+\family default
+ loop-elementet och 
+\family typewriter
+1:10
+\family default
+ är vektorn som loopas över.
+ Testa att köra koden.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:10){
+\end_layout
+
+\begin_layout Plain Layout
+
+	x<-i+3
+\end_layout
+
+\begin_layout Plain Layout
+
+	print(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:10) print(i+3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- 0
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:10) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    y <- y + i
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En bra funktion för att skapa loop-vektorer är funktionen 
+\family typewriter
+seq_along()
+\family default
+.
+ Den skapar en loop-vektor på samma sätt som 
+\family typewriter
+1:length(minaOrd)
+\family default
+.
+ Dock blir det tydligare i koden vad loopen gör (sequence along 
+\family typewriter
+minaOrd
+\family default
+).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:length(minaOrd)){
+\end_layout
+
+\begin_layout Plain Layout
+
+	print(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in seq_along(minaOrd)){
+\end_layout
+
+\begin_layout Plain Layout
+
+	print(i)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Kontrollstrukturer för loopar 
+\end_layout
+
+\begin_layout Standard
+För att kontrollera loopar finns det två huvudsakliga kontrollstrukturer.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kontrollstruktur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Betydelse
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+next()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hoppa vidare till nästa iteration i loopen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+break()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Avbryt den aktuella loopen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dessa två sätt att kontrollera en loop är mycket värdefulla och gör det
+ möjligt att avsluta en hel loop i förtid (
+\family typewriter
+break
+\family default
+) eller hoppa över beräkningar för den nuvarande iterationen (
+\family typewriter
+next
+\family default
+).
+\end_layout
+
+\begin_layout Enumerate
+Nedan är ett exempel på kod som använder kontrollstrukturen 
+\family typewriter
+next
+\family default
+.
+ Innan beräkningar i loopen görs prövar vi med en villkorssats om beräkningen
+ är möjlig.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Pröva koden och pröva sedan att ta bort 
+\family typewriter
+next
+\family default
+ och se vad som händer.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myList <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for (element in myList){
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(typeof(element) != "integer"){ next() }
+\end_layout
+
+\begin_layout Plain Layout
+
+	print(mean(element))
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+R-paket
+\end_layout
+
+\begin_layout Standard
+R-paket är extra moduler/biblitek som läses in i R för att skapa extra funktiona
+litet i form av nya funktioner eller nya data.
+ De flesta funktioner som används i R finns i olika paket.
+ Några få paket läses automatiskt in i R när vi startar R, medan andra paket
+ måste vi läsa in aktivt för att få tillgång till funktionaliteten.
+ Den stora mängd personer som bidrar till R gör det genom att utveckla nya
+ funktioner som de sedan släpper som paket.
+\end_layout
+
+\begin_layout Standard
+Paket är något som skiljer R från andra statistikprogram är attden mesta
+ funktionaliteten inte kommer med från början.
+ I andra programmeringsspråk är denna form av 
+\series bold
+modularisering
+\series default
+ betydligt vanligare.
+ Den stora fördelen med detta är att vi bara behöver läsa in de paket vi
+ verkligen har behov av just nu.
+\end_layout
+
+\begin_layout Standard
+För att kunna använda ett paket behöver vi gå igenom två steg: 
+\end_layout
+
+\begin_layout Itemize
+Paketet måste först installeras på din aktuella dator.
+\end_layout
+
+\begin_layout Itemize
+Paketet måste sedan läsas in i den aktuella sessionen för att användas -
+ eller anropas explicit.
+\end_layout
+
+\begin_layout Standard
+Alla paket har olika versioner och generellt följer de kriterierna för 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "semantisk versionshantering"
+target "http://semver.org/"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+Först måste vi installera ett paket.
+ Detta kan antingen göras genom CRAN (Comprehensive R Archive Network) på
+ internet där de flesta paket ligger uppe.
+ Detta görs med funktionen 
+\family typewriter
+install.packages()
+\family default
+.
+ Pröva att installera 
+\family typewriter
+stringr
+\family default
+ och 
+\family typewriter
+lubrudate
+\family default
+ på detta sätt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("stringr")
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("lubridate")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+En annan server där det finns mycket paket är på github.com.
+ Det är vanligt att paket som fortfarande utvecklas aktivt finns på både
+ CRAN och github.com då github underlättar enormt för så kallad collaborativ
+ utveckling där flera personer hjälps åt med utvecklingen.
+ För att installera från github direkt behöver först paketet 
+\family typewriter
+devtools
+\family default
+ installeras.
+ Pröva att installera paketet 
+\family typewriter
+pxweb
+\family default
+ på detta sätt med följande kod.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("devtools") 
+\end_layout
+
+\begin_layout Plain Layout
+
+devtools::install_github("pxweb","rOpenGov") 
+\end_layout
+
+\begin_layout Plain Layout
+
+library(pxweb)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att läsa in ett paket (d.v.s.
+ för att använda paketet i den aktuella sessionen) används funktionen 
+\family typewriter
+library()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(pxweb)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\end_body
+\end_document
