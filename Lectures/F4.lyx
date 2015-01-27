@@ -103,7 +103,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 4
+Introduktion till LyX, BibTeX och knitR
 \end_layout
 
 \begin_layout Author
@@ -117,76 +117,6 @@ Avd.
 
 \begin_layout Date
 \begin_inset space \thinspace{}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-# Paket
-\end_layout
-
-\begin_layout Plain Layout
-
-suppressMessages(library(ggplot2))
-\end_layout
-
-\begin_layout Plain Layout
-
-library(devtools)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
-r/Demonstrations/svyMethFunctions.R")
-\end_layout
-
-\begin_layout Plain Layout
-
-)
-\end_layout
-
-\begin_layout Plain Layout
-
-suppressMessages(
-\end_layout
-
-\begin_layout Plain Layout
-
-source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
-ctureCode.R")
-\end_layout
-
-\begin_layout Plain Layout
-
-)
-\end_layout
-
-\begin_layout Plain Layout
-
-options(scipen = 10, digits = 3)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
 \end_inset
 
 
@@ -213,8 +143,41 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout BeginFrame
+Varför denna föreläsning?
+\end_layout
+
+\begin_layout Itemize
+Ge verktyg för att skriva en matematisk/statistisk uppsats
+\end_layout
+
+\begin_layout Itemize
+Underlätta källhänvisningar och referenshantering
+\end_layout
+
+\begin_layout Itemize
+Ge verktyg för vetenskaplighet / reproducerbarhet
+\end_layout
+
+\begin_layout Itemize
+Integrering av R med dokument / HTML m.m.
+ blir allt vanligare.
+\end_layout
+
+\begin_layout Itemize
+Alternativ till Word - LaTeX är stort inom matematiska ämnen
+\end_layout
+
+\begin_layout Itemize
+Ge smakprov, vissa delar passar bättre för vissa behov
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
 \begin_layout Section
-Stratifierat urval
+LyX
 \end_layout
 
 \begin_layout Standard
@@ -236,782 +199,457 @@ sectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Introduktion till stratifierat urval
+Vad är LyX?
 \end_layout
 
 \begin_layout Itemize
-Ofta har vi tillgång till (kategoriska) hjälpvariabler innan vi drar vårt
- urval
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Exempel: Kön, Ålder, Region o.s.v.
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
+Grafiskt gränsnitt för LaTeX (som R och R-Studio)
 \end_layout
 
 \begin_layout Itemize
-Istället för att dra ett OSU kan vi stratifiera vår population i 
-\begin_inset Formula $H$
-\end_inset
 
- 
 \series bold
-ömsesidigt uteslutande
+W
 \series default
- 
-\begin_inset Quotes eld
-\end_inset
-
-delpopulationer
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Exempel: Kön (2 klasser), Ålder (5 klasser) och Region (21 klasser)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-=2\cdot5\cdot21=210\mbox{ strata}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Från 
+hat
 \series bold
-varje
+Y
 \series default
- 
+ou
 \series bold
-strata
+W
 \series default
- dras sedan (ofta) ett OSU 
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi betraktar de olika strata som 
+ant
 \series bold
-olika populationer
+I
 \series default
-.
-\end_layout
-
-\begin_layout Itemize
-
+s
 \series bold
-Obs!
+W
 \series default
- strata 
-\begin_inset Formula $\neq$
-\end_inset
-
- redovisningsgrupp
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Introduktion till stratifierat urval II
-\end_layout
-
-\begin_layout Itemize
-Varför vill vi stratifiera? Fler anledningar finns, nämligen...
-\end_layout
-
-\begin_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Försäkra oss om att 
+hat
 \series bold
-inte få ett dåligt urval
+Y
 \series default
- (av en slump)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi vill ha en given precision för en eller flera 
+ou
 \series bold
-redovisningsgrupper
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Ibland har olika strata 
-\series bold
-olika kostnad
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Med stratifierade urval kan vi 
-\series bold
-öka den totala precisionen
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Olika grupper kan ha olika 
-\series bold
-bortfall
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Det är inte ovanligt att flera av dessa faktorer spelar in på en och samma
- gång.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vanliga begrepp vid stratifierade urval
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Take-all strata
-\end_layout
-
-\begin_layout Itemize
-Cut-off sampling
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Notation
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Notation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-N=\mbox{populationsstorlek}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-N_{h}=\mbox{populationsstorlek i strata }h
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mathcal{U}_{h}=\mbox{populationsmängden i strata }h
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-N=N_{1}+N_{2}+...+N_{h}=\sum_{i=1}^{H}N_{i}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-n=\mbox{urvalsstorlek}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-n_{h}=\mbox{populationsstorlek i strata }h
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\mathcal{S}_{h}=\mbox{urvalssmängden i strata }h
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-n=n_{1}+n_{2}+...+n_{h}=\sum_{i=1}^{H}n_{i}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-y_{hj}=\mbox{variabelvärde på enhet }j\mbox{ i stratum }h
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Populationsparametrar
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-y_{hj}=\mbox{variabelvärde på enhet }j\mbox{ i stratum }h
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-t_{hy}=\sum_{j=1}^{N_{h}}y_{hj}=\mbox{total i stratum }h
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-t_{y}=t_{1y}+t_{2y}+...+t_{Hy}=\sum_{h=1}^{H}t_{hy}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\bar{y}_{h\mathcal{U}}=\frac{1}{N_{h}}\sum_{j=1}^{N_{h}}y_{hj}=\mbox{medelvärde i strata }h
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{h=1}^{H}\sum_{j=1}^{N_{h}}y_{hj}=\frac{1}{N}\sum_{h=1}^{H}N_{h}\bar{y}_{h\mathcal{U}}=\sum_{h=1}^{H}\frac{N_{h}}{N}\bar{y}_{h\mathcal{U}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Vi ser också att 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-t=N\bar{y}_{\mathcal{U}}=\sum_{h=1}^{H}N_{h}\bar{y}_{h\mathcal{U}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Estimation
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Estimation
-\end_layout
-
-\begin_layout Itemize
-I varje enskilt strata - som vid vanligt OSU
-\end_layout
-
-\begin_layout Itemize
-Sedan kombineras dessa till en 
-\begin_inset Quotes eld
-\end_inset
-
-helhets
-\begin_inset Quotes erd
-\end_inset
-
--skattning
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi kan exempelvis använda oss av den 
-\begin_inset Quotes eld
-\end_inset
-
-vanliga
-\begin_inset Quotes erd
-\end_inset
-
- estimatorn 
-\begin_inset Formula $\bar{y}_{\mathcal{S}}$
-\end_inset
-
- i varje strata 
-\begin_inset Formula $h$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\bar{y}_{h}=\frac{1}{n_{h}}\sum_{j\in\mathcal{S}_{h}}y_{hj}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Sedan lägger vi ihop (summerar) de enskilda skattningarna för respektive
- strata till en skattning för hela populationen
-\begin_inset Formula 
-\[
-\bar{y}_{str}=\sum_{h=1}^{H}\frac{N_{h}}{N}\bar{y}_{h}\mbox{ och }\hat{t}_{str}=N\bar{y}_{str}
-\]
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "str_estimator"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om 
-\begin_inset Formula $\bar{y}_{h}$
-\end_inset
-
- är väntevärdesriktig är också 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $\bar{y}_{str}$
-\end_inset
-
- och 
-\begin_inset Formula $\hat{t}_{str}$
-\end_inset
-
-
-\family default
+G
 \series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
+et istället för 
+\series bold
+W
+\series default
+hat
+\series bold
+Y
+\series default
+ou
+\series bold
+S
+\series default
+ee
+\series bold
+I
+\series default
+s
+\series bold
+W
+\series default
+hat
+\series bold
+Y
+\series default
+ou
+\series bold
+G
+\series default
+et.
+\end_layout
+
+\begin_layout Itemize
+Skapar både dokument (och presentationer med beamer)
+\end_layout
+
+\begin_layout Itemize
+Open Source och finns för alla operativsystem (laddas ned 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.lyx.org/Download"
+
+\end_inset
+
+
+\series default
 \color inherit
- väntevärdesriktiga 
-\begin_inset Formula $(*)$
+)
+\end_layout
+
+\begin_layout Itemize
+Går att versionshantera (till skillnad mot Word)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Fördelar och nackdelar
+\end_layout
+
+\begin_layout Itemize
+Fördelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mycket bra hantering av matematik
+\end_layout
+
+\begin_layout Itemize
+Passar bra för att skriva uppsatser / akademiska texter
+\end_layout
+
+\begin_layout Itemize
+Open source / gratis
+\end_layout
+
+\begin_layout Itemize
+Smidigt alternativ till LaTeX som är vanligt inom matematikämnen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mindre vanligt utanför akademin / matematiska / teknologiska ämnen
+\end_layout
+
+\begin_layout Itemize
+Sämre språkgranskning än word
+\end_layout
+
+\begin_layout Itemize
+Kan ibland ha buggar
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Demonstration av LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
+BiBTeX och referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Vad är BiBTeX?
+\end_layout
+
+\begin_layout Itemize
+Hantera referens och källhänvisningar korrekt
+\end_layout
+
+\begin_layout Itemize
+Samlar referenser i en eller flera filer
+\end_layout
+
+\begin_layout Itemize
+Alla litteratursöksidor kan skapa bibTex-referenser direkt
+\end_layout
+
+\begin_layout Itemize
+Integrerat med LyX och LaTeX (och Word)
+\end_layout
+
+\begin_layout Itemize
+Finns för 
+\begin_inset CommandInset href
+LatexCommand href
+name "Mac (BibDesk)"
+target "http://bibdesk.sourceforge.net/"
+
+\end_inset
+
+, PC (kommer med LyX) och Linux (?).
  
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Demonstration av BiBTeX, referenser och LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+knitr och reproducible research
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Reproducible research
+\end_layout
+
+\begin_layout Itemize
+Vetenskap måste vara reproducerbar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enkelt att granska varandras arbeten och reproducera analyser
+\end_layout
+
+\begin_layout Itemize
+Enkelt att identifiera felaktigheter
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+I statistiska analyser innebär detta bland annat
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+väl dokumenterad kod
+\end_layout
+
+\begin_layout Itemize
+integrera analyserna i dokumentet
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+För- och nackdelar
+\end_layout
+
+\begin_layout Itemize
+Det bästa verktyget för detta idag är knitR.
+\end_layout
+
+\begin_layout Itemize
+Fördelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reproducerbara analyser (återkommande analyser)
+\end_layout
+
+\begin_layout Itemize
+Korrigerade fel rättas i hela dokumentet automatiskt
+\end_layout
+
+\begin_layout Itemize
+Sparar (ofta) tid
+\end_layout
+
+\begin_layout Itemize
+Kan påbörja rapporten innan datainsamlingen är klar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kräver initialt mer arbete
+\end_layout
+
+\begin_layout Itemize
+Kan vara jobbigt att hitta buggar i R-koden
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+knitR
+\end_layout
+
+\begin_layout Itemize
+Paket till R för att integrera R kod och dokument (HTML/Markdown, LaTeX/LyX)
 \begin_inset Newline newline
 \end_inset
 
-(för härledning se 
-\begin_inset CommandInset citation
-LatexCommand citealp
-after "s. 79"
-key "lohr2009sampling"
-
-\end_inset
-
-).
- 
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Estimation II
+(för Word finns R2DOCX här)
 \end_layout
 
 \begin_layout Itemize
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $\hat{Var}(\bar{y}_{str})$
+Kör först R-koden och 
+\begin_inset Quotes eld
 \end_inset
 
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- är i summan av variansen över de olika strata 
-\begin_inset Formula $(*)$
+byter ut
+\begin_inset Quotes erd
 \end_inset
 
- 
-\begin_inset Formula 
-\[
-\hat{Var}(\bar{y}_{str})=\frac{1}{N^{2}}\sum_{h=1}^{H}N_{h}^{2}\left(1-\frac{n_{h}}{N_{h}}\right)\frac{s_{h}^{2}}{n_{h}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Detta innebär:
+ koden mot resultatet
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Minst två observationer i varje strata
+Figurer
 \end_layout
 
 \begin_layout Itemize
-Vi ökar precisionen vid stratifiering om det är 
+Löpande text
+\end_layout
+
+\begin_layout Itemize
+Tabeller
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finns integrerat i R-Studio
+\end_layout
+
+\begin_layout Itemize
+Går att använda med Python, SAS m.fl.
+ (men mer komplicerat)
+\end_layout
+
+\begin_layout Itemize
+Exempeldokument till uppsatsen finns att tillgå här: 
 \series bold
-stor variation mellan strata och liten variation inom strata
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX"
+target "https://github.com/MansMeg/KursSvyMeth/blob/master/Documents/LyXexempel.lyx"
+
+\end_inset
+
+
 \series default
-.
-\end_layout
+\color inherit
+, 
+\series bold
+\color blue
 
-\begin_layout Itemize
-Det går att använda andra estimatorer (kvot- regressionsestimation)
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Estimation III
-\end_layout
-
-\begin_layout Itemize
-För att beräkna ett konfidensintervall används (som vanligt) följande formel
-\begin_inset Formula 
-\[
-\bar{y}_{str}\pm z_{\alpha/2}\sqrt{\hat{Var}(\bar{y}_{str})}\mbox{ och }\hat{t}_{str}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{t}_{str})}
-\]
+\begin_inset CommandInset href
+LatexCommand href
+name "BiBTeX"
+target "https://github.com/MansMeg/KursSvyMeth/blob/master/Documents/BiBTeXexempel.bib"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-I ex.
- SAS eller R används ibland 
-\begin_inset Formula $t_{\alpha/2,n-H}$
-\end_inset
-
- istället för 
-\begin_inset Formula $z_{\alpha/2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För proportione 
-\begin_inset Formula $p_{str}$
-\end_inset
-
- se 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "s. 80 f."
-key "lohr2009sampling"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: Gastroenterit
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/Gastroenteritis_viruses.jpg
-	scale 75
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Gastroenteritvirus: A = rotavirus, B = adenovirus, C = norovirus och D =
- astrovirus.
-\end_layout
-
-\begin_layout Plain Layout
-Källa: 
-\begin_inset CommandInset citation
-LatexCommand citeauthor
-key "WikiGastro"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: Gastroenterit
-\end_layout
-
-\begin_layout Itemize
-Vi är intresserade av att undersöka antalet fall av gastroenterit (magsjuka)
- i Sverige under 2011 i befolkningen 0-64 år.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi är intresserade av det totala fallen av magsjuka, men också antalet fall
- bland yngre barn.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi vet också sedan tidigare att småbarnsföräldrar är mer magsjuka än övriga
- åldersgrupper.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Vi skapar därför fyra strata (0-15 år, 16-25 år, 26-40 år och 41-65 år)
+\series default
+\color inherit
  
 \end_layout
 
 \begin_layout Itemize
-Vårt urval är på 
-\begin_inset Formula $n=400$
-\end_inset
 
-
+\series bold
+Tips! 
 \end_layout
 
-\end_deeper
-\begin_layout Pause
-
+\begin_deeper
+\begin_layout Itemize
+Se till att koden ger det ni vill i R-studio först.
 \end_layout
 
 \begin_layout Itemize
-Urvalet fördelas proportionellt
+Gör det mesta i R och använd sedan 
+\family typewriter
+source()
 \end_layout
 
+\end_deeper
 \begin_layout EndFrame
 
 \end_layout
@@ -1031,7 +669,7 @@ begin{frame}[containsverbatim]
 
 
 \backslash
-frametitle{Exempel: Gastroenterit II}
+frametitle{knitR: Exempel}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1040,44 +678,228 @@ frametitle{Exempel: Gastroenterit II}
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
+
+\backslash
+begin{itemize} 
 \end_layout
 
 \begin_layout Plain Layout
 
-qplot(gastro[["x"]],gastro[["y"]],xlab="Age",ylab="No.
- of gastroenteritis episodes") +
+
+\backslash
+item knitr har 'chunks' med R-kod som börjar med 
+\backslash
+texttt{<<>>=} och slutar med 
+\backslash
+texttt{@}
 \end_layout
 
 \begin_layout Plain Layout
 
-annotate("segment", x=0, xend=15, y=gastro[["ybar"]][1], yend=gastro[["ybar"]][1
-],color="blue") +
+
+\backslash
+end{itemize}
 \end_layout
 
 \begin_layout Plain Layout
 
-annotate("segment", x=15, xend=25, y=gastro[["ybar"]][2], yend=gastro[["ybar"]][
-2],color="blue") +
 \end_layout
 
 \begin_layout Plain Layout
 
-annotate("segment", x=25, xend=40, y=gastro[["ybar"]][3], yend=gastro[["ybar"]][
-3],color="blue") +
+<<eval=TRUE, echo=FALSE, comment="">>=
 \end_layout
 
 \begin_layout Plain Layout
 
-annotate("segment", x=40, xend=64, y=gastro[["ybar"]][4], yend=gastro[["ybar"]][
-4],color="blue") +
+cat("<<>>=
+\backslash
+n  # R-kod
+\backslash
+n  x <- 50
+\backslash
+n  print(x)
+\backslash
+n@")
 \end_layout
 
 \begin_layout Plain Layout
 
-annotate("segment", x=0, xend=64, gastro[["ybarAll"]], yend=gastro[["ybarAll"]],
-color="red") 
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Vilket ger:
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 50
+\end_layout
+
+\begin_layout Plain Layout
+
+print(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{knitR: Exempel II}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item För att 'styra' output används 'options' 
+\backslash
+texttt{echo} och 
+\backslash
+texttt{eval}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Samtliga 'options' finns 
+\backslash
+textbf{
+\backslash
+textcolor{blue}{
+\backslash
+href{http://yihui.name/knitr/options}{här}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<echo=FALSE, eval=TRUE>>=
+\backslash
+n  # R-kod
+\backslash
+n  x <- 50
+\backslash
+n  print(x)
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- 50
+\end_layout
+
+\begin_layout Plain Layout
+
+print(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1102,542 +924,86 @@ end{frame}
 \end_layout
 
 \begin_layout BeginFrame
-Exempel: Gastroenterit III
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="5">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Strata
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $N_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $n_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\bar{y}_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $s_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0-15 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["n"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-16-25 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["n"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-26-40 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["n"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-41-64 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["n"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Samtliga
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-sum(gastro[["N"]])
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-sum(gastro[["n"]])
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybarAll"]]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["syAll"]]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+knitR: 
+\backslash
+Sexpr{} och tabeller
 \end_layout
 
 \begin_layout Itemize
-Vad är det totala antalet fall av gastroenterit i befolkningen med tillhörande
- konfidensintervall? 
+För att sätta in enskilda värden i LyX
+\begin_inset Newline newline
+\end_inset
+
+Infoga 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Anpassade insättningar 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ S / R uttryck
 \end_layout
 
 \begin_layout Itemize
-Hur stort urval skulle vi behöva för att få samma precision med vanligt
- OSU?
+Kommandot är 
+\family typewriter
+
+\backslash
+Sexpr{# R-variabel här}
+\family default
+)
+\end_layout
+
+\begin_layout Itemize
+För att sätta in tabeller används R-paketet 
+\family typewriter
+xtable
+\family default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skriver om datatypen till LaTeX-kod eller HTML
+\end_layout
+
+\begin_layout Itemize
+Kan styra utseendet med argument i funktionen 
+\family typewriter
+xtable()
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Fungerar på ett flertal objekt i R som 
+\family typewriter
+table
+\family default
+, 
+\family typewriter
+data.frame
+\family default
+ och 
+\family typewriter
+lm
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Paketet måste läsas in i dokumentet
+\end_layout
+
+\begin_layout Itemize
+Kräver option 
+\family typewriter
+results='asis'
+\family default
+ i knitr - chunken
 \end_layout
 
 \begin_layout EndFrame
@@ -1652,91 +1018,228 @@ status open
 
 
 \backslash
-begin{frame}<beamer:0> 
+begin{frame}[containsverbatim]
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-frametitle{Exempel: Gastroenterit, lösning}
+frametitle{knitR: Tabellexempel}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<echo=FALSE, eval=TRUE, results='asis'>>=
+\backslash
+n  # R-kod
+\backslash
+n  library(xtable)
+\backslash
+n  data(iris)
+\backslash
+n  xtable(head(iris,n=7))
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE, results='asis'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(xtable)
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+xtable(head(iris,n=7))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout BeginFrame
+knitR: figurer
 \end_layout
 
 \begin_layout Itemize
-Först beräknar vi 
-\begin_inset Formula $\bar{y}_{str}$
-\end_inset
-
- Först beräknar vi 
-\begin_inset Formula $\bar{y}_{str}$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\bar{y}_{str}=\sum_{h=1}^{H}\frac{N_{h}}{N}\bar{y}_{h}=1.37
-\]
-
-\end_inset
-
-
+Figurer skapas i R, sparas som pdf och läggs automatiskt in i dokumentet
 \end_layout
 
 \begin_layout Itemize
-Sedan beräknar vi medelfelet för 
-\begin_inset Formula $\bar{y}_{str}$
-\end_inset
-
-
+För att styra figurers storlek och placering används 
+\family typewriter
+fig.height
+\family default
+, 
+\family typewriter
+fig.width
+\family default
+ och 
+\family typewriter
+fig.align
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\[
-SE(\bar{y}_{str})=\sqrt{\frac{1}{N^{2}}\sum_{h=1}^{H}N_{h}^{2}\left(1-\frac{n_{h}}{N_{h}}\right)\frac{s_{h}^{2}}{n_{h}}}=0.094
-\]
+\begin_deeper
+\begin_layout Itemize
 
-\end_inset
-
-
+\family typewriter
+fig.height
+\family default
+ och 
+\family typewriter
+fig.width
+\family default
+ anger storlek med default = 7.
 \end_layout
 
 \begin_layout Itemize
-Vi kan jämföra detta med om vi använt vanligt OSU
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{S}}=1.3675
-\]
 
-\end_inset
-
-
-\begin_inset Formula 
-\[
-SE(\bar{y}_{\mathcal{S}})=\sqrt{\frac{s^{2}}{n}\left(1-\frac{n}{N}\right)}=0.111
-\]
-
-\end_inset
-
-
+\family typewriter
+fig.align
+\family default
+ kan använda 
+\family typewriter
+'left'
+\family default
+, 
+\family typewriter
+'right'
+\family default
+ och 
+\family typewriter
+'center'
 \end_layout
 
-\begin_layout Itemize
-För att få samma precision med vanligt OSU krävs ett urval på 
-\begin_inset Formula $n\approx557$
-\end_inset
-
+\end_deeper
+\begin_layout EndFrame
 
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{knitR - Exempel på figurer}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', echo=FALSE, comment="">>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("<<echo=FALSE, fig.height=2.5, fig.width=4, fig.align='center'>>=
+\backslash
+n  # R-kod
+\backslash
+n  data(iris)
+\backslash
+n  plot(iris[['Sepal.Length']], iris[['Sepal.Width']])
+\backslash
+n@")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE, fig.height=2.5, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(iris[['Sepal.Length']], iris[['Sepal.Width']])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -1751,7 +1254,7 @@ end{frame}
 \end_layout
 
 \begin_layout Subsection
-Design effect
+Demonstration av knitR i LyX
 \end_layout
 
 \begin_layout Standard
@@ -1769,1698 +1272,6 @@ subsectionpage}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout BeginFrame
-Design effect
-\end_layout
-
-\begin_layout Itemize
-Som vi såg i exemplet kan vi tjäna på att stratifiera vårt urval
-\end_layout
-
-\begin_layout Itemize
-Hur mycket vi tjänar brukar uttryckas som 
-\series bold
-design effect
-\begin_inset Formula 
-\[
-deff_{\theta}=\frac{Var(\hat{\theta}\mid\mbox{vår urvalsplan})}{Var(\hat{\theta}\mid\mbox{OSU})}
-\]
-
-\end_inset
-
-
-\series default
-där 
-\begin_inset Formula $\hat{\theta}$
-\end_inset
-
- är vår estimator.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Tumregel:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Om 
-\begin_inset Formula $deff_{\theta}<1$
-\end_inset
-
- är studien 
-\series bold
-mer
-\series default
- precis än OSU (ex.
- stratifierat urval)
-\end_layout
-
-\begin_layout Itemize
-Om 
-\begin_inset Formula $deff_{\theta}>1$
-\end_inset
-
- är studien 
-\series bold
-mindre
-\series default
- precis än OSU (ex.
- klusterurval)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset Formula $deff_{\theta}$
-\end_inset
-
- går ofta att få från tidigare studier (vid ny design av studie)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Exempel: Vad var designeffekten i Gastroenteritstudien i exemplet ovan?
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}<beamer:0> 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: Design effect, lösning}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Vår estimator är skattningen av medelvärdet: 
-\begin_inset Formula 
-\[
-\theta=\hat{\bar{y}}_{\mathcal{U}}
-\]
-
-\end_inset
-
-vilket ger följande design effect
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\begin_inset Formula 
-\begin{eqnarray*}
-deff_{\theta}=\frac{Var(\hat{\bar{y}}_{\mathcal{U}}\mid\mbox{vår urvalsplan})}{Var(\hat{\bar{y}}_{\mathcal{U}}\mid\mbox{OSU})} & = & \frac{Var(\bar{y}_{str})}{Var(\bar{y}_{\mathcal{S}})}\\
- & = & \frac{0.008836}{0.012321}\\
- & = & 0.717
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Allokering av urval till strata
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Allokering av urval
-\end_layout
-
-\begin_layout Itemize
-Det finns många sätt att allokera sitt urval till de olika strata
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-De vanligaste allokeringsmetoderna är:
-\end_layout
-
-\begin_layout Itemize
-Lika allokering
-\end_layout
-
-\begin_layout Itemize
-Proportionell allokering
-\end_layout
-
-\begin_layout Itemize
-Optimal- och Neymanallokering
-\end_layout
-
-\begin_layout Itemize
-(Powerallokering)
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Allokering av urval - Exempel
-\begin_inset CommandInset label
-LatexCommand label
-name "Allokering-av-urval-exempel"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Vi använder Gastroenteritexemplet ovan.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Strata
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $N_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\bar{y}_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $s_{h}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0-15 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-16-25 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-26-40 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-41-64 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["N"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybar"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["sy"]][4]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Samtliga
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-sum(gastro[["N"]])
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["ybarAll"]]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-gastro[["syAll"]]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Vi antar (initialt) att kostnaden för datainsamlingen (
-\begin_inset Formula $c_{h}$
-\end_inset
-
-) skulle vara lika stor i alla strata.
-\end_layout
-
-\begin_layout Itemize
-Hur skulle detta urval allokeras med de olika sätten att allokera urval?
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Lika allokering
-\end_layout
-
-\begin_layout Itemize
-Urvalet allokeras till jämt fördelat över alla strata
-\begin_inset Formula 
-\[
-n_{1}=n_{2}=...=n_{H}=\frac{n}{H}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-För- och nackdelar:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-+ Enkel design 
-\end_layout
-
-\begin_layout Standard
-- Ineffektiv
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vad blir detta i exemplet ovan?
-\end_layout
-
-\begin_layout BeginFrame
-Proportionell allokering
-\end_layout
-
-\begin_layout Itemize
-Urvalet allokeras enligt proportionellt mot de olika stratastorlekarna
-\begin_inset Formula 
-\[
-\frac{n_{h}}{n}=\frac{N_{h}}{N}\mbox{ för }h=1,2,...,H
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-För- och nackdelar:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-+ Enkel design 
-\end_layout
-
-\begin_layout Standard
-+ 
-\begin_inset Quotes eld
-\end_inset
-
-Självvägande
-\begin_inset Quotes erd
-\end_inset
-
- urval (minimal variation i 
-\begin_inset Formula $w_{i}$
-\end_inset
-
-)
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vad blir detta i exemplet ovan?
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Optimal allokering
-\end_layout
-
-\begin_layout Itemize
-Urvalet fördelas så att 
-\begin_inset Formula $Var(\bar{y}_{str})$
-\end_inset
-
- minimeras (givet olika kostnader och varians i olika strata)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-n_{h}=n\cdot\frac{\frac{N_{h}S_{h}}{\sqrt{c_{h}}}}{\sum_{h=1}^{H}\frac{N_{h}S_{h}}{\sqrt{c_{h}}}}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula 
-\[
-c_{h}=\mbox{kostnaden per observation i strata }h
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om kostnaden är lika i respektive strata kallas allokeringen för 
-\series bold
-Neymanallokering
-\series default
-
-\begin_inset Formula 
-\[
-n_{h}=n\cdot\frac{N_{h}S_{h}}{\sum_{h=1}^{H}N_{h}S_{h}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om även variansen är lika i respektive strata reduceras Neymanallokering
- till 
-\series bold
-proportionell
-\series default
- allokering
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Jag har använt detta vid olika tillfällen
-\end_layout
-
-\begin_layout Plain Layout
-1.
- Ta hänsyn till bortfall
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Ta hänsyn till reskostnad vid SFI-studien
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Optimal allokering II
-\end_layout
-
-\begin_layout Itemize
-För- och nackdelar:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-+ Optimal design (mindre 
-\begin_inset Formula $n$
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Standard
-+ Kan ta kostnader i beaktande
-\end_layout
-
-\begin_layout Standard
-- Optimerar efter endast en variabel
-\end_layout
-
-\begin_layout Standard
-- Tar inte hänsyn till intresse av redovisningsgrupper
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Exempel på användning av kostnader i olika strata:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ta hänsyn till olika bortfall
-\end_layout
-
-\begin_layout Itemize
-Ta hänsyn till resekostnader vid klusterurval
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vad blir detta i exemplet ovan (om vi antar lika kostnader)?
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Powerallokering
-\end_layout
-
-\begin_layout Itemize
-Ofta intresse av 
-\series bold
-både
-\series default
- hela populationen 
-\series bold
-och
-\series default
- delpopulationer (redovisningsgrupper)
-\end_layout
-
-\begin_layout Itemize
-Om vi vill göra en avvägning mellan en optimal sammanlagd skattning och
- skattningar i reovisningrupperna 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- 
-\series bold
-powerallokering
-\end_layout
-
-\begin_layout Itemize
-Ibland enklare att bestämma precisionen för respektive redovisningsgrupp
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- den totala precisionen blir då mindre mindre
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Powerallokering II
-\end_layout
-
-\begin_layout Itemize
-För att göra en powerallokering används följande formel (se 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bankier1988power"
-
-\end_inset
-
-):
-\begin_inset Formula 
-\[
-n_{h}=n\cdot\frac{S_{h}X_{h}^{q}/\bar{y}_{h\mathcal{U}}}{\sum_{h=1}^{H}S_{h}X_{h}^{q}/\bar{y}_{h\mathcal{U}}}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula $X_{h}$
-\end_inset
-
- är vilken 
-\begin_inset Quotes eld
-\end_inset
-
-betydelse
-\begin_inset Quotes erd
-\end_inset
-
- vi tillskriver strata 
-\begin_inset Formula $h$
-\end_inset
-
- och 
-\begin_inset Formula $q$
-\end_inset
-
- är en konstant på intervallet 
-\begin_inset Formula $0\leq q\leq1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Sätter vi 
-\begin_inset Formula $X_{h}=t_{hy}$
-\end_inset
-
- så resulterar 
-\begin_inset Formula $q=1$
-\end_inset
-
- i Neymanallokering och 
-\begin_inset Formula $q=0$
-\end_inset
-
- resulterar i approximativt samma precision i alla strata.
-\end_layout
-
-\begin_layout Itemize
-Ett vanligt värde som kan användas är 
-\begin_inset Formula $q=\frac{1}{2}$
-\end_inset
-
- eller 
-\begin_inset Formula $q=\frac{1}{3}$
-\end_inset
-
- (se 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "s. 65"
-key "lehtonen2004practical"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Design effect för olika urvalsallokering
-\begin_inset CommandInset label
-LatexCommand label
-name "GastroUrvalsstorlek"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Allokering
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $n_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $n_{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $n_{3}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $n_{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $Var(\hat{\bar{y}}_{\mathcal{U}})$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $deff(\hat{\bar{y}}_{\mathcal{U}})$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-OSU
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.111
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Lika
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.087
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.614
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Proportionell
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-81
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-89
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-88
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-142
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.094
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.717
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Neyman
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-191
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-39
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-112
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-58
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.075
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.457
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-För 
-\begin_inset Formula $N_{h},s_{h}^{2}\mbox{ och }\bar{y}_{h}$
-\end_inset
-
- i respektive strata se sida 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "Allokering-av-urval-exempel"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Urvalsvikter vid stratifiering
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Urvalsvikter vid OSU
-\end_layout
-
-\begin_layout Itemize
-Designvikten 
-\series bold
-vid OSU
-\series default
- är 
-\begin_inset Formula 
-\[
-w_{i}=\frac{1}{\pi_{i}}=\frac{N}{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vikter vid estimation 
-\begin_inset Formula $(*)$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\hat{t}_{\mathcal{U}}=\hat{t}_{HT}=\sum_{i\in\mathcal{S}}w_{i}y_{i}=\sum_{i\in\mathcal{S}}\frac{y_{i}}{\pi_{i}}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\hat{\bar{y}}_{\mathcal{U}}=\frac{\hat{t}_{\mathcal{U}}}{N}=\frac{\sum_{i\in\mathcal{S}}w_{i}y_{i}}{\sum_{i\in\mathcal{S}}w_{i}}
-\]
-
-\end_inset
-
-då
-\begin_inset Formula 
-\[
-\sum_{i=1}^{N}\pi_{i}=n\mbox{ och }\sum_{i=1}^{n}w_{i}=N
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Denna estimator kallas 
-\series bold
-Horwitz-Thompson
-\series default
- estimatorn.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Detta går enkelt att vidareutveckla för stratifierade urval 
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Urvalsvikter vid stratifiering 
-\end_layout
-
-\begin_layout Itemize
-För ett stratifierat urval får vi samma formel för totalskattningen 
-\begin_inset Formula $(*)$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-\hat{t}_{\mathcal{U},str}=\hat{t}_{HT}=\sum_{j\in\mathcal{S}}w_{j}y_{j}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-För att beräkna 
-\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U},str}$
-\end_inset
-
- används de 
-\begin_inset Quotes eld
-\end_inset
-
-stratifierade
-\begin_inset Quotes erd
-\end_inset
-
- vikterna.
-\begin_inset Formula 
-\[
-\hat{\bar{y}}_{\mathcal{U}}=\frac{\hat{t}_{\mathcal{U}}}{N}=\frac{\sum_{j\in\mathcal{S}}w_{j}y_{hj}}{\sum_{j\in\mathcal{S}}w_{j}}
-\]
-
-\end_inset
-
- Det går att visa att denna estimator är samma som estimatorn på sida 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "str_estimator"
-
-\end_inset
-
- 
-\begin_inset Formula $(*)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vid proportionell allokering har vi ett specialfall
-\begin_inset Formula 
-\[
-w_{hj}=\frac{N_{h}}{n_{h}}=\frac{N}{n}
-\]
-
-\end_inset
-
-vilket innebär att vi får samma vikter i alla strata.
-\end_layout
-
-\begin_layout Itemize
-Då 
-\begin_inset Formula $w_{j}$
-\end_inset
-
- inte beror på strata kallas urvalet 
-\begin_inset Quotes eld
-\end_inset
-
-självvägt
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Urvalsvikter, Exempel
-\end_layout
-
-\begin_layout Itemize
-Utgå från Gatsroenteritexemplet på sida 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "Allokering-av-urval-exempel"
-
-\end_inset
-
- och 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "GastroUrvalsstorlek"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Beräkna med Horwitz-Thompson estimatorn en totalskattning vid proportionellt
- urval och vid Neymanurval.
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
