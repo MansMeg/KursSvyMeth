@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,15 +29,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -65,19 +74,15 @@ Problemseminarium 732G26
 \end_layout
 
 \begin_layout Author
-Måns Magnusson och Tommy Schyman
-\end_layout
-
-\begin_layout Date
-Den 26 februari 2014 i I102
+Måns Magnusson
 \end_layout
 
 \begin_layout Standard
 Detta problemseminarium syftar till att uppsatsernas olika problem ska presenter
 as och tillhörande enkäter diskuteras.
  Det är ett bra tillfälle att få lufta eventuella tankar och problem som
- uppstått vid enkätkonstruktionen, och att ni även får chansen att se hur
- andra grupper har konstruerat sina enkäter.
+ uppstått vid enkätkonstruktionen.
+ Ni får även får chansen att se hur andra grupper har konstruerat sina enkäter.
  Presentationen ska vara cirka 5 minuter.
  Till detta problemseminarium ska en kortare presentation konstrueras (i
  PDF-format).
@@ -106,6 +111,11 @@ Enkäten ska tas med i ett separat dokument (PDF-format) eller webbadress
 \begin_layout Standard
 Presentation och enkät tas med på USB-sticka, eller så mejlas materialet
  till tommy.schyman@liu.se och mans.magnusson@liu.se 
+\series bold
+senast 18:00 dagen innan
+\series default
+ seminariet.
+ Granskningen ska också lämnas in skriftligen via LISAM 
 \series bold
 senast 18:00 dagen innan
 \series default
@@ -143,7 +153,8 @@ Opponenterna ska expertgranska enkäten och komma med synpunkter på frågor,
 \end_layout
 
 \begin_layout Standard
-Följande checklistor ska användas vid granskningen av enkäten:
+Följande checklistor ska användas vid granskningen av enkäten och framgå
+ i den skriftliga granskningen:
 \end_layout
 
 \begin_layout Itemize
@@ -212,6 +223,15 @@ Resultatet av granskningen ska resultera i ett författat PDF-dokument med
  Dokumentet ska skickas till uppsatsförfattarna och handledaren 
 \series bold
 senast samma dag som seminariet kl.
+ 18.00
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Den skriftliga granskningen ska lämnas in på LISAM 
+\series bold
+senast dagen innan seminariet kl.
  18.00
 \series default
 .
