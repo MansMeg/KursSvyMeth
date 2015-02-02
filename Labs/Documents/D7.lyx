@@ -1,0 +1,1300 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Surveymetodik}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Surveymetodik}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 7
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Date
+VT 2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Intro.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+.Options$width <- 60
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Förberedelser
+\end_layout
+
+\begin_layout Subsection
+Ladda ned och läs in Survey 2010
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ladda-ned-och"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+I denna laboration ska vi börja analysera riktiga surveydata (med alla problem
+ det innebär).
+ Vi har fått tillgång till det datamaterial som ligger till grund för boken
+ 
+\shape italic
+Den svenska väljaren
+\shape default
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "2011dsv"
+
+\end_inset
+
+.
+ Ett mindre urval av variablerna i studien har sparats som en R-fil.
+ Ladda ned filen från kurshemsidan och läs in den i R med följande funktion
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+load("svy2010.Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Det går också att ladda in filen direkt från webben med 
+\family typewriter
+repmis
+\family default
+-paketet:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(repmis)
+\end_layout
+
+\begin_layout Plain Layout
+
+data_path <- "https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
+2010.Rdata"
+\end_layout
+
+\begin_layout Plain Layout
+
+source_data(data_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Du ska nu ha läst in en fil med 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{nrow(svy2010)}
+\end_layout
+
+\end_inset
+
+ observationer och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{ncol(svy2010)}
+\end_layout
+
+\end_inset
+
+ variabler.
+ Information om respektive variabler finns i dokumentet 
+\series bold
+KodbokSurvey2010.pdf
+\series default
+ som finns på samma ställe som datamaterialet, dock finns inte alla variabler
+ med i datasetet.
+\end_layout
+
+\begin_layout Itemize
+Vi ska nu skapa två kontinuerliga variabler i datasetet 
+\family typewriter
+fathAge
+\family default
+ och 
+\family typewriter
+mothAge
+\family default
+ på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$fathAge <- svy2010$FR37 - svy2010$FR40_1 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$fathAge[abs(svy2010$fathAge) > 100 | svy2010$fathAge < 0 ] <- NA
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$mothAge <- svy2010$FR37 - svy2010$FR40_2 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$mothAge[abs(svy2010$mothAge) > 100 | svy2010$mothAge < 0] <- NA
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Läsa in 
+\family typewriter
+survey
+\family default
+ paketet
+\end_layout
+
+\begin_layout Itemize
+Börja med att läsa in 
+\family typewriter
+survey
+\family default
+-paketet
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Lumley2010csa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(survey)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om det inte går att läsa in paketet (ex.
+ du har en egen dator) behöver du installera paketet först.
+ Det kräver internetanslutning och då använder du följande kod.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("survey")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ladda ned och läs in 
+\family typewriter
+agpop.dat
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+Ladda ned filen (se instruktionen).
+ Identifiera den mapp där du har sparat filen 
+\family typewriter
+agpop.dat
+\family default
+.
+ Använd funktionen 
+\family typewriter
+setwd()
+\family default
+ för att ställa in den korrekta sökvägen .
+ 
+\end_layout
+
+\begin_layout Itemize
+Läs in 
+\family typewriter
+agpop.dat
+\family default
+ i R, vilket kan göras med följande kod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-read.table("agpop.dat",header=TRUE,sep=",")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Även i detta fall kan vi självklart använda 
+\family typewriter
+repmis
+\family default
+-paketet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop <- source_data(url = "https://raw.github.com/MansMeg/KursSvyMeth/master/Labs
+/DataFiles/agpop.dat")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Glöm inte bort att ta bort bortfallet för variablerna 
+\family typewriter
+ACRES92
+\family default
+ och 
+\family typewriter
+ACRES87
+\family default
+ i 
+\family typewriter
+agpop
+\family default
+.
+ För att ta bort saknade värden kan följande kod användas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-agpop[agpop$ACRES92>0 & agpop$ACRES87>0,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Nästa steg är att vi vill lägga till en till kategorisk variabel i agpop
+ (för att göra analys av kategoriska data senare).
+ Skapa följande variabel 
+\family typewriter
+FARMCAT
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop$FARMCAT <- cut(agpop$FARMS92, c(0, 1000, 2000, Inf), right = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analys
+\end_layout
+
+\begin_layout Standard
+Precis som när det gäller att skatta medelvärden, proportioner eller andra
+ populationsparametrar innebär designperspektivet att vi betraktar populationspa
+rametrarna som fixa 
+\begin_inset Quotes eld
+\end_inset
+
+sanna
+\begin_inset Quotes erd
+\end_inset
+
+ värden i den ändliga populationen.
+ Vi drar sedan ett urval för att kunna dra statistiska slutsatser om denna
+ ändliga population.
+ Dessutom kan vi på grund av att urvalet är ett stratifierat urval eller
+ ett klusterurval få en designeffect i våra studier som behöver hanteras
+ när vi gör våra tester.
+ 
+\end_layout
+
+\begin_layout Standard
+Denna laboration kommer endast att beröra det specifika med just surveysituation
+en, inte kring dessa tester och modeller i sin helhet.
+\end_layout
+
+\begin_layout Standard
+Börja med att dra ett (Neymanallokerat) stratifierat urval från 
+\family typewriter
+agpop
+\family default
+ och skapa ett surveyobjekt på samma sätt som gjordes i laboration D4.
+ Jag döper mitt objekt till 
+\family typewriter
+agSTRAT
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+STRATAindex <- stratsample(agpop$REGION, c("NC"=69,"NE"=7,"S"=122,"W"=102))
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRATAdata <- agpop[STRATAindex,]
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata<-numeric(300) 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NC"] <- 1049 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NE"] <- 209 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="S"] <- 1370 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="W"] <- 414
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRAT <- svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi ska nu också studera effekter på analyserna om vi har en totalundersökning.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+agTOT <- svydesign(~1,  fpc=rep(nrow(agpop),nrow(agpop)), data=agpop)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Skapa sedan ett surveyobjekt baserat på datamaterialet i Survey 2010, jag
+ kommer kalla detta objekt 
+\family typewriter
+svy2010design
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.srs<-rep(7529673, nrow(svy2010))
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010design<-svydesign(ids=~1, data=svy2010, fpc=fpc.srs)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+t-test 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:t-test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Många gånger finns det ett intressa av att jämföra olika redovisningegrupper
+ efter en variabel som kan vara av intresse.
+ Finns det skillnader i vår 
+\series bold
+ändliga population
+\series default
+ avseende redovisningsgrupper som inte beror på slumpen vi skapat i vårt
+ urval.
+ Vill vi jämföra två grupper med varandra (eller med ett fast värde) avseende
+ en kontinuerlig variabel använder vi funktionen 
+\family typewriter
+svyttest()
+\family default
+.
+ För att göra testet behövs dels ange en formula, vilket består av den kontinuer
+liga variabeln vi vill testa skillnader avseende (ex.
+ 
+\begin_inset Formula $y$
+\end_inset
+
+) och en kategorisk variabel med två klasser (ex.
+ 
+\family typewriter
+grupp
+\family default
+).
+ Sedan krävs designobjektet vi vill testa.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comments='',fig.height=4, fig.width=4, fig.align='center', eval=FALSE>
+>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyttest(formula = y ~ grupp, design = mittDesignObjekt)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nedan har jag gjort ett t-test.
+ Vad har jag testat? Vad är slutsatsen från testet?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='',fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyttest(formula=mothAge~Valdeltagande, design=svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Använd surveyobjektet du skapat för Survey 2010 och testa om det finns skillnade
+r mellan moderata och socialdemokratiska väljare när det gäller moderns
+ ålder.
+ Vad får du för resultat? Vad är din slutsats?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs!
+\series default
+ Först behöver du plocka ut de personer i undersökningen som röstade på
+ moderaterna eller socialdemokraterna.
+ Det enklaste är att göra detta med 
+\family typewriter
+subset()
+\family default
+.
+ Är du osäker på hur du använder 
+\family typewriter
+subset()
+\family default
+ - se laboration D4 och avsnittet om redovisningsgrupper.
+\end_layout
+
+\begin_layout Paragraph
+b) Ändlighetskorrektionens betydelse för designbaserade test
+\end_layout
+
+\begin_layout Standard
+Pröva nu att genomföra följande t-test.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comments='',fig.height=4, fig.width=4, fig.align='center', eval=FALSE>
+>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyttest(formula=FARMS92~REGION == "S", design=agSTRAT)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Förklara kort vad detta test har gjort.
+ Gör nu om samma test för 
+\family typewriter
+agTOT
+\family default
+, d.v.s.
+ för en totalundersökning.
+\end_layout
+
+\begin_layout Standard
+Får du ett annat resultat? Vad beror detta på? Förklara.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ - test 
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Ett annat vanligt test för kategoriska variabler är det klassiska 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-testet.
+ Precis som för t-testet behöver vi korrigera våra tester för att ta hänsyn
+ till dels vår ändlighetskorrektionsfaktor och dels för att beakta potentiella
+ designeffekter.
+\end_layout
+
+\begin_layout Standard
+För att genomföra ett test om valdeltagande är oberoende av vilket parti
+ en person föredrar kan ett 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test användas på följande sätt.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svytable(formula = ~FR15 + Valdeltagande, design = svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+svychisq(formula = ~FR15 + Valdeltagande, design = svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad är din slutsats av testet ovan? 
+\end_layout
+
+\begin_layout Standard
+Som standard används Rao-Scott-korrektion av testet.
+ Vi kan välja andra korrektioner som exempelvis Wald-korrektion genom att
+ sätta argumentet 
+\family typewriter
+statistic
+\family default
+ till 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Wald
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svychisq(formula = ~FR15 + Valdeltagande, design = svy2010design, statistic="Wal
+d")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Välj nu två kategoriska variabler du vill testa om de är oberoende av varandra
+ och testa dem med ett designbaserat 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test.
+ Vad är dina slutsatser?
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Pröva nu att göra följande 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ test.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, comment='', eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svychisq(formula = ~REGION + FARMCAT, design = agSTRAT)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Upprepa testet ovan men med surveyobjektet för totalundersökningen istället.
+ Vad får du för resultat? Hur skiljer det sig från samma test med 
+\family typewriter
+agSTRAT
+\family default
+?
+\end_layout
+
+\begin_layout Standard
+Gör nu ett vanligt (icke-designbaserat) chitvåtest på 
+\family typewriter
+agpop
+\family default
+-datasetet med 
+\family typewriter
+chisq.test()
+\family default
+.
+ Hur skiljer sig resultaten om vi tar hänsyn eller inte tar hänsyn till
+ ändlighetskorrektionen i 
+\family typewriter
+agTOT
+\family default
+? Resonera kring varför det blir på detta sätt.
+ 
+\end_layout
+
+\begin_layout Subsection
+Linjär regression
+\end_layout
+
+\begin_layout Paragraph
+a)
+\end_layout
+
+\begin_layout Standard
+Till sist ska vi pröva att använda linjär regression i surveysammanhang,
+ d.v.s.
+ att i en regression ta hänsyn till urvalsdesign och ändlighetskorrketion.
+ Precis som vid testerna ovan innebär att detta att vi skattar dessa värden
+ i den ändliga populationen.
+\end_layout
+
+\begin_layout Standard
+Vi ska nu pröva att anpassa en regressionsmodell på materialet avseende
+ åkerytor i USA.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=TRUE, comment = ''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myModel <- svyglm(formula = ACRES92 ~ FARMS92 + REGION, design=agSTRAT)
+\end_layout
+
+\begin_layout Plain Layout
+
+myModel
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad har jag gjort för analys ovan? Vad är dina slutsatser baserat på denna
+ analys?
+\end_layout
+
+\begin_layout Paragraph
+Obs! 
+\end_layout
+
+\begin_layout Standard
+Precis som vid vanlig regression kan vi använda 
+\family typewriter
+summary()
+\family default
+ för att få ytterligare information från vår modell (hypotestester m.m.).
+\end_layout
+
+\begin_layout Standard
+Pröva sedan att anpassa en vanlig linjär regression på samma data (men utan
+ att ta hänsyn till designen).
+ 
+\end_layout
+
+\begin_layout Standard
+Exempel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE, comment = ''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myLmModel <- lm(ACRES92 ~ FARMS92 + REGION, agSTRATAdata)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad är skillnaden i resultat mellan de två metoderna? Vad beror denna skillnad
+ på?
+\end_layout
+
+\begin_layout Paragraph
+b)
+\end_layout
+
+\begin_layout Standard
+Gör om samma linjära regressionsanalys som vi gjorde på urvalet 
+\family typewriter
+agSTRAT
+\family default
+ men med 
+\family typewriter
+agTOT
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Vad får du medelfel på koefficienterna? Täcker konfidensintervallen du fick
+ baserat på urvalet 
+\family typewriter
+agSTRAT
+\family default
+ de sanna värdena i populationen? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurveyLabs"
+options "bibtotoc,elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -105,7 +105,7 @@ Måns Magnusson
 \end_layout
 
 \begin_layout Date
-VT 2014
+VT 2015
 \end_layout
 
 \begin_layout Standard
@@ -245,7 +245,7 @@ install.packages("survey")
 \begin_layout Subsection
 Läsa in 
 \family typewriter
-sweSCB
+pxweb
 \family default
  paketet
 \end_layout
@@ -256,12 +256,12 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE,message=FALSE,warning=FALSE,eval=TRUE>>=
+<<>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-library(sweSCB)
+library(pxweb)
 \end_layout
 
 \begin_layout Plain Layout
@@ -291,12 +291,12 @@ status open
 
 \begin_layout Plain Layout
 
-install.packages("sweSCB")
+install.packages("pxweb")
 \end_layout
 
 \begin_layout Plain Layout
 
-library(sweSCB)
+library(pxweb)
 \end_layout
 
 \begin_layout Plain Layout
@@ -316,8 +316,8 @@ Mer information finns här:
 
 \begin_inset CommandInset href
 LatexCommand href
-name "sweSCB"
-target "https://github.com/rOpenGov/sweSCB"
+name "pxweb"
+target "https://github.com/rOpenGov/pxweb"
 
 \end_inset
 
@@ -364,12 +364,20 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE,message=FALSE,warning=FALSE,eval=FALSE>>=
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
 
 load("svy2010.Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -406,8 +414,13 @@ library(repmis)
 
 \begin_layout Plain Layout
 
-source_RData(url = "https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFil
-es/svy2010.Rdata")
+data_path <- "https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
+2010.Rdata"
+\end_layout
+
+\begin_layout Plain Layout
+
+source_data(data_path)
 \end_layout
 
 \begin_layout Plain Layout
@@ -422,29 +435,36 @@ es/svy2010.Rdata")
 
 \begin_layout Itemize
 Du ska nu ha läst in en fil med 
-\begin_inset Flex S/R expression
-status collapsed
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
-nrow(svy2010)
+
+\backslash
+Sexpr{nrow(svy2010)}
 \end_layout
 
 \end_inset
 
  observationer och 
-\begin_inset Flex S/R expression
-status collapsed
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
-ncol(svy2010)
+
+\backslash
+Sexpr{ncol(svy2010)}
 \end_layout
 
 \end_inset
 
  variabler.
- Infomation om respektive variabler finns i dokumentet KodbokSurvey2010.pdf
+ Information om respektive variabler finns i dokumentet 
+\series bold
+KodbokSurvey2010.pdf
+\series default
  som finns på samma ställe som datamaterialet, dock finns inte alla variabler
  med i datasetet.
 \end_layout
@@ -480,19 +500,65 @@ status open
 
 \begin_layout Plain Layout
 
-sex <- sample(c("Man","Kvinna"), size=98462, replace=TRUE, prob=c(51144,47318)/9
-8462)
+sex <- 
 \end_layout
 
 \begin_layout Plain Layout
 
-age <- sample(c("15-24", "25-34", "35-44", "45-54", "55-64"), size=98462,
- replace=TRUE,  prob = c(23728, 21706, 19051, 18213, 15764)/98462)
+  sample(c("Man","Kvinna"), 
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop<-data.frame(sex = sex, age = age) 
+         size=98462, 
+\end_layout
+
+\begin_layout Plain Layout
+
+         replace=TRUE, 
+\end_layout
+
+\begin_layout Plain Layout
+
+         prob=c(51144,47318)/98462)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+age <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+  sample(c("15-24", "25-34", "35-44", "45-54", "55-64"), 
+\end_layout
+
+\begin_layout Plain Layout
+
+         size=98462, 
+\end_layout
+
+\begin_layout Plain Layout
+
+         replace=TRUE,  
+\end_layout
+
+\begin_layout Plain Layout
+
+         prob = c(23728, 21706, 19051, 18213, 15764)/98462)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+sim_pop <- data.frame(sex = sex, age = age) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -535,33 +601,37 @@ status open
 
 \begin_layout Plain Layout
 
-simPop$pAssault<-0.001 
+sim_pop$pAssault<-0.001 
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$pAssault[simPop$age == "15-24"] <- 0.05 
+sim_pop$pAssault[sim_pop$age == "15-24"] <- 0.05 
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$pAssault[simPop$age == "25-34"] <- 0.02
+sim_pop$pAssault[sim_pop$age == "25-34"] <- 0.02
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$pAssault[simPop$age == "35-44"] <- 0.005
+sim_pop$pAssault[sim_pop$age == "35-44"] <- 0.005
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$pAssault<-simPop$pAssault + 1.5 * simPop$pAssault * as.numeric(simPop$sex==
-"Man")
+sim_pop$pAssault <- 
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$assault <- rbinom(n = length(sex), size = 1, prob = simPop$pAssault)
+  sim_pop$pAssault + 1.5 * sim_pop$pAssault * as.numeric(sim_pop$sex=="Man")
+\end_layout
+
+\begin_layout Plain Layout
+
+sim_pop$assault <- rbinom(n = length(sex), size = 1, prob = sim_pop$pAssault)
 \end_layout
 
 \begin_layout Plain Layout
@@ -572,6 +642,16 @@ simPop$assault <- rbinom(n = length(sex), size = 1, prob = simPop$pAssault)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Förklara utförligt vad denna simulering innebär.
+ Vilka har större/mindre risk att utsättas för brott i vår simulerade population
+?
+\end_layout
+
+\begin_layout Paragraph*
+b)
 \end_layout
 
 \begin_layout Standard
@@ -591,13 +671,18 @@ status open
 
 \begin_layout Plain Layout
 
-simPop$astroSign <- 
+sim_pop$astroSign <- 
 \end_layout
 
 \begin_layout Plain Layout
 
-sample(c("Skorpion", "Skytt", "Tvilling", "Stenbock", "Jungfru", "Lejon",
- "Oxe"), size = length(sex), replace=TRUE)
+  sample(c("Skorpion", "Skytt", "Tvilling", "Stenbock", "Jungfru", "Lejon",
+ "Oxe"), 
+\end_layout
+
+\begin_layout Plain Layout
+
+          size = length(sex), replace=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -628,12 +713,12 @@ aggregate()
 \end_layout
 
 \begin_layout Paragraph*
-b)
+c)
 \end_layout
 
 \begin_layout Standard
 Vi ska nu introducera en bortfallsmodell för vår population, d.v.s.
- sannolikheten för att en person skulle delta i studien eller inte.
+ sannolikheten för att en person deltar i studien eller inte.
  Vi gör detta genom att introducera denna som en sannolikhet som vi sedan
  kan använda för att simulera bortfall i studien.
  Vi vet sedan tidigare att kön och åldersgrupp spelar roll så vi skapar
@@ -651,32 +736,32 @@ status open
 
 \begin_layout Plain Layout
 
-simPop$response <- 0.95
+sim_pop$response <- 0.95
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age == "15-24"] <- 0.35
+sim_pop$response[sim_pop$age == "15-24"] <- 0.35
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age == "25-34"] <- 0.5
+sim_pop$response[sim_pop$age == "25-34"] <- 0.5
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age == "35-44"] <- 0.65
+sim_pop$response[sim_pop$age == "35-44"] <- 0.65
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response[simPop$age == "45-54"] <- 0.85
+sim_pop$response[sim_pop$age == "45-54"] <- 0.85
 \end_layout
 
 \begin_layout Plain Layout
 
-simPop$response <- simPop$response - 0.15 * as.numeric(simPop$sex == "Man")
+sim_pop$response <- sim_pop$response - 0.15 * as.numeric(sim_pop$sex == "Man")
 \end_layout
 
 \begin_layout Plain Layout
@@ -692,6 +777,7 @@ simPop$response <- simPop$response - 0.15 * as.numeric(simPop$sex == "Man")
 \begin_layout Standard
 Vad har vi för antagande i vår bortfallsmodell, MCAR, MAR eller NMAR? Beskriv
  respektive antagande och varför/varför inte det är tillämpligt.
+ Vad är sannolikheten för att en man 25-34 deltar i vår studie?
 \end_layout
 
 \begin_layout Subsection
@@ -721,7 +807,11 @@ vall.
  Se föregående laboration för detaljer.
  Ignorera svarssannolikheten just nu (d.v.s.
  utgå från att alla svarar).
- Vad får du för resultat, täcker konfidensintervallen de sanna värdena i
+ 
+\end_layout
+
+\begin_layout Standard
+Vad får du för resultat, täcker konfidensintervallen de sanna värdena i
  populationen?
 \end_layout
 
@@ -750,7 +840,7 @@ mittUrval
 \family default
  är det dataset jag skapat genom att dra ett urval från 
 \family typewriter
-simPop
+sim_pop
 \family default
 ):
 \end_layout
@@ -859,7 +949,11 @@ age
 \family default
  för både de som svarat och de som inte svarat (vi kan bara analysera bortfallet
  efter de variabler vi har data både i undersökningen och på målpopulatiosnnivå).
- Anpassa en logistisk regressionsmodell med 
+ 
+\end_layout
+
+\begin_layout Standard
+Anpassa en logistisk regressionsmodell med 
 \family typewriter
 respInd
 \family default
@@ -886,8 +980,13 @@ status open
 
 \begin_layout Plain Layout
 
-bortfallsAnalys <- glm(respInd ~ age + sex + astroSign, family = binomial(logit)
-, data = mittUrval)
+bortfallsanalys <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+  glm(respInd ~ age + sex + astroSign, family = binomial(logit), data =
+ mittUrval)
 \end_layout
 
 \begin_layout Plain Layout
@@ -999,17 +1098,17 @@ status open
 
 \begin_layout Plain Layout
 
-modMat <- model.matrix(~ as.factor(age) + as.factor(sex), simPop) 
+mod_mat <- model.matrix(~ as.factor(age) + as.factor(sex), sim_pop) 
 \end_layout
 
 \begin_layout Plain Layout
 
-popVector<-colSums(modMat) 
+pop_vector<-colSums(mod_mat) 
 \end_layout
 
 \begin_layout Plain Layout
 
-popVector 
+pop_vector 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1025,15 +1124,15 @@ popVector
 \begin_layout Standard
 Vad får du för resultat i 
 \family typewriter
-popVector
+pop_vector
 \family default
-? Vad innebär detta resultat?
+?
 \end_layout
 
 \begin_layout Standard
 Skapa nu en egen 
 \family typewriter
-popVector
+pop_vector
 \family default
  beroende på vilka variabler som kan förklara bortfallet i enlighet med
  din bortfallsanalys.
@@ -1095,8 +1194,22 @@ status open
 
 \begin_layout Plain Layout
 
-calMittUrvalSvarande <- calibrate(mittUrvalSvarande,  formula = ~as.factor(age)
- + as.factor(sex), population = popVector)
+calMittUrvalSvarande <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+  calibrate(mittUrvalSvarande,  
+\end_layout
+
+\begin_layout Plain Layout
+
+            formula = ~as.factor(age) + as.factor(sex), 
+\end_layout
+
+\begin_layout Plain Layout
+
+            population = popVector)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1307,14 +1420,14 @@ För att ta reda på de sanna värdena i populationen använder vi data från
  Statistiska centralbyrån.
  Det finns ett R-paket (
 \family typewriter
-sweSCB
+pxweb
 \family default
 ) för att få tillgång till data från Statistiska centralbyrån direkt från
  R.
  På följande sätt gör du för att komma åt data från SCB (precis som innan
  behöver du installera 
 \family typewriter
-sweSCB
+pxweb
 \family default
  om det inte är installerat):
 \end_layout
@@ -1330,12 +1443,12 @@ status open
 
 \begin_layout Plain Layout
 
-library(sweSCB)
+library(pxweb)
 \end_layout
 
 \begin_layout Plain Layout
 
-mittData <- findData()
+mittData <- interactive_pxweb(api="scb", lang="sv")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1435,8 +1548,8 @@ Obs!
 \begin_layout Standard
 Tänk på att det kan finnas partiellt bortfall som skapar problem vid skattningar.
  Det enklaste (i detta exempel) är att plocka bort de observationer med
- partiellt bortfall på antingen era hjälpvariabler eller på den variabel
- ni vill estimera.
+ partiellt bortfall på era hjälpvariabler eller på den variabel ni vill
+ estimera.
 \end_layout
 
 \begin_layout Subsection

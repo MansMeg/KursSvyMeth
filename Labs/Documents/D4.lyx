@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -35,13 +35,13 @@ knitr
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -52,15 +52,24 @@ knitr
 \use_hyperref false
 \papersize a4paper
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 0
-\use_mathdots 0
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -96,7 +105,7 @@ Måns Magnusson
 \end_layout
 
 \begin_layout Date
-VT 2014
+VT 2015
 \end_layout
 
 \begin_layout Standard
@@ -290,34 +299,65 @@ agpop<-read.table("agpop.dat",header=TRUE,sep=",")
 
 \end_layout
 
+\begin_layout Itemize
+Med paketet 
+\family typewriter
+repmis
+\family default
+ går det också att läsa in datamaterialet direkt från kurshemsidan.
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE,eval=TRUE>>=
+<<echo=TRUE,eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-agpoptemp <- tempfile(pattern="agpop",fileext=".dat") 
+file_path <- 
 \end_layout
 
 \begin_layout Plain Layout
 
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
-op.dat",                destfile = agpoptemp, method = "curl") 
+  "https://raw.githubusercontent.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
+op.dat" 
 \end_layout
 
 \begin_layout Plain Layout
 
-agpop<-read.table(agpoptemp,header=TRUE,sep=",") 
+agpop <- repmis::source_data(file_path) 
 \end_layout
 
 \begin_layout Plain Layout
 
-unlink(agpoptemp) 
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Har du inte redan installerat repmispaketet gör du på följande sätt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("repmis")
 \end_layout
 
 \begin_layout Plain Layout
@@ -331,7 +371,14 @@ unlink(agpoptemp)
 \end_layout
 
 \begin_layout Itemize
-Glöm inte bort att ta bort bortfallet för variablerna ACRES92 och ACRES87
+Glöm inte bort att ta bort bortfallet för variablerna 
+\family typewriter
+ACRES92
+\family default
+ och 
+\family typewriter
+ACRES87
+\family default
  i 
 \family typewriter
 agpop
@@ -559,7 +606,7 @@ summary()
 \family typewriter
 agOSU
 \family default
-? Är det någon information du saknar?
+, beskriv samtliga delar? Är det någon information du saknar?
 \end_layout
 
 \begin_layout Paragraph
@@ -689,7 +736,12 @@ confint(medel)
 
 \begin_layout Standard
 Vad får du för konfidensintervall? Täcker intervallet det sanna värdet i
- populationen du dragit ditt urval från? 
+ populationen du dragit ditt urval från (d.v.s.
+ 
+\family typewriter
+agpop
+\family default
+)? 
 \end_layout
 
 \begin_layout Subsection
@@ -1017,7 +1069,8 @@ svymean(~ACRES92, design=agOSU, deff=TRUE)
 \end_layout
 
 \begin_layout Standard
-Vad får du för design effect? Varför får du detta resultat?
+Vad får du för design effect? Varför får du detta resultat? Hur tolkar du
+ värdet?
 \end_layout
 
 \begin_layout Subsection
@@ -1091,10 +1144,131 @@ predict(object=ratio.ACRES92,total=sum(agpop$ACRES87))
 \end_layout
 
 \begin_layout Standard
-Vad får du för resultat om du använder en kvotskattning och varför får du
- detta resultat? Hur mycket tjänar vi på att använda en kvotskattning i
- detta exempel? Hur skulle du göra om du skulle vilja skatta medelvärdet
- med hjälp av kvotestimatorn?
+Vad får du för resultat om du använder en kvotskattning jämfört med vanligt
+ OSU? Varför får du detta resultat? Hur mycket tjänar vi på att använda
+ en kvotskattning i detta exempel? Hur skulle du göra om du skulle vilja
+ skatta medelvärdet med hjälp av kvotestimatorn? Gör denna beräkning.
+\end_layout
+
+\begin_layout Subsection
+Estimatorers bias, varians och täckningsgrad
+\end_layout
+
+\begin_layout Standard
+Vi har nu prövat att bara dra ett enda urval, vi ska nu pröva att simulera
+ flera urval.
+ Beräkna det sanna medelvärdet och standardavvikelnsen för 
+\family typewriter
+ACRES92
+\family default
+ i populationen.
+ 
+\end_layout
+
+\begin_layout Standard
+Skapa nu en 
+\family typewriter
+for
+\family default
+-loop som i varje iteration gör följande steg:
+\end_layout
+
+\begin_layout Enumerate
+Drar ett obundet slumpmässigt urval av storlek 400.
+\end_layout
+
+\begin_layout Enumerate
+Skapa ett surveyobjekt av urvalet
+\end_layout
+
+\begin_layout Enumerate
+Skatta medelvärdet för 
+\family typewriter
+ACRES92
+\family default
+ (
+\begin_inset Formula $\bar{y}_{\mathcal{S}}$
+\end_inset
+
+) med tillhörande konfidensintervall (90%).
+\end_layout
+
+\begin_layout Enumerate
+Sparar skattningen av medelvärdet samt om konfidensintervallet täcker in
+ det sanna värdet i populationen i en 
+\family typewriter
+data.frame
+\family default
+ (en rad för varje iteration).
+\end_layout
+
+\begin_layout Standard
+Dra på detta sätt 10'000 urval, skatta medelvärdet i populationen och om
+ konfidensintervallet täcker in det sanna värdet.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+a)
+\end_layout
+
+\begin_layout Standard
+Beräkna täckningsgraden för konfidensintervallet, d.v.s andelen urval där
+ konfidensintervallet täcker in det sanna värdet.
+ Vad förväntar du dig? Vad är din tolkning av resultatet?
+\end_layout
+
+\begin_layout Paragraph*
+b)
+\end_layout
+
+\begin_layout Standard
+Visualisera medelvärdesskattningarna i ett histogram.
+ Lägg också in det sanna medelvärdet i grafen på ett liknande sätt som histogram
+et i föreläsning F2.
+\end_layout
+
+\begin_layout Standard
+Beräkna det genomsnittliga värdet på samtliga 10'000 medelvärdesskattningar.
+ Vad förväntar du dig? Vad är din tolkning av resultatet?
+\end_layout
+
+\begin_layout Paragraph*
+c) 
+\end_layout
+
+\begin_layout Standard
+Beräkna det teoretiska medelfelet för 
+\begin_inset Formula $\bar{y}_{\mathcal{S}}$
+\end_inset
+
+, d.v.s.
+ 
+\begin_inset Formula 
+\[
+SE(\bar{y}_{\mathcal{S}})=\sqrt{\left(1-\frac{n}{N}\right)\frac{S^{2}}{n}}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ är (den sanna) variansen för 
+\family typewriter
+ACRES92
+\family default
+ i populationen.
+\end_layout
+
+\begin_layout Paragraph*
+d) 
+\end_layout
+
+\begin_layout Standard
+Beräkna standardavvikelsen för de 10'000 medelvärdesskattningar du gjort.
+ Vad förväntar du dig? Vad är din tolkning av resultatet?
 \end_layout
 
 \begin_layout Section
@@ -1364,7 +1538,8 @@ weights(agSTRAT, "sampling")
 
 \begin_layout Standard
 Hur stor är den största vikten och hur stor är den minsta vikten som du
- har plockat ut ur det stratifierade surveyobjektet?
+ har plockat ut ur det stratifierade surveyobjektet? Hur tolkar du dessa
+ vikter?
 \end_layout
 
 \begin_layout Paragraph*
@@ -1458,7 +1633,15 @@ key "lohr2009sampling"
 \end_inset
 
 ).
- Dra ett stratifierat urval från 
+ 
+\end_layout
+
+\begin_layout Paragraph*
+e) 
+\end_layout
+
+\begin_layout Standard
+Dra ett stratifierat urval från 
 \family typewriter
 agpop
 \family default
