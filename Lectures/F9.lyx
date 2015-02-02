@@ -103,7 +103,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 9
+Föreläsning 8
 \end_layout
 
 \begin_layout Author
@@ -119,10 +119,6 @@ Avd.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
@@ -183,41 +179,7 @@ ctureCode.R")
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 options(scipen = 10, digits = 3)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Load data to plot
-\end_layout
-
-\begin_layout Plain Layout
-
-RdataFile <- tempfile(pattern="RdataFile",fileext=".Rdata") 
-\end_layout
-
-\begin_layout Plain Layout
-
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Data/meta.
-Rdata", destfile = RdataFile, method = "curl") 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(RdataFile)
-\end_layout
-
-\begin_layout Plain Layout
-
-unlink(RdataFile) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -227,6 +189,10 @@ unlink(RdataFile)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout EndFrame
 
 \end_layout
 
@@ -248,7 +214,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Bortfall
+Regressionsestimation
 \end_layout
 
 \begin_layout Standard
@@ -270,148 +236,14 @@ sectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Allmänt om bortfall
+Introduktion till regressionsestimation
 \end_layout
 
 \begin_layout Itemize
-En del av (i princip) alla undersökningar med respondenter
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Har ökat kraftigt över tid 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../Old/Lectures/Pics/BortfallAKU.pdf
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Bortfallsandel i AKU 1970-2013 (oviktat), 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "AKU2011"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Kvalitetsgränser för bortfall idag: SCB 60% (?), Ekot 50% 
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Allmänt om bortfall II
-\end_layout
-
-\begin_layout Itemize
-Skillnader i bortfall finns mellan olika datainsamlingsmetoder 
-\begin_inset Formula $(*)$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-högst i web och telefon, 
-\end_layout
-
-\begin_layout Itemize
-lägre i (bra) postala enkäter, 
-\end_layout
-
-\begin_layout Itemize
-enkäter i skolan fortfarande lågt bortfall
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Bortfallet introducerar 
-\series bold
-fel
-\series default
- i vår undersökning
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Svarsprocenten är i sig inte nödvändigtvis en bra indikator på bortfallsfel
- 
-\begin_inset Formula $(*)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Det är vid en 
-\series bold
-bortfallsanalys
-\series default
- vi kan se om det finns risker för bortfallsfel
-\end_layout
-
-\begin_layout Itemize
-Vi behöver 
-\series bold
-hjälpinformation
-\series default
- för att både göra bortfallsanalyser och hantera uppkommet bortfall
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Använda bortfall som 
-\series bold
-indikator
-\series default
- på saker som inte fungerar
+Vi har tidigare talat om kvotestimation med modellen
 \begin_inset Formula 
 \[
-\mbox{Högt bortfall}=\mbox{(troligtvis) dålig undersökning}
+y_{i}=\hat{B}x_{i}
 \]
 
 \end_inset
@@ -420,156 +252,15 @@ indikator
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Ramfel
-\series default
- kan betraktas på (ungefär) samma sätt som bortfall 
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Vad är bortfall?
-\end_layout
-
-\begin_layout BeginFrame
-Vad är bortfall?
-\end_layout
-
-\begin_layout Quote
-De element (objekt) i ramen som tillhör målpopulationen och man har planerat
- att undersöka, men som man ej fick något svar ifrån.
-\end_layout
-
-\begin_layout Quote
-- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Dahmstrom2011"
-
+Om vi inte kan anta att 
+\begin_inset Formula $y=0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Bortfallsantaganden
-\end_layout
-
-\begin_layout BeginFrame
-Bortfallstyper och antaganden
-\end_layout
-
-\begin_layout Itemize
-Två 
-\series bold
-typer av bortfall
-\series default
- finns
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Objektbortfall
-\end_layout
-
-\begin_layout Itemize
-Partiellt bortfall
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Antaganden om bortfall
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Missing completely at random (MCAR)
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Det vi antar om vi inte gör någonting.
-\end_layout
-
-\begin_layout Plain Layout
-Antar helt slumpmässigt.
-\end_layout
-
+ då 
+\begin_inset Formula $x=0$
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Missing at random (MAR)
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Givet kovariater antar vi att det är slumpmässigt.
-\end_layout
-
-\begin_layout Plain Layout
-Det antagande vi vanligtvis gör vid bortfallshantering
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Not missing at random (NMAR) 
+ så kan inte kvotestimation användas
 \end_layout
 
 \begin_layout Standard
@@ -591,15 +282,19 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Bortfallet beror på den variabel vi vill studera.
+
+\series bold
+RITA:
+\series default
+ Exempel med negativt beta och positiv intercept (i R) 
 \end_layout
 
 \begin_layout Plain Layout
 
 \series bold
-Exempel
+Exempel:
 \series default
- på detta är IKT-studien vid Skolverket.
+ Mottagna socialbidrag och inkomst 
 \end_layout
 
 \end_inset
@@ -612,121 +307,19 @@ Exempel
 
 \end_layout
 
-\end_deeper
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
-Vi gör 
+Då kan vi istället använda 
 \series bold
-ALLTID
+regressionsestimation
 \series default
- något av ovanstående antaganden!
-\begin_inset Newline newline
-\end_inset
-
-Säger någon att de inte gör ett antagande om bortfallet - antar MCAR.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Diskussion: Bortfallsantaganden
-\end_layout
-
-\begin_layout Itemize
-En av de ansvariga statistikerna tappar/råkar förstöra en låda med enkäter.
-\end_layout
-
-\begin_layout Itemize
-I en levnadsnivåundersökning delar inte personer som inte kan språket.
-\end_layout
-
-\begin_layout Itemize
-I en skolundersökning är en del elever sjuka vid datainsamlingstillfället.
-\end_layout
-
-\begin_layout Itemize
-Cryptosporidiumstudie: Personer som inte har kommunalt vatten tycker att
- de inte berörs av studien.
-\end_layout
-
-\begin_layout Itemize
-Sexualvanestudie på gymnaiset: Personer som inte har haft sex tycker att
- studien inte rör dem och deltar inte.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Bortfallets konsekvenser
-\end_layout
-
-\begin_layout BeginFrame
-Bortfallets konsekvenser
-\end_layout
-
-\begin_layout Itemize
-De direkta konsekvenserna av bortfall i undersökningar är 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Bortfallet introducerar bortfallsfel i vår undersökning
-\end_layout
-
-\begin_layout Itemize
-Ett större slumpfel, p.g.a.
- mindre urval
-\end_layout
-
-\begin_layout Itemize
-Bias, som inte blir mindre då 
-\begin_inset Formula $n\rightarrow\infty$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Både slumpfelet och biasen behöver hanteras
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Bortfallets konsekvenser II
-\end_layout
-
-\begin_layout Itemize
-Vi kan betrakta bortfallet som två strata: svarsstrata 
-\begin_inset Formula $(R)$
-\end_inset
-
- och bortfallsstrata 
-\begin_inset Formula $(M)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Populationsmedelvärdet kan skrivas
+ med modellen
 \begin_inset Formula 
 \[
-\bar{y}_{\mathcal{U}}=\frac{N_{R}}{N}\cdot\bar{y}_{R\mathcal{U}}+\frac{N_{M}}{N}\cdot\bar{y}_{M\mathcal{U}}
+y=\mathbf{x}^{T}\mathbf{B}=B_{0}+B_{1}x_{1}+...+B_{p}x_{p}
 \]
 
 \end_inset
@@ -734,20 +327,89 @@ Populationsmedelvärdet kan skrivas
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Vi kan i princip använda vilken modell vi vill, men linjär regression är
+ standard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-Om vi antar att 
-\begin_inset Formula $E(\hat{\bar{y}})=\bar{y}_{R\mathcal{U}}$
+
+\series bold
+Precis som tidigare, två situationer
+\series default
+: Antingen känner vi till populationstotalernan för 
+\begin_inset Formula $\mathbf{x}$
 \end_inset
 
- (ex.
- vid OSU) så kan vi räkna ut hur stor biasen blir 
-\begin_inset Formula $(*)$
+ (
+\series bold
+
+\begin_inset Formula $\mathbf{t_{x}}$
 \end_inset
 
+
+\series default
+), eller inte.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till regressionsestimation II
+\end_layout
+
+\begin_layout Itemize
+Exempel på användning om vi 
+\series bold
+inte känner
+\series default
+ till 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan vara intresserad av 
+\series bold
+populationsregressionskoefficienterna
+\series default
  
 \begin_inset Formula 
 \[
-\mbox{Bias}=\frac{N_{M}}{N}\left(\bar{y}_{R\mathcal{U}}-\bar{y}_{M\mathcal{U}}\right)
+\mathbf{B}=B_{0},B_{1},...,B_{p}
 \]
 
 \end_inset
@@ -755,259 +417,191 @@ Om vi antar att
 
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Felets storlek beror på två faktorer
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Bortfallsandelen 
-\begin_inset Formula $\left(\frac{N_{M}}{N}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Skillnaden mellan svarande och icke-svarande 
-\begin_inset Formula $\left(\bar{y}_{R\mathcal{U}}-\bar{y}_{M\mathcal{U}}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Bortfallets orsaker
-\end_layout
-
-\begin_layout BeginFrame
-Bortfallets orsaker
-\end_layout
-
-\begin_layout Itemize
-Vad orsakar bortfall?
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Leverage-Salient-teorin 
-\series default
-för deltagande i studier
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Det finns 
-\series bold
-fördelar
-\series default
- för respondenter att delta i studier som...
-\begin_inset Newline newline
-\end_inset
-
-ex.
- Bidra, komma till tals, belöningar m.m.
-\end_layout
-
-\begin_layout Itemize
-Det finns 
-\series bold
-nackdelar
-\series default
- för respondenter att delta i studier som...
-\begin_inset Newline newline
-\end_inset
-
-ex.
- Uppgiftslämnarbörda, Oro för resultat/hantering, Misstro, Kränkande frågor
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Det som påverkar är dels 
-\series bold
-hur stora 
-\series default
-fördelarna/nackdelarna är och 
-\series bold
-hur viktiga
-\series default
- fördelarna/nackdelarna är
-\series bold
- för respondenten
-\end_layout
-
-\begin_layout Itemize
-Sammantaget avgör detta om folk deltar i studierna eller inte
-\end_layout
-
 \end_deeper
 \begin_layout Pause
 
 \end_layout
 
 \begin_layout Itemize
-För mer information om denna teori se artikeln 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "groves2000leverage"
+Exempel på användning om vi 
+\series bold
+känner
+\series default
+ till 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
 
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi kan använda 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+ för att 
+\series bold
+förbättra precisionen
+\series default
+ i 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+ eller 
+\begin_inset Formula $\hat{t}_{y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Exempel: Lön förklaras på geografi, om man är registrerad vid arbetsförmedlingen
+ och antalet utbildningsår.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan använda 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+ för att 
+\series bold
+kalibrera
+\series default
+ 
+\series bold
+
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+
+\series default
+ eller 
+\series bold
+
+\begin_inset Formula $\hat{t}_{y}$
+\end_inset
+
+
+\series default
+ till kända 
+\begin_inset Formula $\mathbf{t_{x}}$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Bortfallets orsaker II
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../Old/Lectures/Pics/LeverageSalient.pdf
-
-\end_inset
-
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Källa:
-\begin_inset CommandInset citation
-LatexCommand citet
-key "groves2000leverage"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Hantera bortfall
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Att hantera bortfall
-\end_layout
-
-\begin_layout Enumerate
-Förebygga (och förbereda för) bortfall
-\end_layout
-
-\begin_layout Enumerate
-Genomföra en bortfallsanalys
-\end_layout
-
-\begin_layout Enumerate
-Hantera uppkommet bortfall
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Steg 1: Förebygga bortfall
-\end_layout
-
 \begin_layout Itemize
-Det billigaste (och mest kotsnadseffektiva) är ofta att försöka 
+Detta är den vanligaste metoden för att hantera bortfallsfel och ramfel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Detta är den vanligaste principen för att hantera täckningsfel och bortfallsfel.
+\end_layout
+
+\begin_layout Plain Layout
+
 \series bold
-förebygga
+Exempel:
 \series default
- (eller förekomma) bortfallsproblem
+ Bortfall som beror på flera variabler.
 \end_layout
 
-\begin_layout Pause
+\end_inset
+
 
 \end_layout
 
-\begin_layout Itemize
-Olika datainsamlingsmetoder ger olika bortfall
-\end_layout
+\end_inset
 
-\begin_deeper
-\begin_layout Itemize
-Att kombinera metoder kan minska bortfallet (ex.
- web + telefon)
+
 \end_layout
 
 \end_deeper
-\begin_layout Pause
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout BeginFrame
+Regressionsestimation: Estimatorer
 \end_layout
 
 \begin_layout Itemize
-Inkludera variabler för bortfallsanalys och bortfallshantering
+Skattningen av regressionskoefficienterna 
+\series bold
+vid OSU
+\series default
+ görs på exakt samma sätt som vid vanlig regression:
 \end_layout
 
-\begin_layout Pause
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{B}_{1}=\frac{\sum_{i\in\mathcal{S}}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i\in\mathcal{S}}\left(x_{i}-\bar{x}\right)^{2}}\mbox{ och }B_{0}=\bar{y}_{\mathcal{S}}-\hat{B}_{1}\bar{x}_{\mathcal{S}}
+\]
 
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Bra litteratur för att förebygga bortfall är 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "japec1997minska,edwards2009methods"
+eller 
+\begin_inset Formula $(*)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\hat{\mathbf{B}}=(\mathbf{X}^{T}\mathbf{X})^{-1}\mathbf{X}^{T}\mathbf{y}
+\]
 
 \end_inset
 
@@ -1033,7 +627,17 @@ begin{frame}[containsverbatim]
 
 
 \backslash
-frametitle{Steg 1: Förebygga bortfall}
+frametitle{Exempel: Exempel på olika modeller}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(1,3))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1042,26 +646,22 @@ frametitle{Steg 1: Förebygga bortfall}
 
 \begin_layout Plain Layout
 
-
-\backslash
-begin{figure} 
+n <- 100 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-begin{centering} 
+x <- rgamma(n=n, shape=10,rate=1) 
 \end_layout
 
 \begin_layout Plain Layout
 
+B <- rnorm(n=n, mean=3, sd=0.2) 
 \end_layout
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,comment='
-'>>=
+y <- B*x 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1070,8 +670,27 @@ begin{centering}
 
 \begin_layout Plain Layout
 
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==2,
- ])
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x), col="blue") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~1), col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2)))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1080,7 +699,12 @@ credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==2,
 
 \begin_layout Plain Layout
 
-@
+B <- rnorm(n=n, mean=0, sd=0.2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- B*x + 10 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1089,59 +713,27 @@ credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==2,
 
 \begin_layout Plain Layout
 
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{centering}
+abline(lm(y~x-1), col="red") 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{figure}
+abline(lm(y~x), col="blue") 
 \end_layout
 
 \begin_layout Plain Layout
 
+abline(lm(y~1), col="black") 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
+title(paste("cor =", round(cor(x,y),2)))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1150,16 +742,12 @@ frametitle{Steg 1: Förebygga bortfall}
 
 \begin_layout Plain Layout
 
-
-\backslash
-begin{figure} 
+B <- rnorm(n=n, mean=-4, sd=1) 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-begin{centering} 
+y <- B*x + 100 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1168,8 +756,27 @@ begin{centering}
 
 \begin_layout Plain Layout
 
-<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,comment='
-'>>=
+plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x-1), col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~x), col="blue") 
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(lm(y~1), col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
+title(paste("cor =", round(cor(x,y),2))) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1178,120 +785,7 @@ begin{centering}
 
 \begin_layout Plain Layout
 
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==1,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,comment='
-'>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==4,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
+par(mfrow=c(1,1))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1305,1213 +799,6 @@ credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==4,
 
 \begin_layout Plain Layout
 
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=2.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==3,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==5,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,comment='
-'>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==7,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=1.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==6,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==8,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==10,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==9,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=2,warning=FALSE,message=FALSE,echo=FALSE,comment='
-'>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==12,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=1.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==11,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==14,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Steg 1: Förebygga bortfall}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{figure} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering} 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
-''>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-credplot.gg(resultsMetaStudy[as.numeric(as.factor(resultsMetaStudy$area))==13,
- ])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-caption{Metastudie om bortfall av 
-\backslash
-citet{edwards2009methods}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{figure}
 \end_layout
 
 \begin_layout Plain Layout
@@ -2531,283 +818,1033 @@ end{frame}
 \end_layout
 
 \begin_layout BeginFrame
-Steg 1: Förebygga bortfall II
+Regressionsestimation: Estimatorer II
 \end_layout
 
 \begin_layout Itemize
-För att förebygga problemet med att urvalet minskar på grund av bortfallet
- kan 
+Om vi känner till 
+\begin_inset Formula $\bar{\mathbf{x}}$
+\end_inset
+
+ kan vi använda 
+\series bold
+
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+
+\series default
+ som 
+\series bold
+hjälpvariabel(er)
+\series default
+ för att skatta 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ med 
+\series bold
+bättre precision
+\series default
+ på följande sätt 
+\begin_inset Formula $(*)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{reg}=\hat{B_{0}}+\hat{B}_{1}\bar{x}_{1,\mathcal{U}}=\mbox{regressionsskattning av }\bar{y}_{\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+eller 
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}+(\bar{x}_{U}-\bar{x}_{\mathcal{S}})\hat{B}_{1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{yreg}=\hat{t}_{y}+(t_{x}-\hat{t}_{x})\hat{B}_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+eller mer generellt
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{reg}=\bar{y}_{\mathcal{S}}+(\bar{\mathbf{x}}_{\mathcal{S}}-\bar{\mathbf{x}}_{U})^{T}\hat{\mathbf{B}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{yreg}=\hat{t}_{y}+(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})^{T}\hat{\mathbf{B}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Precis som kvotskattningen är regressionsskattningar 
+\series bold
+inte
+\series default
+ väntevärdesriktiga.
+ Varför?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Men vad händer om vi använder en modell som inte fungerar?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ingenting.
+\end_layout
+
+\begin_layout Plain Layout
+Antag att vi har en modell där vi vill använda oss av skostorlek för att
+ skatta inkomst.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Vi känner den genomsnittliga skostorleken.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Vad blir 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ i så fall? 
+\end_layout
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\begin_layout Plain Layout
+Vad blir då t_reg? samma som vanliga skattningen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomster}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-5
+\end_layout
+
+\begin_layout Plain Layout
+
+N<-16
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Vi vill uppskatta genomsnittsinkomsten i 
+\backslash
+Sexpr{N} bostadsområden ($y$).
+ Vi vet det genomsnittliga utgifter för försörjningsstöd ($x$) för alla
+ områden och drar ett urval på $n=$
+\backslash
+Sexpr{n}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+welf <- generateWelfare(20140215)
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- welf[[1]]
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- welf[[2]]
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(x, y)
+\end_layout
+
+\begin_layout Plain Layout
+
+regSample <- samplingDistReg(y, x, n, alpha=0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+I populationen (alla områden) är $R=$
+\backslash
+Sexpr{round(cor(x,y),3)} och $B_1=$
+\backslash
+Sexpr{round(lm(y~x)$coefficients[2],3)}.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomster II}
+\end_layout
+
+\begin_layout Plain Layout
+
+Skillnaden mellan modellen för kvotestimatorn (röd), regressionsestimatorn
+ (blå) och den 'vanliga' skattningen $
+\backslash
+bar{y}_{
+\backslash
+mathcal{S}}$ (svart).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(x,y) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_abline(intercept=lm(y~x)$coefficients[1],slope=lm(y~x)$coefficients[2],col=
+"blue") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_abline(intercept=0, slope=mean(y)/mean(x),col="red") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_hline(yintercept=mean(y))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomster III}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Teoretiska fördelningen med $K=$
+\backslash
+Sexpr{nrow(regSample)} stycken teoretiska urval.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize', comment='', echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+regSample[sample(1:nrow(regSample), 15), c(1,5:6, 9:13)]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Genomsnittsinkomst IV}
+\end_layout
+
+\begin_layout Plain Layout
+
+Samlingfördelningen för $
+\backslash
+hat{
+\backslash
+bar{y}}_{reg}$ och $
+\backslash
+hat{
+\backslash
+bar{y}}_
+\backslash
+mathcal{U}$ då $
+\backslash
+bar{y}_
+\backslash
+mathcal{U}=$
+\backslash
+Sexpr{mean(y)}.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+xlimPlot<-c(min(regSample$mean_hat_y), max(regSample$mean_hat_y)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(regSample$mean_hat_yreg, xlim=xlimPlot) + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(y), col="red") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(regSample$mean_hat_yreg), col="blue") + 
+\end_layout
+
+\begin_layout Plain Layout
+
+  xlab(expression(hat(bar(y))[U,reg]))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(regSample$mean_hat_y,xlim=xlimPlot)+
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(regSample$mean_hat_y),col="blue")+
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept=mean(y),col="red")+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  xlab(expression(hat(bar(y))[U]))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Effekten av kvotestimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Expectations
+\end_layout
+
+\begin_layout Plain Layout
+
+Ethatyreg <- sum(regSample$P_S * regSample$mean_hat_yreg)
+\end_layout
+
+\begin_layout Plain Layout
+
+Ethaty <- sum(regSample$P_S * regSample$mean_hat_y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Varians
+\end_layout
+
+\begin_layout Plain Layout
+
+Varthatyreg <- sum(regSample$P_S * (regSample$mean_hat_yreg - Ethatyreg)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+Varthaty <- sum(regSample$P_S * (regSample$mean_hat_y - Ethaty)^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Bias
+\end_layout
+
+\begin_layout Plain Layout
+
+Biasthatyreg <- Ethatyreg - mean(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+Biasthaty <- Ethaty - mean(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# MSE
+\end_layout
+
+\begin_layout Plain Layout
+
+MSEthatyreg <- sum(regSample$P_S * (regSample$mean_hat_yreg - mean(y))^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+MSEthaty <- sum(regSample$P_S * (regSample$mean_hat_y - mean(y))^2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skillnaden mellan regressionsestimatorn och den 
 \begin_inset Quotes eld
 \end_inset
 
-översampla
+vanliga
 \begin_inset Quotes erd
 \end_inset
 
- 
+ estimatorn
 \end_layout
 
-\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccccc}
+E(\hat{\bar{y}}_{reg}) & = & \Sexpr{Ethatyreg} &  & E(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{Ethaty}\\
+Var(\hat{\bar{y}}_{reg}) & = & \Sexpr{Varthatyreg} &  & Var(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{Varthaty}\\
+Bias(\hat{\bar{y}}_{reg}) & = & \Sexpr{Biasthatyreg} &  & Bias(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{Biasthaty}\\
+MSE(\hat{\bar{y}}_{reg}) & = & \Sexpr{MSEthatyreg} &  & MSE(\hat{\bar{y}}_{\mathcal{U}}) & = & \Sexpr{MSEthaty}\\
+\\
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Regressionsestimation: Variansberäkningar
+\end_layout
+
 \begin_layout Itemize
-Ett större urval än det tänkta dras för att kompensera för det beräknade
- bortfallet.
+Vi är (som vanligt) intresserade av 
+\begin_inset Formula $Var(\hat{\bar{y}}_{reg})$
+\end_inset
+
+ för att kunna skapa ett konfidensintervall för 
+\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
+\end_inset
+
+
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+Detta görs (precis som för kvotestimatorn) genom att beräkna residualerna
+\begin_inset Formula 
+\[
+e_{i}=y_{i}-\hat{B}_{0}-\hat{B}_{1}x_{i}
+\]
+
+\end_inset
+
+eller mer generellt
+\begin_inset Formula 
+\[
+\mathbf{e}=\mathbf{y}-\mathbf{X}\hat{\mathbf{B}}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Pause
 
 \end_layout
 
 \begin_layout Itemize
-Det mest elementära sättet att göra detta är att bara räkna upp
+Det är sedan residualerna som används för att beräkna 
+\begin_inset Formula $Var(\hat{\bar{y}}_{reg})$
+\end_inset
+
+ på följande sätt
 \begin_inset Formula 
 \[
-n_{*}=\frac{n}{p_{R}}
+SE(\hat{\bar{y}}_{reg})=\sqrt{\left(1-\frac{n}{N}\right)\frac{s_{e}^{2}}{n}}
+\]
+
+\end_inset
+
+där
+\begin_inset Formula 
+\[
+s_{e}^{2}=\frac{\sum_{i\in\mathcal{S}}e_{i}^{2}}{n-1}\mbox{ eller }s_{e}^{2}=\frac{\sum_{i\in\mathcal{S}}e_{i}^{2}}{n-p}
 \]
 
 \end_inset
 
 där 
-\begin_inset Formula $n_{*}$
+\begin_inset Formula $p$
 \end_inset
 
- är det urval man 
-\series bold
-drar
-\series default
-, 
-\begin_inset Formula $n$
+ är antalet parametrar i modellen.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Skogsvolym
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+forest <- generateForest()
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- forest[['n']]
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- forest[['N']]
+\end_layout
+
+\begin_layout Plain Layout
+
+tot_x <- forest[['tot_x']]
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- forest[['B']]
+\end_layout
+
+\begin_layout Plain Layout
+
+data <- forest[['data']]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
 \end_inset
 
- är det urval man 
-\series bold
-vill ha
-\series default
- och 
-\begin_inset Formula $p_{R}$
+
+\end_layout
+
+\begin_layout Itemize
+Inom skogsindustrin är det av intresse att uppskatta trävolym per hektar
+\end_layout
+
+\begin_layout Itemize
+Skogsföretag A vill uppskatta den totala volymen träd för ett område på
+ 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+N
+\end_layout
+
 \end_inset
 
- är den 
-\series bold
-svarsandel
-\series default
- man uppskattar att man har.
+ ha.
  
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Steg 2: Bortfallsanalys
+\begin_layout Itemize
+Som hjälpinformation finns laserscanning av hela området.
 \end_layout
 
 \begin_layout Itemize
-Identifiera vilka variabler som kan tänkas samvariera med bortfallet
+Skogsföretag samlar slumpmässigt in volymen från 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+n
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Detta kräver att vi har hjälpvariabler.
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Resonera, gärna tillsammans med ämnesexperter om detta
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Två situationer:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Vi har data för både svarande och icke-svarande: logistisk regression
+ slumpmässiga ytor (1 ha).
+ 
 \end_layout
 
 \begin_layout Itemize
-Vi har bara data för svarande: tester mot populationsvärden
+Laserscanning har gjorts för hela området med en uppskattning av volymen
+ till 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+tot_x
 \end_layout
 
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För att reducera bortfallsfelet: identifiera variabler som både är korrelerade
- med 
-\begin_inset Formula $y$
 \end_inset
 
  
-\series bold
-och
-\series default
- med bortfallsannolikheten
+\begin_inset Formula $\mbox{m}^{3}$
+\end_inset
+
+ träd
 \end_layout
 
 \begin_layout EndFrame
 
 \end_layout
 
-\begin_layout BeginFrame
-Steg 3: Hantera uppkommet bortfall
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
 \end_layout
 
-\begin_layout Itemize
-Hur vi hanterar bortfallet beror på vilket antagande vi kan göra om bortfallet
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Skogsvolym II}
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om vi antar 
-\series bold
-MCAR
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Går att bara lägga till nya respondenter (substitution)
-\end_layout
-
-\begin_layout Itemize
-Det är ofta bättre att göra detta innan studien drar igång
-\end_layout
-
-\end_deeper
-\begin_layout Pause
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Itemize
-Om vi antar 
-\series bold
-MAR
-\series default
- (den vanligaste situationen)
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE,comment=
+''>>=
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Omvägning/Kalibrering
+\begin_layout Plain Layout
+
+B
 \end_layout
 
-\begin_layout Itemize
-(Multipel) imputering
-\end_layout
-
-\begin_layout Itemize
-Kräver en bortfallsmodell
-\end_layout
-
-\end_deeper
-\begin_layout Pause
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Itemize
-Om vi antar 
-\series bold
-NMAR
+\begin_layout Plain Layout
+
+data
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Bortfallsuppföljning (Hansen-Hurwitz)
-\end_layout
-
-\end_deeper
-\begin_layout Pause
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Itemize
-GREG-estimatorn (regressionsestimatorn) så kalibrerar vi för bortfall 
-\series bold
-och
-\series default
- får en förbättrad precision samtidigt
+\begin_layout Plain Layout
+
+@
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Denna metod är standard idag i större undersökningar.
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout BeginFrame
-Steg 3: Hantera uppkommet bortfall II
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
 \end_layout
 
-\begin_layout Itemize
-En vanlig praktisk lösning är:
-\end_layout
+\end_inset
 
-\begin_deeper
-\begin_layout Itemize
-Partiellt bortfall - (Multipel imputering)
-\end_layout
-
-\begin_layout Itemize
-Objektbortfall - (Kalibrering)
-\end_layout
-
-\end_deeper
-\begin_layout Pause
 
 \end_layout
 
-\begin_layout Itemize
-Olika typer av imputation
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Medelvärdesimputering
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Skogsvolym III}
 \end_layout
 
-\begin_layout Itemize
-Regressionsimputering (samma modell som vid kalibreringen)
-\end_layout
-
-\begin_layout Itemize
-Hot/Cold-deckimputering
-\end_layout
-
-\end_deeper
-\begin_layout Pause
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Itemize
-Problem med imputation - vi minskar vår osäkerhet
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Lösningen: Multipel imputation
+\begin_layout Plain Layout
+
 \end_layout
 
-\end_deeper
-\begin_layout EndFrame
+\begin_layout Plain Layout
+
+qplot(data[['x']], data[['y']]) + xlab('Volym (manuellt)') + ylab('Volym
+ (laser)') + geom_abline(intercept=B[1], slope=B[2], col="blue")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Subsection
-Redovisa bortfall
+Regressionsestimation som kalibrering
 \end_layout
 
 \begin_layout Standard
@@ -2829,421 +1866,167 @@ subsectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Redovisa bortfall
+Regressionsestimation som kalibrering
 \end_layout
 
 \begin_layout Itemize
-För att beräkna bortfall korrekt (för jämförbarhet) används Svensk standard
- för bortfallsberäkning (se 
+Regressionsestimatorn kan användas för kalibrering (precis som kvotestimatorn).
+\end_layout
+
+\begin_layout Itemize
+Denna estimator kallas ibland 
+\series bold
+generalized regression
+\series default
+ estimatior (GREG) och utrycks som 
+\begin_inset Newline newline
+\end_inset
+
+(se 
 \begin_inset CommandInset citation
-LatexCommand citealp
-key "Bortfallsstandard"
+LatexCommand citet
+after "s. 458 f."
+key "lohr2009sampling"
 
-\end_inset
-
-) som kan laddas ned 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "[här]"
-target "http://statistikframjandet.se/wp-content/uploads/2013/10/Standard-f%C3%B6r-bortfallsber%C3%A4kning-2005.pdf"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Bortfall kan både beräknas oviktat och viktat.
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Vid översampling för bortfall blir det viktade bortfallsmåttet ofta lägre
- än det oviktade
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Bortfallet bör redovisas efter kön, ålder m.m.
- samt efter
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ej anträffade
-\end_layout
-
-\begin_layout Itemize
-Vägrare
-\end_layout
-
-\begin_layout Itemize
-Övrigt (t.ex.
- språksvårigheter, sjukdom)
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Redovisa bortfall
-\end_layout
-
-\begin_layout Itemize
-För att beräkna oviktat bortfall används följande formel
-\begin_inset Formula 
-\[
-BA_{1}(oviktat)=1-\frac{n_{S}}{n_{S}+n_{B}+n_{O}}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula $S$
-\end_inset
-
- är svarande, 
-\begin_inset Formula $B$
-\end_inset
-
- är bortfall och 
-\begin_inset Formula $O$
-\end_inset
-
- är okänd målpopulation och 
-\begin_inset Formula $\emptyset$
-\end_inset
-
- är övertäckning.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För att beräkna viktat bortfall används
-\begin_inset Formula 
-\[
-BA_{1}(viktat)=1-\frac{\sum_{S}d_{k}}{\sum_{S}d_{k}+\sum_{B}d_{k}+\sum_{O}d_{k}}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula $d_{k}$
-\end_inset
-
- är designvikterna
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel
-\end_layout
-
-\begin_layout Itemize
-En undersökning har genomförts för att studera väljaropinion i Linköping.
- Vi behöver ett urval på 
-\begin_inset Formula $n=800$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För att kompensera för bortfallet (och för att ha som redovisningsgrupper)
- har undersökningen stratifierats i två strata: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Yngre personer (15-29 år) och 
-\end_layout
-
-\begin_layout Itemize
-Äldre personer (30 - 89 år)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-År 2012 bodde 35 664 yngre personer och 81 681 äldre personer i Linköping.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Tidigare undersökningar har visat att personer under 30 år har ett bortfall
- på cirka 50 % medan den äldre gruppen har ett bortfall på cirka 20 %.
-\end_layout
-
-\begin_layout Itemize
-Beräkna urvalet med oversampling i det två strata.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel II
-\end_layout
-
-\begin_layout Itemize
-Undersökningen genomförs med följande resultat
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Resultat
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Yngre medborgare
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Äldre medborgare
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Totalt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Svar (S)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-241
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-509
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-740
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Bortfall (B)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-27
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-28
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-55
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Okänd status (O)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-159
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-52
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-211
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Övertäckning (
-\begin_inset Formula $\emptyset$
 \end_inset
 
 )
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-59
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-67
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+\begin_inset Formula 
+\[
+\hat{t}_{yGREG}=\hat{t}_{y}+(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})\mathbf{\hat{B}}
+\]
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-Beräkna studiens oviktade och viktade bortfall.
-\end_layout
-
-\begin_layout EndFrame
+\begin_layout Pause
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{t}_{yGREG}=\sum_{i\in\mathcal{S}}w_{i}g_{i}y_{i}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula 
+\[
+g_{i}=1+(\mathbf{t_{x}}-\mathbf{\hat{t}_{x}})^{T}\left(\sum_{j\in\mathcal{S}}w_{j}\frac{1}{\sigma_{j}^{2}}\mathbf{x}_{j}\mathbf{x}_{j}^{T}\right)^{-1}\frac{1}{\sigma_{i}^{2}}\mathbf{x}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ser komplicerad ut.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Ignorera 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ och tänker att ni stoppar in g-vikten ovan vilket skapar en viktad version
+ av y + den vanliga metoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+På detta sätt kalibreras skattningarna till de kända totalerna 
+\begin_inset Formula $\mathbf{t_{x}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{xGREG}=\sum_{i\in\mathcal{S}}w_{i}g_{i}x_{i}=t_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Itemize
+Rita upp hur totalerna ser ut i form av en designmatris.
+\end_layout
+
+\begin_layout Itemize
+Precis som en regression kan vi ha interaktionsvariabler.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout NoteItem
+Härled detta för OSU-situationen.
+\end_layout
+
+\begin_layout EndFrame
 
 \end_layout
 

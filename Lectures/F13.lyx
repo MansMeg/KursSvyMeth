@@ -1,0 +1,1873 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usecolortheme[named=LightSlateGray]{structure}
+%\usecolortheme[RGB={205,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{SverigesRiksbank.jpg}}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{Soedrahuset.jpg}}
+\useoutertheme{infolines}
+\usetheme[height=7mm]{Rochester}
+\setbeamertemplate{blocks}[shadow=true]
+%\useoutertheme{umbcfootline} 
+
+
+%\setbeamertemplate{blocks}[shadow=true]
+%\setbeamertemplate{background canvas}{
+%  \ifnum \thepage=1 \relax % we are on the first page
+%\includegraphics[width=\paperwidth,height=\paperheight]{/home/mv/Dropbox/Foton/IconsWallpaper/InsideLiuAlt.jpg}
+%  \else
+ 	% No background for page 2 and onwards
+%  \fi
+%}
+ 	
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman palatino
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Surveymetodik
+\begin_inset Newline newline
+\end_inset
+
+Föreläsning 12
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Institute
+Avd.
+ Statistik, LiU
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Paket
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(ggplot2))
+\end_layout
+
+\begin_layout Plain Layout
+
+library(devtools)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(survey))
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(maptools))
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(rmeta))
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(hexbin))
+\end_layout
+
+\begin_layout Plain Layout
+
+options(scipen = 10, digits = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages( source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/maste
+r/Demonstrations/svyMethFunctions.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(
+\end_layout
+
+\begin_layout Plain Layout
+
+source_url(url="https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Code/Le
+ctureCode.R")
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Download data
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010temp <- tempfile(pattern="svy2010",fileext=".Rdata")
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
+2010.Rdata", destfile = svy2010temp, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+load(file=svy2010temp) 
+\end_layout
+
+\begin_layout Plain Layout
+
+unlink(svy2010temp)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# AGPOP
+\end_layout
+
+\begin_layout Plain Layout
+
+agpoptemp <- tempfile(pattern="agpop",fileext=".dat") 
+\end_layout
+
+\begin_layout Plain Layout
+
+download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
+op.dat", destfile = agpoptemp, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-read.table(agpoptemp,header=TRUE,sep=",") 
+\end_layout
+
+\begin_layout Plain Layout
+
+unlink(agpoptemp) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Munge data
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$fathAge <- svy2010$FR37 - svy2010$FR40_1 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$fathAge[abs(svy2010$fathAge) > 100 | svy2010$fathAge < 0 ] <- NA
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$mothAge <- svy2010$FR37 - svy2010$FR40_2 
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010$mothAge[abs(svy2010$mothAge) > 100 | svy2010$mothAge < 0] <- NA
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-agpop[agpop$ACRES92>0 & agpop$ACRES87>0,]
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop<-agpop[agpop$SMALLF92<1000,]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Create survey objects
+\end_layout
+
+\begin_layout Plain Layout
+
+STRATAindex <- stratsample(agpop$REGION, c("NC"=69,"NE"=7,"S"=122,"W"=102))
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRATAdata <- agpop[STRATAindex,]
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata<-numeric(300) 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NC"] <- 1049 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="NE"] <- 209 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="S"] <- 1370 
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.strata[agSTRATAdata$REGION=="W"] <- 414
+\end_layout
+
+\begin_layout Plain Layout
+
+agSTRAT <- svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+fpc.srs<-rep(7529673, nrow(svy2010))
+\end_layout
+
+\begin_layout Plain Layout
+
+svy2010design<-svydesign(ids=~1, data=svy2010, fpc=fpc.srs)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Översikt
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Grafik i surveyer
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Grafik i surveyer
+\end_layout
+
+\begin_layout Itemize
+Varför tala om grafik i surveyer? Är det inte samma sak?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Finns två huvudorsaker:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Surveydata är ofta stort (många observationer)
+\end_layout
+
+\begin_layout Itemize
+Vikterna behöver hanteras (bortfallskorrigerade grafer)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Det finns tre huvudsakliga angreppsätt:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Basera graferna på skattningar
+\end_layout
+
+\begin_layout Itemize
+Explicit indikera vikterna i graferna
+\end_layout
+
+\begin_layout Itemize
+Dra ett urval från urvalet och visualisera
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Detta avnitt bygger huvudsakligen på 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "kap 4"
+key "Lumley2010csa"
+
+\end_inset
+
+ och på implementationer i surveypaketet
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Boxplot}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4,comment='',echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyboxplot(mothAge ~ Valdeltagande, design=svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Histogram}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4,comment='',echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyhist(formula= ~ mothAge, design=svy2010design)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Scatterplot with weights}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4,comment='',echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(LARGEF92~SMALLF92,design=agSTRAT, style="bubble")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Problem med många observationer}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.2,fig.width=2.8,fig.align='center',comment='',echo=T
+RUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(svy2010$fathAge, svy2010$mothAge)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Problem med många observationer}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.2,fig.width=2.8,fig.align='center',comment='',echo=T
+RUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(mothAge~fathAge, design = svy2010design, style="transparent", pch=19,
+ alpha=c(0,.02)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Problem med många observationer}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4,comment='',echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(mothAge~fathAge, design = svy2010design, style="hex")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='small',fig.height=4,comment='',echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(mothAge~fathAge, design = svy2010design, style="hex",legend=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Problem med många observationer}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=4,comment='',echo=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(mothAge~fathAge, design = svy2010design, style="hex")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='small',fig.height=4,comment='',echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+svyplot(mothAge~fathAge, design = svy2010design, style="grayhex", legend=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analys i surveyer
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Analys i surveyer
+\end_layout
+
+\begin_layout Itemize
+Vid analys är den centrala frågan inferens.
+ Vill vi dra slutsatser om...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vår ändliga population?
+\end_layout
+
+\begin_layout Itemize
+En statistisk modell?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hur påverkas våra analyser av urvalsdesignen?
+\end_layout
+
+\begin_layout Itemize
+Vid OSU med 'oänlig' population fungerar analyserna som vanligt
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Effekt av urvalsdesignen
+\end_layout
+
+\begin_layout Itemize
+Våra analyser påverkas på samma sätt som konfidensintervallen
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $deff<1$
+\end_inset
+
+ vi blir säkrare än vid OSU
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $deff>1$
+\end_inset
+
+ vi blir osäkrare än vid OSU
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+På samma sätt påverkas 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test, t-test och regressionsmodeller
+\end_layout
+
+\begin_layout Itemize
+Vi korrigerar detta med ex.
+ Wald-test eller Rao-Scott korrektion (se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "kap 10.3.2"
+key "lohr2009sampling"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Ändlighetskorrektion
+\end_layout
+
+\begin_layout Itemize
+Vi kan vara intresserade av att dra slutsatser om en ändlig population
+\end_layout
+
+\begin_layout Itemize
+Observerar vi alla element saknar vi osäkerhet
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Komplexa surveyer
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Komplexa surveyer
+\end_layout
+
+\begin_layout Itemize
+Alla metoder vi beskrivit så här långt kan användas i en och samma undersökning
+\end_layout
+
+\begin_layout Itemize
+Vi kan dra olika typer av urval i olika steg 
+\end_layout
+
+\begin_layout Itemize
+Samlingsnamnet för dessa metoder är 
+\series bold
+Komplexa surveyer
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: BETSI
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Byggnaders energianvändning, tekniska status och inomhusmiljö (BETSI) 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "BETSITECH2009"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Boverket
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Syfte:
+\series default
+ Kartlägga det svenska byggnadsbeståndet
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Målpopulation:
+\series default
+ Byggnader med taxeringsvärde på minst 50 tkr och med minst 50 
+\begin_inset Formula $\mbox{m}^{2}$
+\end_inset
+
+ samt individer i småbostadshus eller lägenhet
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Urval:
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Flerstegsurval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Steg I: Stratifierat klusterurval av kommuner (pps/
+\begin_inset Formula $\pi$
+\end_inset
+
+ps)
+\end_layout
+
+\begin_layout Itemize
+Steg II: Stratifierat klusterurval av värderings/taxeringsenhet (OSU och
+ pps/
+\begin_inset Formula $\pi$
+\end_inset
+
+ps)
+\end_layout
+
+\begin_layout Itemize
+Steg III: Klusterurval av byggnad (OSU)
+\end_layout
+
+\begin_layout Itemize
+Steg IV: Lägenhet (OSU)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Bortfall:
+\series default
+ 21-35 % (beroende på byggnad)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Datainsamlingsmetod:
+\series default
+ Besiktningar och pappersenkäter
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Periodicitet
+\series default
+: Ett tillfälle (?)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Komplexa surveyer II
+\end_layout
+
+\begin_layout Itemize
+Hur reder vi ut de olika nivåerna?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Börja på lägsta nivån och gå uppåt
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Exempel: Stratifierad population och trestegs klusterurval 
+\begin_inset Formula $(*)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{y}_{hij}=\frac{1}{m_{hij}}\sum_{k\in\mathcal{S}_{hij}}y_{hijk}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{hij}=M_{hij}\cdot\bar{y}_{hij}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{hi}=\sum_{j\in\mathcal{S}_{hi}}\frac{M_{hi}}{m_{hi}}\cdot\hat{t}_{hij}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}_{h}=\sum_{i\in\mathcal{S}_{h}}\frac{M_{h}}{m_{h}}\hat{t}_{hi}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{t}=\sum_{h=1}^{H}\hat{t}_{h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Komplexa surveyer III
+\end_layout
+
+\begin_layout Itemize
+Varianserna kan utredas på samma sätt steg för steg (överkurs)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+I praktiken framställs ofta urvalsvikter på elementnivå
+\end_layout
+
+\begin_layout Itemize
+Har vi tillgång till urvalsvikterna kan punktskattningar och medeltal beräknas
+ enkel på följande sätt
+\begin_inset Formula 
+\[
+\hat{t}=\sum_{h=1}^{H}\sum_{i\in\mathcal{S}_{h}}\sum_{j\in\mathcal{S}_{hi}}\sum_{k\in\mathcal{S}_{hij}}w_{hijk}\cdot y_{hijk}
+\]
+
+\end_inset
+
+eller 
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{\mathcal{U}}=\frac{\sum_{h=1}^{H}\sum_{i\in\mathcal{S}_{h}}\sum_{j\in\mathcal{S}_{hi}}\sum_{k\in\mathcal{S}_{hij}}w_{hijk}\cdot y_{hijk}}{\sum_{h=1}^{H}\sum_{i\in\mathcal{S}_{h}}\sum_{j\in\mathcal{S}_{hi}}\sum_{k\in\mathcal{S}_{hij}}w_{hijk}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta räcker dock inte för att beräkna varianserna
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Sammanfattning
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Obundet slumpmässigt urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alla urvalsenheter/kluster har samma inklutionssannolikhet
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enkel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Många gånger ineffektivt
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Systematiskt urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Påminner om OSU, men är egentligen ett klusterurval
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kan användas när det inte finns någon ram
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Periodicitet i ramen
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder II 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stratifierade urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Målpopulationen (och rampopulationen) delas in i strata
+\end_layout
+
+\begin_layout Itemize
+Varje strata kan ses som en egen undersökning - vanligt med OSU inom strata
+\end_layout
+
+\begin_layout Itemize
+Vi vill stratifiera så det är stor skillnad mellan och liten skillnad inom
+ strata
+\end_layout
+
+\begin_layout Itemize
+Fördelar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Effektivare urval
+\end_layout
+
+\begin_layout Itemize
+Garanterar respondeter i varje grupp
+\end_layout
+
+\begin_layout Itemize
+Kan kontrollera precision i redovisningsgrupper
+\end_layout
+
+\begin_layout Itemize
+Ofta hyfsat enkelt
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Något mer komplicerat än OSU
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder III
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Klusterurval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Målpopulationen består av naturliga kluster/grupper
+\end_layout
+
+\begin_layout Itemize
+Enstegs, tvåstegs eller flerstegs klusterurval
+\end_layout
+
+\begin_layout Itemize
+Vi vill ha kluster med stor skillnad inom kluster och liten skillnad mellan
+ kluster
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kan vara mycket billigare än OSU
+\end_layout
+
+\begin_layout Itemize
+Kan vara enda möjligheten om ram saknas
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ineffektivare än OSU
+\end_layout
+
+\begin_layout Itemize
+Mer komplicerade beräkningar
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Urvalsmetoder IV
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+PPS/
+\begin_inset Formula $\pi$
+\end_inset
+
+PS-urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Olika inklusionssannolikheter för olika element/kluster
+\end_layout
+
+\begin_layout Itemize
+En form av 
+\begin_inset Quotes eld
+\end_inset
+
+kontinuerlig
+\begin_inset Quotes erd
+\end_inset
+
+ stratifiering
+\end_layout
+
+\begin_layout Itemize
+Fördelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Effektiv design
+\end_layout
+
+\begin_layout Itemize
+Självvägande kluster
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nackdelar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Komplicerat att dra urval
+\end_layout
+
+\begin_layout Itemize
+Mer komplicerade beräkningar
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Estimation
+\end_layout
+
+\begin_layout Itemize
+Den vanliga estimatorn (Horwitz-Thopson)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Väntevärdesriktig
+\end_layout
+
+\begin_layout Itemize
+Enkel
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kvotskattning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bias vid mindre urval
+\end_layout
+
+\begin_layout Itemize
+En hjälpvariabel kan användas
+\end_layout
+
+\begin_layout Itemize
+Använder hjälpinformation med modellen 
+\begin_inset Formula $y=Bx$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bra att använda vid klusterurval vid olika klusterstorlekar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Regressionsskattning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bias vid mindre urval
+\end_layout
+
+\begin_layout Itemize
+Flera hjälpvariabler kan användas
+\end_layout
+
+\begin_layout Itemize
+Använder hjälpinformation med modellen 
+\begin_inset Formula $y=\mathbf{Bx}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Används vid kalibrering
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningmetodik
+\end_layout
+
+\begin_layout Itemize
+Kvalitetsdimensionerna i en undersökning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Innehåll / relevans
+\end_layout
+
+\begin_layout Itemize
+Tillförlitlighet
+\end_layout
+
+\begin_layout Itemize
+Jämförbarhet och samanvändbarhet
+\end_layout
+
+\begin_layout Itemize
+Aktualitet
+\end_layout
+
+\begin_layout Itemize
+Tillgänglighet och förståelighet
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Felen som kan uppstå i en undersökning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Urvalsfel
+\end_layout
+
+\begin_layout Itemize
+Specifikationsfel
+\end_layout
+
+\begin_layout Itemize
+Bortfallsfel
+\end_layout
+
+\begin_layout Itemize
+Mätfel
+\end_layout
+
+\begin_layout Itemize
+Täckningsfel
+\end_layout
+
+\begin_layout Itemize
+Bearbetningsfel
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningmetodik II
+\end_layout
+
+\begin_layout Itemize
+De olika stegen i en undersökning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Faslå behov och kartlägga området
+\end_layout
+
+\begin_layout Itemize
+Design och planering
+\end_layout
+
+\begin_layout Itemize
+Förberedelser och tester
+\end_layout
+
+\begin_layout Itemize
+Datainsamling
+\end_layout
+
+\begin_layout Itemize
+Databearbetning
+\end_layout
+
+\begin_layout Itemize
+Analyser
+\end_layout
+
+\begin_layout Itemize
+Rapportering och kommunikation
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Undersökningmetodik III
+\end_layout
+
+\begin_layout Itemize
+Stegen vid enkätkonstruktion
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utveckla enkäten
+\begin_inset Newline newline
+\end_inset
+
+se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "dillman2005achieving,Dahmstrom2011,2001frt,japec1997minska"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expertgranska enkäten
+\begin_inset Newline newline
+\end_inset
+
+se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Dahmstrom2011,2001frt,japec1997minska"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kognitiva intervjuer/tester av enkäten
+\begin_inset Newline newline
+\end_inset
+
+se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "willis2004cognitive"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 49-60"
+key "2001frt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pilotstudie
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Bortfallshantering
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Förebygga bortfall
+\end_layout
+
+\begin_layout Itemize
+Genomföra en bortfallsanalys
+\end_layout
+
+\begin_layout Itemize
+Kompensera för uppkommet bortfall 
+\begin_inset Newline newline
+\end_inset
+
+(vanligtvis med regressionsestimation / GREG)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Referenser
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "ReferencesSurvey"
+options "elsarticle-harv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames
+\options xcolor=svgnames, handout
 \use_default_options false
 \begin_modules
 knitr
@@ -103,7 +103,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 7
+Föreläsning 6
 \end_layout
 
 \begin_layout Author
@@ -214,7 +214,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Kvotestimation
+Enkätkonstruktion
 \end_layout
 
 \begin_layout Standard
@@ -236,479 +236,275 @@ sectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Introduktion till kvotestimation
+Att skapa en enkät - grunden
 \end_layout
 
 \begin_layout Itemize
-Vi ksa nu fokusera på estimation - d.v.s.
- efter att undersökningen är gjord
+För bra enkäter krävs: 
+\series bold
+Respondenten i centrum
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bra enkäter ger:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lägre bortfall
 \end_layout
 
 \begin_layout Itemize
-Tidigare estimerat populationsparametrar 
-\begin_inset Formula $p_{\mathcal{U}}$
+Mindre mätfel
+\end_layout
+
+\begin_layout Itemize
+Mindre upplevd uppgiftslämnarbörda
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi begär alltid tid av våra respondenter
+\end_layout
+
+\begin_layout Itemize
+Minimera både den upplevda och faktiska uppgiftslämnarbördan.
+ 
+\end_layout
+
+\begin_layout Itemize
+Gör allt arbete själv (beräkningar, bedömningar m.m.)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Här är många mycket svaga
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Exempel
+\end_layout
+
+\begin_layout Plain Layout
+Hatbrottsmarkeringen i registret
+\end_layout
+
+\begin_layout Plain Layout
+Brottskodningen av brottsstatistiken
+\end_layout
+
+\begin_layout Plain Layout
+Vanligt att 
+\begin_inset Quotes eld
+\end_inset
+
+tvinga
+\begin_inset Quotes erd
+\end_inset
+
+ respondenter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Betrakta enkäten som ett socialt samtal
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Behandla respondenterna som du själv skulle vilja bli behandlad!
+\end_layout
+
+\begin_layout Itemize
+Om ni inte kan svara på en enkät vem kan då?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dessa principer är också tillämpbart vid registerdata/andra studier
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Utvecklingsprocessen
+\end_layout
+
+\begin_layout Enumerate
+Utveckla enkäten
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Skapa egna frågor
+\end_layout
+
+\begin_layout Enumerate
+Ta frågor från andra undersökningar
+\end_layout
+
+\begin_layout Enumerate
+Varken för många eller för få frågor - kontrollera mot frågeställningarna
+\end_layout
+
+\begin_layout Enumerate
+Layouta enkäten 
+\begin_inset Newline newline
+\end_inset
+
+se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "dillman2005achieving"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Expertgranska enkäten
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Använd checklistor
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 30"
+key "2001frt"
+
 \end_inset
 
 , 
-\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 80"
+key "japec1997minska"
+
 \end_inset
 
  och 
-\begin_inset Formula $t_{\mathcal{U}}$
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 157, 163, 174"
+key "Dahmstrom2011"
+
 \end_inset
 
- med 
-\begin_inset Formula $p_{\mathcal{S}},\bar{y}_{\mathcal{S}}$
+
+\end_layout
+
+\begin_layout Enumerate
+Mättekniska experter vid ex.
+ SCB
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Kognitiva intervjuer/tester av enkäten 
+\begin_inset Newline newline
+\end_inset
+
+se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "willis2004cognitive"
+
 \end_inset
 
  och 
-\begin_inset Formula $N\bar{y}_{\mathcal{S}}$
-\end_inset
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 49-60"
+key "2001frt"
 
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Ett alternativ är 
-\series bold
-kvotestimation 
-\series default
-då vi 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-observerat 
-\begin_inset Formula $y$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-observerat 
-\series bold
-hjälpvariabeln
-\series default
- (auxiliary variable) 
-\begin_inset Formula $x$
-\end_inset
-
- 
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Två situationer
-\series default
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Vi känner till populationstotalen för 
-\begin_inset Formula $x$
-\end_inset
-
- (
-\begin_inset Formula $t_{x}$
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Itemize
-Vi saknar kunskap om populationstotalen för 
-\begin_inset Formula $x$
-\end_inset
-
- (via ex.
- register)
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Introduktion till kvotestimation II
-\end_layout
-
-\begin_layout Itemize
-Exempel på användning om vi 
-\series bold
-inte känner
-\series default
- till 
-\begin_inset Formula $t_{x}$
 \end_inset
 
 
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Vi kan vara intresserad av 
-\series bold
-populationskvoten
-\series default
- 
-\begin_inset Formula 
-\[
-\frac{\bar{y}_{\mathcal{U}}}{\bar{x}_{\mathcal{U}}}=\frac{t_{y}}{t_{x}}=B
-\]
+\begin_layout Enumerate
+Tänka högt protokoll 
+\end_layout
 
-\end_inset
-
-
+\begin_layout Enumerate
+Retrospektiva ”hur tänkte du” frågor
 \end_layout
 
 \begin_layout Pause
 
-\end_layout
-
-\begin_layout Itemize
-Vi kan vara intresserade av att skatta i 
-\series bold
-redovisningsgrupper
-\series default
- (domänestimation).
- (
-\begin_inset Formula $*$
-\end_inset
-
-)
 \end_layout
 
 \end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Exempel på användning om vi 
-\series bold
-känner
-\series default
- till 
-\begin_inset Formula $t_{x}$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Vi kan använda 
-\begin_inset Formula $t_{x}$
-\end_inset
-
- för att 
-\series bold
-förbättra precisionen
-\series default
- i 
-\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
-\end_inset
-
- eller 
-\begin_inset Formula $\hat{t}_{y}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $ $
-\end_inset
-
-Vi kan använda 
-\begin_inset Formula $t_{x}$
-\end_inset
-
- för att skapa 
-\series bold
-totalskattningen 
-\begin_inset Formula $t_{y}$
-\end_inset
-
- när 
-\begin_inset Formula $N$
-\end_inset
-
- är okänd
-\series default
-.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi kan använda 
-\begin_inset Formula $t_{x}$
-\end_inset
-
- för att 
-\series bold
-kalibrera
-\series default
- 
-\series bold
-
-\begin_inset Formula $\hat{\bar{y}}_{\mathcal{U}}$
-\end_inset
-
-
-\series default
- eller 
-\series bold
-
-\begin_inset Formula $\hat{t}_{y}$
-\end_inset
-
-
-\series default
- .
-\begin_inset Newline newline
-\end_inset
-
-Används för att hantera bortfallsfel och ramfel.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Kvotestimator ska användas om 
-\series bold
-nämnaren
-\series default
- ändras vid ett annat urval.
+\begin_layout Enumerate
+Pilotstudie
 \end_layout
 
 \begin_layout EndFrame
 
 \end_layout
 
-\begin_layout BeginFrame
-Populationsparametrar av intresse
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-t_{y}=t_{\mathcal{U},y}=\sum_{i\in\mathcal{U}}y_{i}=\sum_{i=1}^{N}y_{i}=\mbox{Populationstotalen för variabel \ensuremath{y}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{U}}=\frac{1}{N}\sum_{i\in\mathcal{U}}y_{i}=\mbox{Populationsmedelvärde för variabel \ensuremath{y}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-S_{y}=\sqrt{\frac{1}{N-1}\sum_{i=1}^{N}\left(y_{i}-\bar{y}_{\mathcal{U}}\right)^{2}}=\mbox{Populationsstandardavvikelse}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-B=\frac{\bar{y}_{\mathcal{U}}}{\bar{x}_{\mathcal{U}}}=\frac{t_{y}}{t_{x}}=\mbox{Populationskvoten}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-R=\frac{\sum_{i\in\mathcal{U}}(x_{i}-\bar{x}_{\mathcal{U}})(y_{i}-\bar{y}_{\mathcal{U}})}{(N-1)S_{y}S_{x}}=\mbox{Populationskorrelationskoefficienten}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Estimatorer
-\end_layout
-
-\begin_layout Itemize
-Skattningen av kvoten görs på följande sätt:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{B}=\frac{\bar{y}_{\mathcal{S}}}{\bar{x}_{\mathcal{S}}}=\frac{\sum_{i\in\mathcal{S}}y_{i}}{\sum_{i\in\mathcal{S}}x_{i}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om vi känner till 
-\begin_inset Formula $t_{x}$
-\end_inset
-
- kan vi använda 
-\begin_inset Formula $x$
-\end_inset
-
- som 
-\series bold
-hjälpvariabel
-\series default
- för att skatta 
-\begin_inset Formula $t_{y}$
-\end_inset
-
- med 
-\series bold
-bättre precision
-\series default
- på följande sätt:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{\bar{y}}_{r}=\hat{B}\bar{x}_{\mathcal{U}}=\mbox{kvotskattning av }\bar{y}_{\mathcal{U}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{t}_{r,y}=\hat{B}t_{x}=\mbox{kvotskattning av \ensuremath{t_{y}}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Estimatorer II
-\end_layout
-
-\begin_layout Itemize
-En kvotskattning bygger på modellen
-\begin_inset Formula 
-\[
-y_{i}=Bx_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Detta innebär att kvotestimation ökar precisionen när:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-(a) Korrelationen i populationen är tillräckligt stor (
-\series bold
-och
-\series default
- positiv)
-\end_layout
-
-\begin_layout Itemize
-(b) När den sanna 
-\begin_inset Quotes eld
-\end_inset
-
-regressionslinjen
-\begin_inset Quotes erd
-\end_inset
-
- i populationen, 
-\begin_inset Formula $B$
-\end_inset
-
-, går genom 0 
-\begin_inset Newline newline
-\end_inset
-
-(annars använder vi regressionsestimaton)
-\end_layout
-
-\end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Kallas ofta för 
-\series bold
-modell-assisterad
-\series default
- estimation.
-\end_layout
-
-\begin_layout EndFrame
-
+\begin_layout Subsection
+Svarsprocessen
 \end_layout
 
 \begin_layout Standard
@@ -719,166 +515,9 @@ status open
 
 
 \backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
+frame{
 \backslash
-frametitle{Exempel: Brott i bostadsområden}
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-par(mfrow=c(1,3))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-n <- 100 
-\end_layout
-
-\begin_layout Plain Layout
-
-x <- rgamma(n=n, shape=10,rate=1) 
-\end_layout
-
-\begin_layout Plain Layout
-
-B <- rnorm(n=n, mean=3, sd=0.2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-y <- B*x 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-abline(lm(y~x-1), col="red") 
-\end_layout
-
-\begin_layout Plain Layout
-
-title(paste("cor =", round(cor(x,y),2)))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-B <- rnorm(n=n, mean=0, sd=0.2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-y <- B*x + 10 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-abline(lm(y~x-1), col="red") 
-\end_layout
-
-\begin_layout Plain Layout
-
-title(paste("cor =", round(cor(x,y),2)))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-B <- rnorm(n=n, mean=-4, sd=1) 
-\end_layout
-
-\begin_layout Plain Layout
-
-y <- B*x + 100 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-plot(x,y, xlim=c(0,max(x)), ylim=c(0,max(y))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-abline(lm(y~x-1), col="red") 
-\end_layout
-
-\begin_layout Plain Layout
-
-title(paste("cor =", round(cor(x,y),2))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-par(mfrow=c(1,1))
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
+subsectionpage}
 \end_layout
 
 \end_inset
@@ -887,1358 +526,1226 @@ end{frame}
 \end_layout
 
 \begin_layout BeginFrame
-Bias
+Svarsprocessen
 \end_layout
 
 \begin_layout Itemize
+En respondents svarsprocess ser ut på följande sätt:
+\end_layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Formula $\hat{\bar{y}}_{r}$
+\begin_layout Enumerate
+Förstå frågan 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Språk
+\end_layout
+
+\begin_layout Enumerate
+Facktermer
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skaffa relevant information / minnas
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Recall bias
+\end_layout
+
+\begin_layout Enumerate
+Telescoping
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Formulera ställningstagande 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Acuiencance bias
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Anpassa svaret till givna svarsalternativ
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Priming
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Justera svaret
+\end_layout
+
+\begin_layout Standard
+För detaljer kring svarsprocessen, se 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "tourangeau2000psychology"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Frågekonstruktion
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
 \end_inset
 
 
-\family default
-\series default
+\end_layout
+
+\begin_layout BeginFrame
+Olika typer av frågor
+\end_layout
+
+\begin_layout Itemize
+Frågekonstruktion är ett svårt hantverk!
+\end_layout
+
+\begin_layout Itemize
+Faktafrågor / direkta frågor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Exempel: 
 \shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- är dock inte en (design) väntevärdesriktig skattning av 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 
-\begin_inset Formula $\bar{y}_{\mathcal{U}}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- utan det finns en 
-\series bold
-bias
-\series default
- 
 \begin_inset Newline newline
 \end_inset
 
-(se 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "s. 125 "
-key "lohr2009sampling"
-
-\end_inset
-
-för detaljer)
-\begin_inset Formula 
-\[
-Bias(\hat{\bar{y}}_{r})\approx\left(1-\frac{n}{N}\right)\frac{\left(BS_{x}^{2}-RS_{x}S_{y}\right)}{n\bar{x}_{\mathcal{U}}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Bias minskas således av
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $n$
-\end_inset
-
- är stort
-\end_layout
-
-\begin_layout Itemize
-urvalsfraktionen 
-\begin_inset Formula $\frac{n}{N}$
-\end_inset
-
- är stor
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\bar{x}_{\mathcal{U}}$
-\end_inset
-
- är stor och 
-\begin_inset Formula $S_{x}$
-\end_inset
-
- är litet
-\end_layout
-
-\begin_layout Itemize
-Populationskorrelationen 
-\begin_inset Formula $R$
-\end_inset
-
- är hög
+Går du i en kommunal eller fristående skola?
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Varians
-\end_layout
-
 \begin_layout Itemize
-Variansen för 
-\begin_inset Formula $\hat{B}$
-\end_inset
-
- skattas (se 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "s. 125 f."
-key "lohr2009sampling"
-
-\end_inset
-
- för detaljer)
-\begin_inset Formula 
-\[
-\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{s_{e}^{2}}{n\bar{x}_{\mathcal{S}}^{2}}
-\]
-
-\end_inset
-
- där 
-\begin_inset Formula 
-\[
-s_{e}^{2}=\frac{1}{n-1}\sum_{i\in\mathcal{S}}e_{i}^{2}\mbox{ och }e_{i}=y_{i}-\hat{B}x_{i}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- är residualerna kring linjen.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Variansen minskas av
+Attitydfrågor
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Små 
-\begin_inset Formula $e_{i}$
+
+\shape italic
+Exempel: 
+\shape default
+
+\begin_inset Newline newline
 \end_inset
 
- (bra modell)
+Vad tycker du om följande i din skola? Toaletterna, Lärarna
 \end_layout
 
 \begin_layout Itemize
-Liten urvalsfraktion 
-\begin_inset Formula $\frac{n}{N}$
-\end_inset
-
-
+Attityder skapas ofta i stunden
 \end_layout
 
 \begin_layout Itemize
-Stort 
-\begin_inset Formula $n$
-\end_inset
+Attityder styrs av respondentens intresse
+\end_layout
 
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ju ointressantare en fråga är (för respondenten) destå större chans att
+ attityden skapas i stunden.
+\end_layout
+
+\begin_layout Plain Layout
+Attitydfrågor - vissa kan vara stabila, andra skapas i stunden.
  
 \end_layout
 
-\begin_layout Itemize
-Stort 
-\begin_inset Formula $\bar{x}_{\mathcal{S}}^{2}$
-\end_inset
-
-
+\begin_layout Plain Layout
+Var observant på frågor folk inte intresserar/betyder ngt sig för.
+ Ex.
+ Vad tycker du om Electrolux senaste modell? Jmf Vad tycker du om ditt senaste
+ läkarbesök.
 \end_layout
 
-\end_deeper
-\begin_layout EndFrame
+\begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout BeginFrame
-Varians II
-\end_layout
-
-\begin_layout Itemize
-Om vi 
 \series bold
-känner till
+Exempel:
+\end_layout
+
+\begin_layout Plain Layout
+Vad tycker ni om Lokaltrafiken i Linköping?
+\end_layout
+
+\begin_layout Plain Layout
+Vad tycker ni om Moderaterna?
+\end_layout
+
+\begin_layout Plain Layout
+Vad tycker ni om priset på öl i studentpuben?
+\end_layout
+
+\begin_layout Plain Layout
+Vad tycker ni om färgen på whiteboardpennorna jag använder?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Påståendefrågor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Svårt att utforma neutrala påståenden
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Exempel: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Hur tycker du att det är i din skola?
+\begin_inset Newline newline
+\end_inset
+
+På din skola arbetar man aktivt för att motverka mobbing och annan kränkande
+ behandling
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Fördelar:
+\end_layout
+
+\begin_layout Plain Layout
+- Riktiga påståenden, aktuella och som alla kan förväntas ha en uppfattning
+ om 
+\end_layout
+
+\begin_layout Plain Layout
+- Bättre för attityder/värderingar än för rena faktafrågor
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Nackdelar: 
+\end_layout
+
+\begin_layout Plain Layout
+- Hypotetiska situationer 
+\end_layout
+
+\begin_layout Plain Layout
+- Uppmuntrar till ”acquiescence” (benägenhet att hålla med) 
+\end_layout
+
+\begin_layout Plain Layout
+- Osäkrare på sina svar 
+\end_layout
+
+\begin_layout Plain Layout
+- Svårt att utforma neutrala påståenden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att tänka på vid frågekonstruktion
+\end_layout
+
+\begin_layout Itemize
+Tydligt definierade frågor 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vad menar vi med de ord vi använder?
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Mindre bra fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Hur många barn har du?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Bättre (?) fråga : 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Hur många barn under 18 år har du? 
+\begin_inset Newline newline
+\end_inset
+
+Med barn menar vi biologiska barn, adopterade barn eller barn till eventuell
+ sammanboende partner och som bor hos dig minst 4 dagar per månad.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att tänka på vid frågekonstruktion II
+\end_layout
+
+\begin_layout Itemize
+Enkla och tydliga frågor utan (mindre kända) förkortningar och onödigt fackspråk
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+25 % (?) i Sverige har läs och skrivsvårigheter
+\end_layout
+
+\begin_layout Itemize
+En fråga ska förstås av 
+\series bold
+alla
 \series default
+ tänkbara respondenter
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Mindre bra fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Har du haft någon form av STI under det senaste halvåret?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Bättre (?) fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Har du haft någon form av könssjukdom (ex.
+ klamydia, gonnorré eller syfilis) under det senaste halvåret?
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att tänka på vid frågekonstruktion III
+\end_layout
+
+\begin_layout Itemize
+Försök sätta dig in i olika respondenters situationer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utgå inte bara från dig själv 
+\end_layout
+
+\begin_layout Itemize
+Försök sätta dig in i olika respondenters situationer
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Mindre bra fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Vilket transportmedel använde du för att ta dig till jobbet imorse?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Bättre (?) fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Vilket av följande transportmedel använde du senast? 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att tänka på vid frågekonstruktion IV
+\end_layout
+
+\begin_layout Itemize
+Precisa tids- och rumsangivelser
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Mindre bra fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Har du under denna höst varit så sjuk att du besökt en läkare till på grund
+ av matförgiftning?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Bättre (?) fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Har du sedan den första november besökt en vårdcentral/hälsocentral eller
+ sjukhus för att söka vård för matförgiftning? 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att tänka på vid frågekonstruktion V
+\end_layout
+
+\begin_layout Itemize
+Endast en fråga år gången
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Mindre bra fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Tycker du att dina lärare tror på dig och din förmåga att lära?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Bättre (?) frågor: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Tycker du att de flesta av dina lärare tror på dig som person? 
+\begin_inset Newline newline
+\end_inset
+
+Tycker du att de flesta av dina lärare tror på din förmåga att lära?
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Neutrala frågor
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Mindre bra fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Många föräldrar sätter säkerheten för sitt barn högst, hur prioriterar du
+ själv ditt barns säkerhet?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Bättre (?) fråga: 
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Av följande alternativ, vad tycker du är viktigast för ditt barn?
+\begin_inset Newline newline
+\end_inset
+
+Säkerhet, utbildning, kärlek...
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att tänka på vid frågekonstruktion IV
+\end_layout
+
+\begin_layout Itemize
+Generellt bör följande undvikas...
  
-\begin_inset Formula $\bar{x}_{\mathcal{U}}$
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+negatitioner
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+långa ord och meningar
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+facktermer och förkortningar
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+bildspråk
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+svåra begrepp
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+hypotetiska frågor
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel på frågor att diskutera
+\end_layout
+
+\begin_layout Itemize
+Hur mycket eller lite tycker du att du bryr dig om och engagerar dig i skolarbet
+et?
+\end_layout
+
+\begin_layout Itemize
+Har du haft skuldkänslor för att du varit otrogen mot din partner?
+\end_layout
+
+\begin_layout Itemize
+Slog, sparkade eller utsatte någon dig med avsikt för något annat fysiskt
+ våld, så att du skadades eller så att det gjorde ont, under förra året?
+\end_layout
+
+\begin_layout Itemize
+Hur många år har du arbetat som lärare?
+\end_layout
+
+\begin_layout Itemize
+Kräver Ert arbete tunga lyft?
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Känsliga frågor
+\end_layout
+
+\begin_layout Itemize
+Känsliga områden är ...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Brott
+\end_layout
+
+\begin_layout Itemize
+Sexualitet
+\end_layout
+
+\begin_layout Itemize
+Hälsa
+\end_layout
+
+\begin_layout Itemize
+Politiska sympatier
+\end_layout
+
+\begin_layout Itemize
+Ekonomi
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
 \end_inset
 
- och 
-\begin_inset Formula $t_{x}$
+Avvikande
+\begin_inset Quotes erd
 \end_inset
 
- så kan vi använda detta för att få mindre varians när vi skattar 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
+ beteende
+\end_layout
 
-\begin_inset Formula $\hat{\bar{y}}_{r}$
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vad som är känsligt är olika för 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+olika personer 
+\end_layout
+
+\begin_layout Itemize
+i olika tider
+\end_layout
+
+\begin_layout Itemize
+i olika undersökningar
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Känsliga frågor II
+\end_layout
+
+\begin_layout Itemize
+Placera känsliga frågor i slutet av ett frågeformulär
+\end_layout
+
+\begin_layout Itemize
+Påståendefrågor kan vara bra för känsliga frågor
+\end_layout
+
+\begin_layout Itemize
+Känsliga frågor har ofta en (negativ) bias
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Svårt att uppskatta absoluta tal, bättre att undersöka skillnader över tid
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ex.
+ drog- och alkoholanvändning.
+\end_layout
+
 \end_inset
 
- och 
-\begin_inset Formula $\hat{t}_{r,y}$
+
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hur flera av dessa uppgifter regleras i Personuppgiftslagen (
+\begin_inset CommandInset citation
+LatexCommand citealt
+key "PUL"
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Känns något det minsta tveksamt, konsultera en jurist eller Datainspektionen.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Svarsalternativ
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Svarsalternativ
+\end_layout
+
+\begin_layout Itemize
+Svarsalternativ ska vara...
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ett svar på frågan
+\end_layout
+
+\begin_layout Itemize
+Ömsesidigt uttömmande och uteslutande
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Exempelvis brottskoder
+\end_layout
+
+\begin_layout Plain Layout
+Bedrägeri med datamaskin
+\end_layout
+
+\begin_layout Plain Layout
+Bedrägeri på internet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Överblickbara
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Inte allt för många alternativ (runt 7).
+ I webb går det att klicka sig vidare.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Jämna skalsteg 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Svarsalternativ ger signaler om vad som är normalt till respondenten så...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Undvik fasta alternativ om möjligt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Respondenter tolkar det som är normalt att ligga i mitten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Svarsalternativ
+\end_layout
+
+\begin_layout Itemize
+I vissa fall kan öppna frågor vara att föredra för att respektera respondenterna
 :
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{Var}(\hat{\bar{y}}_{r})=\hat{Var}(\hat{B}\bar{x}_{\mathcal{U}})=\bar{x}_{\mathcal{U}}^{2}\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-Var(\hat{t}_{r,y})=Var(\hat{B}t_{x})=t_{x}^{2}Var(\hat{B})=\left(1-\frac{n}{N}\right)\left(\frac{t_{x}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
+\begin_deeper
 \begin_layout Itemize
-Om 
-\begin_inset Formula $n$
-\end_inset
-
- är stort blir 
-\begin_inset Formula $\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\approx1$
-\end_inset
-
- och 
-\begin_inset Formula $\left(\frac{t_{x}}{\bar{x}_{\mathcal{S}}}\right)^{2}\approx N^{2}$
-\end_inset
-
-
+Ex.
+ kön och hudfärg
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-Vinsten uppstår om modelen är bra 
-\begin_inset Formula $y_{i}-\hat{B}x_{i}<y_{i}-\bar{y}$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-(Återkommer vid regressionsestimation)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om urvalen är tillräckligt stora kan vi använda 
-\series bold
-centrala gränsvärdessatsen
-\series default
- och beräknar konfidensintervall på följande sätt:
-\begin_inset Formula 
-\[
-\hat{B}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{B})},\hat{\bar{y}}_{r}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{\bar{y}}_{r})}\mbox{ och }\hat{t}_{r,y}\pm z_{\alpha/2}\sqrt{\hat{Var}(\hat{t}_{r,y})}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%Lägg in en graf liknande den på tidigare F gällande n och bias.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Mean squared error (MSE)
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $Bias(\hat{\bar{y}}_{r})^{2}$
-\end_inset
-
- minskar snabbare med urvalsstorleken (
-\begin_inset Formula $n$
-\end_inset
-
-) än 
-\begin_inset Formula $Var(\hat{\bar{y}}_{r})$
-\end_inset
-
- så (lite slarvigt):
-\begin_inset Formula 
-\[
-n\rightarrow\infty\mbox{ så }MSE(\hat{\bar{y}}_{r})\rightarrow Var(\hat{\bar{y}}_{r})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Om korrelationen mellan 
-\begin_inset Formula $x$
-\end_inset
-
- och 
-\begin_inset Formula $y$
-\end_inset
-
- är tillräckligt stor(
-\begin_inset Formula $R>\frac{1}{2}$
-\end_inset
-
-) blir 
-\begin_inset Formula $MSE(\hat{\bar{y}}_{r})<MSE(\hat{\bar{y}}_{\mathcal{U}})$
-\end_inset
-
- och 
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För större urval så är 
-\begin_inset Formula $Var(\hat{\bar{y}}_{r})<Var(\hat{\bar{y}}_{\mathcal{U}})$
-\end_inset
-
- (se 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "s. 133"
-key "lohr2009sampling"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: Brott i bostadsområden}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<fig.height=3.4, echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-burglary <- generateBurglary()
-\end_layout
-
-\begin_layout Plain Layout
-
-x <- burglary[['x']]
-\end_layout
-
-\begin_layout Plain Layout
-
-y <- burglary[['y']]
-\end_layout
-
-\begin_layout Plain Layout
-
-n <- burglary[['n']]
-\end_layout
-
-\begin_layout Plain Layout
-
-N <- burglary[['N']]
-\end_layout
-
-\begin_layout Plain Layout
-
-ratioSample <- samplingDistRatio(y, x, n, alpha=0.05)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Vi vill uppskatta det totala antalet utsatta för inbrott i 
-\backslash
-Sexpr{burglary[['N']]} bostadsområden ($y$).
- Vi vet antalet polisanmälningar ($x$) för alla områden och drar ett urval
- på $n=$
-\backslash
-Sexpr{burglary[['n']]}.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<fig.height=3.4, echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-qplot(x, y)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Korrelationen i populationen är 
-\backslash
-Sexpr{round(cor(x, y),3)}.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: Brott i bostadsområden II}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Teoretiska fördelningen med $K=$
-\backslash
-Sexpr{nrow(ratioSample)} stycken teoretiska urval.
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize', comment='', echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-ratioSample[sample(1:nrow(ratioSample), 20), c(1:4, 7, 9:12)]
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: Brott i bostadsområden III}
-\end_layout
-
-\begin_layout Plain Layout
-
-Samlingfördelningen för $
-\backslash
-hat{t}_{y,r}$ och $
-\backslash
-hat{t}_{y}$  då $t_y=$
-\backslash
-Sexpr{sum(y)}, $n=$
-\backslash
-Sexpr{n} och $N=$
-\backslash
-Sexpr{length(y)}.
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-xlimPlot<-c(min(ratioSample$t_hat_y),max(ratioSample$t_hat_y))
-\end_layout
-
-\begin_layout Plain Layout
-
-qplot(ratioSample$t_hat_yr, xlim=xlimPlot) +
-\end_layout
-
-\begin_layout Plain Layout
-
-	geom_vline(xintercept=sum(y),col="red") +
-\end_layout
-
-\begin_layout Plain Layout
-
-	geom_vline(xintercept=mean(ratioSample$t_hat_yr),col="blue") +
-\end_layout
-
-\begin_layout Plain Layout
-
-	xlab(expression(hat(t)[yr]))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-qplot(ratioSample$t_hat_y,xlim=xlimPlot) +
-\end_layout
-
-\begin_layout Plain Layout
-
-	geom_vline(xintercept=sum(y),col="red") +
-\end_layout
-
-\begin_layout Plain Layout
-
-	xlab(expression(hat(t)[yr]))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Effekten av kvotestimation
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Expectations
-\end_layout
-
-\begin_layout Plain Layout
-
-Ethatyr <- sum(ratioSample$P_S * ratioSample$t_hat_yr)
-\end_layout
-
-\begin_layout Plain Layout
-
-Ethaty <- sum(ratioSample$P_S * ratioSample$t_hat_y)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Varians
-\end_layout
-
-\begin_layout Plain Layout
-
-Varthatyr<-sum(ratioSample$P_S * (ratioSample$t_hat_yr - Ethatyr)^2)
-\end_layout
-
-\begin_layout Plain Layout
-
-Varthaty<-sum(ratioSample$P_S * (ratioSample$t_hat_y - Ethaty)^2)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Bias
-\end_layout
-
-\begin_layout Plain Layout
-
-Biasthatyr <- Ethatyr - sum(y)
-\end_layout
-
-\begin_layout Plain Layout
-
-Biasthaty <- Ethaty - sum(y)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# MSE
-\end_layout
-
-\begin_layout Plain Layout
-
-MSEthatyr<-sum(ratioSample$P_S * (ratioSample$t_hat_yr - sum(y))^2)
-\end_layout
-
-\begin_layout Plain Layout
-
-MSEthaty<-sum(ratioSample$P_S * (ratioSample$t_hat_y - sum(y))^2)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Skillnaden mellan kvotestimatorn och den 
-\begin_inset Quotes eld
-\end_inset
-
-vanliga
-\begin_inset Quotes erd
-\end_inset
-
- estimatorn
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\begin{array}{ccccccc}
-E(\hat{t}_{yr}) & = & \Sexpr{Ethatyr} &  & E(\hat{t}_{y}) & = & \Sexpr{Ethaty}\\
-Var(\hat{t}_{yr}) & = & \Sexpr{Varthatyr} &  & Var(\hat{t}_{y}) & = & \Sexpr{Varthaty}\\
-Bias(\hat{t}_{yr}) & = & \Sexpr{Biasthatyr} &  & Bias(\hat{t}_{y}) & = & \Sexpr{Biasthaty}\\
-MSE(\hat{t}_{yr}) & = & \Sexpr{MSEthatyr} &  & MSE(\hat{t}_{y}) & = & \Sexpr{MSEthaty}\\
-\\
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: Sockermängd i apelsiner
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-n <- 15
-\end_layout
-
-\begin_layout Plain Layout
-
-orange <- generateOrgange(n=n)
-\end_layout
-
-\begin_layout Plain Layout
-
-data <- orange[["data"]]
-\end_layout
-
-\begin_layout Plain Layout
-
-tot <- orange[["xTot"]]
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Intresserade av att uppskatta den 
-\series bold
-totala
-\series default
- sockermängden i en lastbil apelsiner.
-\end_layout
-
-\begin_layout Itemize
-Vi undersöker ett OSU av 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-n
-\end_layout
-
-\end_inset
-
- apelsiner och för respektive apelsin mäts vikt och sockermängd.
-\end_layout
-
-\begin_layout Itemize
-Den totala vikten för hela lasten är 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-tot
-\end_layout
-
-\end_inset
-
- kg.
-\end_layout
-
-\begin_layout Itemize
-Skatta den totala mängden socker i hela lasten med tillhörande konfidensinterval
-l.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: Sockermängd, data}
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=2.3,warning=FALSE,message=FALSE,echo=FALSE,
- comment="">>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-data
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: Sockermängd, data}
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=4,warning=FALSE,message=FALSE,echo=FALSE,
- comment="">>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-qplot(data$vikt, data$socker) + 
-\end_layout
-
-\begin_layout Plain Layout
-
-xlab("Vikt i kg") + 
-\end_layout
-
-\begin_layout Plain Layout
-
-ylab("Socker i kg") 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: Sockermängd i apelsiner V
-\end_layout
-
-\begin_layout Itemize
-Det hade i detta fall inte varit möjligt att räkna ut totala sockermängden
- utan hjälpinformationen vikt.
-\end_layout
-
-\begin_layout Itemize
-Det är tydligt att i detta fall fungerar kvotestimatorn då 
-\begin_inset Formula $y$
-\end_inset
-
- måste vara 0 då 
-\begin_inset Formula $x=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Kvotestimatorn som kalibrering
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Kvotestimation som kalibrering
-\end_layout
-
-\begin_layout Itemize
-En kvotestimator kan även uttryckas i form av vikter
-\begin_inset Formula 
-\[
-\hat{t}_{y}=\sum_{i\in\mathcal{S}}w_{i}y_{i}\mbox{ och }\hat{t}_{yr}=\frac{t_{x}}{\hat{t}_{x}}\sum_{i\in\mathcal{S}}w_{i}y_{i}=\sum_{i\in\mathcal{S}}w_{i}g_{i}y_{i}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula 
-\[
-g_{i}=\frac{t_{x}}{\hat{t}_{x}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-På detta sätt 
-\series bold
-kalibreras
-\series default
- vikterna 
-\begin_inset Formula $w_{i}$
-\end_inset
-
- till de
-\series bold
- kända populationstotalerna
-\series default
-
-\begin_inset Formula 
-\[
-\sum_{i\in\mathcal{S}}w_{i}g_{i}x_{i}=\frac{t_{x}}{\hat{t}_{x}}\sum_{i\in\mathcal{S}}w_{i}x_{i}=\frac{t_{x}}{\hat{t}_{x}}\hat{t}_{x}=t_{x}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Detta är principen när vi bortfallskalibrerar (fast då använder vi ofta
- regressionsestimatorn istället).
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: Kalibrering 
-\end_layout
-
-\begin_layout Itemize
-Vi är intresserade av 
-\series bold
-antalet
-\series default
- personer som känner sig otrygga under helgkvällar år 2013 och i Norrköpings
- kommun (
-\begin_inset Formula $N$
-\end_inset
-
-=130 623 ) varav 64 851 män och 65 772 kvinnor.
-\end_layout
-
-\begin_layout Itemize
-Vi undersöker 1140 personer och av dessa svarar 789 personer.
-\end_layout
-
-\begin_layout Itemize
-Av de svarande är 424 kvinnor och 315 män och av männen svarar 45 att de
- har kännt sig otrygga och bland kvinnorna 192.
-\end_layout
-
-\begin_layout Itemize
-Vid en bortfallsanalys visar det sig att bortfallet är större bland män
- än bland kvinnor.
-\end_layout
-
-\begin_layout Itemize
-Beräkna 
-\begin_inset Formula $g$
-\end_inset
-
--vikten för män och kvinnor och gör en totalskattning av antalet otrygga.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Subsection
-Redovisningsgrupper
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout NoteItem
-Läs på detta lite mer och gör ett eget exempel
-\end_layout
-
-\begin_layout BeginFrame
-Redovisningsgrupper
-\end_layout
-
-\begin_layout Itemize
-Ofta finns ett intresse att producera skattningar i mindre delar av populationen
-, dessa kallas 
-\series bold
-domäner
-\series default
- eller 
-\series bold
-redovisningsgrupper
-\end_layout
-
-\begin_layout Itemize
-Vanliga redovisningsgrupper/domäner är kön, ålder och geografi
-\end_layout
-
-\begin_layout Itemize
-Ibland 
-\series bold
-väldigt många
-\series default
- domäner
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $n$
-\end_inset
-
- i varje domän blir mycket litet (ibland 
-\begin_inset Formula $n=0$
-\end_inset
-
-), kallas 
-\series bold
-Small area estimation
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Redovisningsgrupper II
-\end_layout
-
-\begin_layout Itemize
-Det finns två typer av domänestimation:
+Använd klassifikationsstandarder om det finns.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-När urvalet i domänen är 
+De flesta klassifikationer finns i 
 \series bold
-fast
-\series default
- (ex.
- vid stratifiering)
-\begin_inset Newline newline
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "SCB:s klassifikationsdatabas"
+target "https://www.h2.scb.se/metadata/klassdb.aspx"
+
 \end_inset
 
-Precis som vanligt (fast med mindre urval)
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ha alltid en 
+\begin_inset Quotes eld
+\end_inset
+
+vet ej
+\begin_inset Quotes erd
+\end_inset
+
+-utväg för respondenten
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Annars riskeras partiellt bortfall
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Använd inte ja/nej-alternativ i attitydfrågor
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Introduktionsbrev / Missivbrev
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktionsbrev / Missivbrev
 \end_layout
 
 \begin_layout Itemize
-När urvalet i domänen är 
-\series bold
-slumpmässigt
-\series default
+Obligatoriskt innehåll
+\end_layout
 
-\begin_inset Newline newline
+\begin_deeper
+\begin_layout Itemize
+Lagar som gäller
+\end_layout
+
+\begin_layout Itemize
+Om samråd har gjorts
+\end_layout
+
+\begin_layout Itemize
+Personuppgifter och anonymitet
+\end_layout
+
+\begin_layout Itemize
+Vem kommer använda materialet
+\end_layout
+
+\begin_layout Itemize
+Beskriv undersökningens metod och urval och undersökningsperiod
+\end_layout
+
+\begin_layout Itemize
+Underteckna brevet (gärna av någon med auktoritet)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rekommendationer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sträva efter att respondnten känner sig unik
+\end_layout
+
+\begin_layout Itemize
+Intresseväckande frågor
+\end_layout
+
+\begin_layout Itemize
+Bra språk!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Se checklista i 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 87"
+key "japec1997minska"
+
 \end_inset
 
-Specialfall av kvotskattning där 
-\begin_inset Formula $n_{d}$
-\end_inset
 
- behöver skattas
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Statistiska analys av enkäter
+\end_layout
+
+\begin_layout BeginFrame
+Statistisk analys av enkäter
+\end_layout
+
+\begin_layout Itemize
+Två typer av felstrukturer gicks igenom på föreläsning 1.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Systematiska fel (bias)
+\end_layout
+
+\begin_layout Itemize
+Slumpmässiga fel (variance)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Närliggande begrepp från psykometrin är:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Validitet
+\end_layout
+
+\begin_layout Itemize
+Relibilitet
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Inom psykometri är reliabilitet viktigt för att:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tester (Test theory)
+\end_layout
+
+\begin_layout Itemize
+Mäta latenta egenskaper (factor analysis, SEM m.m.)
 \end_layout
 
 \end_deeper
@@ -2247,410 +1754,71 @@ Specialfall av kvotskattning där
 \end_layout
 
 \begin_layout BeginFrame
-Redovisningsgrupper - Notation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-N_{d}=\mbox{Antal observationer i domän }d
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\mathcal{U}_{d}=\{1,2,3,...,N_{d}\}=\mbox{Populationsmängden i domän }d
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-n_{d}=\mbox{Antal observationer i urvalet i domän }d
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\mathcal{S}_{d}=\{1,2,...,n_{d}\}=\mbox{Urvalsmängden i domän }d\mbox{ }(\mathcal{S}_{d}\subseteq\mathcal{U}_{d})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{U}_{d}}=\frac{1}{N_{d}}\sum_{i\in\mathcal{U}_{d}}y_{i}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{S}_{d}}=\frac{1}{n_{d}}\sum_{i\in\mathcal{S}_{d}}y_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Redovisningsgrupper - Estimation II
+Metoder för att estimera reliabilitet
 \end_layout
 
 \begin_layout Itemize
-Först skapar vi nya variabler för vår domän
+Test - retest 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\[
-x_{i}=\begin{cases}
-1 & \mbox{om }i\in\mathcal{U}_{d}\\
-0 & \mbox{om }i\notin\mathcal{U}_{d}
-\end{cases}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-u_{i}=y_{i}x_{i}=\begin{cases}
-y_{i} & \mbox{om }i\in\mathcal{U}_{d}\\
-0 & \mbox{om }i\notin\mathcal{U}_{d}
-\end{cases}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Redovisningsgrupper - Estimation III
+\begin_deeper
+\begin_layout Itemize
+Carryover effects 
 \end_layout
 
 \begin_layout Itemize
-Med hjälp av dessa variabler kan vi skatta 
-\begin_inset Formula $\bar{y}_{\mathcal{U}_{d}}$
-\end_inset
-
- med en kvotestimator 
-\begin_inset Formula 
-\[
-t_{x}=\sum_{i\in\mathcal{U}}x_{i}=N_{d}\mbox{ och }\bar{x}_{\mathcal{U}}=\frac{N_{d}}{N}
-\]
-
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-t_{u}=\sum_{i\in\mathcal{U}}u_{i}=\sum_{i\in\mathcal{U}_{d}}y_{i}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{U}_{d}}=\frac{t_{u}}{t_{x}}=B
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\bar{y}_{\mathcal{S}_{d}}=\bar{y}_{d}=\hat{B}=\frac{\bar{u}}{\bar{x}}=\frac{\hat{t}_{u}}{\hat{t}_{x}}
-\]
-
+Statistika: korrelationskoefficient 
+\begin_inset Formula $\rho$
 \end_inset
 
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Redovisningsgrupper - Estimation IV
-\end_layout
-
-\begin_layout Itemize
-För att beräkna medelfelet använder vi medelfelet från kvotestimatorn vilket
- ger 
-\begin_inset Formula $(*)$
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-(se 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "s. 135"
-key "lohr2009sampling"
-
-\end_inset
-
-)
-\begin_inset Formula 
-\[
-\hat{Var}(\bar{y}_{d})=\left(1-\frac{n}{N}\right)\frac{n}{n_{d}^{2}}\frac{(n_{d}-1)s_{yd}^{2}}{n-1}
-\]
-
-\end_inset
-
- där 
-\begin_inset Formula 
-\[
-s_{yd}^{2}=\frac{\sum_{i\in\mathcal{S}_{d}}(y_{i}-\bar{y}_{d})^{2}}{n_{d}-1}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Om 
-\begin_inset Formula $E(n_{d})$
-\end_inset
-
- är stort så är 
-\begin_inset Formula $(n_{d}-1)/n_{d}\approx1$
-\end_inset
-
- och 
-\begin_inset Formula $n/(n-1)\approx1$
-\end_inset
-
- vilket gör att 
-\begin_inset Formula 
-\[
-SE(\bar{y}_{d})\approx\sqrt{\left(1-\frac{n}{N}\right)\frac{s_{yd}^{2}}{n_{d}}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: Bygga ett resecentrum
-\end_layout
-
-\begin_layout Itemize
-Opinionsundersökning gällande inställning till att bygga ett resecentrum
- i Vaxholm
-\end_layout
-
-\begin_layout Itemize
-Vi drar ett OSU och frågar 
-\begin_inset Formula $n$
-\end_inset
-
- = 500 personer av 
-\begin_inset Formula $N$
-\end_inset
-
- = 11 141 (och har inget bortfall)
-\end_layout
-
-\begin_layout Itemize
-Av 500 svarande anger 277 att de är positiva.
-\end_layout
-
-\begin_layout Itemize
-Vi har även data redovisat i olika åldersgrupper.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Åldersgrupp
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Antal i urvalet (
-\begin_inset Formula $n$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Antal positiva
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-18-30 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-139
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-103
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-31-65 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-281
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-142
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-66-80 år
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-80
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-32
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Pause
 
 \end_layout
 
 \begin_layout Itemize
-Vi är intresserade av 
-\series bold
-andelen
-\series default
- och 
-\series bold
-totalen
-\series default
- som är positiva i åldersgruppen 18-30 år samt populationen som helhet.
+Parallella enkäter / Split-half
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Fungerar bara då flera frågor mäter samma sak
+\end_layout
+
+\begin_layout Itemize
+Statistika: Spearman - Brown
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Intern konsistens
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fungerar bara då flera frågor mäter samma sak
+\end_layout
+
+\begin_layout Itemize
+Enklare (samma test till alla)
+\end_layout
+
+\begin_layout Itemize
+Statistika: Cronbachs 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout EndFrame
 
 \end_layout

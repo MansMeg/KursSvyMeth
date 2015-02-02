@@ -103,7 +103,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 11
+Föreläsning 10
 \end_layout
 
 \begin_layout Author
@@ -230,1172 +230,6 @@ LatexCommand tableofcontents
 Klusterurval
 \end_layout
 
-\begin_layout Subsection
-Tvåstegs (eller flerstegs) klusterurval
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frame{
-\backslash
-subsectionpage}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Tvåstegs klusterurval
-\end_layout
-
-\begin_layout Itemize
-Första steget dras kluster/primära urvalsenheter (ex.
- skolor)
-\end_layout
-
-\begin_layout Itemize
-I andra steget dras sekundära urvalsenehter (ex.
- elever)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Det går att ha ytterligare steg om det finns behov
-\end_layout
-
-\begin_layout Itemize
-Det kan vara olika urvalsförfarande i de olika stegen (ex.
- stratifierat urval och/eller OSU)
-\begin_inset Newline newline
-\end_inset
-
-(brukar kallas 
-\series bold
-komplexa surveyer
-\series default
-)
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Notation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-N=\mbox{antal psus (skolor) i populationen}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-n=\mbox{antal psus (skolor) i urvalet}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-M_{i}=\mbox{antal ssus (elever) i skola \ensuremath{i}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-m_{i}=\mbox{antal ssus (elever) i psu (skola) }i\mbox{ i vårt urval}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-M_{0}=\mbox{antal ssus (elever) i populationen}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Tvåstegs klusterurval - Exempel
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../Old/Lectures/Pics/twophase.png
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Skillnad mellan enstegs och tvåstegs klusterurval.
- Källa: 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "ESS"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: BETSI
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Byggnaders energianvändning, tekniska status och inomhusmiljö (BETSI) 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "BETSITECH2009"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Structure
-status collapsed
-
-\begin_layout Plain Layout
-Boverket
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Syfte:
-\series default
- Kartlägga det svenska byggnadsbeståndet
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Målpopulation:
-\series default
- Byggnader med taxeringsvärde på minst 50 tkr och med minst 50 
-\begin_inset Formula $\mbox{m}^{2}$
-\end_inset
-
- samt individer i småbostadshus eller lägenhet
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Urval:
-\series default
- 
-\begin_inset Newline newline
-\end_inset
-
-Flerstegsurval
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Steg I: Stratifierat klusterurval av kommuner (pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps)
-\end_layout
-
-\begin_layout Itemize
-Steg II: Stratifierat klusterurval av värderings/taxeringsenhet (OSU och
- pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps)
-\end_layout
-
-\begin_layout Itemize
-Steg III: Klusterurval av byggnad (OSU)
-\end_layout
-
-\begin_layout Itemize
-Steg IV: Lägenhet (OSU)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Bortfall:
-\series default
- 21-35 % (beroende på byggnad)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Datainsamlingsmetod:
-\series default
- Besiktningar och pappersenkäter
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Periodicitet
-\series default
-: Ett tillfälle (?)
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Estimation vid tvåstegs klusterurval
-\end_layout
-
-\begin_layout Itemize
-Vid enstegs klusterurval är 
-\begin_inset Formula 
-\[
-\hat{t}_{unb}=N\bar{t}=N\frac{1}{n}\sum_{i\in S}t_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Vid tvåstegs klusterurval är 
-\begin_inset Formula $t_{i}$
-\end_inset
-
- inte känd, utan måste först skattas
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi kan i princip välja vilket skattninsgmetod vi vill 
-\begin_inset Newline newline
-\end_inset
-
-(unbiased, kvot- eller regressionsskattning)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi skattar med den vanliga väntevärdesriktiga estimatorn 
-\begin_inset Formula 
-\[
-\hat{t}_{i}=M_{i}\bar{y}_{i}=M_{i}\sum_{j\in\mathcal{S}_{i}}\frac{y_{ij}}{m_{i}}
-\]
-
-\end_inset
-
-vilket ger 
-\begin_inset Formula $(*)$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\hat{t}_{unb}=N\bar{t}=\frac{N}{n}\sum_{i\in\mathcal{S}}M_{i}\bar{y}_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Variansskattning vid tvåstegs klusterurval
-\end_layout
-
-\begin_layout Itemize
-Vid enstegs klusterurval är 
-\begin_inset Formula 
-\[
-\hat{Var}(\hat{t}_{unb})=N^{2}\left(1-\frac{n}{N}\right)\frac{s_{t}^{2}}{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Vid tvåstegs klusterurval måste vår osäkerhet i skattningen 
-\begin_inset Formula $\hat{t}_{i}$
-\end_inset
-
- tas i beaktande
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Detta ger följande variansskattning
-\begin_inset Formula 
-\[
-Var(\hat{t}_{unb})=N^{2}\left(1-\frac{n}{N}\right)\frac{s_{t}^{2}}{n}+\frac{N}{n}\sum_{i\in\mathcal{S}}M_{i}^{2}\left(1-\frac{m_{i}}{M_{i}}\right)\frac{s_{i}^{2}}{m_{i}}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula 
-\[
-s_{i}^{2}=\frac{1}{m_{i}-1}\sum_{i\in\mathcal{S}}(y_{ij}-\bar{y}_{i})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Variansen består av två delar - 
-\series bold
-inom
-\series default
- psu:s och 
-\series bold
-mellan
-\series default
- psu:s
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Variansskattning vid tvåstegs klusterurval II
-\end_layout
-
-\begin_layout Itemize
-Precis som innan fungerar denna variansskattning bra om psu (ex.
- skolor) är ungefär lika stora
-\end_layout
-
-\begin_layout Itemize
-Annars använder vi kvotskattning (se 
-\begin_inset CommandInset citation
-LatexCommand citealp
-after "s. 186"
-key "lohr2009sampling"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Den andra delen av variansskattningen (inom psu) är ofta betydligt mindre
- än den första delen (mellan psu) 
-\end_layout
-
-\begin_layout Itemize
-Därför används ibland
-\begin_inset Formula 
-\[
-Var_{WR}(\hat{t}_{unb})=N^{2}\frac{s_{t}^{2}}{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Konfidensintervallen beräknar vi (som vanligt)
-\begin_inset Formula 
-\[
-\hat{t}_{unb}\pm z_{\alpha/2}\sqrt{Var(\hat{t}_{unb})}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-N<-10 
-\end_layout
-
-\begin_layout Plain Layout
-
-M0<-round(N*22.45)
-\end_layout
-
-\begin_layout Plain Layout
-
-M<-round(rnorm(3,22.45,5))
-\end_layout
-
-\begin_layout Plain Layout
-
-n<-3 
-\end_layout
-
-\begin_layout Plain Layout
-
-m<-10 
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: IT-användning i skolan
-\end_layout
-
-\begin_layout Itemize
-Vi vill undersöka IT-användningen i ett rektorsområde med 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-N
-\end_layout
-
-\end_inset
-
- skolor.
- 
-\end_layout
-
-\begin_layout Itemize
-Syftet är att undersöka vid hur många lektioner datorer används i skolan
- i genomsnitt.
-\end_layout
-
-\begin_layout Itemize
-Vi drar ett urval på 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-n
-\end_layout
-
-\end_inset
-
- skolor och i varje skola drar vi 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-m
-\end_layout
-
-\end_inset
-
- slumpvisa lärare.
-\end_layout
-
-\begin_layout Itemize
-Vi vet att totalt arbetar 
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-M0
-\end_layout
-
-\end_inset
-
- lärare i rektorsområdet.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: IT-användning i skolan II}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='scriptsize',fig.height=4.2,warning=FALSE,message=FALSE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-set.seed(20130101)  
-\end_layout
-
-\begin_layout Plain Layout
-
-data<-data.frame(school=rep(1:3,m)) 
-\end_layout
-
-\begin_layout Plain Layout
-
-data$ant.h<-round(rnorm(m*n,data$school*5,10)) 
-\end_layout
-
-\begin_layout Plain Layout
-
-data$ant.h[data$ant.h<0]<-0 
-\end_layout
-
-\begin_layout Plain Layout
-
-data$school<-factor(data$school,labels=c("Eriksdal", "Sofia", "Hogalid"))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-y.bar<-tapply(data$ant.h,data$school,mean) 
-\end_layout
-
-\begin_layout Plain Layout
-
-t.i<-round(M*y.bar,1)
-\end_layout
-
-\begin_layout Plain Layout
-
-sd.t.i<-round(sd(t.i),2)
-\end_layout
-
-\begin_layout Plain Layout
-
-s.i<-round(tapply(data$ant.h,data$school,sd),2)
-\end_layout
-
-\begin_layout Plain Layout
-
-tot.est<-round(sum(M*y.bar)*(N/n),2)
-\end_layout
-
-\begin_layout Plain Layout
-
-ybar.est<-round(tot.est/M0,2)
-\end_layout
-
-\begin_layout Plain Layout
-
-part1<-round(sqrt(N^2*(1-n/N)*sd.t.i^2/n),1)
-\end_layout
-
-\begin_layout Plain Layout
-
-part2<-round(sqrt((N/n)*sum(M^2*(1-m/M)*s.i/m)),1)
-\end_layout
-
-\begin_layout Plain Layout
-
-sd.total<-round(sqrt(part1^2 +part2^2))
-\end_layout
-
-\begin_layout Plain Layout
-
-sd.mean<-sd.total/M0
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-ki.low<-ybar.est-1.96*sd.mean
-\end_layout
-
-\begin_layout Plain Layout
-
-ki.high<-ybar.est+1.96*sd.mean
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-ggplot(data, aes(x=ant.h)) + geom_histogram(fill="white", colour="black")
- + facet_grid(school ~ .)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout BeginFrame
-Exempel: IT-användning i skolan III
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="6">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Skola
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $m_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $M_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\bar{y}_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\hat{t}_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $s_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Eriksdal
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-m
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-M[1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-y.bar[1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-t.i[1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-s.i[1]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sofia
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-m
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-M[2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-y.bar[2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-t.i[2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-s.i[2]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Högalid
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-m
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-M[3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-y.bar[3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-t.i[3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Flex S/R expression
-status collapsed
-
-\begin_layout Plain Layout
-
-s.i[3]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Section
-Urval med olika inklusionssannolikheter
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1415,140 +249,16 @@ sectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Introduktion till pps och 
-\begin_inset Formula $\pi$
-\end_inset
-
-ps
+Introduktion till klusterurval
 \end_layout
 
 \begin_layout Itemize
-Vid stratifiering såg vi att vi fick en lägre 
-\begin_inset Formula $Var(\hat{\ensuremath{t}})$
-\end_inset
-
- om vi allokerade urvalet efter varians (Neymannallokering)
-\end_layout
-
-\begin_layout Itemize
-Urval med olika inklusionssannolikheter - en 
-\begin_inset Quotes eld
-\end_inset
-
-kontinuerlig stratifiering
-\begin_inset Quotes erd
-\end_inset
-
- efter en variabel 
-\begin_inset Formula $x$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Probability proportional to size
-\series default
- (pps) vid urval med återläggning
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\pi$
-\end_inset
-
-
-\series bold
- proportional to size
-\series default
- (
-\begin_inset Formula $\pi$
-\end_inset
-
-ps) vid urval utan återläggning
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Ofta används pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps med 
-\begin_inset Quotes eld
-\end_inset
-
-storlek
-\begin_inset Quotes erd
-\end_inset
-
- som hjälpvariabel
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Introduktion till pps och 
-\begin_inset Formula $\pi$
-\end_inset
-
-ps
-\end_layout
-
-\begin_layout Itemize
-Fördelar med pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps
+Ibland finns naturliga grupper/kluster i populationen
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Med pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps får vi lägre 
-\begin_inset Formula $Var(\hat{\ensuremath{t}})$
-\end_inset
-
- om 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- är korrelerad med 
-\begin_inset Formula $Var(\hat{\ensuremath{t}}_{i})$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps ger 
-\begin_inset Quotes eld
-\end_inset
-
-självvägda
-\begin_inset Quotes erd
-\end_inset
-
- inklutionssannolikheter vid klusterurval - alla ssus (ex.
- elever) får samma inklusionssannolikhet
+Exempel: Skolor, Bostadsområden, Arbetsplatser, Hushåll 
 \end_layout
 
 \end_deeper
@@ -1557,289 +267,69 @@ självvägda
 \end_layout
 
 \begin_layout Itemize
-Nackdelar med pps/
-\begin_inset Formula $\pi$
-\end_inset
-
-ps
+I ett klusterurval dras ett urval av...
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Något mer komplicerad metod, särskilt 
-\begin_inset Formula $\pi$
-\end_inset
+kluster (primära urvalsenheter, psu) och
+\end_layout
 
-ps
+\begin_layout Itemize
+ett antal observationsenheter i varje kluster (sekundära enheter, ssu)
 \end_layout
 
 \end_deeper
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-pps-urval är enklare matematiskt (både att dra urvalet och estimation) men
- risken finns att vi får dubletter (vid mindre 
-\begin_inset Formula $N$
-\end_inset
-
-)
-\end_layout
-
 \begin_layout EndFrame
 
 \end_layout
 
 \begin_layout BeginFrame
-Notation
+Introduktion till klusterurval II
+\end_layout
+
+\begin_layout Itemize
+Klusterurval liknar stratifierat urval, men...
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-\psi_{i}=\mbox{ sannolikhet för att dra kluster \ensuremath{i}}
-\]
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Old/Lectures/Pics/StratClust.png
+	scale 30
 
 \end_inset
 
 
-\begin_inset Formula 
-\[
-\mathcal{R}=\mbox{Urvalsmängden (inklusive dubletter)}
-\]
+\begin_inset Caption
 
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\pi_{i}=P(\mbox{kluster }i\mbox{ ingår i urvalet})=\mbox{inklusionssannolikhet för kluster \ensuremath{i}}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-t_{i}=\mbox{ total i kluster \ensuremath{i}}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\hat{t}_{\psi}=\mbox{pps-skattning (Hansen-Hurwitz)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{t}_{HT}=\mbox{\pi ps-skattning (Horwitz-Thompson)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-pps-urval - teori
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Probability proportional to size
-\series default
- (pps) drar kluser med återläggning - en observation/kluster kan förekomma
- flera gånger 
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Vi byter därför ut vår indikatorvariabel 
-\begin_inset Formula $Z$
-\end_inset
-
- mot en antalsvariabel 
-\begin_inset Formula $Q$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Låt 
-\begin_inset Formula 
-\[
-Q_{i}=\mbox{antal gånger kluster \ensuremath{i}förekommer i urvalet}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-Q\sim\mbox{Bin}(n,\psi_{i})
-\]
-
-\end_inset
-
-vilket ger att 
-\begin_inset Formula 
-\[
-E(Q_{i})=n\psi_{i}=\pi_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För att skatta totalen använder vi oss av 
-\begin_inset Formula 
-\[
-\hat{t}_{\psi}=\frac{1}{n}\sum_{i\in\mathcal{R}}\frac{t_{i}}{\psi_{i}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\hat{t}_{\psi}$
-\end_inset
-
- är väntevärdesriktig 
-\begin_inset Formula $(*)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-pps-urval - teori II
-\end_layout
-
-\begin_layout Itemize
-För att skatta variansen använder vi oss av 
-\begin_inset Formula 
-\[
-\hat{Var}(\hat{t}_{\psi})=\frac{1}{n}\cdot\frac{\sum_{i\in\mathcal{R}}\left(\frac{t_{i}}{\psi_{i}}-\hat{t}_{\psi}\right)^{2}}{(n-1)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Eftersom det är ett urval med återläggning finns ingen ändlighetskorrektion.
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-För att minimera 
-\begin_inset Formula $Var(\hat{t}_{\psi}$
-\end_inset
-
-) så vill vi välja 
-\begin_inset Formula $\psi_{i}$
-\end_inset
-
- proportionellt mot 
-\begin_inset Formula $t_{i}$
-\end_inset
-
- - men vi känner inte 
-\begin_inset Formula $t_{i}$
-\end_inset
-
- ...
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-pps-urval - teori III
-\end_layout
-
-\begin_layout Itemize
-Ett vanligt sätt att välja 
-\begin_inset Formula $\psi_{i}$
-\end_inset
-
- är att välja kluster proportionellt mot klusterstorleken (därav namnet
- pps)
-\begin_inset Formula 
-\[
-\psi_{i}=\frac{M_{i}}{M_{0}}\mbox{ och }\sum_{i}^{N}\psi_{i}=1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Vikter kan beräknas på följande sätt
-\begin_inset Formula 
-\[
-w_{i}=\frac{1}{\pi_{i}}=\frac{1}{\psi_{i}n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Hur man drar urval (praktiskt) framgår i 
+\begin_layout Plain Layout
+Skillnad mellan stratifierat urval och klusterurval 
 \begin_inset CommandInset citation
 LatexCommand citet
-after "s. 225 ff."
+after "s. 167"
 key "lohr2009sampling"
 
 \end_inset
 
- 
-\begin_inset Newline newline
+
+\end_layout
+
 \end_inset
 
-(det är enkelt att göra i R med paketet 
-\family typewriter
-sampling
-\family default
-).
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout EndFrame
@@ -1847,189 +337,295 @@ sampling
 \end_layout
 
 \begin_layout BeginFrame
-Exempel - pps-urval
+Jämförelse stratifierat urval och klusterurval
 \end_layout
 
-\begin_layout Itemize
-Vi vill återigen skatta antalet lektioner då datorer används i undersvisningen
- i ett givet rektorsområde med 10 skolor
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Old/Lectures/Pics/STRS.jpg
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Vi vill nu dra ett pps-urval
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Stratifierat urval.
+ Källa: 
+\begin_inset CommandInset citation
+LatexCommand citeauthor
+key "korbedpsych.com"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Denna gång undersöker vi samtliga lärare på skolan för en given vecka.
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Jämförelse stratifierat urval och klusterurval II
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../Old/Lectures/Pics/Cluster.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Klusterurval.
+ Källa: 
+\begin_inset CommandInset citation
+LatexCommand citeauthor
+key "korbedpsych.com"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Jämförelse stratifierat urval och klusterurval III
+\end_layout
+
+\begin_layout Itemize
+Stratifierat urval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Mål:
+\series default
+ Stor skillnad mellan strata, liten inom strata 
+\end_layout
+
+\begin_layout Itemize
+Samtliga strata 
+\begin_inset Quotes eld
+\end_inset
+
+representerar
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\series bold
+sin del
+\series default
+ av målpopulationen
+\end_layout
+
+\begin_layout Itemize
+Vi tar ett OSU i 
+\series bold
+varje
+\series default
+ strata
+\end_layout
+
+\begin_layout Itemize
+Ju större skillnaden mellan strata ju 
+\series bold
+mindre
+\series default
+ design effect 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Maximal
+\series default
+ deff = 1 (lite grovt)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Klusterurval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Mål:
+\series default
+ Liten skillnad mellan kluster, stor skillnad inom kluster
+\end_layout
+
+\begin_layout Itemize
+Samtliga kluster 
+\begin_inset Quotes eld
+\end_inset
+
+representerar
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\series bold
+övriga
+\series default
+ kluster/målpopulationen
+\end_layout
+
+\begin_layout Itemize
+Vi tar ett OSU i 
+\series bold
+ett urval
+\series default
+ av kluster
+\end_layout
+
+\begin_layout Itemize
+Ju större skillnad mellan kluster ju 
+\series bold
+större
+\series default
+ design effect
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Minimal
+\series default
+ deff = 1 (lite grovt)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Introduktion till klusterurval III
+\end_layout
+
+\begin_layout Itemize
+Varför vill vi använda klusterurval? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Det är svårt eller omöjligt att konstruera en urvalsram
+\end_layout
+
+\begin_layout Itemize
+Det förekommer naturliga kluster vilket minskar insamlingskostnaden drastiskt
+\end_layout
+
+\begin_layout Itemize
+Andra metodologiska fördelar (ex.
+ lägre bortfall)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Varför vi vill undvika klusterurval?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nästan alltid sämre design effect än vid OSU
+\end_layout
+
+\begin_layout Itemize
+Kan vara lite mer komplicerat att beräkna
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Attityder till skolan
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Attityder till skolan 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ATS2010"
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
+\begin_inset Flex Structure
+status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[containsverbatim]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{Exempel: IT-användning i skolan II}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-<<size='small',comment='',echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-set.seed(20130301) 
-\end_layout
-
-\begin_layout Plain Layout
-
-N<-10  
-\end_layout
-
-\begin_layout Plain Layout
-
-M<-round(rgamma(N,shape=1*5,scale=22.45/5)) 
-\end_layout
-
-\begin_layout Plain Layout
-
-M0<-sum(M) 
-\end_layout
-
-\begin_layout Plain Layout
-
-ant.h<-round(rnorm(N,M*5,10))  
-\end_layout
-
-\begin_layout Plain Layout
-
-phi<-M/M0 
-\end_layout
-
-\begin_layout Plain Layout
-
-true.t<-sum(ant.h) 
-\end_layout
-
-\begin_layout Plain Layout
-
-ant.h.hat<-ant.h/phi 
-\end_layout
-
-\begin_layout Plain Layout
-
-samp.vec.pps<-samp.vec.srs<-numeric(N) 
-\end_layout
-
-\begin_layout Plain Layout
-
-samp.vec.pps[sample.int(N,size=3,replace=TRUE,prob=phi)]<-1 
-\end_layout
-
-\begin_layout Plain Layout
-
-samp.vec.srs[sample.int(N,size=3)]<-1 
-\end_layout
-
-\begin_layout Plain Layout
-
-school.data<-data.frame(school=1:N,
-\end_layout
-
-\begin_layout Plain Layout
-
-           teachers=M,
-\end_layout
-
-\begin_layout Plain Layout
-
-           t_i=ant.h,
-\end_layout
-
-\begin_layout Plain Layout
-
-           phi=phi,
-\end_layout
-
-\begin_layout Plain Layout
-
-           t.hat=ant.h.hat,
-\end_layout
-
-\begin_layout Plain Layout
-
-           sample.pps=samp.vec.pps,
-\end_layout
-
-\begin_layout Plain Layout
-
-		   sample.srs=samp.vec.srs)
-\end_layout
-
-\begin_layout Plain Layout
-
-school.data
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize} 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-item Den sanna totalen i populationen är 
-\backslash
-Sexpr{true.t}.
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
+Skolverket
 \end_layout
 
 \end_inset
@@ -2037,105 +633,69 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
-PPS-urval - tvåstegs klusterurval
+\begin_layout Itemize
+
+\series bold
+Syfte:
+\series default
+ Hur situationen ser ut för elever och lärare i skolan.
 \end_layout
 
 \begin_layout Itemize
-Dra kluster med sannolikhet 
-\begin_inset Formula $\psi_{i}$
-\end_inset
 
- (precis som vid enstegs klusterurval)
+\series bold
+Målpopulation:
+\series default
+ Yngre elever (årskurs 4-6) och äldre elever (årskurs 7-9 och gymnaisiet).
 \end_layout
 
 \begin_layout Itemize
-Nu är 
-\begin_inset Formula $t_{i}$
-\end_inset
 
- inte känd i varje urval eller kluster så 
-\begin_inset Formula $t_{i}$
-\end_inset
-
- måste skattas
-\end_layout
-
-\begin_layout Itemize
-Detta kan vi göra med vanligt OSU (eller vilken urvalsmetod som passar)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Det viktiga är dock att de olika klustertotalerna (
-\begin_inset Formula $t_{i}$
-\end_inset
-
-) är oberoende av varandra
-\end_layout
-
-\begin_layout Itemize
-Om vi drar samma kluster flera gånger måsta vi dra ett nytt OSU varje gång
- inom klustret
-\end_layout
-
-\end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-\begin_inset Formula $\pi$
-\end_inset
-
-ps-urval och HT-estimatorn
-\end_layout
-
-\begin_layout Itemize
-Mer komplicerat än pps då urvalet inte är oberoende
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-När det första elementet är draget ändras sannolikheten att dra för de övriga
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Det finns flera olika metoder för att dra urval på ett sådant sätt att 
-\begin_inset Formula $\pi_{i}$
-\end_inset
-
- är proportionellt efter en given variabel
+\series bold
+Urval:
+\series default
+ 
 \begin_inset Newline newline
 \end_inset
 
-(de flesta finns implementerade i R-paketet 
-\family typewriter
-sampling
-\family default
-)
-\end_layout
+Yngre elever: 2 645 respondenter (155 skolor), Tvåstegs klusterurval
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Pause
-
+Äldre elever: 2 600 respondenter, Stratifierat OSU
 \end_layout
 
 \begin_layout Itemize
-Har vi dragit ett 
-\begin_inset Formula $\pi$
+
+\series bold
+Bortfall:
+\series default
+
+\begin_inset Newline newline
 \end_inset
 
-ps-urval (eller ett vanligt OSU) kan vi använda Horwitz-Thompson-estimatorn
- (HT)
-\begin_inset Formula 
-\[
-\hat{t}_{HT}=\sum_{i\in\mathcal{S}}\frac{\hat{t}_{i}}{\pi_{i}}
-\]
-
+Yngre elever: 5 % av skolorna, 8 % av eleverna
+\begin_inset Newline newline
 \end_inset
 
+Äldre elever: 27 %
+\end_layout
 
+\begin_layout Itemize
+
+\series bold
+Datainsamlingsmetod:
+\series default
+ Pappersenkäter i klassrummet (yngre elever) och telefonintervjuer (äldre
+ elever)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Periodicitet
+\series default
+: Varje 3:e år.
 \end_layout
 
 \begin_layout EndFrame
@@ -2143,100 +703,466 @@ ps-urval (eller ett vanligt OSU) kan vi använda Horwitz-Thompson-estimatorn
 \end_layout
 
 \begin_layout BeginFrame
-\begin_inset Formula $\pi$
-\end_inset
-
-ps-urval och HT-estimatorn II
+Notation och begrepp I
 \end_layout
 
 \begin_layout Itemize
-Det är enkelt att visa att HT-estimatorn är väntevärdesriktig 
-\begin_inset Formula $(*)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-Variansen är mer komplicerad 
-\begin_inset Formula 
-\[
-Var(\hat{t}_{HT})=\sum_{i=1}^{N}\frac{1-\pi_{i}}{\pi_{i}}t_{i}^{2}+\sum_{i=1}^{N}\sum_{k\neq i}^{N}\frac{\pi_{ik}-\pi_{i}\pi_{k}}{\pi_{i}\pi_{k}}t_{i}t_{k}
-\]
-
-\end_inset
-
-där 
-\begin_inset Formula $\pi_{ik}$
-\end_inset
-
- är andra ordningens inklutionssannolikhet.
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-\begin_inset Formula $\pi$
-\end_inset
-
-ps-urval och HT-estimatorn III
-\end_layout
-
-\begin_layout Itemize
-Vid vanligt OSU är 
-\begin_inset Formula $\pi_{ik}$
-\end_inset
-
- enklare att räkna ut
-\begin_inset Formula 
-\[
-P(Z_{i}=1\mbox{ och }Z_{k}=1)=\pi_{ik}=\frac{n}{N}\frac{n-1}{N-1}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Men vid 
-\begin_inset Formula $\pi$
-\end_inset
-
-ps-urval blir alla 
-\begin_inset Formula $\pi_{ik}$
-\end_inset
-
- en matris mellan urvalsobjekten
+För att förtydliga exemplifierar vi med ett klusterurval av skolor där 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Denna kan vara otymplig
+Skolor är den primära urvalsenheten (psu)
 \end_layout
 
 \begin_layout Itemize
-I flera fall kan det vara så att den inte finns tillgänglig vid estimation
+Elever är den sekundära urvalsenheten (ssu)
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserad av antalet sjukdagar (
+\begin_inset Formula $y$
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
-Då kan variansestimatorn för pps-urval (med återläggning) användas istället
- 
+Notation på psunivå (skolnivå) - populationsparametrar
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-V_{WR}(\hat{t}_{HT})=\frac{1}{n(n-1)}\sum_{i\in\mathcal{S}}\left(\frac{t_{i}}{\pi_{i}}-\frac{\hat{t}_{HT}}{n}\right)^{2}
+N=\mbox{antal psus (skolor) i populationen}
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M_{i}=\mbox{antal ssus (elever) i psu (skola) }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M_{0}=\mbox{antal ssus (elever) i populationen}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y_{ij}=\mbox{observation i skola \ensuremath{i}avseende elev \ensuremath{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation och begrepp II
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t_{i}=\sum_{j=1}^{M_{i}}y_{ij}=\mbox{total i psu (skola) }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t=\sum_{i=1}^{N}t_{i}=\sum_{i=1}^{N}\sum_{j=1}^{M_{i}}y_{ij}\mbox{ populationstotal}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S_{t}^{2}=\sum_{i=1}^{N}t_{i}=\sum_{i=1}^{N}\sum_{j=1}^{M_{i}}y_{ij}\mbox{ populationsvarians av psu totaler}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation och begrepp III
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{y}_{\mathcal{U}}=\frac{1}{M_{0}}\sum_{i,j}y_{ij}=\mbox{populationsmedelvärde avseende \ensuremath{y}i populationen}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{y}_{i\mathcal{U}}=\frac{1}{M_{i}}\sum_{i,j}y_{ij}=\frac{t_{i}}{M_{i}}=\mbox{populationsmedelvärde avseende \ensuremath{y}i psu (skola) }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S^{2}=\sum_{i=1}^{N}\sum_{j=1}^{M_{i}}\frac{\left(y_{ij}-\bar{y}_{\mathcal{U}}\right)^{2}}{M_{0}-1}=\mbox{populationsvarians avseende \ensuremath{y}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{i}^{2}=\sum_{j=1}^{M_{i}}\frac{\left(y_{ij}-\bar{y}_{i\mathcal{U}}\right)^{2}}{M_{i}-1}=\mbox{populationsvarians avseende \ensuremath{y}i psu (skola) }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation och begrepp IV
+\end_layout
+
+\begin_layout Itemize
+Två typer av populationsmedel/total:
+\begin_inset Formula 
+\[
+t,t_{i}\mbox{ och }\bar{y}_{\mathcal{U}},\bar{y}_{i\mathcal{U}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tre typer av populationsvarians
+\begin_inset Formula 
+\[
+S^{2},S_{t}^{2},S_{i}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel
+\end_layout
+
+\begin_layout Itemize
+Ett mejeri har ett antal lastbilar som kör ut mjölkprodukter för leverans.
+ 
+\end_layout
+
+\begin_layout Itemize
+Mjölkpaketen är packade i pallar som kan ta 200 mjölkpaket vardera.
+ 
+\end_layout
+
+\begin_layout Itemize
+Totalt levererar mejeriet 1200 pallar mjölk per månad till olika livsmedelsbutik
+er.
+ 
+\end_layout
+
+\begin_layout Itemize
+Mejeriet är intresserade av hur många mjölkpaket som skadas vid transporten.
+\end_layout
+
+\begin_layout Itemize
+Vad är 
+\begin_inset Formula $N,M_{i},M_{0},t_{i},t,y_{ij},S_{t}^{2}$
+\end_inset
+
+ i detta fall?
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Olika typer av klusterurval
+\end_layout
+
+\begin_layout Itemize
+Enstegs klusterurval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi observerar alla ssu (elever) i de psu (skolor) som dras i urvalet
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{i}=m_{i},t_{i}=\hat{t}_{i},S_{i}^{2}=s_{i}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Flerstegs (exempelvis två) klusterurval
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi ett urval av ssu (elever) i de psu (skolor) som dras i urvalet
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{i}>m_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Som vid stratifiering så kan kluster ses som 
+\begin_inset Quotes eld
+\end_inset
+
+egna
+\begin_inset Quotes erd
+\end_inset
+
+ subpopulationer
+\end_layout
+
+\begin_layout Itemize
+SSubpopulationerna kombineras till en 
+\begin_inset Quotes eld
+\end_inset
+
+gemensam
+\begin_inset Quotes erd
+\end_inset
+
+ skattning
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation och begrepp: Urval
+\end_layout
+
+\begin_layout Itemize
+Notation för vårt urval:
+\begin_inset Formula 
+\[
+n=\mbox{antal psus (skolor) i urvalet}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+m_{i}=\mbox{antal ssus (elever) i psu (skola) }i\mbox{ i vårt urval}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+m_{0}=\mbox{antal ssus (elever) i vårt urval}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{t}_{i}=\mbox{skattad total i psu (skola) }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{t}=\sum_{i=1}^{n}t_{i}=\mbox{genomsnittlig klustertotal i urvalet}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Notation och begrepp: Urval II
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{t}_{unb}=\mbox{'unbiased' skattning av populationstotalen }t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{t}^{2}=\mbox{varians i urvalet mellan psu (skolor)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{i}^{2}=\mbox{varians i urvalet inom psu (skola) }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+w_{ij}=\mbox{urvalsvikt i psu (skola) \ensuremath{j}avseende ssu (elev) \ensuremath{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel II
+\end_layout
+
+\begin_layout Itemize
+Vi ska göra en undersökning avseende inkomst i hus (parhus, radhus och villa)
+ och väljer att dra tre slumpmässiga hus.
+\end_layout
+
+\begin_layout Itemize
+Vi får följande resultat:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hus 1: Göran med dotterna Åsa (inkomst 21 200) samt Lisa, Kajsa och sönerna
+ Bill och Bull (inkomst 21 300 och 29800)
+\end_layout
+
+\begin_layout Itemize
+Hus 2: Tommy, Gunnar och Gunvor (inkomst 8100, 21200 och 29800) samt Yasmine
+ och Cletus (inkomst 43 200 och 37 000)
+\end_layout
+
+\begin_layout Itemize
+Hus 3: Göran och Inga med dottern Tuva (inkomst 15 100 och 19 200)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vad innebär 
+\begin_inset Formula $n,m_{i},m_{0},y_{ij},t_{i},s_{t}^{2},s_{i}^{2},s^{2}$
+\end_inset
+
+ i detta fall?
 \end_layout
 
 \begin_layout EndFrame
@@ -2244,7 +1170,7 @@ V_{WR}(\hat{t}_{HT})=\frac{1}{n(n-1)}\sum_{i\in\mathcal{S}}\left(\frac{t_{i}}{\p
 \end_layout
 
 \begin_layout Subsection
-Vikter vid klusterurval
+Enstegs klusterurval
 \end_layout
 
 \begin_layout Standard
@@ -2266,30 +1192,85 @@ subsectionpage}
 \end_layout
 
 \begin_layout BeginFrame
-Vikter vid klusterurval
+Enstegs klusterurval
 \end_layout
 
 \begin_layout Itemize
-För att beräkna inklutionssannolikheten behöver vi 
+Det finns (ännu) inget urval inom klustret, alla urvalsenheter observeras.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Precis som vanligt OSU - men istället är observationerna klustertotaler.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex.
+ 
+\begin_inset Formula $t_{1},t_{2},...,t_{n}=$
+\end_inset
+
+ antal sjukdagar i skola 
+\begin_inset Formula $1,2,...,n$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Som vid vanligt OSU kan vi skatta hela populationstotalen
 \begin_inset Formula 
 \[
-\pi_{ij}=P(j\mbox{:te enheten i kluster }i\mbox{ inkluderas i urvalet})=
+\hat{t}_{\mathcal{U}}=\hat{t}_{unb}=N\cdot\bar{t}=\frac{N}{n}\sum_{i\in\mathcal{S}}t_{i}
 \]
 
 \end_inset
 
+(det var i princip detta vi gjorde med brott per område tidigare)
+\end_layout
 
+\begin_layout Itemize
+Denna skattning är (precis som vid OSU) väntevärdesriktig
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Enstegs klusterurval II
+\end_layout
+
+\begin_layout Itemize
+Vi beräknar variansen (som vid ett vanligt OSU) men med 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ (istället för 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+)
 \begin_inset Formula 
 \[
-P(j\mbox{:te enheten}\mid\mbox{kluster }i)\cdot P(\mbox{kluster }i)
+Var(\hat{t}_{unb})=N^{2}\frac{s_{t}^{2}}{n}\left(1-\frac{n}{N}\right)
 \]
 
 \end_inset
 
-eftersom
+där 
 \begin_inset Formula 
 \[
-P(A\cap B)=P(A\mid B)\cdot P(B)
+s_{t}^{2}=\frac{\sum_{i\in\mathcal{S}}(t_{i}-\bar{t})}{n-1}\mbox{ och }\bar{t}=\frac{1}{n}\sum_{i\in\mathcal{S}}t_{i}
 \]
 
 \end_inset
@@ -2302,31 +1283,27 @@ P(A\cap B)=P(A\mid B)\cdot P(B)
 \end_layout
 
 \begin_layout Itemize
-Detta ger inklusionssannolikheterna
+Konfidensintervall för 
+\begin_inset Formula $\hat{t}_{unb}$
+\end_inset
+
+ beräknas (som vanligt):
 \begin_inset Formula 
 \[
-\pi_{ij}=P(j\mbox{:te enheten}\mid\mbox{kluster }i)\cdot P(\mbox{kluster }i)=\frac{m_{i}}{M_{i}}\cdot\frac{n}{N}
+\hat{t}_{unb}\pm z_{\alpha/2}\sqrt{Var(\hat{t}_{unb})}
 \]
 
 \end_inset
 
-och vikterna
-\begin_inset Formula 
-\[
-w_{ij}=\frac{1}{\pi_{ij}}=\frac{M_{i}N}{m_{i}n}
-\]
-
+Precis som vanligt OSU, men med 
+\begin_inset Formula $t_{i}$
 \end_inset
 
-vid tvåstegsurval och
-\begin_inset Formula 
-\[
-w_{ij}=\frac{1}{\pi_{ij}}=\frac{M_{i}N}{M_{i}n}=\frac{N}{n}
-\]
-
+ istället för 
+\begin_inset Formula $y_{i}$
 \end_inset
 
- vid enstegsurval
+
 \end_layout
 
 \begin_layout EndFrame
@@ -2334,26 +1311,62 @@ w_{ij}=\frac{1}{\pi_{ij}}=\frac{M_{i}N}{M_{i}n}=\frac{N}{n}
 \end_layout
 
 \begin_layout BeginFrame
-Vikter vid klusterurval II
+Enstegs klusterurval III
 \end_layout
 
 \begin_layout Itemize
-Med vikterna får vi följande skattning av 
+För att skatta 
+\begin_inset Formula $\bar{y}_{\mathcal{U}}$
+\end_inset
+
+ använder vi oss av totalskattningen 
 \begin_inset Formula $\hat{t}_{unb}$
+\end_inset
+
+ och det totala antalet element 
+\begin_inset Formula $M_{0}$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-\hat{t}_{unb}=\sum_{i\in\mathcal{S}}\sum_{j\in\mathcal{S}_{i}}w_{ij}y_{ij}=\sum_{i\in\mathcal{S}}\sum_{j\in\mathcal{S}_{i}}\frac{M_{i}N}{m_{i}n}y_{ij}=\frac{N}{n}\sum_{i\in\mathcal{S}}M_{i}\bar{y}_{i}
+\hat{\bar{y}}_{\mathcal{U}}=\frac{\hat{t}_{unb}}{M_{0}}
 \]
 
 \end_inset
 
-och för 
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+På samma sätt beräknar vi variansen 
+\begin_inset Formula $(*)$
+\end_inset
+
+
 \begin_inset Formula 
 \[
-\hat{\bar{y}}_{r}=\frac{\sum_{i\in\mathcal{S}}\sum_{j\in\mathcal{S}_{i}}w_{ij}y_{ij}}{\sum_{i\in\mathcal{S}}\sum_{j\in\mathcal{S}_{i}}w_{ij}}=\frac{\frac{N}{n}\sum_{i\in\mathcal{S}}M_{i}y_{ij}}{\frac{N}{n}\sum_{i\in\mathcal{S}}m_{i}\frac{M_{i}}{m_{i}}}=\frac{\sum_{i\in\mathcal{S}}M_{i}y_{ij}}{\sum_{i\in\mathcal{S}}M_{i}}
+Var(\hat{\bar{y}}_{unb})=\left(\frac{N}{M_{0}}\right)^{2}\cdot\frac{s_{t}^{2}}{n}\left(1-\frac{n}{N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Konfidensintervallet beräknar vi (som vanligt):
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{unb}\pm z_{\alpha/2}\sqrt{Var(\hat{\bar{y}}_{unb})}
 \]
 
 \end_inset
@@ -2366,6 +1379,885 @@ och för
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Barns sjukdagar}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=2,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-16
+\end_layout
+
+\begin_layout Plain Layout
+
+M0<-472161
+\end_layout
+
+\begin_layout Plain Layout
+
+N<-10033
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Vi vill uppskatta det genomsnittliga antalet sjukdagar per barn och
+ vecka.
+ Vi drar ett klusterurval av 
+\backslash
+Sexpr{n} förskolor i Sverige år 2011.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Det finns totalt $N=$
+\backslash
+Sexpr{N} förskolor och $M_0=$
+\backslash
+Sexpr{M0} barn.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=1.8,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(20130101)  
+\end_layout
+
+\begin_layout Plain Layout
+
+M<-round(rgamma(n,shape=3,scale=47/3))
+\end_layout
+
+\begin_layout Plain Layout
+
+ti<-round(rgamma(length(M),shape=M*(1/10),scale=(10/1)))
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(ti)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+res1<-round((N/n)*sum(ti)/M0,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+res2<-round(sqrt((N/M0)^2 * var(ti)/n * (1-n/N)),3)
+\end_layout
+
+\begin_layout Plain Layout
+
+ki.low<-round(res1-qnorm(1-0.05/2)*sqrt(res2),3)
+\end_layout
+
+\begin_layout Plain Layout
+
+ki.high<-round(res1+qnorm(1-0.05/2)*sqrt(res2),3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $t_i=(
+\backslash
+Sexpr{paste(ti,collapse=", ")})$ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Vi vill räkna ut genomsnittligt antal sjukdagar per barn och vecka
+ med tillhörande konfidensintervall.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Enstegs klusterurval IV
+\end_layout
+
+\begin_layout Itemize
+Denna skattning har två problem
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ är troligtvis korrelerat med 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+vi kanske inte känner 
+\begin_inset Formula $M_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi är intresserade av storheten 
+\begin_inset Formula 
+\[
+\hat{\bar{y}}_{\mathcal{U}}=\frac{\hat{t}_{unb}}{M_{0}}
+\]
+
+\end_inset
+
+som är en kvotskattning (av 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Precis som vid vanlig kvotskattning: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+antingen känner vi till 
+\begin_inset Formula $M_{0}$
+\end_inset
+
+ eller inte.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Snabbrepetition: Kvotestimation
+\end_layout
+
+\begin_layout Itemize
+Skattning av kvoten är 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{B}=\frac{\bar{y}_{\mathcal{S}}}{\bar{x}_{\mathcal{S}}}=\frac{\sum_{i\in\mathcal{S}}y_{i}}{\sum_{i\in\mathcal{S}}x_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Variansen för 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+ skattas (se 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "s. 125 f."
+key "lohr2009sampling"
+
+\end_inset
+
+ för detaljer)
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{B})=\left(1-\frac{n}{N}\right)\frac{s_{e}^{2}}{n\bar{x}_{\mathcal{S}}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Om vi 
+\series bold
+känner till
+\series default
+ 
+\begin_inset Formula $\bar{x}_{\mathcal{U}}$
+\end_inset
+
+ och 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+ så kan vi använda detta för att få mindre varians när vi skattar 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\bar{y}}_{r}$
+\end_inset
+
+ och 
+\begin_inset Formula $\hat{t}_{r,y}$
+\end_inset
+
+ 
+\begin_inset Formula $(*)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{\bar{y}}_{r})=\left(1-\frac{n}{N}\right)\left(\frac{\bar{x}_{\mathcal{U}}}{\bar{x}_{\mathcal{S}}}\right)^{2}\frac{s_{e}^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Enstegs klusterurval V
+\end_layout
+
+\begin_layout Itemize
+Byter vi ut 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ mot 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ och 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ mot 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ får vi att
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Formula 
+\[
+\hat{B}=\hat{\bar{y}}_{r}=\frac{\hat{t}_{unb}}{\hat{M}_{0}}=\frac{\sum_{i\in\mathcal{S}}t_{i}}{\sum_{i\in\mathcal{S}}M_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+och
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{\bar{y}}_{r})=\left(1-\frac{n}{N}\right)\frac{s_{e}^{2}}{n\bar{M}_{\mathcal{S}}^{2}}
+\]
+
+\end_inset
+
+där
+\begin_inset Formula 
+\[
+s_{e}^{2}=\frac{1}{n-1}\sum_{i\in\mathcal{S}}e_{i}^{2}\mbox{ och }e_{i}=t_{i}-\hat{\bar{y}}_{\mathcal{U}}M_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Känner vi till 
+\begin_inset Formula $M_{0}$
+\end_inset
+
+ så kan vi använda detta för att får mindre varians när vi skattar 
+\begin_inset Formula $\hat{t}_{r}$
+\end_inset
+
+ (som vid vanlig kvotestimation)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Formula 
+\[
+\hat{Var}(\hat{t}_{r})=\hat{Var}(\hat{\bar{y}}_{r}M_{0})=M_{0}^{2}\hat{Var}(\hat{\bar{y}}_{r})=\left(1-\frac{n}{N}\right)\left(\frac{M_{0}}{\bar{M}}\right)^{2}\frac{s_{e}^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[containsverbatim]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Exempel: Barns sjukdagar (kvotskattning)}
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3.4,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n<-16
+\end_layout
+
+\begin_layout Plain Layout
+
+M0<-472161
+\end_layout
+
+\begin_layout Plain Layout
+
+N<-10033
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<<size='scriptsize',fig.height=3,warning=FALSE,message=FALSE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(20130101)  
+\end_layout
+
+\begin_layout Plain Layout
+
+M<-round(rgamma(n,shape=3,scale=47/3))
+\end_layout
+
+\begin_layout Plain Layout
+
+ti<-round(rgamma(length(M),shape=M*(1/10),scale=(10/1)))
+\end_layout
+
+\begin_layout Plain Layout
+
+qplot(ti,M) + geom_abline(intercept=0, slope=mean(ti)/mean(M),col="red")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Korrelationen är 
+\backslash
+Sexpr{round(cor(M,ti),2)} och det är rimligt att om $M=0$ så är $t_i=0$.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item I urvalet har förskolorna följande storlek: $M_i=(
+\backslash
+Sexpr{paste(M,collapse=", ")})$ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Beräkna en skattning av det totala antalet sjukdagar med kvotestimatorn.
+ $(*)$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Systematiskt urval
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+subsectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Systematiskt urval
+\end_layout
+
+\begin_layout Itemize
+Ett specialfall av (enstegs) klusterurval är systematiskt urval
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Används ofta...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+det inte finns någon urvalsram, men hela populationen 
+\begin_inset Quotes eld
+\end_inset
+
+passerar
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+i äldre undersökningar (när det var enklare än att dra OSU)
+\end_layout
+
+\begin_layout Itemize
+när det är otympligt att dra ett OSU av praktiska skäl
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+time-location
+\begin_inset Quotes erd
+\end_inset
+
+ sampling
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Om det inte finns 
+\begin_inset Quotes eld
+\end_inset
+
+periodicitet
+\begin_inset Quotes erd
+\end_inset
+
+ i ramen så är
+\begin_inset Formula 
+\[
+\mbox{Systematiskt urval}\approx\mbox{OSU}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Att dra ett systematiskt urval
+\end_layout
+
+\begin_layout Itemize
+Vi känner (eller uppskattar) populationsstorleken 
+\begin_inset Formula $N$
+\end_inset
+
+ och vill ha en urvalsstorlek av storlek 
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi beräknar heltalet 
+\begin_inset Formula $k$
+\end_inset
+
+ på följande sätt 
+\begin_inset Formula 
+\[
+\left\lfloor \frac{N}{n}\right\rfloor =k
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populationen 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ är nu indelad i 
+\begin_inset Formula $k$
+\end_inset
+
+ kluster
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Sedan väljer vi slumpmässigt en siffra, 
+\begin_inset Formula $l$
+\end_inset
+
+, mellan 1 och 
+\begin_inset Formula $k$
+\end_inset
+
+ och väljer vart 
+\begin_inset Formula $l$
+\end_inset
+
+:te urvalsenhet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I praktiken har vi dragit 
+\series bold
+ett
+\series default
+ slumpmässigt kluster
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vi får då följande urval
+\begin_inset Formula 
+\[
+\mathcal{S}=\{l,l+k,l+2k,...,l+(n-1)k\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Då 
+\begin_inset Formula $k$
+\end_inset
+
+ är en avrundning kan man behöva lägga till en urvalsenhet så att urvalsstorleke
+n blir 
+\begin_inset Formula $n+1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Så att alla element har en chans att bli dragna
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Systematiskt urval III
+\end_layout
+
+\begin_layout Itemize
+Då antalet kluster i urvalet bara är 
+\begin_inset Formula $n=1$
+\end_inset
+
+ så innebär det att det inte går att beräkna variansen mellan kluster
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+En enkel lösning är att istället ta 2 (eller flera) kluster och beräkna
+ 
+\begin_inset Formula $k$
+\end_inset
+
+ på följande sätt
+\begin_inset Formula 
+\[
+2\cdot\left\lfloor \frac{N}{n}\right\rfloor =k
+\]
+
+\end_inset
+
+och sedan slumpa två värden (kluster) 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $l_{2}$
+\end_inset
+
+ utan återläggning
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Då blir urvalet istället
+\begin_inset Formula 
+\[
+\mathcal{S}=\{l_{1},l_{2},l_{1}+k,l_{2}+k,l_{1}+2k,l_{2}+2k,...\}
+\]
+
+\end_inset
+
+och vi kan beräkna variansen korrekt (och inkludera/hantera eventuell periodicit
+et)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Exempel: Systematiskt urval
+\end_layout
+
+\begin_layout Itemize
+Ett bolag som som säljer godis över internet är intresserade av kundnöjdheten
+ hos sina kunder.
+\end_layout
+
+\begin_layout Itemize
+De uppskattar att de har cirka 
+\begin_inset Formula $N=12000$
+\end_inset
+
+ kunder per månad på sin webbplats och är intresserad av ett urval på cirka
+ 
+\begin_inset Formula $n=350$
+\end_inset
+
+ per månad.
+\end_layout
+
+\begin_layout Itemize
+De är osäkra på om det finns periodicitet och väljer därför två kluster.
+\end_layout
+
+\begin_layout Itemize
+Beräkna 
+\begin_inset Formula $k$
+\end_inset
+
+ och ge ett exempel på ett urval.
+\end_layout
+
+\begin_layout EndFrame
 
 \end_layout
 
