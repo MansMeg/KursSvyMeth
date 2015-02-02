@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -103,7 +112,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 5
+Föreläsning 6
 \end_layout
 
 \begin_layout Author
@@ -192,14 +201,20 @@ options(scipen = 10, digits = 3)
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -209,10 +224,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Undersökningsplanering
 \end_layout
@@ -235,10 +247,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Undersökningsplanering
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Quote
 To call in the statistician after the experiment is done may be no more
  than asking him to perform a postmortem examination: he may be able to
@@ -256,14 +278,25 @@ key "fisher1938presidential"
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Undersökningsplanering II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Varför bör vi planera en undersökning?
 \end_layout
@@ -285,14 +318,25 @@ Kostnaden att korrigera fel och problem ökar med tiden
 Det går i princip inte att förbereda en studie för mycket - bara för lite.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 De olika stegen i en undersökning
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
 Faslå behov och kartlägga forskningsområdet och standarder
 \end_layout
@@ -357,10 +401,7 @@ Analyser
 Rapportering och kommunikation
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 De fem kvalitetsdimensionerna
 \end_layout
@@ -383,10 +424,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 De 5 kvalitetsdimensionerna
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Gäller all statistik - inte bara surveyer
 \end_layout
@@ -411,14 +462,25 @@ Aktualitet
 Tillgänglighet och förståerlighet
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Innehåll och relevans
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Innehåll och relevans.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Svarar statistiken på frågeställningarna
 \end_layout
@@ -446,162 +508,25 @@ Integritet som statistiker
 Användare av officiell statistik?
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Svarar statistiken på frågeställningarna?
-\end_layout
-
-\begin_layout Plain Layout
-Är statistiken relevant för användarna?
-\end_layout
-
-\begin_layout Plain Layout
-Vet vi vilka användarna är och känner vi till deras behov?
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Är egenskaperna på statistiken definierade av användarna? 
-\end_layout
-
-\begin_layout Plain Layout
-Statistiker har en tendens att vilja ha superstora urval.
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Relevans styrs helt av uppdragsgivarna.
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel:
-\end_layout
-
-\begin_layout Plain Layout
-När jag arbetade på Brå fanns det olika uppdragsgivare: 
-\end_layout
-
-\begin_layout Plain Layout
-- Justitiedepartementet hade behovet av att använda statistiken för uppföljning
- och styrning, 
-\end_layout
-
-\begin_layout Plain Layout
-- Journalister för bevakning och 
-\begin_inset Quotes eld
-\end_inset
-
-skop
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-- Forskare behövde mikrodata
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Ex.
-
-\series default
- Återfallsstatistiken
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Integritet:
-\end_layout
-
-\begin_layout Plain Layout
-Ibland vill folk ha en siffra för 
-\begin_inset Quotes eld
-\end_inset
-
-PR
-\begin_inset Quotes erd
-\end_inset
-
--syfte.
- Då måste vi våga vägra.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Går ofta att lägga fram ett alternativt förslag (med tillräcklig kvalitet)
-\end_layout
-
-\begin_layout Plain Layout
-Ibland kan en 
-\begin_inset Quotes eld
-\end_inset
-
-dålig
-\begin_inset Quotes erd
-\end_inset
-
- undersökning duga - måste göra en avvägning.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
 Tillräcklig kvalitet
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -612,7 +537,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../Old/Lectures/Pics/duty_calls.png
+	filename images/duty_calls.png
 	scale 60
 
 \end_inset
@@ -621,7 +546,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset citation
@@ -643,14 +568,25 @@ key "xkcd.com"
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Tillförlitlighet
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Tillförlitlighet - våra felkällor
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Det totala felet i undersökningen, givet:
 \end_layout
@@ -703,14 +639,25 @@ Beabetningsfel
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Jämförbarhet och samanvändbarhet
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jämförbarhet och samanvändbarhet.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Måste beaktas innan undersökningar sätter igång.
 \end_layout
@@ -730,56 +677,6 @@ mellan (redovisnings-)grupper
 
 \begin_layout Itemize
 Kan stå i motsats
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Står ibland i motsats till varandra (vissa vill ha jämförbarhet över tid
- andra hög kvalitet)
-\end_layout
-
-\begin_layout Plain Layout
-Går ofta att kombinera med randomisering eller 
-\begin_inset Quotes eld
-\end_inset
-
-dubbel statistik
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Ex.
- Återfallsstatistiken.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Pause
@@ -809,14 +706,25 @@ Officiell statistik (särskilt befolkningsstatistik)
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Aktualitet
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aktualitet.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Aktualitet
 \end_layout
@@ -834,131 +742,30 @@ Framställningstid
 Olika användare har ofta olika behov
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Olika användare har olika behov.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Exempel.
- Journalister, forskar ofta på var sin sida.
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Smittskydd
-\series default
- är detta helt avgörande:
-\end_layout
-
-\begin_layout Plain Layout
-Finns ett helt statistikområde som heter 
-\begin_inset Quotes eld
-\end_inset
-
-Nowcasting
-\begin_inset Quotes erd
-\end_inset
-
- när det gäller 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 Punktlighet
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Användarna anpassar sig till när de tror sig få resultaten.
-\end_layout
-
-\begin_layout Plain Layout
-Extremt viktigt att vara tydlig om förseningar sker.
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel:
-\end_layout
-
-\begin_layout Plain Layout
-Riksbanken planerar sina möten efter när Arbetskraftsstatistiken och KPI
- kommer.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
-Tillgänglighet och förståerlighet
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Tillgänglighet och förståerlighet.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Tillgänglighet och förståerlighet
 \end_layout
@@ -972,95 +779,12 @@ Tillgänglighet och förståerlighet
 Pedagogisk och tydlig framställning
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Ofta enkelt för att öka kvaliteten dramatiskt.
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel:
-\end_layout
-
-\begin_layout Plain Layout
-Lagföringsstatistiken vid Brå.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Tidigare lagförda personer brutto och lagförda personer netto
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Pause
 
 \end_layout
 
 \begin_layout Itemize
 Dokumentation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-För att förstå statistiken - Detta är nog det där folk är allra sämst.
-\end_layout
-
-\begin_layout Plain Layout
-Reproducible research.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Pause
@@ -1072,10 +796,7 @@ Egna analyser (statistikdatabaser)
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Riktlinjer och standarder gällande statistikkvalitet
 \end_layout
@@ -1098,10 +819,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Riktlinjer och standarder gällande statistikkvalitet
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Kvalitetsstandarder
 \end_layout
@@ -1179,10 +910,7 @@ target "http://sverigesradio.se/diverse/appdata/isidor/files/4097/13497.pdf"
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Att förbättra kvalitet
 \end_layout
@@ -1205,10 +933,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att förbättra kvalitet
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att förbättra kvaliteten används ofta 
 \begin_inset Quotes eld
@@ -1247,10 +985,7 @@ Utveckla / Förbättra
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Datainsamlingsmetoder
 \end_layout
@@ -1273,10 +1008,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Olika insamlingmetoder
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Många blandar ihop datainsamlingsmetod med urvalsmetod
 \end_layout
@@ -1321,14 +1066,25 @@ Direkt observation / bokföring
 Administrativa data
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Postenkäter
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Görs ofta tillsammans med tryckerier och scanningföretag
 \end_layout
@@ -1391,14 +1147,25 @@ Svårt att få svar på och hantera öppna frågor
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Webbenkäter
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Rekommenderar LimeSurvey som finns 
 \series bold
@@ -1475,7 +1242,7 @@ Tekniska problem
 \end_layout
 
 \begin_layout Itemize
-Teknikbias / tillgång till internet i gruppen
+Teknikbias / tillgång till internet imålpopulationen
 \end_layout
 
 \begin_layout Itemize
@@ -1487,14 +1254,25 @@ Mycket högt bortfall
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gruppenkäter
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Liksom postenkäter bör detta göras tillsammans med tryckeri och scanningföretag
 \end_layout
@@ -1535,14 +1313,25 @@ Anonymiteten är svår att bevaka, känsliga frågor
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gruppenkäter
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Liksom postenkäter bör detta göras tillsammans med tryckeri och scanningföretag
 \end_layout
@@ -1583,14 +1372,25 @@ Anonymiteten är svår att bevaka, känsliga frågor
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Telefonintervjuer
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Görs ofta av call centers (eller specialiserade företag)
 \end_layout
@@ -1601,7 +1401,7 @@ Fördelar
 
 \begin_deeper
 \begin_layout Itemize
-Snabb och (relativt) billigt
+Snabbt och (relativt) billigt
 \end_layout
 
 \begin_layout Itemize
@@ -1638,15 +1438,30 @@ Ej krångliga frågor eller många svarsalternativ
 Intervjuareffekter
 \end_layout
 
+\begin_layout Itemize
+Mycket höga bortfall idag 
+\end_layout
+
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Besöksintervjuer
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Fördelar
 \end_layout
@@ -1680,22 +1495,29 @@ Dyrt
 \end_layout
 
 \begin_layout Itemize
-Risk för stort bortfall
-\end_layout
-
-\begin_layout Itemize
 Intervjuareffekter
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Administrativa data
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Kan (med fördel) kombineras med surveydata
 \end_layout
@@ -1728,7 +1550,11 @@ Kan vara inaktuell
 \end_layout
 
 \begin_layout Itemize
-Syftet med datan är inte att producera statistik
+Syftet med datan är 
+\series bold
+ofta
+\series default
+ inte att producera statistik
 \end_layout
 
 \begin_layout Itemize
@@ -1744,10 +1570,7 @@ Underrapportering och mörkertal
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Undersökningsprocessen
 \end_layout
@@ -1770,10 +1593,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 De olika stegen i en undersökning
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
 Faslå behov och kartlägga området 
 \end_layout
@@ -1802,10 +1635,7 @@ Analyser
 Rapportering och kommunikation
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 1: Fastslå behov och kartlägga området
 \end_layout
@@ -1828,11 +1658,21 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 1.
  Fastslå behov och kartlägga området
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Kartlägga området/forskningsläget 
 \end_layout
@@ -1905,10 +1745,7 @@ Stäm av dessa med uppdragsgivarna
 Förhandla och avtala.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 2.
  Design och planering
@@ -1932,18 +1769,28 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 2.
  Design och planering
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Identifiera / designa ram 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Varning för screeningenkäter
+Varning för screeningenkäter!
 \end_layout
 
 \end_deeper
@@ -1987,10 +1834,7 @@ Minimeras det totala felet?
 Stäm av design och plan med uppdragsgivare
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 3.
  Förberedelser och tester
@@ -2014,11 +1858,21 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 3.
  Förberedelser och tester
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Skapa enkät / mätverktyg
 \end_layout
@@ -2058,10 +1912,7 @@ Förbered/skapa verktyg för datainsamlingen (ex.
 Genomför pilotstudie.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 4.
  Datainsamling
@@ -2085,11 +1936,21 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 4.
  Datainsamling
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Dra urval
 \end_layout
@@ -2112,10 +1973,7 @@ Gör bortfallsuppföljning
 Spara ned rådata (för reproducerbarhet)
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 5.
  Databearbetning
@@ -2139,11 +1997,21 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 5.
  Databearbetning
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Klassificera och koda data
 \end_layout
@@ -2177,10 +2045,7 @@ Komplettera mikrodata / Samkör data
 Beräkna vikter / Kalibrera för bortfall
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 6.
  Analys
@@ -2204,11 +2069,21 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 6.
  Analys
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Estimera / analysera data
 \end_layout
@@ -2239,10 +2114,7 @@ key "2001sra"
 Tolka och förklara 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection*
 Steg 7.
  Rapportering och kommunikation
@@ -2266,11 +2138,21 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 7.
  Rapportering och kommunikation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Sammanställ rapport och presentation
 \end_layout
@@ -2279,14 +2161,29 @@ Sammanställ rapport och presentation
 Redovisa rapport för kund / uppdragsgivare
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Itemize
+Ofta är det bara en presentation.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -2298,9 +2195,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
