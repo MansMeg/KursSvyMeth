@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames, handout
+\options xcolor=svgnames
 \use_default_options false
 \begin_modules
 knitr
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -103,7 +112,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 6
+Föreläsning 7
 \end_layout
 
 \begin_layout Author
@@ -192,14 +201,20 @@ options(scipen = 10, digits = 3)
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -209,10 +224,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Enkätkonstruktion
 \end_layout
@@ -235,10 +247,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att skapa en enkät - grunden
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För bra enkäter krävs: 
 \series bold
@@ -269,11 +291,11 @@ Mindre upplevd uppgiftslämnarbörda
 \end_layout
 
 \begin_layout Itemize
-Vi begär alltid tid av våra respondenter
+Vi begär alltid tid av respondenter
 \end_layout
 
 \begin_layout Itemize
-Minimera både den upplevda och faktiska uppgiftslämnarbördan.
+Minimera upplevda och faktiska uppgiftslämnarbördan.
  
 \end_layout
 
@@ -283,64 +305,6 @@ Gör allt arbete själv (beräkningar, bedömningar m.m.)
 
 \end_deeper
 \begin_layout Pause
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Här är många mycket svaga
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel
-\end_layout
-
-\begin_layout Plain Layout
-Hatbrottsmarkeringen i registret
-\end_layout
-
-\begin_layout Plain Layout
-Brottskodningen av brottsstatistiken
-\end_layout
-
-\begin_layout Plain Layout
-Vanligt att 
-\begin_inset Quotes eld
-\end_inset
-
-tvinga
-\begin_inset Quotes erd
-\end_inset
-
- respondenter
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -366,14 +330,25 @@ Om ni inte kan svara på en enkät vem kan då?
 Dessa principer är också tillämpbart vid registerdata/andra studier
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Utvecklingsprocessen
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
 Utveckla enkäten
 \end_layout
@@ -499,10 +474,7 @@ Retrospektiva ”hur tänkte du” frågor
 Pilotstudie
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Svarsprocessen
 \end_layout
@@ -525,10 +497,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Svarsprocessen
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 En respondents svarsprocess ser ut på följande sätt:
 \end_layout
@@ -596,10 +578,7 @@ key "tourangeau2000psychology"
 .
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Frågekonstruktion
 \end_layout
@@ -622,10 +601,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Olika typer av frågor
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Frågekonstruktion är ett svårt hantverk!
 \end_layout
@@ -673,73 +662,6 @@ Attityder skapas ofta i stunden
 Attityder styrs av respondentens intresse
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Ju ointressantare en fråga är (för respondenten) destå större chans att
- attityden skapas i stunden.
-\end_layout
-
-\begin_layout Plain Layout
-Attitydfrågor - vissa kan vara stabila, andra skapas i stunden.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Var observant på frågor folk inte intresserar/betyder ngt sig för.
- Ex.
- Vad tycker du om Electrolux senaste modell? Jmf Vad tycker du om ditt senaste
- läkarbesök.
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel:
-\end_layout
-
-\begin_layout Plain Layout
-Vad tycker ni om Lokaltrafiken i Linköping?
-\end_layout
-
-\begin_layout Plain Layout
-Vad tycker ni om Moderaterna?
-\end_layout
-
-\begin_layout Plain Layout
-Vad tycker ni om priset på öl i studentpuben?
-\end_layout
-
-\begin_layout Plain Layout
-Vad tycker ni om färgen på whiteboardpennorna jag använder?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Pause
 
@@ -771,84 +693,26 @@ På din skola arbetar man aktivt för att motverka mobbing och annan kränkande
  behandling
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Fördelar:
-\end_layout
-
-\begin_layout Plain Layout
-- Riktiga påståenden, aktuella och som alla kan förväntas ha en uppfattning
- om 
-\end_layout
-
-\begin_layout Plain Layout
-- Bättre för attityder/värderingar än för rena faktafrågor
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Nackdelar: 
-\end_layout
-
-\begin_layout Plain Layout
-- Hypotetiska situationer 
-\end_layout
-
-\begin_layout Plain Layout
-- Uppmuntrar till ”acquiescence” (benägenhet att hålla med) 
-\end_layout
-
-\begin_layout Plain Layout
-- Osäkrare på sina svar 
-\end_layout
-
-\begin_layout Plain Layout
-- Svårt att utforma neutrala påståenden
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att tänka på vid frågekonstruktion
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Tydligt definierade frågor 
 \end_layout
@@ -858,6 +722,7 @@ Tydligt definierade frågor
 Vad menar vi med de ord vi använder?
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \shape italic
@@ -870,36 +735,25 @@ Mindre bra fråga:
 Hur många barn har du?
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\shape italic
-Bättre (?) fråga : 
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-Hur många barn under 18 år har du? 
-\begin_inset Newline newline
-\end_inset
-
-Med barn menar vi biologiska barn, adopterade barn eller barn till eventuell
- sammanboende partner och som bor hos dig minst 4 dagar per månad.
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att tänka på vid frågekonstruktion II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Enkla och tydliga frågor utan (mindre kända) förkortningar och onödigt fackspråk
 \end_layout
@@ -917,6 +771,7 @@ alla
  tänkbara respondenter
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \shape italic
@@ -929,32 +784,25 @@ Mindre bra fråga:
 Har du haft någon form av STI under det senaste halvåret?
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\shape italic
-Bättre (?) fråga: 
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-Har du haft någon form av könssjukdom (ex.
- klamydia, gonnorré eller syfilis) under det senaste halvåret?
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att tänka på vid frågekonstruktion III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Försök sätta dig in i olika respondenters situationer
 \end_layout
@@ -968,6 +816,7 @@ Utgå inte bara från dig själv
 Försök sätta dig in i olika respondenters situationer
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \shape italic
@@ -980,36 +829,29 @@ Mindre bra fråga:
 Vilket transportmedel använde du för att ta dig till jobbet imorse?
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\shape italic
-Bättre (?) fråga: 
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-Vilket av följande transportmedel använde du senast? 
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att tänka på vid frågekonstruktion IV
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Precisa tids- och rumsangivelser
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \shape italic
@@ -1023,32 +865,25 @@ Har du under denna höst varit så sjuk att du besökt en läkare till på grund
  av matförgiftning?
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\shape italic
-Bättre (?) fråga: 
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-Har du sedan den första november besökt en vårdcentral/hälsocentral eller
- sjukhus för att söka vård för matförgiftning? 
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att tänka på vid frågekonstruktion V
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Endast en fråga år gången
 \end_layout
@@ -1070,36 +905,12 @@ Tycker du att dina lärare tror på dig och din förmåga att lära?
 
 \end_layout
 
-\begin_layout Itemize
-
-\shape italic
-Bättre (?) frågor: 
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-Tycker du att de flesta av dina lärare tror på dig som person? 
-\begin_inset Newline newline
-\end_inset
-
-Tycker du att de flesta av dina lärare tror på din förmåga att lära?
-\end_layout
-
 \end_deeper
-\begin_layout Pause
-
-\end_layout
-
 \begin_layout Itemize
 Neutrala frågor
 \end_layout
 
 \begin_deeper
-\begin_layout Pause
-
-\end_layout
-
 \begin_layout Itemize
 
 \shape italic
@@ -1113,35 +924,26 @@ Många föräldrar sätter säkerheten för sitt barn högst, hur prioriterar du
  själv ditt barns säkerhet?
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Itemize
-
-\shape italic
-Bättre (?) fråga: 
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-Av följande alternativ, vad tycker du är viktigast för ditt barn?
-\begin_inset Newline newline
-\end_inset
-
-Säkerhet, utbildning, kärlek...
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att tänka på vid frågekonstruktion IV
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Generellt bör följande undvikas...
  
@@ -1193,21 +995,40 @@ hypotetiska frågor
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel på frågor att diskutera
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Hur mycket eller lite tycker du att du bryr dig om och engagerar dig i skolarbet
 et?
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Har du haft skuldkänslor för att du varit otrogen mot din partner?
+\end_layout
+
+\begin_layout Pause
+
 \end_layout
 
 \begin_layout Itemize
@@ -1215,22 +1036,41 @@ Slog, sparkade eller utsatte någon dig med avsikt för något annat fysiskt
  våld, så att du skadades eller så att det gjorde ont, under förra året?
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Hur många år har du arbetat som lärare?
+\end_layout
+
+\begin_layout Pause
+
 \end_layout
 
 \begin_layout Itemize
 Kräver Ert arbete tunga lyft?
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Känsliga frågor
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Känsliga områden är ...
 \end_layout
@@ -1290,14 +1130,25 @@ i olika undersökningar
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Känsliga frågor II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Placera känsliga frågor i slutet av ett frågeformulär
 \end_layout
@@ -1315,39 +1166,6 @@ Känsliga frågor har ofta en (negativ) bias
 Svårt att uppskatta absoluta tal, bättre att undersöka skillnader över tid
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Ex.
- drog- och alkoholanvändning.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 Hur flera av dessa uppgifter regleras i Personuppgiftslagen (
@@ -1362,14 +1180,11 @@ key "PUL"
 
 \begin_deeper
 \begin_layout Itemize
-Känns något det minsta tveksamt, konsultera en jurist eller Datainspektionen.
+Känns något det minsta tveksamt, hör med en jurist eller Datainspektionen.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Svarsalternativ
 \end_layout
@@ -1392,10 +1207,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Svarsalternativ
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Svarsalternativ ska vara...
  
@@ -1407,84 +1232,16 @@ Ett svar på frågan
 \end_layout
 
 \begin_layout Itemize
-Ömsesidigt uttömmande och uteslutande
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Exempelvis brottskoder
-\end_layout
-
-\begin_layout Plain Layout
-Bedrägeri med datamaskin
-\end_layout
-
-\begin_layout Plain Layout
-Bedrägeri på internet
-\end_layout
-
+Ömsesidigt uttömmande och uteslutande 
+\begin_inset Newline newline
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
+(Bedrägeri med datamaskin, Bedrägeri på internet)
 \end_layout
 
 \begin_layout Itemize
-Överblickbara
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Inte allt för många alternativ (runt 7).
- I webb går det att klicka sig vidare.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Överblickbara alternativ (ej fler än 7) alt.
+ öppet svar
 \end_layout
 
 \begin_layout Itemize
@@ -1505,47 +1262,30 @@ Svarsalternativ ger signaler om vad som är normalt till respondenten så...
 Undvik fasta alternativ om möjligt.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Respondenter tolkar det som är normalt att ligga i mitten.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Svarsalternativ
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 I vissa fall kan öppna frågor vara att föredra för att respektera respondenterna
 :
@@ -1601,7 +1341,8 @@ Annars riskeras partiellt bortfall
 Använd inte ja/nej-alternativ i attitydfrågor
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
@@ -1627,10 +1368,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktionsbrev / Missivbrev
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Obligatoriskt innehåll
 \end_layout
@@ -1691,18 +1442,195 @@ key "japec1997minska"
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Section
+Etik och statistik
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statistik och utländsk bakgrund
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Slopa kollektiva identiteter i den officiella statistiken
+\begin_inset Quotes erd
+\end_inset
+
+.
+ DN Debatt 2013-07-21
+\end_layout
+
+\begin_layout Itemize
+Kategorier och makt - utländsk bakgrund i statistiken
+\end_layout
+
+\begin_layout Itemize
+Oreflekterad syn på svenskhet (judar, samer och romer)
+\end_layout
+
+\begin_layout Itemize
+Statistik efter etnicitet och religion är 
+\begin_inset Quotes eld
+\end_inset
+
+en farlig väg att vandra
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+En färgblind stat missar rasismens nyanser
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "JebariMagnusson"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Statistik behövs för att bekämpa orättvisor (jmf.
+ statistik om kvinnor och män)
+\end_layout
+
+\begin_layout Itemize
+Behöver beakta medborgarna
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inte skapa kategorier på förhand - öppna frågor
+\end_layout
+
+\begin_layout Itemize
+I undersersökningar - flera möjliga alternativ
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Etik och statistik
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+När är det problematiskt att skapa statistiska kategorier?
+\end_layout
+
+\begin_layout Itemize
+Finns det statistik vi inte bör samla in? Varför eller varför inte?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hudfärg, etnicitet, kön, sexuell läggning, religion, sjukdomar, DNA?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Har våra statistiska klassifikationer någon risk att påverka människors
+ tillvaro och levnad? Positivt, negativt?
+\end_layout
+
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
 \begin_layout Section
-Statistiska analys av enkäter
+Kort om psykometri
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Statistisk analys av enkäter
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Två typer av felstrukturer gicks igenom på föreläsning 1.
 \end_layout
@@ -1749,14 +1677,25 @@ Mäta latenta egenskaper (factor analysis, SEM m.m.)
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Metoder för att estimera reliabilitet
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Test - retest 
 \end_layout
@@ -1819,14 +1758,25 @@ Statistika: Cronbachs
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -1838,9 +1788,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
