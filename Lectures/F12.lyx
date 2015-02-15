@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames,handout
+\options xcolor=svgnames, handout
 \use_default_options false
 \begin_modules
 knitr
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -103,7 +112,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 11
+Föreläsning 12
 \end_layout
 
 \begin_layout Author
@@ -119,10 +128,6 @@ Avd.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
@@ -209,10 +214,20 @@ options(scipen = 10, digits = 3)
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -222,10 +237,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Klusterurval
 \end_layout
@@ -252,10 +264,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Tvåstegs klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Första steget dras kluster/primära urvalsenheter (ex.
  skolor)
@@ -287,14 +309,25 @@ komplexa surveyer
 )
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -341,14 +374,25 @@ M_{0}=\mbox{antal ssus (elever) i populationen}
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Tvåstegs klusterurval - Exempel
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -358,7 +402,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../Old/Lectures/Pics/twophase.png
+	filename images/cluster_sampling examples.jpg
 	scale 30
 
 \end_inset
@@ -367,7 +411,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Skillnad mellan enstegs och tvåstegs klusterurval.
@@ -391,14 +435,25 @@ key "ESS"
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: BETSI
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -508,14 +563,25 @@ Periodicitet
 : Ett tillfälle (?)
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimation vid tvåstegs klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vid enstegs klusterurval är 
 \begin_inset Formula 
@@ -576,14 +642,25 @@ vilket ger
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Variansskattning vid tvåstegs klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vid enstegs klusterurval är 
 \begin_inset Formula 
@@ -640,14 +717,25 @@ mellan
  psu:s
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Variansskattning vid tvåstegs klusterurval II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Precis som innan fungerar denna variansskattning bra om psu (ex.
  skolor) är ungefär lika stora
@@ -670,8 +758,15 @@ key "lohr2009sampling"
 \end_layout
 
 \begin_layout Itemize
-Den andra delen av variansskattningen (inom psu) är ofta betydligt mindre
- än den första delen (mellan psu) 
+Den andra delen av variansskattningen (inom 
+\series bold
+psu
+\series default
+) är ofta betydligt mindre än den första delen (mellan 
+\series bold
+psu
+\series default
+) 
 \end_layout
 
 \begin_layout Itemize
@@ -702,10 +797,7 @@ Konfidensintervallen beräknar vi (som vanligt)
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -750,10 +842,20 @@ m<-10
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: IT-användning i skolan
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi vill undersöka IT-användningen i ett rektorsområde med 
 \begin_inset Flex S/R expression
@@ -816,10 +918,7 @@ M0
  lärare i rektorsområdet.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -975,21 +1074,31 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: IT-användning i skolan III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1388,10 +1497,7 @@ s.i[3]
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Urval med olika inklusionssannolikheter
 \end_layout
@@ -1414,7 +1520,11 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till pps och 
 \begin_inset Formula $\pi$
 \end_inset
@@ -1422,6 +1532,12 @@ Introduktion till pps och
 ps
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vid stratifiering såg vi att vi fick en lägre 
 \begin_inset Formula $Var(\hat{\ensuremath{t}})$
@@ -1493,11 +1609,16 @@ storlek
  som hjälpvariabel
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till pps och 
 \begin_inset Formula $\pi$
 \end_inset
@@ -1505,6 +1626,12 @@ Introduktion till pps och
 ps
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Fördelar med pps/
 \begin_inset Formula $\pi$
@@ -1587,14 +1714,39 @@ pps-urval är enklare matematiskt (både att dra urvalet och estimation) men
 )
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Pause
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Itemize
+Kan ske som som ett resultat av vanlig sampling 
+\begin_inset Newline newline
+\end_inset
+
+(ex.
+ slumpmässig telefonupprigning - måste beakta olika sannolikheter för olika
+ antal telefonnummer)
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -1649,14 +1801,25 @@ t_{i}=\mbox{ total i kluster \ensuremath{i}}
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 pps-urval - teori
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1737,14 +1900,25 @@ För att skatta totalen använder vi oss av
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 pps-urval - teori II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att skatta variansen använder vi oss av 
 \begin_inset Formula 
@@ -1785,14 +1959,25 @@ För att minimera
  ...
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 pps-urval - teori III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Ett vanligt sätt att välja 
 \begin_inset Formula $\psi_{i}$
@@ -1842,14 +2027,25 @@ sampling
 ).
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel - pps-urval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi vill återigen skatta antalet lektioner då datorer används i undersvisningen
  i ett givet rektorsområde med 10 skolor
@@ -1863,10 +2059,7 @@ Vi vill nu dra ett pps-urval
 Denna gång undersöker vi samtliga lärare på skolan för en given vecka.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2037,10 +2230,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 PPS-urval - tvåstegs klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Dra kluster med sannolikhet 
 \begin_inset Formula $\psi_{i}$
@@ -2080,17 +2283,28 @@ Om vi drar samma kluster flera gånger måsta vi dra ett nytt OSU varje gång
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\pi$
 \end_inset
 
 ps-urval och HT-estimatorn
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Mer komplicerat än pps då urvalet inte är oberoende
 \end_layout
@@ -2138,17 +2352,28 @@ ps-urval (eller ett vanligt OSU) kan vi använda Horwitz-Thompson-estimatorn
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\pi$
 \end_inset
 
 ps-urval och HT-estimatorn II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Det är enkelt att visa att HT-estimatorn är väntevärdesriktig 
 \begin_inset Formula $(*)$
@@ -2177,17 +2402,28 @@ där
  är andra ordningens inklutionssannolikhet.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\pi$
 \end_inset
 
 ps-urval och HT-estimatorn III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vid vanligt OSU är 
 \begin_inset Formula $\pi_{ik}$
@@ -2239,10 +2475,7 @@ V_{WR}(\hat{t}_{HT})=\frac{1}{n(n-1)}\sum_{i\in\mathcal{S}}\left(\frac{t_{i}}{\p
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Vikter vid klusterurval
 \end_layout
@@ -2265,10 +2498,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Vikter vid klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att beräkna inklutionssannolikheten behöver vi 
 \begin_inset Formula 
@@ -2329,14 +2572,25 @@ w_{ij}=\frac{1}{\pi_{ij}}=\frac{M_{i}N}{M_{i}n}=\frac{N}{n}
  vid enstegsurval
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Vikter vid klusterurval II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Med vikterna får vi följande skattning av 
 \begin_inset Formula $\hat{t}_{unb}$
@@ -2361,18 +2615,25 @@ och för
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -2384,9 +2645,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

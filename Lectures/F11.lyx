@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames,handout
+\options xcolor=svgnames, handout
 \use_default_options false
 \begin_modules
 knitr
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -103,7 +112,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 10
+Föreläsning 11
 \end_layout
 
 \begin_layout Author
@@ -119,10 +128,6 @@ Avd.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
@@ -209,10 +214,20 @@ options(scipen = 10, digits = 3)
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -222,10 +237,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Klusterurval
 \end_layout
@@ -248,17 +260,31 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Ibland finns naturliga grupper/kluster i populationen
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Exempel: Skolor, Bostadsområden, Arbetsplatser, Hushåll 
+
+\series bold
+Exempel:
+\series default
+ Skolor, Bostadsområden, Arbetsplatser, Hushåll 
 \end_layout
 
 \end_deeper
@@ -273,26 +299,41 @@ I ett klusterurval dras ett urval av...
 
 \begin_deeper
 \begin_layout Itemize
-kluster (primära urvalsenheter, psu) och
+kluster (primära urvalsenheter, 
+\series bold
+psu
+\series default
+) och
 \end_layout
 
 \begin_layout Itemize
-ett antal observationsenheter i varje kluster (sekundära enheter, ssu)
+ett antal observationsenheter i varje kluster (sekundära enheter, 
+\series bold
+ssu
+\series default
+)
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till klusterurval II
 \end_layout
 
-\begin_layout Itemize
-Klusterurval liknar stratifierat urval, men...
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -300,22 +341,24 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename ../../Old/Lectures/Pics/StratClust.png
-	scale 30
+	filename images/one_way_cluster_sampling.png
+	scale 50
 
 \end_inset
 
 
-\begin_inset Caption
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Skillnad mellan stratifierat urval och klusterurval 
 \begin_inset CommandInset citation
 LatexCommand citet
-after "s. 167"
-key "lohr2009sampling"
+key "ESS"
 
 \end_inset
 
@@ -332,116 +375,29 @@ key "lohr2009sampling"
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Jämförelse stratifierat urval och klusterurval
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../Old/Lectures/Pics/STRS.jpg
-	scale 50
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Stratifierat urval.
- Källa: 
-\begin_inset CommandInset citation
-LatexCommand citeauthor
-key "korbedpsych.com"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Jämförelse stratifierat urval och klusterurval II
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../Old/Lectures/Pics/Cluster.jpg
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Klusterurval.
- Källa: 
-\begin_inset CommandInset citation
-LatexCommand citeauthor
-key "korbedpsych.com"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
-\begin_layout BeginFrame
-Jämförelse stratifierat urval och klusterurval III
-\end_layout
-
+\begin_deeper
 \begin_layout Itemize
 Stratifierat urval
 \end_layout
@@ -554,14 +510,25 @@ Minimal
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till klusterurval III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Varför vill vi använda klusterurval? 
 \end_layout
@@ -572,7 +539,7 @@ Det är svårt eller omöjligt att konstruera en urvalsram
 \end_layout
 
 \begin_layout Itemize
-Det förekommer naturliga kluster vilket minskar insamlingskostnaden drastiskt
+Det förekommer naturliga kluster vilket minskar insamlingskostnaden 
 \end_layout
 
 \begin_layout Itemize
@@ -595,18 +562,29 @@ Nästan alltid sämre design effect än vid OSU
 \end_layout
 
 \begin_layout Itemize
-Kan vara lite mer komplicerat att beräkna
+Mer komplicerade beräkningar
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Attityder till skolan
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -698,25 +676,44 @@ Periodicitet
 : Varje 3:e år.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation och begrepp I
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att förtydliga exemplifierar vi med ett klusterurval av skolor där 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Skolor är den primära urvalsenheten (psu)
+Skolor är den primära urvalsenheten (
+\series bold
+psu
+\series default
+)
 \end_layout
 
 \begin_layout Itemize
-Elever är den sekundära urvalsenheten (ssu)
+Elever är den sekundära urvalsenheten (
+\series bold
+ssu
+\series default
+)
 \end_layout
 
 \begin_layout Itemize
@@ -733,7 +730,11 @@ Vi är intresserad av antalet sjukdagar (
 \end_layout
 
 \begin_layout Itemize
-Notation på psunivå (skolnivå) - populationsparametrar
+Notation på 
+\series bold
+psu
+\series default
+-nivå (skolnivå) - populationsparametrar
 \end_layout
 
 \begin_layout Standard
@@ -780,14 +781,25 @@ y_{ij}=\mbox{observation i skola \ensuremath{i}avseende elev \ensuremath{j}}
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation och begrepp II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -818,14 +830,25 @@ S_{t}^{2}=\sum_{i=1}^{N}t_{i}=\sum_{i=1}^{N}\sum_{j=1}^{M_{i}}y_{ij}\mbox{ popul
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation och begrepp III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -870,14 +893,25 @@ S_{i}^{2}=\sum_{j=1}^{M_{i}}\frac{\left(y_{ij}-\bar{y}_{i\mathcal{U}}\right)^{2}
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation och begrepp IV
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Två typer av populationsmedel/total:
 \begin_inset Formula 
@@ -902,14 +936,25 @@ S^{2},S_{t}^{2},S_{i}^{2}
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Ett mejeri har ett antal lastbilar som kör ut mjölkprodukter för leverans.
  
@@ -930,6 +975,10 @@ er.
 Mejeriet är intresserade av hur många mjölkpaket som skadas vid transporten.
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Vad är 
 \begin_inset Formula $N,M_{i},M_{0},t_{i},t,y_{ij},S_{t}^{2}$
@@ -938,14 +987,25 @@ Vad är
  i detta fall?
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Olika typer av klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Enstegs klusterurval
 \end_layout
@@ -997,7 +1057,7 @@ egna
 \end_layout
 
 \begin_layout Itemize
-SSubpopulationerna kombineras till en 
+Kombineras till en 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1008,14 +1068,25 @@ gemensam
  skattning
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation och begrepp: Urval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Notation för vårt urval:
 \begin_inset Formula 
@@ -1072,14 +1143,25 @@ m_{0}=\mbox{antal ssus (elever) i vårt urval}
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Notation och begrepp: Urval II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
 \[
@@ -1124,14 +1206,25 @@ w_{ij}=\mbox{urvalsvikt i psu (skola) \ensuremath{j}avseende ssu (elev) \ensurem
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi ska göra en undersökning avseende inkomst i hus (parhus, radhus och villa)
  och väljer att dra tre slumpmässiga hus.
@@ -1157,6 +1250,10 @@ Hus 3: Göran och Inga med dottern Tuva (inkomst 15 100 och 19 200)
 \end_layout
 
 \end_deeper
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Vad innebär 
 \begin_inset Formula $n,m_{i},m_{0},y_{ij},t_{i},s_{t}^{2},s_{i}^{2},s^{2}$
@@ -1165,10 +1262,7 @@ Vad innebär
  i detta fall?
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Enstegs klusterurval
 \end_layout
@@ -1191,10 +1285,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Enstegs klusterurval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Det finns (ännu) inget urval inom klustret, alla urvalsenheter observeras.
 \end_layout
@@ -1242,14 +1346,25 @@ Som vid vanligt OSU kan vi skatta hela populationstotalen
 Denna skattning är (precis som vid OSU) väntevärdesriktig
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Enstegs klusterurval II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi beräknar variansen (som vid ett vanligt OSU) men med 
 \begin_inset Formula $t_{i}$
@@ -1306,14 +1421,25 @@ Precis som vanligt OSU, men med
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Enstegs klusterurval III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att skatta 
 \begin_inset Formula $\bar{y}_{\mathcal{U}}$
@@ -1374,10 +1500,7 @@ Konfidensintervallet beräknar vi (som vanligt):
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1555,10 +1678,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Enstegs klusterurval IV
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Denna skattning har två problem
 \end_layout
@@ -1576,7 +1709,7 @@ Denna skattning har två problem
 \end_layout
 
 \begin_layout Itemize
-vi kanske inte känner 
+Vi kanske inte känner 
 \begin_inset Formula $M_{0}$
 \end_inset
 
@@ -1618,14 +1751,25 @@ antingen känner vi till
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Snabbrepetition: Kvotestimation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Skattning av kvoten är 
 \end_layout
@@ -1716,14 +1860,25 @@ känner till
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Enstegs klusterurval V
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Byter vi ut 
 \begin_inset Formula $y_{i}$
@@ -1802,10 +1957,7 @@ Känner vi till
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1965,10 +2117,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Systematiskt urval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Ett specialfall av (enstegs) klusterurval är systematiskt urval
 \end_layout
@@ -2040,14 +2202,25 @@ periodicitet
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att dra ett systematiskt urval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi känner (eller uppskattar) populationsstorleken 
 \begin_inset Formula $N$
@@ -2157,14 +2330,25 @@ Så att alla element har en chans att bli dragna
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Systematiskt urval III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Då antalet kluster i urvalet bara är 
 \begin_inset Formula $n=1$
@@ -2219,14 +2403,25 @@ och vi kan beräkna variansen korrekt (och inkludera/hantera eventuell periodici
 et)
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Systematiskt urval
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Ett bolag som som säljer godis över internet är intresserade av kundnöjdheten
  hos sina kunder.
@@ -2257,14 +2452,25 @@ Beräkna
  och ge ett exempel på ett urval.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -2276,9 +2482,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

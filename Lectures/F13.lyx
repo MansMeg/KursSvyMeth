@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames, handout
+\options xcolor=svgnames
 \use_default_options false
 \begin_modules
 knitr
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -208,58 +217,33 @@ ctureCode.R")
 
 \begin_layout Plain Layout
 
-# Download data
 \end_layout
 
 \begin_layout Plain Layout
 
-svy2010temp <- tempfile(pattern="svy2010",fileext=".Rdata")
+# Download data 
 \end_layout
 
 \begin_layout Plain Layout
 
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/svy
-2010.Rdata", destfile = svy2010temp, method = "curl") 
+# svy2010
 \end_layout
 
 \begin_layout Plain Layout
 
-load(file=svy2010temp) 
+tmp <- suppressMessages(repmis::source_data("https://raw.github.com/MansMeg/KursSv
+yMeth/master/Labs/DataFiles/svy2010.Rdata"))
 \end_layout
 
 \begin_layout Plain Layout
 
-unlink(svy2010temp)
+# AGPOP 
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-# AGPOP
-\end_layout
-
-\begin_layout Plain Layout
-
-agpoptemp <- tempfile(pattern="agpop",fileext=".dat") 
-\end_layout
-
-\begin_layout Plain Layout
-
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Labs/DataFiles/agp
-op.dat", destfile = agpoptemp, method = "curl") 
-\end_layout
-
-\begin_layout Plain Layout
-
-agpop<-read.table(agpoptemp,header=TRUE,sep=",") 
-\end_layout
-
-\begin_layout Plain Layout
-
-unlink(agpoptemp) 
+agpop <- suppressMessages(repmis::source_data("https://raw.github.com/MansMeg/Kurs
+SvyMeth/master/Labs/DataFiles/agpop.dat")) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -380,14 +364,20 @@ svy2010design<-svydesign(ids=~1, data=svy2010, fpc=fpc.srs)
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -397,10 +387,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Grafik i surveyer
 \end_layout
@@ -423,10 +410,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Grafik i surveyer
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Varför tala om grafik i surveyer? Är det inte samma sak?
 \end_layout
@@ -479,10 +476,7 @@ key "Lumley2010csa"
  och på implementationer i surveypaketet
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -917,10 +911,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Analys i surveyer
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vid analys är den centrala frågan inferens.
  Vill vi dra slutsatser om...
@@ -944,14 +948,25 @@ Hur påverkas våra analyser av urvalsdesignen?
 Vid OSU med 'oänlig' population fungerar analyserna som vanligt
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Effekt av urvalsdesignen
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Våra analyser påverkas på samma sätt som konfidensintervallen
 \end_layout
@@ -993,14 +1008,25 @@ key "lohr2009sampling"
 )
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Ändlighetskorrektion
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi kan vara intresserade av att dra slutsatser om en ändlig population
 \end_layout
@@ -1009,7 +1035,200 @@ Vi kan vara intresserade av att dra slutsatser om en ändlig population
 Observerar vi alla element saknar vi osäkerhet
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Section
+Webbpaneler
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frame{
+\backslash
+sectionpage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Webbpaneler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En databas med individer (som vill delta i undersökningar)
+\end_layout
+
+\begin_layout Itemize
+Används som ram för undersökningar
+\end_layout
+
+\begin_layout Itemize
+Bygger oftast på webbundersökningar (och e-post)
+\end_layout
+
+\begin_layout Itemize
+Allt mer populära p.g.a.
+ av det ökande bortfallet
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Rekrytering och profilundersökning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Direkt med sannolikhetsurval
+\end_layout
+
+\begin_layout Itemize
+Indirekt rekrytering i samband med annan undersökning
+\end_layout
+
+\begin_layout Itemize
+Självrekryteringar
+\end_layout
+
+\begin_layout Itemize
+Slå samman olika paneler
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Profilundersökning - samla in bakgrundsdata för individerna
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Representativitet och webbpaneler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Är sällan representativt i samplingteoretiska resonemang
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Samma fördelning som i populationen
+\end_layout
+
+\begin_layout Itemize
+Kan viktas för att uppnå skattningar utan bias
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ISO 26362
+\end_layout
+
+\end_inset
+
+ Begrepp som 
+\begin_inset Quotes eld
+\end_inset
+
+representativitet
+\begin_inset Quotes erd
+\end_inset
+
+ få bara användas om det tydligt definieras.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kvalitetsmått för webbpaneler.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Deltagarandel (kumulativ svarsandel)
+\end_layout
+
+\begin_layout Itemize
+Panelstorlek
+\end_layout
+
+\begin_layout Itemize
+Uppgiftslämnarbörda 
+\end_layout
+
+\begin_layout Itemize
+Dominans
+\end_layout
+
+\begin_layout Itemize
+Anpassat svarsbeteende/professionalisering
+\end_layout
+
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
@@ -1035,10 +1254,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Komplexa surveyer
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Alla metoder vi beskrivit så här långt kan användas i en och samma undersökning
 \end_layout
@@ -1053,14 +1282,25 @@ Samlingsnamnet för dessa metoder är
 Komplexa surveyer
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: BETSI
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 
 \series bold
@@ -1170,14 +1410,25 @@ Periodicitet
 : Ett tillfälle (?)
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Komplexa surveyer II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Hur reder vi ut de olika nivåerna?
 \end_layout
@@ -1240,14 +1491,25 @@ Exempel: Stratifierad population och trestegs klusterurval
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Komplexa surveyer III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Varianserna kan utredas på samma sätt steg för steg (överkurs)
 \end_layout
@@ -1285,12 +1547,9 @@ eller
 Detta räcker dock inte för att beräkna varianserna
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
-Sammanfattning
+Sammanfattning (repetition)
 \end_layout
 
 \begin_layout Standard
@@ -1311,10 +1570,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsmetoder
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1383,14 +1652,25 @@ Periodicitet i ramen
 
 \end_deeper
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsmetoder II 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1444,14 +1724,25 @@ Något mer komplicerat än OSU
 
 \end_deeper
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsmetoder III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1501,14 +1792,25 @@ Mer komplicerade beräkningar
 
 \end_deeper
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Urvalsmetoder IV
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1565,14 +1867,25 @@ Mer komplicerade beräkningar
 
 \end_deeper
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Estimation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Den vanliga estimatorn (Horwitz-Thopson)
 \end_layout
@@ -1639,14 +1952,25 @@ Används vid kalibrering
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Undersökningmetodik
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Kvalitetsdimensionerna i en undersökning
 \end_layout
@@ -1707,14 +2031,25 @@ Bearbetningsfel
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Undersökningmetodik II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 De olika stegen i en undersökning
 \end_layout
@@ -1749,14 +2084,25 @@ Rapportering och kommunikation
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Undersökningmetodik III
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Stegen vid enkätkonstruktion
 \end_layout
@@ -1846,14 +2192,25 @@ Kompensera för uppkommet bortfall
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -1865,9 +2222,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

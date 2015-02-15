@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -103,7 +112,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 8
+Föreläsning 9
 \end_layout
 
 \begin_layout Author
@@ -192,14 +201,20 @@ options(scipen = 10, digits = 3)
 
 \end_layout
 
-\begin_layout EndFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-\end_layout
-
-\begin_layout BeginFrame
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -209,10 +224,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Regressionsestimation
 \end_layout
@@ -235,12 +247,22 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till regressionsestimation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Vi har tidigare talat om kvotestimation med modellen
+Kvotestimation använder modellen
 \begin_inset Formula 
 \[
 y_{i}=\hat{B}x_{i}
@@ -263,56 +285,12 @@ Om vi inte kan anta att
  så kan inte kvotestimation användas
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-RITA:
-\series default
- Exempel med negativt beta och positiv intercept (i R) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel:
-\series default
- Mottagna socialbidrag och inkomst 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Pause
 
 \end_layout
 
 \begin_layout Itemize
-Då kan vi istället använda 
+Kan istället använda 
 \series bold
 regressionsestimation
 \series default
@@ -327,45 +305,12 @@ y=\mathbf{x}^{T}\mathbf{B}=B_{0}+B_{1}x_{1}+...+B_{p}x_{p}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Vi kan i princip använda vilken modell vi vill, men linjär regression är
- standard
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 
 \series bold
 Precis som tidigare, två situationer
 \series default
-: Antingen känner vi till populationstotalernan för 
+: Antingen känner vi till populationstotalerna för 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
@@ -380,14 +325,25 @@ Precis som tidigare, två situationer
 ), eller inte.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Introduktion till regressionsestimation II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Exempel på användning om vi 
 \series bold
@@ -459,39 +415,6 @@ förbättra precisionen
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Exempel: Lön förklaras på geografi, om man är registrerad vid arbetsförmedlingen
- och antalet utbildningsår.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Vi kan använda 
 \begin_inset Formula $\mathbf{t_{x}}$
@@ -528,55 +451,26 @@ kalibrera
 Detta är den vanligaste metoden för att hantera bortfallsfel och ramfel.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Detta är den vanligaste principen för att hantera täckningsfel och bortfallsfel.
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel:
-\series default
- Bortfall som beror på flera variabler.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Regressionsestimation: Estimatorer
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Skattningen av regressionskoefficienterna 
 \series bold
@@ -608,10 +502,7 @@ eller
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -817,10 +708,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Regressionsestimation: Estimatorer II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Om vi känner till 
 \begin_inset Formula $\bar{\mathbf{x}}$
@@ -918,72 +819,10 @@ inte
 \end_layout
 
 \begin_layout Itemize
-Men vad händer om vi använder en modell som inte fungerar?
+Men vad händer om vi använder en modell som är fel?
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Ingenting.
-\end_layout
-
-\begin_layout Plain Layout
-Antag att vi har en modell där vi vill använda oss av skostorlek för att
- skatta inkomst.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Vi känner den genomsnittliga skostorleken.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Vad blir 
-\begin_inset Formula $B_{1}$
-\end_inset
-
- i så fall? 
-\end_layout
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\begin_layout Plain Layout
-Vad blir då t_reg? samma som vanliga skattningen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1388,10 +1227,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Effekten av kvotestimation
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1516,14 +1365,25 @@ MSE(\hat{\bar{y}}_{reg}) & = & \Sexpr{MSEthatyreg} &  & MSE(\hat{\bar{y}}_{\math
 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Regressionsestimation: Variansberäkningar
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi är (som vanligt) intresserade av 
 \begin_inset Formula $Var(\hat{\bar{y}}_{reg})$
@@ -1588,14 +1448,25 @@ där
  är antalet parametrar i modellen.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel: Skogsvolym
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1706,10 +1577,7 @@ tot_x
  träd
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1865,10 +1733,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Regressionsestimation som kalibrering
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Regressionsestimatorn kan användas för kalibrering (precis som kvotestimatorn).
 \end_layout
@@ -2026,14 +1904,25 @@ Precis som en regression kan vi ha interaktionsvariabler.
 Härled detta för OSU-situationen.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -2045,9 +1934,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

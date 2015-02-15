@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -37,7 +37,7 @@
 %}
  	
 \end_preamble
-\options xcolor=svgnames,handout
+\options xcolor=svgnames, handout
 \use_default_options false
 \begin_modules
 knitr
@@ -50,13 +50,13 @@ knitr
 \font_roman palatino
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,15 +67,24 @@ knitr
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_authoryear
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -103,7 +112,7 @@ Surveymetodik
 \begin_inset Newline newline
 \end_inset
 
-Föreläsning 9
+Föreläsning 10
 \end_layout
 
 \begin_layout Author
@@ -119,10 +128,6 @@ Avd.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
@@ -201,23 +206,8 @@ options(scipen = 10, digits = 3)
 
 \begin_layout Plain Layout
 
-RdataFile <- tempfile(pattern="RdataFile",fileext=".Rdata") 
-\end_layout
-
-\begin_layout Plain Layout
-
-download.file("https://raw.github.com/MansMeg/KursSvyMeth/master/Lectures/Data/meta.
-Rdata", destfile = RdataFile, method = "curl") 
-\end_layout
-
-\begin_layout Plain Layout
-
-load(RdataFile)
-\end_layout
-
-\begin_layout Plain Layout
-
-unlink(RdataFile) 
+temp <- suppressMessages(repmis::source_data("https://raw.github.com/MansMeg/KursS
+vyMeth/master/Lectures/Data/meta.Rdata"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -230,10 +220,20 @@ unlink(RdataFile)
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Översikt
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -243,10 +243,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section
 Bortfall
 \end_layout
@@ -269,10 +266,20 @@ sectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Allmänt om bortfall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 En del av (i princip) alla undersökningar med respondenter
 \end_layout
@@ -294,8 +301,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../Old/Lectures/Pics/BortfallAKU.pdf
-	scale 50
+	filename images/NonresponseAKU.pdf
+	scale 45
 
 \end_inset
 
@@ -303,7 +310,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Bortfallsandel i AKU 1970-2013 (oviktat), 
@@ -330,14 +337,25 @@ key "AKU2011"
 Kvalitetsgränser för bortfall idag: SCB 60% (?), Ekot 50% 
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Allmänt om bortfall II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Skillnader i bortfall finns mellan olika datainsamlingsmetoder 
 \begin_inset Formula $(*)$
@@ -368,8 +386,6 @@ enkäter i skolan fortfarande lågt bortfall
 Bortfallet introducerar 
 \series bold
 fel
-\series default
- i vår undersökning
 \end_layout
 
 \begin_deeper
@@ -395,9 +411,19 @@ Vi behöver
 \series bold
 hjälpinformation
 \series default
- för att både göra bortfallsanalyser och hantera uppkommet bortfall
+ för att 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+göra bortfallsanalyser 
+\end_layout
+
+\begin_layout Itemize
+hantera uppkommet bortfall
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Pause
 
@@ -427,18 +453,25 @@ Ramfel
  kan betraktas på (ungefär) samma sätt som bortfall 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Vad är bortfall?
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Vad är bortfall?
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Quote
 De element (objekt) i ramen som tillhör målpopulationen och man har planerat
  att undersöka, men som man ej fick något svar ifrån.
@@ -455,18 +488,25 @@ key "Dahmstrom2011"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Bortfallsantaganden
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bortfallstyper och antaganden
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Två 
 \series bold
@@ -496,153 +536,70 @@ Antaganden om bortfall
 \begin_deeper
 \begin_layout Itemize
 Missing completely at random (MCAR)
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Det vi antar om vi inte gör någonting.
-\end_layout
-
-\begin_layout Plain Layout
-Antar helt slumpmässigt.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
 Missing at random (MAR)
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Givet kovariater antar vi att det är slumpmässigt.
-\end_layout
-
-\begin_layout Plain Layout
-Det antagande vi vanligtvis gör vid bortfallshantering
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
 Not missing at random (NMAR) 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex ArticleMode
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Boxed
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Bortfallet beror på den variabel vi vill studera.
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-Exempel
-\series default
- på detta är IKT-studien vid Skolverket.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Vi gör 
 \series bold
 ALLTID
 \series default
  något av ovanstående antaganden!
-\begin_inset Newline newline
-\end_inset
-
-Säger någon att de inte gör ett antagande om bortfallet - antar MCAR.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Diskussion: Bortfallsantaganden
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 En av de ansvariga statistikerna tappar/råkar förstöra en låda med enkäter.
+\end_layout
+
+\begin_layout Pause
+
 \end_layout
 
 \begin_layout Itemize
 I en levnadsnivåundersökning delar inte personer som inte kan språket.
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 I en skolundersökning är en del elever sjuka vid datainsamlingstillfället.
+\end_layout
+
+\begin_layout Pause
+
 \end_layout
 
 \begin_layout Itemize
@@ -650,23 +607,34 @@ Cryptosporidiumstudie: Personer som inte har kommunalt vatten tycker att
  de inte berörs av studien.
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Sexualvanestudie på gymnaiset: Personer som inte har haft sex tycker att
  studien inte rör dem och deltar inte.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Bortfallets konsekvenser
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bortfallets konsekvenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 De direkta konsekvenserna av bortfall i undersökningar är 
 \end_layout
@@ -698,14 +666,25 @@ Bias, som inte blir mindre då
 Både slumpfelet och biasen behöver hanteras
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bortfallets konsekvenser II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vi kan betrakta bortfallet som två strata: svarsstrata 
 \begin_inset Formula $(R)$
@@ -781,18 +760,25 @@ Skillnaden mellan svarande och icke-svarande
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Bortfallets orsaker
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bortfallets orsaker
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Vad orsakar bortfall?
 \end_layout
@@ -874,14 +860,25 @@ key "groves2000leverage"
 .
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Bortfallets orsaker II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -890,12 +887,12 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../Old/Lectures/Pics/LeverageSalient.pdf
+	filename images/Leverage-Salient.pdf
 
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Källa:
@@ -918,10 +915,7 @@ key "groves2000leverage"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Hantera bortfall
 \end_layout
@@ -944,10 +938,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Att hantera bortfall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
 Förebygga (och förbereda för) bortfall
 \end_layout
@@ -960,16 +964,27 @@ Genomföra en bortfallsanalys
 Hantera uppkommet bortfall
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 1: Förebygga bortfall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-Det billigaste (och mest kotsnadseffektiva) är ofta att försöka 
+Vi vill försöka 
 \series bold
 förebygga
 \series default
@@ -996,7 +1011,11 @@ Att kombinera metoder kan minska bortfallet (ex.
 \end_layout
 
 \begin_layout Itemize
-Inkludera variabler för bortfallsanalys och bortfallshantering
+
+\series bold
+Inkludera variabler
+\series default
+ för bortfallsanalys och bortfallshantering
 \end_layout
 
 \begin_layout Pause
@@ -1014,10 +1033,7 @@ key "japec1997minska,edwards2009methods"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2530,10 +2546,20 @@ end{frame}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 1: Förebygga bortfall II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att förebygga problemet med att urvalet minskar på grund av bortfallet
  kan 
@@ -2595,14 +2621,25 @@ svarsandel
  
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 2: Bortfallsanalys
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Identifiera vilka variabler som kan tänkas samvariera med bortfallet
 \end_layout
@@ -2652,14 +2689,25 @@ och
  med bortfallsannolikheten
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 3: Hantera uppkommet bortfall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Hur vi hanterar bortfallet beror på vilket antagande vi kan göra om bortfallet
 \end_layout
@@ -2744,14 +2792,25 @@ Denna metod är standard idag i större undersökningar.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steg 3: Hantera uppkommet bortfall II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 En vanlig praktisk lösning är:
 \end_layout
@@ -2780,7 +2839,7 @@ Medelvärdesimputering
 \end_layout
 
 \begin_layout Itemize
-Regressionsimputering (samma modell som vid kalibreringen)
+Regressionsimputering
 \end_layout
 
 \begin_layout Itemize
@@ -2798,14 +2857,15 @@ Problem med imputation - vi minskar vår osäkerhet
 
 \begin_deeper
 \begin_layout Itemize
-Lösningen: Multipel imputation
+
+\series bold
+Lösning
+\series default
+: Multipel imputation
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Redovisa bortfall
 \end_layout
@@ -2828,10 +2888,20 @@ subsectionpage}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Redovisa bortfall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att beräkna bortfall korrekt (för jämförbarhet) används Svensk standard
  för bortfallsberäkning (se 
@@ -2895,14 +2965,25 @@ Vägrare
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Redovisa bortfall
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 För att beräkna oviktat bortfall används följande formel
 \begin_inset Formula 
@@ -2951,14 +3032,25 @@ där
  är designvikterna
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 En undersökning har genomförts för att studera väljaropinion i Linköping.
  Vi behöver ett urval på 
@@ -3005,14 +3097,25 @@ Tidigare undersökningar har visat att personer under 30 år har ett bortfall
 Beräkna urvalet med oversampling i det två strata.
 \end_layout
 
-\begin_layout EndFrame
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Exempel II
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Undersökningen genomförs med följande resultat
 \end_layout
@@ -3021,11 +3124,11 @@ Undersökningen genomförs med följande resultat
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3239,18 +3342,25 @@ Okänd status (O)
 Beräkna studiens oviktade och viktade bortfall.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Referenser
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -3262,9 +3372,6 @@ options "elsarticle-harv"
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
