@@ -653,7 +653,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, eval=TRUE>>=
+<<echo=TRUE, eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -718,7 +718,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, eval=TRUE>>=
+<<echo=TRUE, eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -751,7 +751,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, eval=TRUE>>=
+<<echo=TRUE, eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
