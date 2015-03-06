@@ -587,7 +587,12 @@ status open
 
 \begin_layout Plain Layout
 
-agpop$FARMCAT <- cut(agpop$FARMS92, c(0, 1000, 2000, Inf), right = FALSE)
+agpop$FARMCAT <- cut(agpop$FARMS92, c(0, 500, 1000, Inf), right = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+agpop$REGION_S <- agpop$REGION=="S"
 \end_layout
 
 \begin_layout Plain Layout
@@ -704,6 +709,7 @@ agSTRAT <- svydesign(~1, strata=~REGION, fpc=fpc.strata, data=agSTRATAdata)
 
 \begin_layout Standard
 Vi ska nu också studera effekter på analyserna om vi har en totalundersökning.
+ Vi kan skapa ett surveyobjekt som är en totalundersökning på följande sätt.
 \end_layout
 
 \begin_layout Standard
@@ -921,7 +927,7 @@ status open
 
 \begin_layout Plain Layout
 
-svyttest(formula=FARMS92~REGION == "S", design=agSTRAT)
+svyttest(formula=FARMS92~REGION_S, design=agSTRAT)
 \end_layout
 
 \begin_layout Plain Layout
@@ -936,12 +942,49 @@ svyttest(formula=FARMS92~REGION == "S", design=agSTRAT)
 
 \begin_layout Standard
 Förklara kort vad detta test har gjort.
- Gör nu om samma test för 
+ Jämför detta test med ett vanligt modellbaserat t-test (se nedan).
+ Vad får du för skillnader och vad beror dessa skillnader på?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE, eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(x = agSTRATAdata$FARMS92[agSTRATAdata$REGION_S],
+\end_layout
+
+\begin_layout Plain Layout
+
+       y = agSTRATAdata$FARMS92[!agSTRATAdata$REGION_S])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gör nu om samma test för 
 \family typewriter
 agTOT
 \family default
 , d.v.s.
  för en totalundersökning.
+ Jämför sedan med att göra ett icke-surveybaserat t-test på hela undersökningen
+ (och jämför med totalundersökningen.
+ Vad skiljer sig
 \end_layout
 
 \begin_layout Standard
@@ -1101,12 +1144,12 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, comment='', eval=TRUE>>=
+<<echo=TRUE, eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-svychisq(formula = ~REGION + FARMCAT, design = agSTRAT)
+svychisq(formula = ~REGION_S + FARMCAT, design = agSTRAT)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1120,7 +1163,48 @@ svychisq(formula = ~REGION + FARMCAT, design = agSTRAT)
 \end_layout
 
 \begin_layout Standard
-Upprepa testet ovan men med surveyobjektet för totalundersökningen istället.
+Jämför nu testet ovan med ett vanligt (modellbaserat) 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=TRUE,  eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+chisq.test(table(agSTRATAdata$REGION_S, agSTRATAdata$FARMCAT))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vad är skillnaden mellan de olika metoderna? Skiljer sig dem åt och vad
+ beror det på i så fall?
+\end_layout
+
+\begin_layout Paragraph
+c)
+\end_layout
+
+\begin_layout Standard
+Upprepa testen ovan men med surveyobjektet för totalundersökningen istället.
  Vad får du för resultat? Hur skiljer det sig från samma test med 
 \family typewriter
 agSTRAT
@@ -1129,7 +1213,7 @@ agSTRAT
 \end_layout
 
 \begin_layout Standard
-Gör nu ett vanligt (icke-designbaserat) chitvåtest på 
+Gör nu ett vanligt (modellbaserat) chitvåtest på 
 \family typewriter
 agpop
 \family default
@@ -1160,7 +1244,11 @@ Till sist ska vi pröva att använda linjär regression i surveysammanhang,
  d.v.s.
  att i en regression ta hänsyn till urvalsdesign och ändlighetskorrketion.
  Precis som vid testerna ovan innebär att detta att vi skattar dessa värden
- i den ändliga populationen.
+ i den 
+\series bold
+ändliga populationen
+\series default
+ vi vill undersöka.
 \end_layout
 
 \begin_layout Standard
@@ -1174,17 +1262,17 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, eval=TRUE, comment = ''>>=
+<<echo=TRUE, eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-myModel <- svyglm(formula = ACRES92 ~ FARMS92 + REGION, design=agSTRAT)
+my_svy_model <- svyglm(formula = ACRES92 ~ FARMS92 + REGION, design=agSTRAT)
 \end_layout
 
 \begin_layout Plain Layout
 
-myModel
+my_svy_model
 \end_layout
 
 \begin_layout Plain Layout
@@ -1202,10 +1290,6 @@ Vad har jag gjort för analys ovan? Vad är dina slutsatser baserat på denna
  analys?
 \end_layout
 
-\begin_layout Paragraph
-Obs! 
-\end_layout
-
 \begin_layout Standard
 Precis som vid vanlig regression kan vi använda 
 \family typewriter
@@ -1221,6 +1305,8 @@ Pröva sedan att anpassa en vanlig linjär regression på samma data (men utan
 \end_layout
 
 \begin_layout Standard
+
+\series bold
 Exempel:
 \end_layout
 
@@ -1230,12 +1316,12 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, eval=FALSE, comment = ''>>=
+<<echo=TRUE, eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-myLmModel <- lm(ACRES92 ~ FARMS92 + REGION, agSTRATAdata)
+my_lm_model <- lm(ACRES92 ~ FARMS92 + REGION, agSTRATAdata)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1270,12 +1356,16 @@ agTOT
 \end_layout
 
 \begin_layout Standard
-Vad får du medelfel på koefficienterna? Täcker konfidensintervallen du fick
- baserat på urvalet 
+Vad får du medelfel på 
+\begin_inset Formula $\beta$
+\end_inset
+
+-koefficienterna? Täcker konfidensintervallen du fick baserat på urvalet
+ 
 \family typewriter
 agSTRAT
 \family default
- de sanna värdena i populationen? 
+ de sanna värdena i populationen?
 \end_layout
 
 \begin_layout Standard
