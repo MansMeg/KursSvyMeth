@@ -1667,6 +1667,16 @@ status open
 
 \begin_layout Plain Layout
 
+library(rgdal)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(rgeos)
+\end_layout
+
+\begin_layout Plain Layout
+
 library(maptools)
 \end_layout
 
@@ -1853,7 +1863,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=FALSE>>=
+<<>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1994,7 +2004,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=FALSE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -2060,8 +2070,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE, comment=''>
->=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE, comment=''>>
+=
 \end_layout
 
 \begin_layout Plain Layout
@@ -2132,18 +2142,18 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=FALSE>>=
+<<echo=TRUE, fig.height=4, fig.width=4, fig.align='center', eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-aggr_data <- aggregate(x=swe_romr@data$BEF05,by=list(swe_romr@data$romr),FUN=sum
-) 
+aggr_data <- aggregate(x=swe_county@data$BEF05,by=list(swe_county@data$romr),FUN
+=sum) 
 \end_layout
 
 \begin_layout Plain Layout
 
-names(aggData) <- c("romr", "BEF05") 
+names(aggr_data) <- c("romr", "BEF05") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2275,7 +2285,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=FALSE>>=
+<<>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -3190,11 +3200,6 @@ status open
 
 \begin_layout Plain Layout
 
-library(rgdal)
-\end_layout
-
-\begin_layout Plain Layout
-
 swe_municip_4326 <- spTransform(swe_municip, CRS("+init=epsg:4326"))
 \end_layout
 
@@ -3245,9 +3250,18 @@ linkpg_large <- qmap("Linkoping", zoom = 6, maptype = "terrain")
 
 \begin_layout Plain Layout
 
-linkpg_large +    geom_polygon(aes(x = long, y = lat, group = group), data
- = data,                colour = "white", fill = "blue", alpha = .2, size
- = .3)
+linkpg_large + geom_polygon(aes(x = long, y = lat, group = group),
+\end_layout
+
+\begin_layout Plain Layout
+
+                            data = data, colour = "white", fill = "blue",
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+                            alpha = .2, size = .3)
 \end_layout
 
 \begin_layout Plain Layout
